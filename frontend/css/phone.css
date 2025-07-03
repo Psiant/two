@@ -1,0 +1,1393 @@
+@import url('./element-plus.css');
+
+:root * {
+  --el-color-primary: #5BC6EA;
+  --el-color-primary-light-3: #40B3DA;
+  --el-color-primary-dark-2: #5BC6EA;
+  --el-button-hover-text-color: #fff;
+  --el-button-hover-border-color: #40B3DA;
+  --el-button-hover-bg-color: #40B3DA;
+  --el-main-max-width: 240px;
+  --el-scrollbar-bg-color: #5BC6EA;
+  --el-scrollbar-opacity: 0.5;
+  --el-scrollbar-bg-color: #5bc6ea;
+  --el-scrollbar-hover-opacity: 1;
+  --el-scrollbar-hover-bg-color: #5BC6EA;
+  --el-font-family: 'Roboto', sans-serif;
+  --el-border-color: #D4E6ED;
+  --tlph-text-color: #4C4C4C;
+  --tlph-text-color-2: #939B9F;
+  --tlph-call-icon-color: var(--el-color-primary);
+  --tlph-call-active-icon-color: #FF8242;
+  --tlph-call-icon-backgroud-color: #F3FAFC;
+
+	--v-progress-linear-height: 8px;
+	--v-progress-linear-color: linear-gradient(90deg, 
+    var(--tlph-call-active-icon-color) 0%,
+  rgba(255,149,71,1) 25%,
+    var(--el-color-primary) 80%);
+	--v-progress-linear-background-color: var(--tlph-call-icon-backgroud-color);
+	--v-progress-linear-transition: 400ms;
+}
+
+#tlph_phone_app * {
+  box-sizing: border-box;
+}
+
+#tlph_phone_app input,
+#tlph_phone_app textarea {
+  background: white;
+  color: black;
+}
+
+.el-scrollbar__bar.is-vertical {
+  background-color: #e6f7fc;
+  right: 0;
+}
+
+#tlph_phone_app {
+  position: fixed;
+  z-index: 1000;
+  box-shadow: 0px 3px 0.875rem rgb(55 71 79 / 30%);
+  background: white;
+  border-radius: 5px;
+  overflow: hidden;
+  max-width: 290px;
+  max-height: 535px;
+  min-height: 445px;
+  width: 100%;
+  font-family: var(--el-font-family);
+  font-size: 16px;
+  color: #37474F;
+  bottom: 0;
+}
+
+#tlph_phone_app .disabled {
+  pointer-events: none;
+}
+
+#tlph_phone_app .app__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  position: relative;
+}
+
+#tlph_phone_app .back-to-call {
+  font-family: var(--el-font-family);
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 16px;
+  background: #E8FBE5;
+  color: #88C734;
+  padding: 0.875rem;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+#tlph_phone_app .main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+}
+
+#tlph_phone_app .back-to-call__icon {
+  display: flex;
+  margin-left: 0.875rem;
+  margin-right: 7px;
+}
+
+#tlph_phone_app .back-to-call__icon svg path {
+  stroke: #88C734;
+}
+
+#tlph_phone_app .row {
+  display: flex;
+}
+
+/*************************
+Header
+*************************/
+#tlph_phone_app .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--el-border-color);
+  padding: 8px;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-touch-action: none;
+  -moz-touch-action: none;
+  -ms-touch-action: none;
+  touch-action: none;
+}
+
+#tlph_phone_app .header__logo {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#tlph_phone_app .header__status {
+  position: absolute;
+  bottom: -6px;
+  right: -9px;
+  border: 2px solid white;
+  border-radius: 50%;
+  line-height: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.header__status--active {
+  background-color: var(--el-dropdown-menuItem-hover-fill);
+  color: var(--el-dropdown-menuItem-hover-color);
+}
+
+.header__status-menu {
+  max-height: 198px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+.header__status-menu > .el-dropdown-menu__item {
+  border-bottom: 1px solid var(--el-border-color);
+  padding-right: 2rem;
+}
+
+#tlph_phone_app .header__icons {
+  display: flex;
+  align-items: center;
+}
+
+#tlph_phone_app .header__icon.icon__expand {
+  align-items: center;
+}
+
+#tlph_phone_app .header__icon {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+}
+
+#tlph_phone_app .header__icon:hover {
+  background: #F3FAFC !important;
+}
+/*************************
+END Header
+*************************/
+
+/*************************
+Home
+*************************/
+#tlph_phone_app .dialpad {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow-y: auto;
+  padding-bottom: 1.75rem;
+  flex-grow: 1;
+}
+
+#tlph_phone_app .dialpad__row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 9px;
+  max-width: var(--el-main-max-width);
+  width: 100%;
+}
+
+#tlph_phone_app button.dialpad__num {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F2F2F2 100%);
+  border: 1px solid #D9D9D9;
+  box-shadow: 0px 1px 1px rgba(0, 45, 77, 0.1), 0px 2px 6px rgba(0, 45, 77, 0.05);
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  max-width: 74px;
+  min-height: 45px;
+  font-family: var(--el-font-family);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--tlph-text-color);
+  -youbkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+#tlph_phone_app button.dialpad__num:active {
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+#tlph_phone_app button.dialpad__num:nth-child(2) {
+  margin: 0 15px;
+}
+
+#tlph_phone_app button.dialpad__num--col {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 50px;
+}
+
+#tlph_phone_app .dialpad__call {
+  margin-top: 15px;
+  margin-bottom: 0;
+  color: white;
+}
+
+#tlph_phone_app .dialpad__call .el-button--large.el-dropdown .el-dropdown__caret-button {
+  width: 28px;
+}
+
+#tlph_phone_app .dialpad__call .el-button--large:not(.el-dropdown__caret-button) {
+  padding: 6px 20px;
+}
+
+#tlph_phone_app .dialpad__call .el-button--large {
+  --el-button-size: 47px;
+}
+
+#tlph_phone_app .dialpad__btn {
+  flex-grow: 1;
+}
+
+#tlph_phone_app .dialpad__plus {
+  font-family: var(--el-font-family);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 13px;
+  color: var(--tlph-text-color-2);
+}
+
+
+#tlph_phone_app .dialpad__phone-container {
+  margin-bottom: 12px;
+  flex-wrap: nowrap;
+}
+
+#tlph_phone_app .dialpad__input {
+  font-family: var(--el-font-family);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  line-height: 25px;
+  color: var(--tlph-text-color);
+  flex-grow: 1;
+}
+
+#tlph_phone_app .dialpad__input--suffix {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+  height: 100%;
+  margin-left: 5px;
+}
+
+#tlph_phone_app .dialpad__input--suffix svg {
+  fill: #5BC6EA;
+}
+
+#tlph_phone_app .dialpad__input--suffix.disabled svg {
+  fill: #C4F0FF;
+}
+
+.el-popper.dialpad__aon {
+  max-width: calc(var(--el-main-max-width) + 2px);
+  width: 100%;
+}
+
+.el-popper.dialpad__aon, .el-popper.dialpad__aon > .el-scrollbar {
+  border-radius: 10px;
+  border: none;
+}
+
+.el-popper.dialpad__aon .el-scrollbar__wrap {
+  margin: 0 15px 0 10px;
+}
+
+.el-popper.dialpad__aon li.el-dropdown-menu__item {
+  padding: 0;
+}
+
+.el-popper.dialpad__aon .el-dropdown-menu--large .el-dropdown-menu__item--divided {
+  margin: 5px 0;
+}
+
+.dp-dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.dp-dropdown__search {
+  margin-bottom: 8px;
+}
+/*************************
+END Home
+*************************/
+
+/*************************
+Settings
+*************************/
+#tlph_phone_app .settings {
+  margin: 18px;
+}
+
+#tlph_phone_app .settings__label {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+#tlph_phone_app .settings__work-phone .el-switch__core,
+#tlph_phone_app .settings__open-on-call .el-switch__core,
+#tlph_phone_app .settings__music-on-inccall .el-switch__core {
+  min-width: 20px;
+  height: 0.875rem;
+}
+
+#tlph_phone_app .settings__work-phone .el-switch__core .el-switch__action,
+#tlph_phone_app .settings__open-on-call .el-switch__core .el-switch__action,
+#tlph_phone_app .settings__music-on-inccall .el-switch__core .el-switch__action {
+  width: 10px;
+  height: 10px;
+}
+
+#tlph_phone_app .settings__work-phone.is-checked .el-switch__core .el-switch__action,
+#tlph_phone_app .settings__open-on-call.is-checked .el-switch__core .el-switch__action,
+#tlph_phone_app .settings__music-on-inccall.is-checked .el-switch__core .el-switch__action {
+  left: calc(100% - 11px);
+}
+
+#tlph_phone_app .settings__work-phone .el-switch__label,
+#tlph_phone_app .settings__open-on-call .el-switch__label,
+#tlph_phone_app .settings__music-on-inccall .el-switch__label,
+#tlph_phone_app .settings__aon .el-switch__label {
+  height: auto;
+}
+
+#tlph_phone_app .settings__work-phone .el-switch__label *,
+#tlph_phone_app .settings__open-on-call .el-switch__label *,
+#tlph_phone_app .settings__music-on-inccall .el-switch__label *,
+#tlph_phone_app .settings__aon .el-switch__label *,
+#tlph_phone_app .settings__aon-label,
+#tlph_phone_app .settings__aon .el-input__inner {
+  color: var(--tlph-text-color);
+  font-family: var(--el-font-family);
+  font-weight: 400;
+  font-size: 0.875rem;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+#tlph_phone_app .settings__open-on-call,
+#tlph_phone_app .settings__music-on-inccall,
+#tlph_phone_app .settings__aon,
+#tlph_phone_app .settings__processing-call-sec {
+  margin-top: 13px;
+  -youbkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#tlph_phone_app .settings__aon-label {
+  display: block;
+  margin-top: 15px;
+}
+
+#tlph_phone_app .settings__processing-call-sec {
+  display: flex;
+}
+
+#tlph_phone_app .settings__aon {
+  width: 90%;
+  margin-top: 6px;
+}
+
+#tlph_phone_app .settings__processing-call-sec {
+  position: relative;
+}
+
+#tlph_phone_app .tlp-input-number {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 56px;
+  max-height: 32px;
+  background-color: var(--el-input-bg-color,var(--el-fill-color-blank));
+  background-image: none;
+  border-radius: var(--el-input-border-radius,var(--el-border-radius-base));
+  transition: var(--el-transition-box-shadow);
+  box-shadow: 0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset;
+  padding: 1px;
+  width: 100%;
+  margin-right: 10px;
+}
+
+#tlph_phone_app .tlp-input-number__decrease,
+#tlph_phone_app .tlp-input-number__increase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 8px;
+}
+
+#tlph_phone_app .tlp-input-number__decrease {
+  bottom: 5px;
+}
+
+#tlph_phone_app .tlp-input-number__increase {
+  top: 5px;
+}
+
+#tlph_phone_app .tlp-input {
+  width: 46px;
+  height: 30px;
+  flex-grow: 1;
+  border: none;
+  font-size: 13px;
+  padding-left: 8px;
+  border-radius: var(--el-input-border-radius,var(--el-border-radius-base));
+  appearance: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+#tlph_phone_app input.tlp-input::-webkit-outer-spin-button,
+#tlph_phone_app input.tlp-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+#tlph_phone_app input.tlp-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#tlph_phone_app .tlp-input:active .tlp-input-number,
+#tlph_phone_app .tlp-input:focus .tlp-input-number {
+  box-shadow: 0 0 0 1px var(--el-select-input-focus-border-color) inset!important;
+  outline: none;
+}
+
+#tlph_phone_app .tlp-input__label {
+  color: var(--tlph-text-color);
+  font-size: 0.875rem;
+  -youbkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; 
+}
+/*************************
+END Settings
+*************************/
+
+/*************************
+Footer
+*************************/
+#tlph_phone_app .footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.5rem;
+  padding-bottom: 0;
+  position: relative;
+}
+
+#tlph_phone_app .footer__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 0.875rem 0;
+  max-height: 32px;
+  max-width: 32px;
+  height: 100%;
+  width: 100%;
+  fill: var(--el-color-primary);
+  color: var(--el-color-primary);
+  cursor: pointer;
+}
+
+
+#tlph_phone_app .footer__icon:not(:last-child) {
+  margin-right: 17px;
+}
+
+#tlph_phone_app .footer__icon--exact-active,
+#tlph_phone_app .footer__icon--active {
+  border-bottom: 4px solid var(--tlph-call-active-icon-color);
+  fill: var(--tlph-call-active-icon-color);
+  color: var(--tlph-call-active-icon-color);
+}
+
+#tlph_phone_app .footer__icon:disabled,
+#tlph_phone_app .footer__icon[disabled] {
+  border: none;
+}
+
+#tlph_phone_app .footer__icon:disabled svg,
+#tlph_phone_app .footer__icon[disabled] svg {
+  fill: var(--el-border-color);
+}
+/*************************
+END Footer
+*************************/
+
+
+/*************************
+CALLS
+*************************/
+#tlph_phone_app .call-tabs {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0 0.625rem;
+}
+
+#tlph_phone_app .call-tabs > .el-tabs {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border: none;
+}
+
+#tlph_phone_app .call-tabs .el-tabs--border-card > .el-tabs__header {
+  border-bottom: none;
+}
+
+#tlph_phone_app .call-tabs .el-tabs__nav-wrap.is-scrollable {
+  padding: 0 15px;
+}
+
+#tlph_phone_app .call-tabs .el-tabs__item {
+  --el-text-color-secondary: var(--tlph-call-active-icon-color);
+}
+
+#tlph_phone_app .call-tabs > .el-tabs--border-card > .el-tabs__content {
+  display: flex;
+  flex-grow: 1;
+  border-bottom-left-radius: 3%;
+  border-bottom-right-radius: 3%;
+  border: 1px solid var(--el-border-color);
+  border-top: none;
+  padding: 0;
+}
+
+#tlph_phone_app .call-tabs > .el-tabs--border-card .el-tab-pane {
+  display: flex;
+  flex-grow: 1;
+}
+
+/*************************
+END CALLS
+*************************/
+
+/*************************
+ANSWERED CALL
+*************************/
+#tlph_phone_app .acall {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 0.75rem;
+  padding-bottom: 1.75rem;
+}
+
+#tlph_phone_app .acall__card {
+  width: 100%;
+  border-radius: 11px;
+  background: #FFF5F5;
+  min-height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+}
+
+#tlph_phone_app .acall__content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+#tlph_phone_app .acall__wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+#tlph_phone_app .acall__profile {
+  margin-bottom: 0.1rem;
+}
+
+#tlph_phone_app .acall__uri {
+  color: var(--tlph-call-active-icon-color);
+  font-family: var(--el-font-family);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1rem;
+}
+
+#tlph_phone_app .acall__name {
+  color: var(--el-color-primary);
+  font-family: var(--el-font-family);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1rem;
+  margin-top: 0.3rem;
+}
+
+#tlph_phone_app .acall__time {
+  color: var(--tlph-call-active-icon-color);
+  font-family: var(--el-font-family);
+  text-align: center;
+  font-family: Roboto;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1rem;
+  margin-top: 1rem;
+}
+
+#tlph_phone_app .acall__control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+#tlph_phone_app .acall__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--tlph-call-icon-backgroud-color);
+  cursor: pointer;
+  margin: 0 5px;
+  width: 43px;
+  height: 43px;
+}
+
+#tlph_phone_app .acall__icon--active {
+  --tlph-call-icon-backgroud-color: #FFF5EE;
+}
+
+#tlph_phone_app .acall__icon--unmute > svg {
+  fill: #FFF5EE;
+  stroke: var(--tlph-call-active-icon-color);
+}
+
+#tlph_phone_app .acall__icon--play > svg {
+  color: var(--tlph-call-active-icon-color);
+}
+
+#tlph_phone_app .acall__icon--mute > svg {
+  fill: white;
+  color: var(--tlph-call-icon-color);
+}
+
+#tlph_phone_app .acall__icon--dialpad > svg {
+  stroke: var(--tlph-call-icon-color);
+  fill: var(--tlph-call-icon-color);
+}
+
+#tlph_phone_app .acall__icon--mute > svg {
+  fill: white;
+  color: var(--tlph-call-icon-color);
+}
+
+#tlph_phone_app .acall__icon--hold > svg {
+  stroke: var(--tlph-call-icon-color);
+}
+
+#tlph_phone_app .acall__icon--transfer > svg {
+  color: var(--tlph-call-icon-color);
+}
+
+#tlph_phone_app .acall__icon--active.acall__icon--dialpad > svg {
+  stroke: var(--tlph-call-active-icon-color);
+  fill: var(--tlph-call-active-icon-color);
+}
+
+#tlph_phone_app .acall__icon--active.acall__icon--mute > svg {
+  fill: white;
+  color: var(--tlph-call-active-icon-color);
+}
+
+#tlph_phone_app .acall__icon--active.acall__icon--hold > svg {
+  stroke: var(--tlph-call-active-icon-color);
+}
+
+#tlph_phone_app .acall__icon--active.acall__icon--transfer > svg {
+  color: var(--tlph-call-active-icon-color);
+}
+
+
+#tlph_phone_app .acall__actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.688rem;
+}
+
+#tlph_phone_app .acall__dtmf {
+  display: flex;
+  width: 100%;
+}
+
+.actransfer {}
+
+.actransfer__ul {
+  max-height: 193px;
+  min-height: 193px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-width: 277px;
+}
+
+.actransfer__li {
+  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--el-border-color);
+  padding: 7px 0;
+  margin: 0 16px;
+}
+
+.actransfer__li span {
+  font-family: var(--el-font-family);
+  color: var(--tlph-text-color);
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+.actransfer__icon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 85%;
+}
+
+.actransfer__icon > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actransfer__icon > .el-tooltip__trigger {
+  margin-right: 0.375rem;
+  display: flex;
+}
+
+/* #tlph_phone_app .actransfer {} */
+/* #tlph_phone_app .actransfer {} */
+/*************************
+END ANSWERED CALL
+*************************/
+
+/*************************
+OUTGOING & INCOMING CALL
+*************************/
+#tlph_phone_app .icall,
+#tlph_phone_app .ocall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: flex-end;
+  padding: 0 0.75rem;
+  padding-bottom: 1.75rem;
+}
+
+#tlph_phone_app .aicall__content,
+#tlph_phone_app .acall__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#tlph_phone_app .icall__header,
+#tlph_phone_app .ocall__header {
+  margin-bottom: 0.5rem;
+  color: var(--tlph-text-color);
+  font-family: var(--el-font-family);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+#tlph_phone_app .icall__uri,
+#tlph_phone_app .ocall__uri {
+  color: var(--tlph-text-color);
+  font-family: var(--el-font-family);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+#tlph_phone_app .icall__name,
+#tlph_phone_app .ocall__name {
+  color: var(--el-color-primary);
+  font-family: var(--el-font-family);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1rem;
+  text-align: center;
+  margin-top: 0.3rem;
+}
+
+#tlph_phone_app .icall__icon,
+#tlph_phone_app .ocall__icon {
+  margin: 2rem 0;
+}
+/*************************
+END OUTGOING & INCOMING CALL
+*************************/
+
+/*************************
+DTMF PAD
+*************************/
+#tlph_phone_app .dtmfpad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+#tlph_phone_app .dtmfpad__input {
+  font-size: 1.375rem;
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#tlph_phone_app .dtmfpad__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 1rem;
+}
+
+#tlph_phone_app .dtmfpad__hide {
+  position: absolute;
+  margin-left: 1rem;
+  top: 50%;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+}
+/*************************
+END DTMF PAD
+*************************/
+/*************************
+LOADING SPINNER
+*************************/
+.tlph-loadnig {
+  width: 38px;
+  height: 38px;
+}
+
+.tlph-loadnig > path {
+  fill: #5bc6ea;
+  transform-origin: center
+}
+
+@keyframes spinLeft {
+  100% {
+      transform: rotate(360deg)
+  }
+}
+
+@keyframes spinRight {
+  100% {
+      transform: rotate(-360deg);
+  }
+}
+
+.tlph-loadnig > path:first-child {
+  animation: spinRight 1.5s infinite linear
+}
+
+.tlph-loadnig > path:last-child {
+  animation: spinLeft 1s infinite linear
+}
+/*************************
+END LOADING SPINNER
+*************************/
+
+/*************************
+OUT CALLING
+*************************/
+.calling {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-bottom: 1.75rem;
+}
+
+.calling__total {
+  color: var(--tlph-text-color-2);
+  font-family: var(--el-font-family);
+  font-style: normal;
+  font-size: 0.938rem;
+  font-weight: 400;
+  line-height: 1.625rem;
+  padding: 0 1rem;
+}
+
+.calling__content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+}
+
+.calling__overflow {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 0 1rem;
+  max-height: 76%;
+}
+
+.calling__item {
+  padding: 4px 0;
+  border-bottom: 1px solid var(--el-border-color);
+  color: var(--tlph-text-color);
+  font-family: var(--el-font-family);
+  font-size: 0.938rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.625rem;
+}
+
+.calling__item-name {
+  max-width: 80%;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  cursor: pointer;
+}
+
+.calling__item-delete {
+  display: none;
+  cursor: pointer;
+}
+
+.calling__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.calling__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--tlph-call-icon-backgroud-color);
+  cursor: pointer;
+  width: 43px;
+  height: 43px;
+  margin-right: 1rem;
+}
+
+#tlph_phone_app .calling__icon--play > svg {
+  color: var(--tlph-call-icon-color);
+}
+#tlph_phone_app .calling__icon--hold > svg {
+  stroke: var(--tlph-call-icon-color);
+}
+
+.calling__btn-end {
+  padding: 0.813rem 1.375rem;
+  height: 41px;
+  font-family: var(--el-font-family);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1rem;
+}
+
+.calling__item--hovered span.calling__item-name {
+  text-decoration: underline;
+}
+.calling__item--hovered span.calling__item-delete {
+  display: flex;
+}
+
+.calling__time {
+  color: var(--el-color-primary);
+  font-family: var(--el-font-family);
+  text-align: center;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.625rem;
+  margin-bottom: 1rem;
+  padding-top: 0.5rem;
+}
+
+.calling__title {
+  text-align: center;
+  color: var(--tlph-text-color);
+  font-family: var(--el-font-family);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.calling__progress {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+/*************************
+END OUT CALLING
+*************************/
+
+#tlph_phone_app .history {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+}
+
+#tlph_phone_app .history__content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+  position: absolute;
+  padding: 0.688rem 1.313rem;
+  width: 100%;
+  height: 100%;
+}
+
+#tlph_phone_app .tlph-call-date {
+  color: var(--el-color-primary);
+  font-size: 0.938rem;
+  font-weight: 600;
+}
+
+#tlph_phone_app .tlph-call {
+  padding: 4px 0;
+  border-bottom: 1px solid var(--el-border-color);
+}
+
+#tlph_phone_app .tlph-call__phone {
+  color: var(--tlph-text-color);
+  font-family: var(--el-font-family);
+  font-size: 0.938rem;
+  font-style: normal;
+  font-weight: 400;
+}
+
+#tlph_phone_app .tlph-call__time,
+#tlph_phone_app .tlph-call__duration {
+  text-align: right;
+}
+
+#tlph_phone_app .tlph-call__duration,
+#tlph_phone_app .tlph-call__time,
+#tlph_phone_app .tlph-call__flow {
+  color: var(--tlph-text-color-2);
+  font-family: var(--el-font-family);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.1rem;
+  font-size: 0.75rem;
+}
+
+
+.el-popper.is-light {
+  color: var(--tlph-text-color);
+} 
+
+/* Scroll bar stylings */
+.tlph-scrollbar::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+.tlph-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+/* Handle */
+.tlph-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--el-color-primary); 
+  border-radius: 5px;
+}
+/* Handle on hover */
+.tlph-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--el-color-primary); 
+}
+
+#tlph_phone_app .v-progress-linear {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--v-progress-linear-height);
+  overflow: hidden;
+  background-color: var(--v-progress-linear-background-color);
+  border-radius: 10px;
+}
+
+#tlph_phone_app .v-progress-linear .inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--el-color-primary);
+  background: var(--v-progress-linear-color);
+  transition: width var(--v-progress-linear-transition) ease-in-out;
+}
+#tlph_phone_app .v-progress-linear.absolute {
+  position: absolute;
+}
+#tlph_phone_app .v-progress-linear.bottom {
+  bottom: 0;
+}
+#tlph_phone_app .v-progress-linear.fixed {
+  position: fixed;
+}
+#tlph_phone_app .v-progress-linear.indeterminate .inner {
+  position: relative;
+  width: 100% !important;
+  transform-origin: left;
+  animation: indeterminate 2s infinite;
+  will-change: transform;
+  border-radius: 10px;
+  background: var(--el-color-primary);
+}
+#tlph_phone_app .v-progress-linear.rounded,
+#tlph_phone_app .v-progress-linear.rounded .inner {
+  border-radius: calc(var(--v-progress-linear-height) / 2);
+}
+#tlph_phone_app .v-progress-linear.top {
+  top: 0;
+}
+
+@keyframes indeterminate {
+  0% {
+    transform: scaleX(0) translateX(-30%);
+  }
+  10% {
+    transform: scaleX(0) translateX(-30%);
+    animation-timing-function: cubic-bezier(0.1, 0.6, 0.9, 0.5);
+  }
+  60% {
+    transform: scaleX(1) translateX(25%);
+    animation-timing-function: cubic-bezier(0.4, 0.1, 0.2, 0.9);
+  }
+  100% {
+    transform: scaleX(1) translateX(100%);
+    animation-timing-function: cubic-bezier(0.1, 0.6, 0.9, 0.5);
+  }
+}
+
+.entity-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.lead-collapse {
+  margin-top: 0.875rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.lead-collapse-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-bottom-color var(--el-transition-duration);
+  color: var(--tlph-text-color);
+  font-size: 0.875rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.lead-collapse-arrow {
+  margin-left: 0.625rem;
+  transition: transform var(--el-transition-duration);
+}
+
+.lead-collapse-wrap {
+  width: 100%;
+  position: relative;
+  margin-top: 1rem;
+  flex-grow: 1;
+}
+
+.lead-collapse-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 1rem;
+}
+
+.lead-collapse-item {
+  font-family: var(--el-font-family);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.625rem;
+  border-bottom: 1px solid var(--el-border-color);
+  padding: 0.188rem 0.375rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.lead-collapse.active {
+  flex-grow: 0.8;
+}
+
+.lead-collapse.active .lead-collapse-arrow {
+  transform: rotate(180deg);
+}
+
+.el-dropdown-link {
+  outline-width: 0;
+}
+
+.el-dropdown.aon-btn button {
+  height: 2.625rem;
+}
+
+.aon-btn-dropdown {
+  border-radius: 5px;
+}
+
+.aon-btn-dropdown__content {
+  padding-top: 1rem;
+  padding-bottom: 0;
+}
+
+.aon-btn-dropdown__title {
+  color: #78909C;
+  font-family: var(--el-font-family);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  padding: 0.375rem 0 0.375rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.aon-btn-dropdown-menu {
+  min-width: 12rem;
+  max-height: 10rem;
+  overflow-y: auto;
+}
+
+.aon-btn-dropdown-menu__item {
+  justify-content: space-between;
+  padding-left: 1rem;
+  color: var(--tlp-text-color);
+  font-family: var(--el-font-family);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.tlph-flex {
+  display: flex;
+}
+.tlph-align-center {
+  align-items: center;
+}
+.tlph-grow {
+  flex-grow: 1;
+}
+
+.tlph-full {
+  width: 100%;
+}
+
+.tlph-mr-1 {
+  margin-right: 0.25rem;
+}
+.tlph-mr-2 {
+  margin-right: 0.5rem;
+}
+
+.el-popconfirm__main {
+	word-break: break-word;
+	text-align: left;
+}
+
+label.el-checkbox.tlph-close-on-call,
+.tlph-close-on-call span.el-checkbox__label,
+.tlph-close-on-call .el-checkbox__input.is-checked+.el-checkbox__label {
+  color: var(--tlph-text-color);
+  font-weight: 400;
+  font-family: var(--el-font-family);
+  font-size: 0.875rem;
+}
