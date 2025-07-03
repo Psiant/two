@@ -1,0 +1,16576 @@
+(function() {
+    var n;
+    function ba(a) {
+        var b = 0;
+        return function() {
+            return b < a.length ? {
+                done: !1,
+                value: a[b++]
+            } : {
+                done: !0
+            }
+        }
+    }
+    function r(a) {
+        var b = "undefined" != typeof Symbol && Symbol.iterator && a[Symbol.iterator];
+        if (b)
+            return b.call(a);
+        if ("number" == typeof a.length)
+            return {
+                next: ba(a)
+            };
+        throw Error(String(a) + " is not an iterable or ArrayLike");
+    }
+    function ca(a) {
+        for (var b, c = []; !(b = a.next()).done; )
+            c.push(b.value);
+        return c
+    }
+    function da(a) {
+        return a instanceof Array ? a : ca(r(a))
+    }
+    var ea = "function" == typeof Object.create ? Object.create : function(a) {
+        function b() {}
+        b.prototype = a;
+        return new b
+    }
+    , fa;
+    if ("function" == typeof Object.setPrototypeOf)
+        fa = Object.setPrototypeOf;
+    else {
+        var ha;
+        a: {
+            var ia = {
+                a: !0
+            }
+              , ja = {};
+            try {
+                ja.__proto__ = ia;
+                ha = ja.a;
+                break a
+            } catch (a) {}
+            ha = !1
+        }
+        fa = ha ? function(a, b) {
+            a.__proto__ = b;
+            if (a.__proto__ !== b)
+                throw new TypeError(a + " is not extensible");
+            return a
+        }
+        : null
+    }
+    var ka = fa;
+    function la(a, b) {
+        a.prototype = ea(b.prototype);
+        a.prototype.constructor = a;
+        if (ka)
+            ka(a, b);
+        else
+            for (var c in b)
+                if ("prototype" != c)
+                    if (Object.defineProperties) {
+                        var d = Object.getOwnPropertyDescriptor(b, c);
+                        d && Object.defineProperty(a, c, d)
+                    } else
+                        a[c] = b[c];
+        a.oj = b.prototype
+    }
+    function ma() {
+        for (var a = Number(this), b = [], c = a; c < arguments.length; c++)
+            b[c - a] = arguments[c];
+        return b
+    }
+    var na = {
+        construct: "Metrika2",
+        callbackPostfix: "2",
+        version: "i3icr3vaukx00koh2ib01hbq3qzj",
+        host: "mc.yandex.ru"
+    }
+      , oa = {
+        206555165: 1,
+        655012937: 1,
+        1269618038: 1,
+        1676263684: 1
+    };
+    function pa(a, b) {
+        return b(a)
+    }
+    function qa(a) {
+        return function(b) {
+            return function(c) {
+                return a(b, c)
+            }
+        }
+    }
+    function ra(a) {
+        return function(b) {
+            return function(c) {
+                return a(c, b)
+            }
+        }
+    }
+    var sa = qa(function(a, b) {
+        return a === b
+    })
+      , ta = qa(function(a, b) {
+        a(b);
+        return b
+    })
+      , ua = qa(pa);
+    function u() {}
+    var va = [];
+    function wa(a, b) {
+        if (!b || "function" !== typeof b)
+            return !1;
+        try {
+            var c = "" + b
+        } catch (h) {
+            return !1
+        }
+        var d = c.length;
+        if (d > 35 + a.length)
+            return !1;
+        for (var e = d - 13, f = 0, g = 8; g < d; g += 1) {
+            f = "[native code]"[f] === c[g] || 7 === f && "-" === c[g] ? f + 1 : 0;
+            if (12 === f)
+                return !0;
+            if (!f && g > e)
+                break
+        }
+        return !1
+    }
+    function xa(a, b) {
+        var c = wa(a, b);
+        b && !c && va.push([a, b]);
+        return c
+    }
+    function ya(a, b) {
+        return xa(b, a) && a
+    }
+    function za(a, b) {
+        for (var c = 0; c < b.length; c += 1)
+            if (b[c] === a)
+                return c;
+        return -1
+    }
+    var Aa;
+    function Ba(a) {
+        if (Aa)
+            return Aa;
+        var b = !1;
+        try {
+            b = [].indexOf && 0 === [void 0].indexOf(void 0)
+        } catch (d) {}
+        var c = a.Array && a.Array.prototype && ya(a.Array.prototype.indexOf, "indexOf");
+        return Aa = a = b && c ? function(d, e) {
+            return c.call(e, d)
+        }
+        : za
+    }
+    var Ca = Ba(window)
+      , Da = ra(Ca);
+    function w(a) {
+        return a
+    }
+    function Ea(a, b) {
+        return b
+    }
+    function Fa(a) {
+        return !a
+    }
+    var Ga = ya(Array.from, "from");
+    function Ha(a) {
+        for (var b = a.length, c = [], d = 0; d < b; d += 1)
+            c.push(a[d]);
+        return c
+    }
+    function Ia(a) {
+        if (Ga)
+            try {
+                return Ga(a)
+            } catch (b) {}
+        return Ha(a)
+    }
+    function x(a, b) {
+        var c = []
+          , d = [];
+        var e = b ? b : w;
+        return function() {
+            var f = Ia(arguments)
+              , g = e.apply(null, da(f))
+              , h = Ca(g, d);
+            if (-1 !== h)
+                return c[h];
+            f = a.apply(null, da(f));
+            c.push(f);
+            d.push(g);
+            return f
+        }
+    }
+    var Ka = /\./g;
+    function y(a) {
+        return "string" === typeof a
+    }
+    var La = ya(String.prototype.indexOf, "indexOf");
+    function Ma(a, b) {
+        for (var c = 0, d = a.length - b.length, e = 0; e < a.length; e += 1) {
+            c = a[e] === b[c] ? c + 1 : 0;
+            if (c === b.length)
+                return e - b.length + 1;
+            if (!c && e > d)
+                break
+        }
+        return -1
+    }
+    var Na = La ? function(a, b) {
+        return La.call(a, b)
+    }
+    : Ma;
+    function Oa(a, b) {
+        return Na(a, b)
+    }
+    function Pa(a, b) {
+        return !(!a || -1 === Na(a, b))
+    }
+    function Qa(a) {
+        return "" + a
+    }
+    function Ra(a) {
+        return a.replace(/\^/g, "\\^").replace(/\$/g, "\\$").replace(Ka, "\\.").replace(/\[/g, "\\[").replace(/\]/g, "\\]").replace(/\|/g, "\\|").replace(/\(/g, "\\(").replace(/\)/g, "\\)").replace(/\?/g, "\\?").replace(/\*/g, "\\*").replace(/\+/g, "\\+").replace(/\{/g, "\\{").replace(/\}/g, "\\}")
+    }
+    var Sa = sa(null);
+    function A(a) {
+        return "function" === typeof a
+    }
+    var B = sa(void 0);
+    function C(a) {
+        return B(a) || Sa(a)
+    }
+    function Ta(a) {
+        return !Sa(a) && !B(a) && "[object Object]" === Object.prototype.toString.call(a)
+    }
+    function Ua(a, b, c) {
+        b = void 0 === b ? [] : b;
+        c = c || {};
+        var d = b.length
+          , e = a;
+        A(e) && (e = "d",
+        c[e] = a);
+        var f;
+        d ? 1 === d ? f = c[e](b[0]) : 2 === d ? f = c[e](b[0], b[1]) : 3 === d ? f = c[e](b[0], b[1], b[2]) : 4 === d && (f = c[e](b[0], b[1], b[2], b[3])) : f = c[e]();
+        return f
+    }
+    var Va = ya(Function.prototype.bind, "bind");
+    function Wa() {
+        var a = Ia(arguments);
+        a = r(a);
+        var b = a.next().value
+          , c = a.next().value
+          , d = ca(a);
+        return function() {
+            var e = [].concat(da(d), da(Ia(arguments)));
+            if (Function.prototype.call)
+                return Function.prototype.call.apply(b, [c].concat(da(e)));
+            if (c) {
+                for (var f = "_b"; c[f]; )
+                    f += "_" + f.length;
+                c[f] = b;
+                e = c[f] && Ua(f, e, c);
+                delete c[f];
+                return e
+            }
+            return Ua(b, e)
+        }
+    }
+    var D = Va ? function() {
+        var a = Ia(arguments)
+          , b = r(a);
+        a = b.next().value;
+        var c = b.next().value;
+        b = ca(b);
+        return Va.apply(a, [c].concat(b))
+    }
+    : Wa;
+    function E(a, b) {
+        return D.apply(null, [b, null].concat(da(a)))
+    }
+    function F(a, b) {
+        return D(b, null, a)
+    }
+    function Xa(a, b) {
+        return D(b[a], b)
+    }
+    function Ya(a) {
+        return Xa("test", a)
+    }
+    var Za = ya(Array.prototype.reduce, "reduce");
+    function $a(a, b, c) {
+        for (var d = 0, e = c.length; d < e; )
+            b = a(b, c[d], d),
+            d += 1;
+        return b
+    }
+    var G = Za ? function(a, b, c) {
+        return Za.call(c, a, b)
+    }
+    : $a;
+    function ab(a, b) {
+        return E([a, b], G)
+    }
+    function H() {
+        var a = Ia(arguments)
+          , b = a.shift();
+        return function() {
+            var c = b.apply(null, arguments);
+            return G(pa, c, a)
+        }
+    }
+    var bb = qa(E)
+      , cb = qa(Xa)
+      , db = Object.prototype.hasOwnProperty;
+    function I(a, b) {
+        return C(a) ? !1 : db.call(a, b)
+    }
+    function J(a, b) {
+        return a ? G(function(c, d) {
+            if (C(c))
+                return c;
+            try {
+                return c[d]
+            } catch (e) {}
+            return null
+        }, a, b.split(".")) : null
+    }
+    var L = ra(J)
+      , eb = L("length");
+    function fb(a) {
+        var b = void 0 === b ? {} : b;
+        if (!a || 1 > a.length)
+            return b;
+        G(function(c, d, e) {
+            if (e === a.length - 1)
+                return c;
+            e === a.length - 2 ? c[d] = a[e + 1] : I(c, d) || (c[d] = {});
+            return c[d]
+        }, b, a);
+        return b
+    }
+    function gb(a, b) {
+        var c = J(b, a)
+          , d = J(b, "constructor.prototype." + a) || c;
+        try {
+            if (d && d.apply)
+                return function() {
+                    return d.apply(b, arguments)
+                }
+        } catch (e) {
+            return c
+        }
+        return d
+    }
+    function hb(a, b, c) {
+        return c ? a : b
+    }
+    var ib = E([1, null], hb)
+      , jb = E([1, 0], hb)
+      , kb = Boolean
+      , lb = ya(Array.prototype.filter, "filter");
+    function mb(a, b) {
+        return $a(function(c, d, e) {
+            a(d, e) && c.push(d);
+            return c
+        }, [], b)
+    }
+    var nb = lb ? function(a, b) {
+        return lb.call(b, a)
+    }
+    : mb
+      , ob = F(kb, nb)
+      , pb = qa(nb)
+      , qb = ya(Array.prototype.includes, "includes");
+    function rb(a, b) {
+        return 1 <= mb(sa(a), b).length
+    }
+    var M = qb ? function(a, b, c) {
+        return qb.call(b, a, c)
+    }
+    : rb
+      , sb = ra(M);
+    function tb(a) {
+        return "[object Array]" === Object.prototype.toString.call(a)
+    }
+    var ub = ya(Array.isArray, "isArray")
+      , N = ub ? function(a) {
+        return ub(a)
+    }
+    : tb;
+    function vb(a) {
+        return a ? N(a) ? a : Ga ? Ga(a) : "number" === typeof a.length && 0 <= a.length ? Ha(a) : [] : []
+    }
+    var wb = x(Ba)
+      , xb = L("0");
+    function yb(a) {
+        return a.splice(0, a.length)
+    }
+    var zb = x(function(a) {
+        var b = J(a, "navigator") || {};
+        a = J(b, "userAgent") || "";
+        b = J(b, "vendor") || "";
+        return {
+            uf: -1 < Na(b, "Apple"),
+            kg: a
+        }
+    });
+    function Ab(a, b) {
+        return -1 !== (J(b, "navigator.userAgent") || "").toLowerCase().search(a)
+    }
+    var Bb = x(L("navigator.userAgent"))
+      , Cb = /Firefox\/([0-9]+)/i
+      , Db = x(function(a) {
+        var b = J(a, "document.documentElement.style")
+          , c = J(a, "InstallTrigger");
+        a = Ab(Cb, a);
+        Cb.lastIndex = 0;
+        return !(!(b && "MozAppearance"in b) || C(c)) || a
+    });
+    function Eb() {
+        var a = Array.prototype.map;
+        if (!Db(window))
+            return !0;
+        try {
+            a.call({
+                0: !0,
+                length: -Math.pow(2, 32) + 1
+            }, function() {
+                throw 1;
+            })
+        } catch (b) {
+            return !1
+        }
+        return !0
+    }
+    var Fb = ya(Array.prototype.map, "map");
+    function Gb(a, b) {
+        return G(function(c, d, e) {
+            c.push(a(d, e));
+            return c
+        }, [], b)
+    }
+    var O = Fb && Eb() ? function(a, b) {
+        return b && 0 < b.length ? Fb.call(b, a) : []
+    }
+    : Gb
+      , Hb = ya(Array.prototype.flatMap, "flatMap");
+    function Ib(a, b) {
+        return G(function(c, d, e) {
+            d = a(d, e);
+            return c.concat(N(d) ? d : [d])
+        }, [], b)
+    }
+    var Jb = Hb ? function(a, b) {
+        return Hb.call(b, a)
+    }
+    : Ib
+      , Kb = qa(O)
+      , Lb = ra(O)
+      , Mb = ya(Array.prototype.some, "some");
+    function Nb(a, b) {
+        for (var c = 0; c < b.length; c += 1)
+            if (c in b && a.call(b, b[c], c))
+                return !0;
+        return !1
+    }
+    var Ob = Mb ? function(a, b) {
+        return Mb.call(b, a)
+    }
+    : Nb
+      , Pb = ya(Array.prototype.every, "every");
+    function Qb(a, b) {
+        return G(function(c, d, e) {
+            return c ? !!a(d, e) : !1
+        }, !0, b)
+    }
+    var Rb = Pb ? function(a, b) {
+        return Pb.call(b, a)
+    }
+    : Qb;
+    function Sb(a, b) {
+        return a.isFinite(b) && !a.isNaN(b) && "[object Number]" === Object.prototype.toString.call(b)
+    }
+    function Tb(a) {
+        try {
+            return parseInt(a, 10)
+        } catch (b) {
+            return null
+        }
+    }
+    var Ub = ra(parseInt)
+      , Vb = Ub(10)
+      , Wb = Ub(2);
+    function Xb(a, b) {
+        return Sa(b) || B(b) || Sb(a, b) || y(b) || !!b === b
+    }
+    var Yb = ya(Object.keys, "keys");
+    function Zb(a) {
+        var b = [], c;
+        for (c in a)
+            I(a, c) && b.push(c);
+        return b
+    }
+    var $b = ya(Object.entries, "entries");
+    function ac(a) {
+        return B(a) ? [] : $a(function(b, c) {
+            b.push([c, a[c]]);
+            return b
+        }, [], Zb(a))
+    }
+    var bc = $b ? function(a) {
+        return a ? $b(a) : []
+    }
+    : ac
+      , cc = Yb ? function(a) {
+        return Yb(a)
+    }
+    : Zb
+      , dc = ya(Object.values, "values")
+      , ec = H(ac, F(L("1"), Gb))
+      , fc = dc ? function(a) {
+        return dc(a)
+    }
+    : ec;
+    function gc() {
+        var a = Ia(arguments)
+          , b = r(a);
+        a = b.next().value;
+        for (b = ca(b); b.length; ) {
+            var c = b.shift(), d;
+            for (d in c)
+                I(c, d) && (a[d] = c[d]);
+            I(c, "toString") && (a.toString = c.toString)
+        }
+        return a
+    }
+    var P = Object.assign || gc
+      , hc = qa(function(a, b) {
+        return P({}, a, b)
+    })
+      , ic = x(H(L("String.fromCharCode"), F("fromCharCode", xa), Fa))
+      , jc = x(H(Bb, Ya(/ipad|iphone|ipod/i)))
+      , kc = x(function(a) {
+        return J(a, "navigator.platform") || ""
+    })
+      , lc = x(function(a) {
+        a = zb(a);
+        var b = a.kg;
+        return a.uf && !b.match("CriOS")
+    })
+      , mc = Ya(/Android.*Version\/[0-9][0-9.]*\sChrome\/[0-9][0-9.]|Android.*Version\/[0-9][0-9.]*\s(?:Mobile\s)?Safari\/[0-9][0-9.]*\sChrome\/[0-9][0-9.]*|; wv\).*Chrome\/[0-9][0-9.]*\sMobile/)
+      , nc = Ya(/; wv\)/)
+      , oc = x(function(a) {
+        a = Bb(a);
+        return nc(a) || mc(a)
+    })
+      , pc = /Chrome\/(\d+)\./
+      , qc = x(function(a) {
+        return (a = (J(a, "navigator.userAgent") || "").match(pc)) && a.length ? 76 <= Vb(a[1]) : !1
+    })
+      , rc = x(function(a) {
+        a = (Bb(a) || "").toLowerCase();
+        return Pa(a, "android") && Pa(a, "mobile")
+    })
+      , sc = "other none unknown wifi ethernet bluetooth cellular wimax mixed".split(" ")
+      , tc = x(function(a) {
+        var b = J(a, "navigator.connection.type");
+        if (B(b))
+            return null;
+        a = wb(a)(b, sc);
+        return -1 === a ? b : "" + a
+    })
+      , uc = x(H(L("document.addEventListener"), Fa))
+      , vc = x(function(a) {
+        var b = J(a, "navigator") || {};
+        return G(function(c, d) {
+            return c || J(b, d)
+        }, "", ["language", "userLanguage", "browserLanguage", "systemLanguage"])
+    })
+      , wc = x(function(a) {
+        var b = J(a, "navigator") || {};
+        a = vc(a);
+        y(a) || (a = "",
+        b = J(b, "languages.0"),
+        y(b) && (a = b));
+        return a.toLowerCase().split("-")[0]
+    })
+      , xc = x(function(a) {
+        return (J(a, "top") || a) !== a
+    })
+      , yc = x(L("top.contentWindow"))
+      , zc = x(function(a) {
+        var b = !1;
+        try {
+            b = a.navigator.javaEnabled()
+        } catch (c) {}
+        return b
+    })
+      , Ac = x(function(a) {
+        var b = "__webdriver_evaluate __selenium_evaluate __webdriver_script_function __webdriver_script_func __webdriver_script_fn __fxdriver_evaluate __driver_unwrapped __webdriver_unwrapped __driver_evaluate __selenium_unwrapped __fxdriver_unwrapped".split(" ")
+          , c = J(a, "external");
+        c = J(c, "toString") ? "" + c.toString() : "";
+        c = -1 !== Na(c, "Sequentum");
+        var d = J(a, "document.documentElement")
+          , e = ["selenium", "webdriver", "driver"];
+        return !!(Ob(F(a, J), ["_selenium", "callSelenium", "_Selenium_IDE_Recorder"]) || Ob(F(J(a, "document"), J), b) || c || d && Ob(D(d.getAttribute, d), e))
+    })
+      , Bc = x(function(a) {
+        return !!(Ob(F(a, J), ["_phantom", "__nightmare", "callPhantom"]) || /(PhantomJS)|(HeadlessChrome)/.test(Bb(a)) || J(a, "navigator.webdriver") || J(a, "isChrome") && !J(a, "chrome"))
+    })
+      , Cc = x(function(a) {
+        return !(!J(a, "ia_document.shareURL") || !J(a, "ia_document.referrer"))
+    });
+    function Dc(a) {
+        return M("prerender", O(F(J(a, "document"), J), ["webkitVisibilityState", "visibilityState"]))
+    }
+    var Ec = x(function(a) {
+        var b = Bb(a) || ""
+          , c = b.match(/Mac OS X ([0-9]+)_([0-9]+)/);
+        c = c ? [+c[1], +c[2]] : [0, 0];
+        b = b.match(/iPhone OS ([1-9]+)_([0-9]+)/);
+        return 14 <= (b ? +b[1] : 0) ? !0 : (jc(a) || 10 < c[0] || 10 === c[0] && 13 <= c[1]) && lc(a)
+    })
+      , Fc = /Edg\/(\d+)\./;
+    function Gc(a) {
+        return (a = Bb(a)) && (a = a.match(Fc)) && 1 < a.length ? 79 <= Vb(a[1]) : !1
+    }
+    function Hc(a) {
+        return Db(a) && (a = Bb(a).match(Cb)) && a.length ? 68 <= +a[1] : !1
+    }
+    var Ic = x(function(a) {
+        return Ec(a) || Hc(a) || Gc(a)
+    })
+      , Jc = na.construct
+      , Kc = na.host
+      , Mc = uc(window)
+      , Nc = {
+        vg: 24226447,
+        Se: 26302566,
+        yg: 51533966,
+        Li: 65446441,
+        Pa: "https:",
+        mb: "2110",
+        Ac: Jc,
+        ug: Mc ? 512 : 2048,
+        qg: Mc ? 512 : 2048,
+        sg: Mc ? 100 : 400,
+        Mi: 100,
+        wg: "noindex"
+    }
+      , Oc = sa("1");
+    function Pc(a, b, c, d) {
+        var e = {};
+        return Ta(a) ? a : (e.id = a,
+        e.type = c,
+        e.defer = d,
+        e.params = b,
+        e)
+    }
+    function Qc(a) {
+        return G(function(b, c) {
+            var d = r(c)
+              , e = d.next().value
+              , f = d.next().value;
+            d = f.Ta;
+            f = a[f.fa];
+            b[e] = d ? d(f) : f;
+            return b
+        }, {}, bc(Rc))
+    }
+    var Q = x(function(a) {
+        return a.id + ":" + a.Z
+    });
+    function Sc(a) {
+        a = a.Ya = a.Ya || {};
+        var b = a._metrika = a._metrika || {};
+        return {
+            wa: function(c, d) {
+                I(b, c) || (b[c] = d);
+                return this
+            },
+            D: function(c, d) {
+                b[c] = d;
+                return this
+            },
+            C: function(c, d) {
+                var e = b[c];
+                return I(b, c) || B(d) ? e : d
+            }
+        }
+    }
+    var R = x(Sc)
+      , Tc = setTimeout;
+    function Uc() {}
+    function Vc(a, b) {
+        return function() {
+            a.apply(b, arguments)
+        }
+    }
+    function Wc(a) {
+        if (!(this instanceof Wc))
+            throw new TypeError("Promises must be constructed via new");
+        if ("function" !== typeof a)
+            throw new TypeError("not a function");
+        this.Oa = 0;
+        this.Te = !1;
+        this.Za = void 0;
+        this.Hb = [];
+        Xc(a, this)
+    }
+    function Yc(a, b) {
+        for (; 3 === a.Oa; )
+            a = a.Za;
+        0 === a.Oa ? a.Hb.push(b) : (a.Te = !0,
+        Wc.Ue(function() {
+            var c = 1 === a.Oa ? b.Qh : b.Uh;
+            if (null === c)
+                (1 === a.Oa ? Zc : $c)(b.promise, a.Za);
+            else {
+                try {
+                    var d = c(a.Za)
+                } catch (e) {
+                    $c(b.promise, e);
+                    return
+                }
+                Zc(b.promise, d)
+            }
+        }))
+    }
+    function Zc(a, b) {
+        try {
+            if (b === a)
+                throw new TypeError("A promise cannot be resolved with itself.");
+            if (b && ("object" === typeof b || "function" === typeof b)) {
+                var c = b.then;
+                if (b instanceof Wc) {
+                    a.Oa = 3;
+                    a.Za = b;
+                    ad(a);
+                    return
+                }
+                if ("function" === typeof c) {
+                    Xc(Vc(c, b), a);
+                    return
+                }
+            }
+            a.Oa = 1;
+            a.Za = b;
+            ad(a)
+        } catch (d) {
+            $c(a, d)
+        }
+    }
+    function $c(a, b) {
+        a.Oa = 2;
+        a.Za = b;
+        ad(a)
+    }
+    function ad(a) {
+        2 === a.Oa && 0 === a.Hb.length && Wc.Ue(function() {
+            a.Te || Wc.zg(a.Za)
+        });
+        for (var b = 0, c = a.Hb.length; b < c; b++)
+            Yc(a, a.Hb[b]);
+        a.Hb = null
+    }
+    function bd(a, b, c) {
+        this.Qh = "function" === typeof a ? a : null;
+        this.Uh = "function" === typeof b ? b : null;
+        this.promise = c
+    }
+    function Xc(a, b) {
+        var c = !1;
+        try {
+            a(function(d) {
+                c || (c = !0,
+                Zc(b, d))
+            }, function(d) {
+                c || (c = !0,
+                $c(b, d))
+            })
+        } catch (d) {
+            c || (c = !0,
+            $c(b, d))
+        }
+    }
+    Wc.prototype["catch"] = function(a) {
+        return this.then(null, a)
+    }
+    ;
+    Wc.prototype.then = function(a, b) {
+        var c = new this.constructor(Uc);
+        Yc(this, new bd(a,b,c));
+        return c
+    }
+    ;
+    Wc.prototype["finally"] = function(a) {
+        var b = this.constructor;
+        return this.then(function(c) {
+            return b.resolve(a()).then(function() {
+                return c
+            })
+        }, function(c) {
+            return b.resolve(a()).then(function() {
+                return b.reject(c)
+            })
+        })
+    }
+    ;
+    Wc.all = function(a) {
+        return new Wc(function(b, c) {
+            function d(h, k) {
+                try {
+                    if (k && ("object" === typeof k || "function" === typeof k)) {
+                        var l = k.then;
+                        if ("function" === typeof l) {
+                            l.call(k, function(m) {
+                                d(h, m)
+                            }, c);
+                            return
+                        }
+                    }
+                    e[h] = k;
+                    0 === --f && b(e)
+                } catch (m) {
+                    c(m)
+                }
+            }
+            if (!a || "undefined" === typeof a.length)
+                return c(new TypeError("Promise.all accepts an array"));
+            var e = Array.prototype.slice.call(a);
+            if (0 === e.length)
+                return b([]);
+            for (var f = e.length, g = 0; g < e.length; g++)
+                d(g, e[g])
+        }
+        )
+    }
+    ;
+    Wc.resolve = function(a) {
+        return a && "object" === typeof a && a.constructor === Wc ? a : new Wc(function(b) {
+            b(a)
+        }
+        )
+    }
+    ;
+    Wc.reject = function(a) {
+        return new Wc(function(b, c) {
+            c(a)
+        }
+        )
+    }
+    ;
+    Wc.race = function(a) {
+        return new Wc(function(b, c) {
+            if (!a || "undefined" === typeof a.length)
+                return c(new TypeError("Promise.race accepts an array"));
+            for (var d = 0, e = a.length; d < e; d++)
+                Wc.resolve(a[d]).then(b, c)
+        }
+        )
+    }
+    ;
+    Wc.Ue = "function" === typeof setImmediate && function(a) {
+        setImmediate(a)
+    }
+    || function(a) {
+        Tc(a, 0)
+    }
+    ;
+    Wc.zg = function(a) {
+        "undefined" !== typeof console && console && console.warn("Possible Unhandled Promise Rejection:", a)
+    }
+    ;
+    var S = window.Promise
+      , cd = ya(S, "Promise")
+      , dd = ya(J(S, "resolve"), "resolve")
+      , ed = ya(J(S, "reject"), "reject")
+      , fd = ya(J(S, "all"), "all");
+    if (cd && dd && ed && fd) {
+        var gd = function(a) {
+            return new Promise(a)
+        };
+        gd.resolve = D(dd, S);
+        gd.reject = D(ed, S);
+        gd.all = D(fd, S);
+        S = gd
+    } else
+        S = Wc;
+    var hd = ["http.0.st..rt.", "network error occurred", "send beacon", "Content Security Policy", "DOM Exception 18"], id;
+    function jd(a) {
+        this.message = a
+    }
+    var T = function(a) {
+        return function(b, c) {
+            c = void 0 === c ? !1 : c;
+            if (id)
+                var d = new id(b);
+            else
+                xa("Error", a.Error) ? (id = a.Error,
+                d = new a.Error(b)) : (id = jd,
+                d = new id(b));
+            c && (d.unk = !0);
+            return d
+        }
+    }(window);
+    function kd(a) {
+        return T("http." + a.status + ".st." + a.statusText + ".rt." + ("" + a.responseText).substring(0, 50))
+    }
+    var ld = Ya(RegExp("^http."));
+    function md(a) {
+        throw a;
+    }
+    function nd(a, b) {
+        for (var c = "", d = 0; d < b.length; d += 1)
+            c += "" + (d ? a : "") + b[d];
+        return c
+    }
+    var od = ya(Array.prototype.join, "join")
+      , U = od ? function(a, b) {
+        return od.call(b, a)
+    }
+    : nd
+      , pd = qa(U)
+      , qd = x(function(a) {
+        a = !(!a.addEventListener || !a.removeEventListener);
+        return {
+            ni: a,
+            F: a ? "addEventListener" : "attachEvent",
+            ea: a ? "removeEventListener" : "detachEvent"
+        }
+    });
+    function rd(a, b, c, d, e, f) {
+        a = qd(a);
+        var g = a.F
+          , h = a.ea;
+        f = f ? h : g;
+        if (b[f])
+            if (a.ni)
+                if (e)
+                    b[f](c, d, e);
+                else
+                    b[f](c, d);
+            else
+                b[f]("on" + c, d)
+    }
+    var sd = x(function(a) {
+        var b = !1;
+        if (!a.addEventListener)
+            return b;
+        try {
+            var c = Object.defineProperty({}, "passive", {
+                get: function() {
+                    b = !0;
+                    return 1
+                }
+            });
+            a.addEventListener("test", u, c)
+        } catch (d) {}
+        return b
+    })
+      , td = qa(function(a, b) {
+        if (null !== b)
+            return a ? P({
+                capture: !0,
+                passive: !0
+            }, b || {}) : !!b
+    })
+      , ud = x(function(a) {
+        var b = sd(a)
+          , c = td(b)
+          , d = {};
+        return P(d, {
+            F: function(e, f, g, h) {
+                O(function(k) {
+                    var l = c(h);
+                    rd(a, e, k, g, l, !1)
+                }, f);
+                return D(d.nc, d, e, f, g, h)
+            },
+            nc: function(e, f, g, h) {
+                O(function(k) {
+                    var l = c(h);
+                    rd(a, e, k, g, l, !0)
+                }, f)
+            }
+        })
+    });
+    function vd(a) {
+        return "onpagehide"in a
+    }
+    function wd(a) {
+        return J(a, "performance") || J(a, "webkitPerformance")
+    }
+    function xd(a) {
+        a = wd(a);
+        var b = J(a, "timing.navigationStart")
+          , c = J(a, "now");
+        c && (c = D(c, a));
+        return [b, c]
+    }
+    function yd(a, b) {
+        var c = r(b || xd(a))
+          , d = c.next().value;
+        c = c.next().value;
+        return !isNaN(d) && A(c) ? Math.round(c() + d) : a.Date.now ? a.Date.now() : (new a.Date).getTime()
+    }
+    function zd(a) {
+        return (10 > a ? "0" : "") + a
+    }
+    function Ad(a) {
+        var b = ud(a)
+          , c = xd(a)
+          , d = {
+            l: a,
+            Le: 0,
+            Yc: c,
+            Ch: yd(a, c)
+        }
+          , e = r(c);
+        c = e.next().value;
+        e = e.next().value;
+        c && e || b.F(a, ["beforeunload", "unload"], function() {
+            0 === d.Le && (d.Le = yd(a, d.Yc))
+        });
+        return ua(d)
+    }
+    function Bd(a) {
+        var b = a.Le;
+        return 0 !== b ? b : yd(a.l, a.Yc)
+    }
+    function Cd(a) {
+        return Math.floor(Bd(a) / 1E3 / 60)
+    }
+    function Dd(a) {
+        return Math.round(Bd(a) / 1E3)
+    }
+    function Ed(a) {
+        var b = r(a.Yc)
+          , c = b.next().value;
+        b = b.next().value;
+        a = c && b ? b() : Bd(a) - a.Ch;
+        return Math.round(a)
+    }
+    var Fd = x(Ad);
+    function Gd(a) {
+        a = Fd(a);
+        return Math.round(a(Ed) / 50)
+    }
+    function Hd(a) {
+        return a.Ee || a.cb.length <= a.Aa
+    }
+    function Id(a) {
+        a.Aa = a.cb.length
+    }
+    function Jd(a) {
+        a.Ee = !0
+    }
+    function Kd(a) {
+        a.Ee = !1
+    }
+    function Ld(a) {
+        Hd(a) && md(T("i"));
+        var b = a.$d(a.cb[a.Aa]);
+        a.Aa += 1;
+        return b
+    }
+    var Md = qa(function(a, b) {
+        for (var c = []; !Hd(b); ) {
+            var d = Ld(b);
+            a(d, function(e) {
+                return e(b)
+            });
+            c.push(d)
+        }
+        return c
+    })
+      , Nd = qa(function(a, b) {
+        for (var c; b.cb.length && !Hd(b); )
+            c = b.cb.pop(),
+            c = b.$d(c, b.cb),
+            a(b);
+        return c
+    });
+    function Od(a, b) {
+        return function(c) {
+            var d = Fd(a)
+              , e = d(Bd);
+            return Nd(function(f) {
+                d(Bd) - e >= b && Jd(f)
+            })(c)
+        }
+    }
+    function Pd(a, b) {
+        return function(c) {
+            var d = Fd(a)
+              , e = d(Bd);
+            return Md(function(f, g) {
+                d(Bd) - e >= b && g(Jd)
+            })(c)
+        }
+    }
+    function Qd(a) {
+        for (var b = !0, c = {}; !Hd(a) && b; c = {
+            je: void 0
+        })
+            b = !1,
+            c.je = function() {
+                b = !0;
+                a.Aa += 1
+            }
+            ,
+            a.$d(a.cb[a.Aa], function(d) {
+                return function() {
+                    (0,
+                    d.je)()
+                }
+            }(c)),
+            b || (a.Aa += 1,
+            c.je = F(a, Qd))
+    }
+    function Rd(a, b) {
+        return ua({
+            cb: a,
+            $d: b || w,
+            Ee: !1,
+            Aa: 0
+        })
+    }
+    function Sd(a, b, c) {
+        c = void 0 === c ? !1 : c;
+        return new S(function(d, e) {
+            function f(k, l) {
+                l();
+                d()
+            }
+            var g = a.slice();
+            g.push({
+                T: f,
+                Ga: f
+            });
+            var h = Rd(g, function(k, l) {
+                var m = c ? k.T : k.Ga;
+                if (m)
+                    try {
+                        m(b, l)
+                    } catch (p) {
+                        h(Id),
+                        e(p)
+                    }
+                else
+                    l()
+            });
+            h(Qd)
+        }
+        )
+    }
+    function Td(a) {
+        try {
+            return encodeURIComponent(a)
+        } catch (b) {}
+        a = U("", nb(function(b) {
+            return 55296 >= b.charCodeAt(0)
+        }, a.split("")));
+        return encodeURIComponent(a)
+    }
+    function Ud(a) {
+        var b = "";
+        try {
+            b = decodeURIComponent(a)
+        } catch (c) {}
+        return b
+    }
+    function Vd(a) {
+        return a ? H(Kb(function(b) {
+            var c = r(b.split("="));
+            b = c.next().value;
+            c = c.next().value;
+            return [b, C(c) ? void 0 : Ud(c)]
+        }), ab(function(b, c) {
+            var d = r(c)
+              , e = d.next().value;
+            d = d.next().value;
+            b[e] = d;
+            return b
+        }, {}))(a.split("&")) : {}
+    }
+    function Wd(a) {
+        return a ? H(bc, ab(function(b, c) {
+            var d = r(c)
+              , e = d.next().value;
+            d = d.next().value;
+            B(d) || C(d) || b.push(e + "=" + Td(d));
+            return b
+        }, []), pd("&"))(a) : ""
+    }
+    function Xd(a, b, c) {
+        var d = B(c);
+        B(b) && d ? (d = 1,
+        b = 1073741824) : d ? d = 1 : (d = b,
+        b = c);
+        return a.Math.floor(a.Math.random() * (b - d)) + d
+    }
+    function Yd(a, b, c) {
+        return function() {
+            var d = R(arguments[0])
+              , e = c ? "global" : "m2110"
+              , f = d.C(e, {})
+              , g = J(f, a);
+            g || (g = x(b),
+            f[a] = g,
+            d.D(e, f));
+            return g.apply(null, arguments)
+        }
+    }
+    var Zd = sb([26812653])
+      , $d = x(H(L("id"), Zd), Q)
+      , ae = "hash host hostname href pathname port protocol search".split(" ");
+    function V(a) {
+        return G(function(b, c) {
+            var d = J(a, "location." + c);
+            b[c] = d ? "" + d : "";
+            return b
+        }, {}, ae)
+    }
+    var be = "ru by kz az kg lv md tj tm uz ee fr lt com co.il com.ge com.am com.tr com.ru".split(" ")
+      , ce = /(?:^|\.)(?:(ya\.ru)|(?:yandex)\.(\w+|com?\.\w+))$/;
+    function ee(a) {
+        if (a = a.match(ce)) {
+            var b = r(a);
+            b.next();
+            a = b.next().value;
+            if (b = b.next().value)
+                return M(b, be) ? b : !1;
+            if (a)
+                return be[0]
+        }
+        return !1
+    }
+    var fe = x(function(a) {
+        return (a ? a.replace(/^www\./, "") : "").toLowerCase()
+    })
+      , ge = x(function(a) {
+        a = V(a).hostname;
+        var b = !1;
+        a && (b = -1 !== a.search(ce));
+        return b
+    })
+      , he = H(V, L("protocol"), sa("https:"))
+      , ie = x(function(a) {
+        return qc(a) && he(a) ? "SameSite=None;Secure;" : ""
+    })
+      , je = /^\s+|\s+$/g
+      , ke = ya(String.prototype.trim, "trim");
+    function le(a, b) {
+        if (a) {
+            var c = ke ? ke.call(a) : ("" + a).replace(je, "");
+            return b && c.length > b ? c.substring(0, b) : c
+        }
+        return ""
+    }
+    var me = qa(function(a, b) {
+        return b.replace(a, "")
+    })
+      , ne = me(/\s/g)
+      , oe = me(/\D/g)
+      , pe = me(/\d/g)
+      , qe = ["metrika_enabled"]
+      , re = [];
+    function se(a, b) {
+        var c = te;
+        return !re.length || M(b, qe) ? !0 : G(function(d, e) {
+            return d && e(a, c, b)
+        }, !0, re)
+    }
+    function ue(a) {
+        try {
+            var b = a.document.cookie;
+            if (!C(b)) {
+                var c = {};
+                O(function(d) {
+                    var e = r(d.split("="));
+                    d = e.next().value;
+                    e = e.next().value;
+                    c[le(d)] = le(Ud(e))
+                }, (b || "").split(";"));
+                return c
+            }
+        } catch (d) {}
+        return null
+    }
+    var ve = Yd("gsc", ue);
+    function te(a, b) {
+        var c = ve(a);
+        return c ? c[b] || null : null
+    }
+    var we = /:\d+$/;
+    function xe(a, b, c, d, e, f, g) {
+        g = void 0 === g ? !1 : g;
+        if (se(a, b)) {
+            var h = b + "=" + encodeURIComponent(c) + ";";
+            h += "" + ie(a);
+            if (d) {
+                var k = new Date;
+                k.setTime(k.getTime() + 6E4 * d);
+                h += "expires=" + k.toUTCString() + ";"
+            }
+            e && (d = e.replace(we, ""),
+            h += "domain=" + d + ";");
+            try {
+                a.document.cookie = h + ("path=" + (f || "/")),
+                g || (ve(a)[b] = c)
+            } catch (l) {}
+        }
+    }
+    function ye(a, b) {
+        xe(a, "metrika_enabled", "1", 0, b, void 0, !0);
+        var c = ue(a);
+        (c = c && c.metrika_enabled) && xe(a, "metrika_enabled", "", -100, b, void 0, !0);
+        return !!c
+    }
+    var ze = x(function(a) {
+        var b = (V(a).host || "").split(".");
+        return 1 === b.length ? b[0] : G(function(c, d, e) {
+            e += 1;
+            2 <= e && !c && (e = U(".", b.slice(-e)),
+            ye(a, e) && (c = e));
+            return c
+        }, "", b)
+    });
+    function Ae(a, b, c) {
+        b = void 0 === b ? "_ym_" : b;
+        c = void 0 === c ? "" : c;
+        var d = ze(a)
+          , e = 1 === (d || "").split(".").length ? d : "." + d
+          , f = c ? "_" + c : "";
+        return {
+            Ec: function(g, h, k) {
+                xe(a, "" + b + g + f, "", -100, h || e, k, !1);
+                return this
+            },
+            C: function(g) {
+                return te(a, "" + b + g + f)
+            },
+            D: function(g, h, k, l, m) {
+                xe(a, "" + b + g + f, h, k, l || e, m);
+                return this
+            }
+        }
+    }
+    var Be = x(Ae)
+      , Ce = x(function(a) {
+        var b = Be(a)
+          , c = "1" === b.C("debug")
+          , d = -1 < Oa(V(a).href, "_ym_debug=1") || -1 < Oa(V(a).href, "_ym_debug=2")
+          , e = a._ym_debug;
+        !e && !d || c || (a = V(a),
+        b.D("debug", "1", void 0, a.host));
+        return !!(c || e || d)
+    });
+    function De() {
+        return {}
+    }
+    function Ee() {
+        return []
+    }
+    var Fe = Yd("debuggerEvents", Ee, !0);
+    function Ge(a, b) {
+        if (Ce(a)) {
+            var c = b.counterKey;
+            if (c) {
+                var d = r(c.split(":"));
+                c = d.next().value;
+                d = d.next().value;
+                c = Zd(Tb(c));
+                if ("1" === d || c)
+                    return
+            }
+            c = Fe(a);
+            1E3 === c.length && c.shift();
+            c.push(b)
+        }
+    }
+    function He(a, b, c) {
+        var d = Xd(a)
+          , e = c.ha
+          , f = c.aa
+          , g = c.jb
+          , h = c.Ua;
+        c = c.md;
+        var k = {}
+          , l = {}
+          , m = {};
+        Ge(a, (m.name = "request",
+        m.data = (l.url = b,
+        l.requestId = d,
+        l.senderParams = (k.rBody = f,
+        k.debugStack = e,
+        k.rHeaders = g,
+        k.rQuery = h,
+        k.verb = c,
+        k),
+        l),
+        m));
+        return d
+    }
+    var Ie = ya(Array.prototype.find, "find");
+    function Je(a, b) {
+        for (var c = 0; c < b.length; c += 1)
+            if (a.call(b, b[c], c))
+                return b[c]
+    }
+    var Ke = Ie ? function(a, b) {
+        return Ie.call(b, a)
+    }
+    : Je
+      , Le = qa(function(a, b) {
+        var c = b || {};
+        return {
+            l: F(c, w),
+            C: function(d, e) {
+                var f = c[d];
+                return B(f) && !B(e) ? e : f
+            },
+            D: function(d, e) {
+                c[d] = e;
+                return this
+            },
+            Db: function(d, e) {
+                return "" === e || C(e) ? this : this.D(d, e)
+            },
+            ra: F(c, a)
+        }
+    })
+      , Me = Le(function(a) {
+        var b = "";
+        a = G(function(c, d) {
+            var e = r(d)
+              , f = e.next().value;
+            e = e.next().value;
+            e = "" + f + ":" + e;
+            "t" === f ? b = e : c.push(e);
+            return c
+        }, [], bc(a));
+        b && a.push(b);
+        return U(":", a)
+    });
+    function Ne(a, b, c) {
+        var d = P({}, b.J);
+        a = Fd(a);
+        b.K && (d["browser-info"] = Me(b.K.l()).D("st", a(Dd)).ra());
+        !d.t && (b = b.La) && (b.D("ti", c),
+        d.t = b.ra());
+        return d
+    }
+    function Oe(a, b, c, d, e, f) {
+        e = void 0 === e ? 0 : e;
+        f = void 0 === f ? 0 : f;
+        var g = P({
+            ha: []
+        }, d.N)
+          , h = r(b[f])
+          , k = h.next().value;
+        h = h.next().value;
+        var l = c[e];
+        if ((!g.jb || !g.jb["Content-Type"]) && g.aa) {
+            var m = {};
+            g.jb = P({}, g.jb, (m["Content-Type"] = "application/x-www-form-urlencoded",
+            m));
+            g.aa = "site-info=" + Td(g.aa)
+        }
+        g.md = g.aa ? "POST" : "GET";
+        g.Ua = Ne(a, d, k);
+        g.qa = (d.Na || {}).qa;
+        g.ha.push(k);
+        P(d.N, g);
+        k = "" + l + (d.$c && d.$c.Nh ? "/1" : "");
+        var p = 0;
+        p = He(a, k, g);
+        return h(k, g).then(function(q) {
+            var t = p
+              , v = {}
+              , z = {};
+            Ge(a, (z.name = "requestSuccess",
+            z.data = (v.body = q,
+            v.requestId = t,
+            v),
+            z));
+            return {
+                Ka: q,
+                jg: e
+            }
+        })["catch"](function(q) {
+            var t = p
+              , v = {}
+              , z = {};
+            Ge(a, (z.name = "requestFail",
+            z.data = (v.error = q,
+            v.requestId = t,
+            v),
+            z));
+            t = f + 1 >= b.length;
+            v = e + 1 >= c.length;
+            t && v && md(q);
+            return Oe(a, b, c, d, !v && t ? e + 1 : e, t ? 0 : f + 1)
+        })
+    }
+    function Pe(a, b) {
+        return function(c, d) {
+            return Oe(a, b, d, c)
+        }
+    }
+    function Qe(a, b) {
+        O(H(w, Xa("push", a)), b);
+        return a
+    }
+    function Re(a, b) {
+        return b ? a(b) : a()
+    }
+    var Se = H(w, Re)
+      , Te = {
+        id: "id",
+        Oe: "ut",
+        Z: "type",
+        de: "ldc",
+        eb: "nck",
+        Kc: "url",
+        lh: "referrer"
+    }
+      , Ue = /^\d+$/
+      , Ve = {
+        id: function(a) {
+            a = "" + (a || "0");
+            Ue.test(a) || (a = "0");
+            try {
+                var b = Vb(a)
+            } catch (c) {
+                b = 0
+            }
+            return b
+        },
+        Z: function(a) {
+            return "" + (a || 0 === a ? a : "0")
+        },
+        eb: kb,
+        Oe: kb
+    };
+    Te.yd = "defer";
+    Ve.yd = kb;
+    Te.R = "params";
+    Ve.R = function(a) {
+        return Ta(a) || N(a) ? a : null
+    }
+    ;
+    Te.Ne = "userParams";
+    Te.hg = "triggerEvent";
+    Ve.hg = kb;
+    Te.Vf = "sendTitle";
+    Ve.Vf = function(a) {
+        return !!a || B(a)
+    }
+    ;
+    Te.Je = "trackHash";
+    Ve.Je = kb;
+    Te.gg = "trackLinks";
+    Te.Yg = "enableAll";
+    var Rc = G(function(a, b) {
+        var c = r(b)
+          , d = c.next().value;
+        c = c.next().value;
+        a[d] = {
+            fa: c,
+            Ta: Ve[d]
+        };
+        return a
+    }, {}, bc(Te));
+    function We(a) {
+        P(Rc, a)
+    }
+    function Xe(a) {
+        return G(function(b, c) {
+            var d = r(c)
+              , e = d.next().value;
+            d = d.next().value;
+            b[Rc[e].fa] = d;
+            return b
+        }, {}, bc(a))
+    }
+    function Ye(a, b, c) {
+        for (var d = [b, c], e = -1E4, f = 0; f < a.length; f += 1) {
+            var g = r(a[f])
+              , h = g.next().value;
+            g = g.next().value;
+            if (c === g && h === b)
+                return;
+            if (c < g && c >= e) {
+                a.splice(f, 0, d);
+                return
+            }
+            e = g
+        }
+        a.push(d)
+    }
+    function Ze(a, b, c, d) {
+        a[b] || (a[b] = []);
+        c && !C(d) && Ye(a[b], c, d)
+    }
+    var $e = {}
+      , af = ($e.w = [[function(a, b) {
+        return {
+            T: function(c, d) {
+                var e = c.J
+                  , f = {};
+                e = (f["page-url"] = e && e["page-url"] || "",
+                f.charset = "utf-8",
+                f);
+                "0" !== b.Z && (e["cnt-class"] = b.Z);
+                c.K || (c.K = Me());
+                f = c.K;
+                e = {
+                    Na: {
+                        qa: "watch/" + b.id
+                    },
+                    N: P(void 0 === c.N ? {} : c.N, {
+                        Xa: !!f.C("pv") && !f.C("ar") && !f.C("wh")
+                    }),
+                    J: P(c.J || {}, e)
+                };
+                P(c, e);
+                d()
+            }
+        }
+    }
+    , 1]],
+    $e)
+      , bf = F(af, Ze);
+    function cf(a, b, c) {
+        var d = Pe(a, b);
+        return function(e) {
+            return Sd(c, e, !0).then(function() {
+                var f = e.Na || {}
+                  , g = void 0 === f.Bh ? "" : f.Bh
+                  , h = void 0 === f.qa ? "" : f.qa;
+                f = O(function(k) {
+                    return Nc.Pa + "//" + ("" + g + k || Kc) + "/" + h
+                }, void 0 === f.qf ? [Kc] : f.qf);
+                return d(e, f)
+            }).then(function(f) {
+                var g = f.Ka;
+                f = f.jg;
+                e.ii = g;
+                e.ij = f;
+                return Sd(c, e).then(F(g, w))
+            })
+        }
+    }
+    function df(a) {
+        return function(b, c, d) {
+            return function(e, f) {
+                var g = O(H(xb, bb([b, f]), Re), af[a] || []);
+                g = Qe(g, d);
+                return cf(b, c, g)(e)
+            }
+        }
+    }
+    var ef = df("w")
+      , ff = ["webkitvisibilitychange", "visibilitychange"];
+    function gf(a) {
+        return {
+            T: function(b, c) {
+                var d = a.document
+                  , e = b.K;
+                if (e && Dc(a)) {
+                    var f = ud(a)
+                      , g = function(h) {
+                        Dc(a) || (f.nc(d, ff, g),
+                        c());
+                        return h
+                    };
+                    f.F(d, ff, g);
+                    e.D("pr", "1")
+                } else
+                    c()
+            }
+        }
+    }
+    function hf(a) {
+        var b = "";
+        N(a) ? b = U(".", a) : y(a) && (b = a);
+        return T("err.kn(" + Nc.mb + ")" + b)
+    }
+    function jf() {
+        var a = Ia(arguments);
+        md(hf(a))
+    }
+    var kf = Ya(RegExp("^err.kn"))
+      , lf = [];
+    function mf(a, b, c) {
+        var d = "u.a.e"
+          , e = "";
+        c && ("object" === typeof c ? (c.unk && md(c),
+        d = c.message,
+        e = "string" === typeof c.stack && c.stack.replace(/\n/g, "\\n") || "n.s.e.s") : d = "" + c);
+        kf(d) || Ob(F(d, Pa), hd) || ld(d) && .1 <= a.Math.random() || O(H(w, bb(["jserrs", d, b, e]), Re), lf)
+    }
+    function W(a, b, c, d, e) {
+        var f = c || md;
+        return function() {
+            var g = d;
+            try {
+                g = f.apply(e || null, arguments)
+            } catch (h) {
+                mf(a, b, h)
+            }
+            return g
+        }
+    }
+    function X(a, b, c) {
+        return function() {
+            return W(arguments[0], a, b, c).apply(this, arguments)
+        }
+    }
+    var nf = Le(function(a) {
+        a = bc(a);
+        return U("", O(function(b) {
+            var c = r(b);
+            b = c.next().value;
+            c = c.next().value;
+            return Sa(c) ? "" : b + "(" + c + ")"
+        }, a))
+    });
+    function of(a, b, c) {
+        c = void 0 === c ? null : c;
+        a.La || (a.La = nf());
+        b && a.La.Db(b, c);
+        return a.La
+    }
+    var pf = "A B BIG BODY BUTTON DD DIV DL DT EM FIELDSET FORM H1 H2 H3 H4 H5 H6 HR I IMG INPUT LI OL P PRE SELECT SMALL SPAN STRONG SUB SUP TABLE TBODY TD TEXTAREA TFOOT TH THEAD TR U UL ABBR AREA BLOCKQUOTE CAPTION CENTER CITE CODE CANVAS DFN EMBED FONT INS KBD LEGEND LABEL MAP OBJECT Q S SAMP STRIKE TT ARTICLE AUDIO ASIDE FOOTER HEADER MENU METER NAV PROGRESS SECTION TIME VIDEO NOINDEX NOBR MAIN svg circle clippath ellipse defs foreignobject g glyph glyphref image line lineargradient marker mask path pattern polygon polyline radialgradient rect set text textpath title".split(" ")
+      , qf = []
+      , rf = /^\s*(data|javascript):/i
+      , sf = new RegExp(U("", ["\\.(" + U("|", "3gp 7z aac ac3 acs ai avi ape apk asf bmp bz2 cab cdr crc32 css csv cue divx dmg djvu? doc(x|m|b)? emf eps exe flac? flv iso swf gif t?gz jpe?g? js m3u8? m4a mp(3|4|e?g?) m4v md5 mkv mov msi ods og(g|m|v) psd rar rss rtf sea sfv sit sha1 svg tar tif?f torrent ts txt vob wave? wma wmv wmf webm ppt(x|m|b)? xls(x|m|b)? pdf phps png xpi g?zip".split(" ")) + ")$"]),"i")
+      , uf = {}
+      , vf = (uf.hit = "h",
+    uf.params = "p",
+    uf.reachGoal = "g",
+    uf.userParams = "up",
+    uf.trackHash = "th",
+    uf.accurateTrackBounce = "atb",
+    uf.notBounce = "nb",
+    uf.addFileExtension = "fe",
+    uf.extLink = "el",
+    uf.file = "fc",
+    uf.trackLinks = "tl",
+    uf.destruct = "d",
+    uf.setUserID = "ui",
+    uf.getClientID = "ci",
+    uf.clickmap = "cm",
+    uf.enableAll = "ea",
+    uf)
+      , wf = H(Q, x(function() {
+        var a = 0;
+        return function() {
+            return a += 1
+        }
+    }), Re)
+      , xf = {
+        mc: function(a) {
+            a = Sc(a).C("mt", {});
+            a = bc(a);
+            return a.length ? G(function(b, c, d) {
+                var e = r(c);
+                c = e.next().value;
+                e = e.next().value;
+                return "" + b + (d ? "-" : "") + c + "-" + e
+            }, "", a) : null
+        },
+        clc: function(a) {
+            var b = R(a).C("cls", {
+                yc: 0,
+                x: 0,
+                y: 0
+            })
+              , c = b.yc
+              , d = b.x;
+            b = b.y;
+            return c ? c + "-" + a.Math.floor(d / c) + "-" + a.Math.floor(b / c) : c + "-" + d + "-" + b
+        },
+        rqnt: function(a, b, c) {
+            a = c.J;
+            return !a || a.nohit ? null : wf(b)
+        }
+    };
+    function yf(a, b) {
+        if (!b)
+            return null;
+        try {
+            return a.JSON.parse(b)
+        } catch (c) {
+            return null
+        }
+    }
+    function zf(a, b) {
+        try {
+            return a.JSON.stringify(b, null, void 0)
+        } catch (c) {
+            return null
+        }
+    }
+    function Af(a) {
+        try {
+            return a.localStorage
+        } catch (b) {}
+        return null
+    }
+    function Bf(a, b) {
+        var c = Af(a);
+        try {
+            c.removeItem(b)
+        } catch (d) {}
+    }
+    function Cf(a, b) {
+        var c = Af(a);
+        try {
+            return yf(a, c.getItem(b))
+        } catch (d) {}
+        return null
+    }
+    function Df(a, b, c) {
+        var d = Af(a);
+        a = zf(a, c);
+        if (!Sa(a))
+            try {
+                d.setItem(b, a)
+            } catch (e) {}
+    }
+    var Ef = x(function(a) {
+        Df(a, "_ymBRC", "1");
+        var b = "1" !== Cf(a, "_ymBRC");
+        b || Bf(a, "_ymBRC");
+        return b
+    });
+    function Ff(a, b, c) {
+        var d = "" + (void 0 === c ? "_ym" : c) + (void 0 === b ? "" : b);
+        d && (d += "_");
+        return {
+            Xd: Ef(a),
+            C: function(e, f) {
+                var g = Cf(a, "" + d + e);
+                return Sa(g) && !B(f) ? f : g
+            },
+            D: function(e, f) {
+                Df(a, "" + d + e, f);
+                return this
+            },
+            Ec: function(e) {
+                Bf(a, "" + d + e);
+                return this
+            }
+        }
+    }
+    var Gf = x(Ff)
+      , Hf = x(Ff, function(a, b, c) {
+        return "" + b + c
+    });
+    function If(a) {
+        if (C(a))
+            return !1;
+        a = a.nodeType;
+        return 3 === a || 8 === a
+    }
+    function Jf(a) {
+        return a ? a.innerText || "" : ""
+    }
+    var Kf = x(L("document.documentElement"))
+      , Lf = x(function(a) {
+        a = J(a, "document") || {};
+        return ("" + (a.characterSet || a.charset || "")).toLowerCase()
+    })
+      , Mf = x(H(L("document"), F("createElement", gb)));
+    function Nf(a) {
+        var b = a && a.parentNode;
+        b && b.removeChild(a)
+    }
+    function Of(a, b) {
+        var c;
+        try {
+            if (c = b.target || b.srcElement)
+                !c.ownerDocument && c.documentElement ? c = c.documentElement : c.ownerDocument !== a.document && (c = null)
+        } catch (d) {}
+        return c
+    }
+    function Pf(a, b) {
+        try {
+            return (new RegExp("(?:^|\\s)" + a + "(?:\\s|$)")).test(b.className)
+        } catch (c) {
+            return !1
+        }
+    }
+    var Qf = x(function(a) {
+        var b = J(a, "Element.prototype");
+        return b ? (a = Ke(function(c) {
+            var d = b[c];
+            return !!d && xa(c, d)
+        }, ["matches", "webkitMatchesSelector", "mozMatchesSelector", "msMatchesSelector", "oMatchesSelector"])) ? b[a] : null : null
+    });
+    function Rf(a) {
+        a = J(a, "document");
+        try {
+            return a.getElementsByTagName("body")[0]
+        } catch (b) {
+            return null
+        }
+    }
+    function Sf(a) {
+        var b = J(a, "document") || {}
+          , c = b.documentElement;
+        return "CSS1Compat" === b.compatMode ? c : Rf(a) || c
+    }
+    function Tf(a) {
+        var b = J(a, "visualViewport.width")
+          , c = J(a, "visualViewport.height");
+        a = J(a, "visualViewport.scale");
+        return C(b) || C(c) ? null : [Math.floor(b), Math.floor(c), a]
+    }
+    function Uf(a) {
+        var b = Tf(a);
+        if (b) {
+            var c = r(b);
+            b = c.next().value;
+            var d = c.next().value;
+            c = c.next().value;
+            return [a.Math.round(b * c), a.Math.round(d * c)]
+        }
+        b = Sf(a);
+        return [J(b, "clientWidth") || a.innerWidth, J(b, "clientHeight") || a.innerHeight]
+    }
+    function Vf(a) {
+        var b = Rf(a)
+          , c = J(a, "document");
+        return {
+            x: a.pageXOffset || c.documentElement && c.documentElement.scrollLeft || b && b.scrollLeft || 0,
+            y: a.pageYOffset || c.documentElement && c.documentElement.scrollTop || b && b.scrollTop || 0
+        }
+    }
+    function Wf(a) {
+        try {
+            return a.getBoundingClientRect && a.getBoundingClientRect()
+        } catch (b) {
+            return a = b,
+            "object" === typeof a && null !== a && 16389 === (a.Cf && a.Cf & 65535) ? {
+                top: 0,
+                bottom: 0,
+                left: 0,
+                width: 0,
+                height: 0,
+                right: 0
+            } : null
+        }
+    }
+    function Xf(a, b, c) {
+        c = gb("dispatchEvent", c || a.document);
+        var d = null
+          , e = J(a, "Event.prototype.constructor");
+        if (e && (xa("(Event|Object|constructor)", e) || uc(a) && "[object Event]" === "" + e))
+            try {
+                d = new a.Event(b)
+            } catch (f) {
+                if ((a = gb("createEvent", J(a, "document"))) && A(a)) {
+                    try {
+                        d = a(b)
+                    } catch (g) {}
+                    d && d.initEvent && d.initEvent(b, !1, !1)
+                }
+            }
+        d && c(d)
+    }
+    function Yf(a, b) {
+        var c = a.document.getElementsByTagName("form");
+        return Ba(a)(b, vb(c))
+    }
+    function Zf(a) {
+        if (a)
+            try {
+                var b = a.nodeName;
+                if (y(b))
+                    return b;
+                b = a.tagName;
+                if (y(b))
+                    return b
+            } catch (c) {}
+    }
+    var $f = sa("INPUT")
+      , ag = H(Zf, $f)
+      , bg = sa("TEXTAREA")
+      , cg = H(Zf, bg)
+      , dg = sa("SELECT")
+      , eg = H(Zf, dg)
+      , fg = H(L("type"), Ya(/^(checkbox|radio)$/))
+      , gg = H(Zf, Ya(/^INPUT|SELECT|TEXTAREA$/))
+      , hg = H(Zf, Ya(/^INPUT|SELECT|TEXTAREA|BUTTON$/))
+      , ig = "INPUT CHECKBOX RADIO TEXTAREA SELECT PROGRESS".split(" ")
+      , jg = ["submit", "image", "hidden"];
+    function kg(a) {
+        return ag(a) && !Ob(sa(a.type), jg) ? fg(a) ? !a.checked : !a.value : cg(a) ? !a.value : eg(a) ? 0 > a.selectedIndex : !0
+    }
+    function lg(a, b, c) {
+        var d = b.top
+          , e = b.bottom
+          , f = b.left
+          , g = c.w;
+        c = c.h;
+        a = a.Math;
+        b = a.min(a.max(b.right, 0), g) - a.min(a.max(f, 0), g);
+        return (a.min(a.max(e, 0), c) - a.min(a.max(d, 0), c)) * b
+    }
+    var mg = /\/$/;
+    function ng(a) {
+        var b = R(a)
+          , c = b.C("hitId");
+        c || (c = Xd(a),
+        b.D("hitId", c));
+        return c
+    }
+    function og(a, b) {
+        var c = Gf(a)
+          , d = Be(a)
+          , e = b.de || "uid";
+        return [c.C(e), d.C(e)]
+    }
+    var pg = Yd("r", function(a, b) {
+        var c = r(og(a, b))
+          , d = c.next().value;
+        return !c.next().value && d
+    });
+    function qg(a, b) {
+        return !b.eb && pg(a, b)
+    }
+    function rg(a, b) {
+        var c = b.de
+          , d = c || "uid";
+        c = c ? a.location.hostname : void 0;
+        var e = Be(a)
+          , f = Gf(a)
+          , g = Fd(a)(Dd)
+          , h = r(og(a, b))
+          , k = h.next().value;
+        h = h.next().value;
+        var l = e.C("d");
+        pg(a, b);
+        var m = !1;
+        !h && k && (h = k,
+        m = !0);
+        if (!h)
+            h = U("", [g, Xd(a, 1E6, 999999999)]),
+            m = !0;
+        else if (!l || 15768E3 < g - Vb(l))
+            m = !0;
+        m && !b.eb && (e.D(d, h, 525600, c),
+        e.D("d", "" + g, 525600, c));
+        f.D(d, h);
+        return h
+    }
+    function sg(a, b, c) {
+        return gb("setTimeout", a)(b, c)
+    }
+    function tg(a, b) {
+        return gb("clearTimeout", a)(b)
+    }
+    function Y(a, b, c, d) {
+        return sg(a, W(a, "d.err." + (d || "def"), b), c)
+    }
+    function ug(a, b) {
+        return a.setInterval(W(a, "i.err.t.h", b), 200)
+    }
+    function vg(a, b) {
+        return a.clearInterval(b)
+    }
+    function wg(a, b) {
+        return function(c) {
+            return c(a, b)
+        }
+    }
+    var xg = qa(function(a, b) {
+        return ua(function(c, d) {
+            return b(c, function(e) {
+                try {
+                    d(a(e))
+                } catch (f) {
+                    c(f)
+                }
+            })
+        })
+    })
+      , yg = qa(function(a, b) {
+        return ua(function(c, d) {
+            return b(c, function(e) {
+                try {
+                    a(e)(wg(c, d))
+                } catch (f) {
+                    c(f)
+                }
+            })
+        })
+    });
+    function zg(a) {
+        var b = []
+          , c = 0;
+        return ua(function(d, e) {
+            O(function(f, g) {
+                f(wg(d, function(h) {
+                    try {
+                        b[g] = h,
+                        c += 1,
+                        c === a.length && e(b)
+                    } catch (k) {
+                        d(k)
+                    }
+                }))
+            }, a)
+        })
+    }
+    function Ag(a) {
+        return ua(function(b, c) {
+            a.then(c, b)
+        })
+    }
+    function Bg(a) {
+        return ua(function(b, c) {
+            c(a)
+        })
+    }
+    function Cg(a, b) {
+        function c(e) {
+            J(b, d) ? e() : Y(a, F(e, c), 100)
+        }
+        b = void 0 === b ? a : b;
+        var d = (b.nodeType ? "contentWindow." : "") + "document.body";
+        return ua(function(e, f) {
+            c(f)
+        })
+    }
+    function Dg(a) {
+        var b = []
+          , c = {
+            fj: b
+        };
+        c.F = H(Xa("push", b), F(c, w));
+        c.ea = H(ra(Ba(a))(b), ra(Xa("splice", b))(1), F(c, w));
+        c.ba = H(w, ra(Re), Lb(b));
+        return c
+    }
+    function Eg(a) {
+        var b = {};
+        return {
+            F: function(c, d) {
+                O(function(e) {
+                    J(b, e) || (b[e] = Dg(a));
+                    b[e].F(d)
+                }, c);
+                return this
+            },
+            ea: function(c, d) {
+                O(function(e) {
+                    J(b, e) && b[e].ea(d)
+                }, c);
+                return this
+            },
+            ba: function(c, d) {
+                return J(b, c) ? W(a, "e." + c, b[c].ba, [])(d) : []
+            }
+        }
+    }
+    var Fg = x(function() {
+        return {
+            Ja: {},
+            pending: {},
+            children: {}
+        }
+    })
+      , Gg = L("postMessage");
+    function Hg(a, b) {
+        return function(c, d) {
+            var e = {
+                Dc: Fd(a)(Bd),
+                key: a.Math.random(),
+                dir: 0
+            };
+            c.length && (e.Dc = Vb(c[0]),
+            e.key = parseFloat(c[1]),
+            e.dir = Vb(c[2]));
+            P(d, b);
+            var f = {};
+            f = (f.data = d,
+            f.__yminfo = U(":", ["__yminfo", e.Dc, e.key, e.dir]),
+            f);
+            return {
+                meta: e,
+                bg: zf(a, f) || ""
+            }
+        }
+    }
+    var Ig = X("s.f", function(a, b, c, d, e) {
+        b = b(d);
+        var f = Fg(a)
+          , g = U(":", [b.meta.Dc, b.meta.key]);
+        if (Gg(c)) {
+            f.pending[g] = e;
+            try {
+                c.postMessage(b.bg, "*")
+            } catch (h) {
+                delete f.pending[g];
+                return
+            }
+            Y(a, function() {
+                delete f.pending[g]
+            }, 5E3, "if.s")
+        }
+    });
+    function Jg(a) {
+        if (xa("MutationObserver", a.MutationObserver)) {
+            var b = Fg(a).children
+              , c = new a.MutationObserver(function() {
+                O(function(d) {
+                    J(b[d], "window.window") || delete b[d]
+                }, cc(b))
+            }
+            );
+            Cg(a)(wg(u, function() {
+                c.observe(a.document.body, {
+                    subtree: !0,
+                    childList: !0
+                })
+            }))
+        }
+    }
+    function Kg(a, b) {
+        var c = Fg(a);
+        b.F(["initToParent"], function(d) {
+            var e = r(d);
+            d = e.next().value;
+            e = e.next().value;
+            window.window && (c.children[e.counterId] = {
+                info: e,
+                window: d.source
+            })
+        }).F(["initToChild"], function(d) {
+            var e = r(d);
+            d = e.next().value;
+            e = e.next().value;
+            d.source === a.parent && b.ba("parentConnect", [d, e])
+        }).F(["parentConnect"], function(d) {
+            var e = r(d);
+            d = e.next().value;
+            e = e.next().value;
+            e.counterId && (c.Ja[e.counterId] = {
+                info: e,
+                window: d.source
+            })
+        })
+    }
+    var Lg = X("s.fh", function(a, b, c, d, e, f) {
+        var g = null
+          , h = null
+          , k = Fg(a)
+          , l = null;
+        try {
+            g = yf(a, f.data),
+            h = g.__yminfo,
+            l = g.data
+        } catch (m) {
+            return
+        }
+        if (!C(h) && h.substring && "__yminfo" === h.substring(0, 8) && !C(l) && (a = h.split(":"),
+        4 === a.length))
+            if (g = b.id,
+            h = r(a),
+            h.next(),
+            b = h.next().value,
+            a = h.next().value,
+            h = h.next().value,
+            !N(l) && l.type && "0" === h && l.counterId) {
+                if (!l.toCounter || l.toCounter == g) {
+                    k = null;
+                    try {
+                        k = f.source
+                    } catch (m) {}
+                    !Sa(k) && Gg(k) && (f = d.ba(l.type, [f, l]),
+                    e = O(H(w, hc(e)), f.concat([void 0])),
+                    l = c([b, a, l.counterId], e),
+                    k.postMessage(l.bg, "*"))
+                }
+            } else
+                h === "" + g && N(l) && nb(function(m) {
+                    return !(!m.hid || !m.counterId)
+                }, l).length === l.length && (c = k.pending[U(":", [b, a])]) && c.apply(null, [f].concat(l))
+    })
+      , Mg = x(function(a, b) {
+        var c = gb("getElementsByTagName", J(a, "document"))
+          , d = Fg(a)
+          , e = Gg(a)
+          , f = Eg(a)
+          , g = ud(a);
+        if (!c || !e)
+            return null;
+        c = c.call(a.document, "iframe");
+        e = {};
+        e = (e.counterId = b.id,
+        e.hid = "" + ng(a),
+        e);
+        Ic(a) && (e.duid = rg(a, b));
+        Kg(a, f);
+        Jg(a);
+        var h = Hg(a, e)
+          , k = E([a, F([], h)], Ig);
+        O(function(l) {
+            var m = null;
+            try {
+                m = l.contentWindow
+            } catch (p) {}
+            m && k(m, {
+                type: "initToChild"
+            }, function(p, q) {
+                f.ba("initToParent", [p, q])
+            })
+        }, c);
+        xc(a) && k(a.parent, {
+            type: "initToParent"
+        }, function(l, m) {
+            f.ba("parentConnect", [l, m])
+        });
+        g.F(a, ["message"], E([a, b, h, f, e], Lg));
+        return {
+            $: f,
+            Ja: d.Ja,
+            children: d.children,
+            ze: k
+        }
+    }, H(Ea, Q))
+      , Ng = x(function(a, b) {
+        if (!Ic(a) || !xc(a))
+            return rg(a, b);
+        var c = Mg(a, b);
+        return c && c.Ja[b.id] ? c.Ja[b.id].info.duid || rg(a, b) : rg(a, b)
+    }, function(a, b) {
+        return "" + b.de + b.eb
+    })
+      , Og = x(H(Fd, ua(function(a) {
+        return -(new a.l.Date).getTimezoneOffset()
+    })))
+      , Pg = H(Fd, ua(function(a) {
+        a = new a.l.Date;
+        return U("", O(zd, [a.getFullYear(), a.getMonth() + 1, a.getDate(), a.getHours(), a.getMinutes(), a.getSeconds()]))
+    }))
+      , Qg = H(Fd, ua(Dd))
+      , Rg = x(H(Fd, ua(function(a) {
+        return r(a.Yc).next().value
+    })))
+      , Sg = x(function(a) {
+        a = R(a);
+        var b = a.C("counterNum", 0) + 1;
+        a.D("counterNum", b);
+        return b
+    }, H(Ea, Q))
+      , Tg = {}
+      , Ug = (Tg.vf = F(na.version, w),
+    Tg.nt = tc,
+    Tg.fu = function(a, b, c) {
+        var d = c.J;
+        if (!d)
+            return null;
+        b = (J(a, "document.referrer") || "").replace(mg, "");
+        c = (d["page-ref"] || "").replace(mg, "");
+        d = d["page-url"];
+        a = V(a).href !== d;
+        b = b !== c;
+        c = 0;
+        a && b ? c = 3 : b ? c = 1 : a && (c = 2);
+        return c
+    }
+    ,
+    Tg.en = Lf,
+    Tg.la = vc,
+    Tg.ut = function(a, b, c) {
+        var d = c.O;
+        c = c.J;
+        d = d && d.Rc;
+        c && (ge(a) || b.Oe || d) && (c.ut = Nc.wg);
+        return null
+    }
+    ,
+    Tg.v = F(Nc.mb, w),
+    Tg.cn = Sg,
+    Tg.dp = function(a) {
+        var b = R(a)
+          , c = b.C("bt", {});
+        if (B(b.C("bt"))) {
+            var d = J(a, "navigator.getBattery");
+            try {
+                c.p = d && d.call(a.navigator)
+            } catch (e) {}
+            b.D("bt", c);
+            c.p && c.p.then && c.p.then(W(a, "bi:dp.p", function(e) {
+                c.Ci = J(e, "charging") && 0 === J(e, "chargingTime")
+            }))
+        }
+        return jb(c.Ci)
+    }
+    ,
+    Tg.ls = x(function(a, b) {
+        var c = Hf(a, b.id)
+          , d = Fd(a)
+          , e = c.C("lsid");
+        return +e ? e : (d = Xd(a, 0, d(Bd)),
+        c.D("lsid", d),
+        d)
+    }, Ea),
+    Tg.hid = ng,
+    Tg.phid = function(a, b) {
+        if (!xc(a))
+            return null;
+        var c = Mg(a, b);
+        if (!c)
+            return null;
+        var d = cc(c.Ja);
+        return d.length ? c.Ja[d[0]].info.hid : null
+    }
+    ,
+    Tg.z = Og,
+    Tg.i = Pg,
+    Tg.et = Qg,
+    Tg.c = H(L("navigator.cookieEnabled"), ib),
+    Tg.rn = H(w, Xd),
+    Tg.rqn = function(a, b, c) {
+        c = c.J;
+        if (!c || c.nohit)
+            return null;
+        b = Q(b);
+        a = Hf(a, b);
+        b = (a.C("reqNum", 0) || 0) + 1;
+        a.D("reqNum", b);
+        if (a.C("reqNum") === b)
+            return b;
+        a.Ec("reqNum");
+        return null
+    }
+    ,
+    Tg.u = Ng,
+    Tg.w = function(a) {
+        var b = r(Uf(a));
+        a = b.next().value;
+        b = b.next().value;
+        return a + "x" + b
+    }
+    ,
+    Tg.s = function(a) {
+        var b = J(a, "screen");
+        if (b) {
+            a = J(b, "width");
+            var c = J(b, "height");
+            b = J(b, "colorDepth") || J(b, "pixelDepth");
+            return U("x", [a, c, b])
+        }
+        return null
+    }
+    ,
+    Tg.sk = L("devicePixelRatio"),
+    Tg.ifr = H(xc, ib),
+    Tg.j = H(zc, ib),
+    Tg.sti = function(a) {
+        return xc(a) && yc(a) ? "1" : null
+    }
+    ,
+    Tg)
+      , Vg = x(function() {
+        return Qe(cc(Ug), cc(xf))
+    });
+    function Wg(a) {
+        return function(b, c) {
+            return {
+                T: function(d, e) {
+                    var f = d.K
+                      , g = d.J;
+                    f && g && O(function(h) {
+                        var k = Ug[h]
+                          , l = "bi"
+                          , m = f;
+                        k || (k = xf[h],
+                        l = "tel",
+                        m = of(d));
+                        k && (k = X(l + ":" + h, k, null)(b, c, d),
+                        m.Db(h, k))
+                    }, a || Vg());
+                    e()
+                }
+            }
+        }
+    }
+    function Xg(a, b) {
+        return {
+            T: function(c, d) {
+                var e = c.K;
+                if (e && (!b || b.Vf)) {
+                    var f = a.document.title;
+                    c.O && c.O.title && (f = c.O.title);
+                    var g = gb("getElementsByTagName", a.document);
+                    "string" !== typeof f && g && (f = g("title"),
+                    f = (f = J(f, "0.innerHtml")) ? f : "");
+                    f = f.slice(0, Nc.sg);
+                    e.D("t", f)
+                }
+                d()
+            }
+        }
+    }
+    var Yg = x(De, Q);
+    function Zg(a, b, c) {
+        if (Ic(a) && xc(a)) {
+            var d = Yg(b);
+            if (!d.Eh) {
+                d.Eh = !0;
+                b = Mg(a, b);
+                if (!b) {
+                    c();
+                    return
+                }
+                d.za = [];
+                var e = function() {
+                    d.za && (O(Re, d.za),
+                    d.za = null)
+                };
+                Y(a, e, 3E3);
+                b.$.F(["initToChild"], e)
+            }
+            d.za ? d.za.push(c) : c()
+        } else
+            c()
+    }
+    var $g = x(function() {
+        return {
+            gf: null,
+            za: []
+        }
+    }, Q);
+    function ah(a) {
+        return (a = a.K) && a.C("pv") && !a.C("ar")
+    }
+    function bh(a, b, c) {
+        var d = a.K;
+        d ? ah(a) ? (b.gf = d,
+        c()) : b.za ? b.za.push(c) : c() : c()
+    }
+    function ch(a, b) {
+        return {
+            T: function(c, d) {
+                var e = $g(b);
+                e = E([c, e, d], bh);
+                Zg(a, b, e)
+            },
+            Ga: function(c, d) {
+                var e = c.K
+                  , f = $g(b);
+                if (e) {
+                    var g = f.za;
+                    f.gf === e && g && (O(Re, g),
+                    f.za = null)
+                }
+                d()
+            }
+        }
+    }
+    var dh = /^[a-z][\w.+-]+:/i;
+    function eh(a, b) {
+        var c = V(a)
+          , d = c.href
+          , e = c.host
+          , f = -1;
+        if (!y(b) || B(b))
+            return d;
+        c = b.replace(je, "");
+        if (-1 !== c.search(dh))
+            return c;
+        var g = c.charAt(0);
+        if ("?" === g && (f = d.search(/\?/),
+        -1 === f) || "#" === g && (f = d.search(/#/),
+        -1 === f))
+            return d + c;
+        if (-1 !== f)
+            return d.substr(0, f) + c;
+        if ("/" === g) {
+            if (f = Na(d, e),
+            -1 !== f)
+                return d.substr(0, f + e.length) + c
+        } else
+            return d = d.split("/"),
+            d[d.length - 1] = c,
+            U("/", d);
+        return ""
+    }
+    function fh(a) {
+        return {
+            T: function(b, c) {
+                var d = b.J;
+                if (!b.K || !d)
+                    return c();
+                var e = d["page-ref"]
+                  , f = d["page-url"];
+                e && f !== e ? d["page-ref"] = eh(a, e) : delete d["page-ref"];
+                d["page-url"] = eh(a, f).slice(0, Nc.ug);
+                return c()
+            }
+        }
+    }
+    var gh = [[gf, 1], [ch, 2], [Wg(), 3], [Xg, 4]]
+      , hh = []
+      , ih = F(gh, Ye)
+      , jh = {}
+      , kh = (jh.h = gh,
+    jh)
+      , lh = F(kh, Ze);
+    ih(fh, -100);
+    function mh(a, b, c) {
+        b = N(b) ? b : kh[b] || gh;
+        var d = O(xb, b);
+        O(function(e) {
+            return d.unshift(e)
+        }, hh);
+        return O(H(bb([a, c]), Re), d)
+    }
+    function nh(a, b, c, d) {
+        return new S(function(e, f) {
+            if (!J(a, "navigator.onLine"))
+                return f();
+            var g = {};
+            g = P(d.Ua, (g["force-urlencoded"] = 1,
+            g));
+            g = c + "?" + Wd(g) + (d.aa ? "&" + d.aa : "");
+            return 2E3 < g.length ? f(hf("sb.tlq")) : b(g) ? e("") : f()
+        }
+        )
+    }
+    function oh(a, b) {
+        var c = Mf(a);
+        if (c) {
+            var d = a.document
+              , e = c("script");
+            e.src = b.src;
+            e.type = b.type || "text/javascript";
+            e.charset = b.charset || "utf-8";
+            e.async = b.async || !0;
+            try {
+                var f = d.getElementsByTagName("head")[0];
+                if (!f) {
+                    var g = d.getElementsByTagName("html")[0];
+                    f = c("head");
+                    g && g.appendChild(f)
+                }
+                f.insertBefore(e, f.firstChild);
+                return e
+            } catch (h) {}
+        }
+    }
+    var ph = x(function(a) {
+        if (a = Mf(a))
+            return a("a")
+    });
+    function qh(a, b) {
+        var c = ph(a);
+        return c ? (c.href = b,
+        {
+            protocol: c.protocol,
+            host: c.host,
+            port: c.port,
+            hostname: c.hostname,
+            hash: c.hash,
+            search: c.search,
+            query: c.search.replace(/^\?/, ""),
+            pathname: c.pathname || "/",
+            path: (c.pathname || "/") + c.search,
+            href: c.href
+        }) : {}
+    }
+    function rh(a) {
+        return (a.split(":")[1] || "").replace(/^\/*/, "").replace(/^www\./, "").split("/")[0]
+    }
+    function sh(a, b) {
+        if (!b || !b.length)
+            return a;
+        var c = r(a.split("#"))
+          , d = c.next().value;
+        c = ca(c);
+        c = (c = U("#", c)) ? "#" + c : "";
+        return Pa(a, "?") ? d + "&" + b + c : d + "?" + b + c
+    }
+    function th(a, b, c) {
+        (c = Wd(c)) && (a = sh(a, c));
+        b.aa && (a = sh(a, b.aa));
+        return a
+    }
+    function uh(a, b) {
+        try {
+            delete a[b]
+        } catch (c) {
+            a[b] = void 0
+        }
+    }
+    function vh(a, b, c) {
+        return new S(function(d, e) {
+            var f = "_ymjsp" + Xd(a)
+              , g = {};
+            g = P((g.callback = f,
+            g), c.Ua);
+            var h = E([a, f], uh);
+            a[f] = function(l) {
+                try {
+                    h(),
+                    Nf(k),
+                    d(l)
+                } catch (m) {
+                    e(m)
+                }
+            }
+            ;
+            g.wmode = "5";
+            f = {};
+            var k = oh(a, (f.src = th(b, c, g),
+            f));
+            if (!k)
+                return h(),
+                e(T("jp.s"));
+            f = F(k, Nf);
+            f = H(f, F(hf(c.ha), e));
+            g = sg(a, f, c.Wa || 1E4);
+            g = E([a, g], tg);
+            k.onload = g;
+            k.onerror = H(h, g, f)
+        }
+        )
+    }
+    function wh(a, b, c, d) {
+        var e = {};
+        e = P(d.Xa ? (e.wmode = "7",
+        e) : {}, d.Ua);
+        var f = b || {
+            signal: void 0,
+            abort: u
+        }
+          , g = a.fetch(sh(c, Wd(e)), {
+            method: d.md,
+            body: d.aa,
+            credentials: !1 === d.Re ? "omit" : "include",
+            headers: d.jb,
+            signal: f.signal
+        })
+          , h = F(d.ha, hf);
+        return new S(function(k, l) {
+            d.Wa && sg(a, function() {
+                try {
+                    f.abort()
+                } catch (m) {}
+                l(h())
+            }, d.Wa);
+            return g.then(function(m) {
+                if (!m.ok) {
+                    if (d.we)
+                        return md(kd(m));
+                    jf(d.ha)
+                }
+                return d.we ? m.text() : d.Xa ? m.json() : null
+            }).then(k)["catch"](F(h(), l))
+        }
+        )
+    }
+    var xh = /[^a-z0-9.:-]/;
+    function yh(a, b, c, d, e, f, g, h) {
+        if (4 === b.readyState)
+            if (200 === b.status || e || g(c),
+            e)
+                200 === b.status ? f(b.responseText) : g(kd(b));
+            else {
+                e = null;
+                if (d)
+                    try {
+                        (e = yf(a, b.responseText)) || g(c)
+                    } catch (k) {
+                        g(c)
+                    }
+                f(e)
+            }
+        return h
+    }
+    function zh(a, b, c) {
+        var d = new a.XMLHttpRequest
+          , e = c.aa
+          , f = {}
+          , g = P(c.Xa ? (f.wmode = "7",
+        f) : {}, c.Ua);
+        return new S(function(h, k) {
+            d.open(c.md || "GET", sh(b, Wd(g)), !0);
+            d.withCredentials = !1 !== c.Re;
+            c.Wa && (d.timeout = c.Wa);
+            H(bc, Kb(function(m) {
+                var p = r(m);
+                m = p.next().value;
+                p = p.next().value;
+                d.setRequestHeader(m, p)
+            }))(c.jb);
+            var l = E([a, d, hf(c.ha), c.Xa, c.we, h, k], yh);
+            d.onreadystatechange = l;
+            try {
+                d.send(e)
+            } catch (m) {}
+        }
+        )
+    }
+    function Ah(a, b, c, d) {
+        return new S(function(e, f) {
+            var g = Sf(a)
+              , h = b("img")
+              , k = H(F(h, Nf), F(hf(d.ha), f))
+              , l = sg(a, k, d.Wa || 3E3);
+            h.onerror = k;
+            h.onload = H(F(h, Nf), F(null, e), E([a, l], tg));
+            k = P({}, d.Ua);
+            delete k.wmode;
+            h.src = th(c, d, k);
+            lc(a) && (P(h.style, {
+                position: "absolute",
+                visibility: "hidden",
+                width: "0px",
+                height: "0px"
+            }),
+            g.appendChild(h))
+        }
+        )
+    }
+    var Bh = {}
+      , Ch = (Bh.x = {
+        id: 2,
+        check: function(a) {
+            var b;
+            if (b = J(a, "XMLHttpRequest"))
+                if (b = "withCredentials"in new a.XMLHttpRequest) {
+                    a: {
+                        if (xh.test(a.location.host) && a.opera && A(a.opera.version) && (b = a.opera.version(),
+                        "string" === typeof b && "12" === b.split(".")[0])) {
+                            b = !0;
+                            break a
+                        }
+                        b = !1
+                    }
+                    b = !b
+                }
+            return b ? F(a, zh) : !1
+        }
+    },
+    Bh.i = {
+        id: 4,
+        check: function(a) {
+            var b = Mf(a);
+            return b ? E([a, b], Ah) : !1
+        }
+    },
+    Bh);
+    Ch.f = {
+        id: 1,
+        check: function(a) {
+            if (a.fetch) {
+                var b = J(a, "AbortController");
+                return E([a, b ? new b : void 0], wh)
+            }
+            return !1
+        }
+    };
+    Ch.b = {
+        id: 0,
+        check: function(a) {
+            if (oc(a))
+                a = !1;
+            else {
+                var b = J(a, "navigator.sendBeacon");
+                a = b && xa("sendBeacon", b) ? E([a, D(b, J(a, "navigator"))], nh) : !1
+            }
+            return a
+        }
+    };
+    Ch.j = {
+        id: 3,
+        check: function(a) {
+            return Mf(a) ? F(a, vh) : !1
+        }
+    };
+    var Dh = {};
+    function Eh(a) {
+        if (a)
+            return G(function(b, c) {
+                var d = Ch[c];
+                d && b.push(d);
+                return b
+            }, [], a)
+    }
+    function Fh(a) {
+        return Dh["*"] ? Eh(Dh["*"]) : a ? Eh(Dh[a]) : void 0
+    }
+    var Gh = ["b", "f", "x", "j", "i"]
+      , Hh = ["x"];
+    Hh.unshift("f");
+    Hh.push("j");
+    var Ih = ["i"]
+      , Jh = ["f", "x"]
+      , Kh = ["f", "i"]
+      , Lh = {}
+      , Mh = (Lh.h = Hh,
+    Lh)
+      , Nh = x(function(a, b, c, d) {
+        (d = Fh(c) || Eh(d)) || (d = Eh(c ? Mh[c] : Gh));
+        c = G(function(e, f) {
+            var g = f.check
+              , h = f.id;
+            (g = g(a, b)) && e.push([h, g]);
+            return e
+        }, [], d || []);
+        c.length || jf();
+        return c
+    }, function(a, b, c) {
+        return c
+    })
+      , Oh = D(S.reject, S, hf())
+      , Ph = {}
+      , Qh = (Ph.h = ef,
+    Ph)
+      , Rh = X("g.sen", function(a, b, c) {
+        var d = Nh(a, c, b);
+        c = mh(a, b, c);
+        var e = Qh[b]
+          , f = e ? e(a, d, c) : ef(a, d, c);
+        return function() {
+            var g = r(Ia(arguments))
+              , h = g.next().value;
+            g = ca(g);
+            h = P(h, {
+                N: P(void 0 === h.N ? {} : h.N, {
+                    ha: [b]
+                })
+            });
+            return f.apply(null, [h].concat(g))
+        }
+    }, Oh);
+    function Sh(a, b) {
+        return function(c) {
+            var d = c[a];
+            d ? (d.Nf = !0,
+            d.Mf(b)) : c[a] = {
+                promise: S.resolve(b),
+                Nf: !0,
+                Mf: u
+            }
+        }
+    }
+    var Th = qa(function(a, b) {
+        if (!b[a]) {
+            var c, d = new S(function(e) {
+                c = e
+            }
+            );
+            b[a] = {
+                Mf: c,
+                promise: d,
+                Nf: !1
+            }
+        }
+        return b[a].promise
+    })
+      , Uh = x(H(De, ua));
+    function Vh(a, b, c) {
+        b = Q(b);
+        var d = Ad(a);
+        c = P({
+            fh: d(Bd)
+        }, c);
+        d = {};
+        var e = {};
+        Ge(a, (e.counterKey = b,
+        e.name = "counterSettings",
+        e.data = (d.settings = c,
+        d),
+        e));
+        return Uh()(Sh(b, c))
+    }
+    function Wh(a, b) {
+        var c = Q(a);
+        return Uh()(Th(c)).then(b)
+    }
+    function Xh(a, b) {
+        function c(d, e, f) {
+            var g = {}
+              , h = {};
+            Ge(a, (h.name = "log",
+            h.counterKey = b,
+            h.data = (g.args = N(e) ? e : [e],
+            g.type = d,
+            g.variables = f,
+            g),
+            h))
+        }
+        return {
+            log: F("log", c),
+            error: F("error", c),
+            warn: F("warn", c)
+        }
+    }
+    var Yh = x(X("dc.init", function(a, b) {
+        return b && Zd(Tb(b.split(":")[0])) ? {
+            log: u,
+            warn: u,
+            error: u
+        } : Xh(a, b)
+    }), Ea);
+    function Zh(a, b, c, d) {
+        Yh(a, b).log(c, d)
+    }
+    function $h(a, b, c, d, e) {
+        return E([a, Q(b), e ? [c + ".p", e] : c, d], Zh)
+    }
+    function ai(a, b, c) {
+        c = c || "as";
+        if (a.postMessage && !a.attachEvent) {
+            var d = ud(a)
+              , e = "__ym__promise_" + Xd(a) + "_" + Xd(a)
+              , f = u;
+            f = d.F(a, ["message"], W(a, c, function(g) {
+                try {
+                    var h = g.data
+                } catch (k) {
+                    return
+                }
+                h === e && (f(),
+                g.stopPropagation && g.stopPropagation(),
+                b())
+            }));
+            a.postMessage(e, "*")
+        } else
+            Y(a, b, 0, c)
+    }
+    var bi = X("h.p", function(a, b) {
+        var c = Rh(a, "h", b)
+          , d = b.Kc || "" + V(a).href
+          , e = b.lh || a.document.referrer
+          , f = {}
+          , g = {};
+        f = {
+            K: Me((f.pv = 1,
+            f)),
+            J: (g["page-url"] = d,
+            g["page-ref"] = e,
+            g),
+            O: {}
+        };
+        f.O.R = b.R;
+        f.O.Ne = b.Ne;
+        b.yd && f.J && (f.J.nohit = "1");
+        return c(f, b).then(function(h) {
+            if (h) {
+                if (!b.yd) {
+                    var k = {};
+                    $h(a, b, "h", (k.id = b.id,
+                    k.url = d,
+                    k.ref = e,
+                    k), b.R)()
+                }
+                ai(a, E([a, b, h], Vh))
+            }
+        })["catch"](W(a, "h.g.s"))
+    });
+    function ci(a, b, c) {
+        try {
+            if (A(b)) {
+                var d = r(Ia(arguments));
+                d.next();
+                d.next();
+                d.next();
+                var e = ca(d);
+                b.apply(C(c) ? null : c, e)
+            }
+        } catch (f) {
+            sg(a, F(f, md), 0)
+        }
+    }
+    var di = ["yandex_metrika_callback" + na.callbackPostfix, "yandex_metrika_callbacks" + na.callbackPostfix]
+      , ei = X("cb.i", function(a) {
+        var b = r(di)
+          , c = b.next().value
+          , d = b.next().value;
+        if (A(a[c]))
+            a[c]();
+        "object" === typeof a[d] && O(function(e, f) {
+            a[d][f] = null;
+            ci(a, e)
+        }, a[d]);
+        O(function(e) {
+            try {
+                delete a[e]
+            } catch (f) {
+                a[e] = void 0
+            }
+        }, di)
+    });
+    function fi(a, b) {
+        var c = R(a).C("counters", {})
+          , d = Q(b);
+        return c[d]
+    }
+    function gi(a, b, c, d) {
+        var e = vf[c];
+        return e ? function() {
+            var f = Ia(arguments);
+            f = d.apply(null, da(f));
+            var g = R(a);
+            g.wa("mt", {});
+            g = g.C("mt");
+            var h = g[e];
+            g[e] = h ? h + 1 : 1;
+            return f
+        }
+        : d
+    }
+    var hi = []
+      , ii = []
+      , ji = []
+      , ki = []
+      , li = []
+      , mi = []
+      , ni = /^[a-zA-Z0-9'!#$%&*+-/=?^_`{|}~]+$/;
+    function oi(a) {
+        var b = a.length;
+        return 1 > b || 64 < b ? !1 : Rb(function(c) {
+            var d = c.length;
+            if (1 > d)
+                c = !1;
+            else if ('"' === c[0] && '"' === c[d - 1] && 2 < d)
+                a: {
+                    for (d = 1; d + 2 < c.length; d += 1) {
+                        var e = c.charCodeAt(d);
+                        if (32 > e || 34 === e || 126 < e) {
+                            c = !1;
+                            break a
+                        }
+                        if (92 === e) {
+                            if (d + 2 === c.length || 32 > c.charCodeAt(d + 1)) {
+                                c = !1;
+                                break a
+                            }
+                            d += 1
+                        }
+                    }
+                    c = !0
+                }
+            else
+                c = ni.test(c) ? !0 : !1;
+            return c
+        }, a.split("."))
+    }
+    function pi(a) {
+        var b = a.length;
+        return 5 > b || 100 < b ? void 0 : a
+    }
+    function qi(a) {
+        var b = le(a).replace(/^\++/gm, "").toLowerCase()
+          , c = b.lastIndexOf("@");
+        if (-1 === c)
+            return pi(b);
+        a = b.substr(0, c);
+        c = b.substr(c + 1);
+        if (!c || !oi(a))
+            return pi(b);
+        c = c.replace("googlemail.com", "gmail.com");
+        ee(c) && (c = "yandex.ru");
+        "yandex.ru" === c ? a = a.replace(Ka, "-") : "gmail.com" === c && (a = a.replace(Ka, ""));
+        b = Na(a, "+");
+        -1 !== b && (a = a.slice(0, b));
+        return pi(a + "@" + c)
+    }
+    var ri = H(Oa, sa(0))
+      , si = ra(ri)
+      , ti = me(/[^\d+()]/g)
+      , ui = /[a-z\u0430-\u044f\u0451,.]/gi;
+    function vi(a, b) {
+        var c = oe(b)
+          , d = c.length;
+        if (!(ui.test(b) || b.length - d > d || 10 > d || 16 < d)) {
+            d = c[0];
+            var e = b[1];
+            if ("+" !== b[0] || e === d)
+                return d = ti(b),
+                10 > c.length || 13 < c.length || ri(d, "+8") ? le(b) : "8" === d[0] ? "7" + c.slice(1) : "+" === d[0] || Sb(a, +d[0]) ? c : "7" + c
+        }
+    }
+    var wi = x(function(a) {
+        return !!J(a, "crypto.subtle.digest") && !!J(a, "TextEncoder") && !!J(a, "FileReader") && !!J(a, "Blob")
+    });
+    function xi(a, b) {
+        return new S(function(c, d) {
+            var e = (new a.TextEncoder).encode(b);
+            a.crypto.subtle.digest("SHA-256", e).then(function(f) {
+                f = new a.Blob([f],{
+                    type: "application/octet-binary"
+                });
+                var g = new a.FileReader;
+                g.onload = function(h) {
+                    h = J(h, "target.result") || "";
+                    var k = Na(h, ",");
+                    -1 !== k ? c(h.substring(k + 1)) : d(T("fpm.i"))
+                }
+                ;
+                g.readAsDataURL(f)
+            }, d)
+        }
+        )
+    }
+    var yi = ["yandex_cid", "yandex_public_id"];
+    function zi(a, b, c) {
+        c = void 0 === c ? 0 : c;
+        b = bc(b);
+        b = G(function(d, e) {
+            var f = r(e)
+              , g = f.next().value;
+            f = f.next().value;
+            var h = Ta(f);
+            if (!h && (Sb(a, f) && (f = "" + f),
+            !y(f)))
+                return d;
+            if (h)
+                f = zi(a, f, c + 1);
+            else if (!c && M(g, yi))
+                f = S.resolve(f);
+            else {
+                "phone_number" === g ? f = vi(a, f) : "email" === g && (f = qi(f));
+                if (!f)
+                    return d;
+                f = xi(a, f)
+            }
+            d.push(f.then(function(k) {
+                return [g, k]
+            }));
+            return d
+        }, [], b);
+        return S.all(b)
+    }
+    var Ai = X("fpm", function(a, b) {
+        if (!he(a))
+            return u;
+        var c = Q(b);
+        if (!wi(a))
+            return Zh(a, c, "ns"),
+            u;
+        var d = fi(a, b);
+        return d ? function(e) {
+            return (new S(function(f, g) {
+                return Ta(e) ? cc(e).length ? f(zi(a, e).then(function(h) {
+                    if (h && h.length) {
+                        var k = {}
+                          , l = {};
+                        d.params((l.__ym = (k.fpp = h,
+                        k),
+                        l))
+                    }
+                }, u)) : g(hf("fpm.l")) : g(hf("fpm.o"))
+            }
+            ))["catch"](W(a, "fpm.en"))
+        }
+        : u
+    });
+    function Bi(a, b) {
+        return G(function(c, d) {
+            var e = r(d)
+              , f = e.next().value
+              , g = e.next().value;
+            e = g;
+            g = Ta(g);
+            if (!g && (Sb(a, e) && (e = "" + e),
+            !y(e)))
+                return c;
+            e = g ? Bi(a, e) : e;
+            eb(e) && c.push([f, e]);
+            return c
+        }, [], bc(b))
+    }
+    function Ci(a, b) {
+        return function(c) {
+            var d = fi(a, b);
+            if (d) {
+                var e = Yh(a, Q(b));
+                if (Ta(c))
+                    if (eb(cc(c))) {
+                        if ((c = Bi(a, c)) && eb(c)) {
+                            e = {};
+                            var f = {};
+                            d.params((f.__ym = (e.fpmh = c,
+                            e),
+                            f))
+                        }
+                    } else
+                        e.log("fpeo");
+                else
+                    e.log("fpno")
+            }
+        }
+    }
+    function Di(a) {
+        a = R(a);
+        var b = a.C("dsjf") || ua({});
+        a.wa("dsjf", b);
+        return b
+    }
+    function Ei(a, b, c) {
+        Di(a)(function(d) {
+            d[b] = P(d[b] || {}, c)
+        })
+    }
+    function Fi(a, b) {
+        Di(a)(function(c) {
+            delete c[b]
+        })
+    }
+    function Gi(a, b) {
+        return function(c) {
+            Ei(a, b, c)
+        }
+    }
+    var Hi = qa(function(a, b) {
+        var c = {};
+        Di(a)(function(d) {
+            c = d[b] || {}
+        });
+        return c
+    })
+      , Ii = X("c.c.cc", function(a) {
+        var b = R(a)
+          , c = H(Hi(a), function(d) {
+            var e = {};
+            e = (e.clickmap = !!d.clickmap,
+            e);
+            return P({}, d, e)
+        });
+        return W(a, "g.c.cc", H(D(b.C, b, "counters", {}), cc, Kb(c)))
+    })
+      , Ji = X("gt.c.rs", function(a, b) {
+        var c = Q(b)
+          , d = b.id
+          , e = b.Z
+          , f = b.Kg
+          , g = b.Je
+          , h = E([a, c], Fi)
+          , k = {};
+        Ei(a, c, (k.id = d,
+        k.type = +e,
+        k.clickmap = f,
+        k.trackHash = !!g,
+        k));
+        return h
+    })
+      , Ki = {};
+    function Li(a, b) {
+        var c = Q(a)
+          , d = J(b, "__ym.turbo_page")
+          , e = J(b, "__ym.turbo_page_id");
+        Ki[c] || (Ki[c] = {});
+        if (d || e)
+            Ki[c].vi = d,
+            Ki[c].xi = e
+    }
+    function Mi(a) {
+        a = Q(a);
+        return Ki[a] && Ki[a].vi
+    }
+    var Ni = x(Ee);
+    function Oi(a, b) {
+        return {
+            T: function(c, d) {
+                var e = (c.O || {}).R
+                  , f = void 0 === c.N ? {} : c.N;
+                if (e && (Li(b, e),
+                !f.aa && c.K && c.J)) {
+                    var g = zf(a, e)
+                      , h = Ni(a)
+                      , k = c.K.C("pv");
+                    if (g && !c.J.nohit) {
+                        var l = {}
+                          , m = {};
+                        Ge(a, (m.counterKey = Q(b),
+                        m.name = "params",
+                        m.data = (l.val = e,
+                        l),
+                        m));
+                        k ? encodeURIComponent(g).length > Nc.qg ? h.push([c.K, e]) : c.J["site-info"] = g : (f.aa = g,
+                        c.N = f,
+                        c.$c || (c.$c = {}),
+                        c.$c.Nh = !0)
+                    }
+                }
+                d()
+            },
+            Ga: function(c, d) {
+                var e = Ni(a)
+                  , f = fi(a, b)
+                  , g = f && f.params;
+                g && (f = nb(H(xb, sa(c.K)), e),
+                O(function(h) {
+                    var k = r(h);
+                    k.next();
+                    k = k.next().value;
+                    g(k);
+                    h = wb(a)(h, e);
+                    e.splice(h, 1)
+                }, f));
+                d()
+            }
+        }
+    }
+    function Pi(a, b, c, d, e) {
+        var f = E([a, d, e], ci);
+        return c.then(f, function(g) {
+            f();
+            mf(a, b, g)
+        })
+    }
+    var Qi = x(De, Q);
+    function Ri(a) {
+        var b = u
+          , c = null
+          , d = a.length;
+        if (0 !== a.length && a[0]) {
+            var e = a.slice(-1)[0];
+            A(e) && (b = e,
+            d = a.length + -1);
+            var f = a.slice(-2)[0];
+            A(f) && (b = f,
+            c = e,
+            d = a.length + -2);
+            d = a.slice(0, d);
+            return {
+                Rg: c,
+                uc: b,
+                R: 1 === d.length ? a[0] : fb(d)
+            }
+        }
+    }
+    var Si = X("pa.int", function(a, b) {
+        var c = {};
+        return c.params = function() {
+            var d = Ia(arguments)
+              , e = Ri(d);
+            if (!e)
+                return null;
+            d = e.Rg;
+            var f = e.R;
+            e = e.uc;
+            if (!Ta(f) && !N(f))
+                return null;
+            var g = Rh(a, "1", b)
+              , h = Qi(b).url
+              , k = !$d(b)
+              , l = "pa"
+              , m = {};
+            m = (m.id = b.id,
+            m);
+            var p = f
+              , q = "";
+            if (q = J(f, "__ym.user_id"))
+                l = "pau",
+                m.uid = q;
+            M("__ymu", cc(f)) && (l = "paup");
+            p.__ym && (p = P({}, f),
+            p.__ym = G(function(t, v) {
+                var z = J(f, "__ym." + v);
+                z && (t[v] = z);
+                return t
+            }, {}, qf),
+            cc(p.__ym).length || delete p.__ym,
+            k = !!cc(p).length);
+            p = q ? void 0 : zf(a, p);
+            l = $h(a, b, l, m, p);
+            m = {};
+            p = {};
+            g = g({
+                O: {
+                    R: f
+                },
+                K: Me((m.pa = 1,
+                m.ar = 1,
+                m)),
+                J: (p["page-url"] = h || V(a).href,
+                p)
+            }, b).then(k ? l : u);
+            return Pi(a, "p.s", g, e, d)
+        }
+        ,
+        c
+    });
+    function Ti(a, b, c, d, e) {
+        return (new S(function(f, g) {
+            var h = cc(c)
+              , k = H(d.resolve || w, ta(f))
+              , l = H(d.reject || w, ta(g));
+            d.resolve = k;
+            d.reject = l;
+            O(function(m) {
+                d.Ke.push(+m);
+                var p = c[m]
+                  , q = Y(a, F(hf(), l), 5100, "is.m")
+                  , t = {};
+                b(p.window, P(e, (t.toCounter = Vb(m),
+                t)), function(v, z) {
+                    tg(a, q);
+                    d.Zf.push(m);
+                    d.resolve && d.resolve(z)
+                })
+            }, h)
+        }
+        ))["catch"](W(a, "if.b"))
+    }
+    function Ui(a, b, c) {
+        b = nb(function(d) {
+            return !M(c.info.counterId, d.Ke)
+        }, b);
+        O(function(d) {
+            if (c.info.counterId) {
+                var e = {};
+                a((e[c.info.counterId] = c,
+                e), d, d.data)
+            }
+        }, b)
+    }
+    function Vi(a, b) {
+        var c = Mg(a, b);
+        if (!c)
+            return null;
+        var d = []
+          , e = []
+          , f = E([a, c.ze], Ti)
+          , g = F(f, Ui);
+        c.$.F(["initToParent"], function(h) {
+            h = r(h);
+            h.next();
+            h = h.next().value;
+            g(d, c.children[h.counterId])
+        }).F(["parentConnect"], function(h) {
+            h = r(h);
+            h.next();
+            h = h.next().value;
+            g(e, c.Ja[h.counterId])
+        });
+        return {
+            $: c.$,
+            jj: function(h, k) {
+                return new S(function(l, m) {
+                    c.ze(h, k, function(p, q) {
+                        l([p, q])
+                    });
+                    Y(a, F(hf(), m), 5100, "is.o")
+                }
+                )
+            },
+            Wf: function(h) {
+                var k = {
+                    Zf: [],
+                    Ke: [],
+                    data: h
+                };
+                d.push(k);
+                return f(c.children, k, h)
+            },
+            Xf: function(h) {
+                var k = {
+                    Zf: [],
+                    Ke: [],
+                    data: h
+                };
+                e.push(k);
+                return f(c.Ja, k, h)
+            }
+        }
+    }
+    var Wi = x(Vi, H(Ea, Q));
+    function Xi(a, b) {
+        if (!M(b, O(L("ymetrikaEvent.type"), a))) {
+            var c = {}
+              , d = {};
+            a.push((d.ymetrikaEvent = (c.type = b,
+            c),
+            d))
+        }
+    }
+    function Yi(a) {
+        a = R(a);
+        var b = a.C("dataLayer", []);
+        a.D("dataLayer", b);
+        return b
+    }
+    function Zi(a, b, c, d) {
+        c = void 0 === c ? u : c;
+        d = void 0 === d ? !1 : d;
+        var e = Dg(a);
+        if (b && A(b.push)) {
+            var f = b.push;
+            b.push = function() {
+                var g = Ia(arguments)
+                  , h = r(g).next().value;
+                d && e.ba(h);
+                g = f.apply(b, g);
+                d || e.ba(h);
+                return g
+            }
+            ;
+            a = {
+                oa: e,
+                unsubscribe: function() {
+                    b.push = f
+                }
+            };
+            c(a);
+            O(e.ba, b);
+            return a
+        }
+    }
+    function $i(a, b) {
+        var c = J(b, "ymetrikaEvent");
+        c && a.ba(J(c, "type"), c)
+    }
+    function aj(a, b, c) {
+        c = void 0 === c ? w : c;
+        var d = Eg(a);
+        c(d);
+        var e = F(d, $i);
+        Zi(a, b, function(f) {
+            f.oa.F(e)
+        });
+        return d
+    }
+    function bj(a, b, c, d) {
+        var e = fi(a, c);
+        if (e) {
+            a = d.data;
+            c = "" + c.id;
+            var f = d.sended || [];
+            d.sended || (d.sended = f);
+            M(c, f) || !e.params || d.counter && "" + d.counter !== c || (e.params(a),
+            f.push(c),
+            d.parent && (d = {},
+            b.Xf((d.type = "params",
+            d.data = a,
+            d))))
+        }
+    }
+    var cj = X("y.p", function(a, b) {
+        var c = Vi(a, b);
+        if (c) {
+            var d = Yi(a)
+              , e = E([a, c, b], bj);
+            aj(a, d, function(f) {
+                f.F(["params"], e)
+            });
+            c.$.F(["params"], H(L("1"), e))
+        }
+    });
+    function dj(a, b, c, d) {
+        var e = V(a)
+          , f = e.hostname;
+        e = e.href;
+        if (b = Qi(b).url)
+            a = qh(a, b),
+            f = a.hostname,
+            e = a.href;
+        return [d + "://" + f + "/" + c, e || ""]
+    }
+    var ej = {
+        bj: Ya(/[/&=?#]/)
+    }, fj = X("go.in", function(a, b, c, d) {
+        c = void 0 === c ? "goal" : c;
+        var e = {};
+        return e.reachGoal = function(f, g, h, k) {
+            if (!f || ej[c] && ej[c](f))
+                return null;
+            var l = g
+              , m = h || u;
+            A(g) && (m = g,
+            l = void 0,
+            k = h);
+            g = {};
+            var p = $h(a, b, "gr", (g.id = b.id,
+            g.goal = f,
+            g), l)
+              , q = "goal" === c;
+            g = Rh(a, "g", b);
+            var t = r(dj(a, b, f, c));
+            h = t.next().value;
+            t = t.next().value;
+            var v = {}
+              , z = {};
+            g = g({
+                O: {
+                    R: l
+                },
+                K: Me((v.ar = 1,
+                v)),
+                J: (z["page-url"] = h,
+                z["page-ref"] = t,
+                z)
+            }, b).then(function() {
+                q && p();
+                var K = {}
+                  , aa = {};
+                Ge(a, (aa.counterKey = Q(b),
+                aa.name = "event",
+                aa.data = (K.schema = c,
+                K.name = f,
+                K.params = l,
+                K),
+                aa));
+                d && d()
+            });
+            return Pi(a, "g.s", g, m, k)
+        }
+        ,
+        e
+    }), gj = X("guid.int", function(a, b) {
+        var c = {};
+        return c.getClientID = function(d) {
+            var e = rg(a, b);
+            d && ci(a, d, null, e);
+            return e
+        }
+        ,
+        c
+    }), hj;
+    function ij(a) {
+        return (a = V(a).hash.split("#")[1]) ? a.split("?")[0] : ""
+    }
+    function jj(a, b) {
+        var c = ij(a);
+        hj = ug(a, function() {
+            var d = ij(a);
+            d !== c && (b(),
+            c = d)
+        });
+        return D(vg, null, a, hj)
+    }
+    function kj(a, b, c, d) {
+        var e = b.Z
+          , f = b.Oe
+          , g = b.Kc
+          , h = R(a)
+          , k = {};
+        k = Me((k.wh = 1,
+        k.pv = 1,
+        k));
+        var l = J(d, "isTrusted");
+        d && !C(l) && k.D("ite", jb(l));
+        Oc(e) && a.Ya && a.Ya.Direct && k.D("ad", "1");
+        f && k.D("ut", "1");
+        e = h.C("lastReferrer");
+        d = V(a).href;
+        f = {};
+        g = {
+            J: (f["page-url"] = g || d,
+            f["page-ref"] = e,
+            f),
+            K: k
+        };
+        c(g, b)["catch"](W(a, "g.s"));
+        h.D("lastReferrer", d)
+    }
+    var lj = X("th.e", function(a, b) {
+        function c() {
+            f || (h = I(a, "onhashchange") ? ud(a).F(a, ["hashchange"], g) : jj(a, g))
+        }
+        var d = Rh(a, "t", b)
+          , e = Gi(a, Q(b))
+          , f = !1
+          , g = W(a, "h.h.ch", D(kj, null, a, b, d))
+          , h = u;
+        b.Je && (c(),
+        f = !0);
+        d = {};
+        return d.trackHash = W(a, "tr.hs.h", function(k) {
+            k ? c() : h();
+            f = !!k;
+            k = {};
+            e((k.trackHash = f,
+            k))
+        }),
+        d.u = h,
+        d
+    });
+    function mj(a) {
+        var b = null;
+        try {
+            b = a.target || a.srcElement
+        } catch (c) {}
+        if (b) {
+            3 === b.nodeType && (b = b.parentNode);
+            for (a = b && b.nodeName && ("" + b.nodeName).toLowerCase(); J(b, "parentNode.nodeName") && ("a" !== a && "area" !== a || !b.href && !b.getAttribute("xlink:href")); )
+                a = (b = b.parentNode) && b.nodeName && ("" + b.nodeName).toLowerCase();
+            return b.href ? b : null
+        }
+        return null
+    }
+    function nj(a, b) {
+        var c = {};
+        c = (c.string = !0,
+        c.object = !0,
+        c["boolean"] = b,
+        c)[typeof b] || !1;
+        var d = {};
+        a((d.trackLinks = c,
+        d))
+    }
+    function oj(a, b, c) {
+        var d = Me();
+        void 0 !== c.Pc && d.D("ite", jb(c.Pc));
+        c.Nc && d.D("dl", 1);
+        c.wb && d.D("ln", 1);
+        var e = c.lg || {}
+          , f = {};
+        d = {
+            K: d,
+            O: {
+                title: e.title || c.title,
+                Rc: !!c.Rc,
+                R: e.params
+            },
+            J: (f["page-url"] = c.url,
+            f["page-ref"] = b.Kc || V(a).href,
+            f)
+        };
+        f = "Link";
+        c.Nc ? f = c.wb ? "Ext link - File" : "File" : c.wb && (f = "Ext link");
+        var g = {}
+          , h = {};
+        Ge(a, (h.counterKey = Q(b),
+        h.name = "event",
+        h.data = (g.schema = "Link click",
+        g.name = (c.wb ? "external" : "internal") + " url: " + c.url,
+        g),
+        h));
+        g = {};
+        b = c.sender(d, b).then($h(a, b, "lcl", (g.prefix = f,
+        g.id = b.id,
+        g.url = c.url,
+        g), c.lg));
+        Pi(a, "cl.p.s", b, e.callback || u, e.ctx)
+    }
+    function pj(a, b) {
+        if (a.yi()) {
+            var c = mj(b);
+            if (c && !Pf("ym-disable-tracklink", c)) {
+                var d = a.l
+                  , e = a.Og
+                  , f = a.Qg
+                  , g = a.sender
+                  , h = a.eh
+                  , k = f.Kc
+                  , l = c.href;
+                var m = le(c.innerHTML && c.innerHTML.replace(/<\/?[^>]+>/gi, ""));
+                m || (m = (m = c.querySelector("img")) ? le(m.getAttribute("title") || m.getAttribute("alt")) : "");
+                m = l === m ? "" : m;
+                var p = J(b, "isTrusted");
+                if (Pf("ym-external-link", c))
+                    oj(d, f, {
+                        url: l,
+                        wb: !0,
+                        title: m,
+                        Pc: p,
+                        sender: g
+                    });
+                else {
+                    k = k ? qh(d, k).hostname : V(d).hostname;
+                    h = RegExp("\\.(" + U("|", O(Ra, h)) + ")$", "i");
+                    var q = c.protocol + "//" + c.hostname + c.pathname;
+                    h = sf.test(q) || sf.test(l) || h.test(l) || h.test(q);
+                    c = c.hostname;
+                    fe(k) === fe(c) ? h ? oj(d, f, {
+                        url: l,
+                        Nc: !0,
+                        Pc: p,
+                        title: m,
+                        sender: g
+                    }) : m && e.D("il", le(m).slice(0, 100)) : l && rf.test(l) || oj(d, f, {
+                        url: l,
+                        Rc: !0,
+                        wb: !0,
+                        Nc: h,
+                        Pc: p,
+                        title: m,
+                        sender: g
+                    })
+                }
+            }
+        }
+    }
+    var qj = qa(function(a, b) {
+        y(b) ? a.push(b) : O(H(w, Xa("push", a)), b)
+    })
+      , rj = Yd("retryReqs", function(a) {
+        var b = Gf(a)
+          , c = b.C("retryReqs", {})
+          , d = Fd(a)(Bd);
+        O(function(e) {
+            var f = r(e);
+            e = f.next().value;
+            f = f.next().value;
+            (!f || !f.time || f.time + 864E5 < d) && delete c[e]
+        }, bc(c));
+        b.D("retryReqs", c);
+        return c
+    }, !0);
+    function sj(a) {
+        var b = rj(a);
+        Gf(a).D("retryReqs", b)
+    }
+    function tj(a, b) {
+        var c = rj(a);
+        b.K && !Sa(c) && b.O && (delete c[b.O.dc],
+        sj(a))
+    }
+    function uj(a, b) {
+        return {
+            T: function(c, d) {
+                var e = c.K
+                  , f = c.La
+                  , g = c.J
+                  , h = void 0 === c.N ? {} : c.N;
+                if (e && g) {
+                    var k = Fd(a);
+                    e.Db("rqnl", 1);
+                    for (var l = rj(a), m = 1; l[m]; )
+                        m += 1;
+                    c.O || (c.O = {});
+                    c.O.dc = m;
+                    var p = {};
+                    l[m] = (p.protocol = Nc.Pa,
+                    p.host = Kc,
+                    p.resource = c.Na.qa,
+                    p.postParams = h.aa,
+                    p.time = k(Bd),
+                    p.counterType = b.Z,
+                    p.params = g,
+                    p.browserInfo = e.l(),
+                    p.counterId = b.id,
+                    p.ghid = ng(a),
+                    p);
+                    f && (l[m].telemetry = f.l());
+                    sj(a)
+                }
+                d()
+            },
+            Ga: function(c, d) {
+                tj(a, c);
+                d()
+            }
+        }
+    }
+    var vj = [si("watch"), si("clmap")]
+      , wj = X("g.r", function(a) {
+        var b = Fd(a)
+          , c = rj(a)
+          , d = b(Bd)
+          , e = ng(a);
+        return G(function(f, g) {
+            var h = r(g)
+              , k = h.next().value;
+            (h = h.next().value) && Ob(ua(h.resource), vj) && !h.d && h.ghid && h.ghid !== e && h.time && 500 < d - h.time && h.time + 864E5 > d && 2 >= h.browserInfo.rqnl && (h.d = 1,
+            k = {
+                protocol: h.protocol,
+                host: h.host,
+                qa: h.resource,
+                Yh: h.postParams,
+                R: h.params,
+                Eg: h.browserInfo,
+                $i: h.ghid,
+                time: h.time,
+                dc: Vb(k),
+                counterId: h.counterId,
+                Z: h.counterType
+            },
+            h.telemetry && (k.La = h.telemetry),
+            f.push(k));
+            return f
+        }, [], bc(c))
+    });
+    function xj(a, b, c) {
+        function d() {
+            t || (q = !0,
+            v = !1,
+            t = !0,
+            f())
+        }
+        function e() {
+            m = !0;
+            k(!1);
+            b()
+        }
+        function f() {
+            tg(a, l);
+            if (m)
+                k(!1);
+            else {
+                var Ja = Math.max(0, c - (v ? z : z + p(Bd) - K));
+                Ja ? l = Y(a, e, Ja, "u.t.d.c") : e()
+            }
+        }
+        function g() {
+            v = q = t = !0;
+            z += p(Bd) - K;
+            K = p(Bd);
+            f()
+        }
+        function h() {
+            q || t || (z = 0);
+            K = p(Bd);
+            q = t = !0;
+            v = !1;
+            f()
+        }
+        function k(Ja) {
+            Ja = Ja ? aa.F : aa.nc;
+            Ja(a, ["blur"], g);
+            Ja(a, ["focus"], h);
+            Ja(a.document, ["click", "mousemove", "keydown", "scroll"], d)
+        }
+        var l = 0
+          , m = !1;
+        if (uc(a))
+            return l = Y(a, b, c, "u.t.d"),
+            E([a, l], tg);
+        var p = Fd(a)
+          , q = !1
+          , t = !1
+          , v = !0
+          , z = 0
+          , K = p(Bd)
+          , aa = ud(a);
+        k(!0);
+        f();
+        return function() {
+            tg(a, l);
+            k(!1)
+        }
+    }
+    var yj = X("nb.p", function(a, b) {
+        function c(z) {
+            h() || (z = "number" === typeof z ? z : 15E3,
+            v = xj(a, d(!1), z),
+            l())
+        }
+        function d(z) {
+            return function(K) {
+                var aa = {};
+                K = void 0 === K ? (aa.ctx = {},
+                aa.callback = u,
+                aa) : K;
+                if (z || !q && !g.Xd) {
+                    q = !0;
+                    l();
+                    v && v();
+                    var Ja = m(Bd);
+                    aa = (Vb(g.C("lastHit")) || 0) < Ja - 18E5;
+                    var Lc = .1 > Math.random();
+                    g.D("lastHit", Ja);
+                    Ja = {};
+                    Ja = Me((Ja.nb = 1,
+                    Ja.cl = t,
+                    Ja.ar = 1,
+                    Ja));
+                    var de = Qi(b)
+                      , tf = {};
+                    Ja = {
+                        J: (tf["page-url"] = de.url || V(a).href,
+                        tf),
+                        K: Ja,
+                        O: {
+                            force: z
+                        }
+                    };
+                    de = Yh(a, Q(b)).warn;
+                    !K.callback && K.ctx && de("nbnc");
+                    (aa = z || aa || Lc) || (aa = a.location.href,
+                    Lc = a.document.referrer,
+                    aa = !(aa && Lc ? rh(aa) === rh(Lc) : !aa && !Lc));
+                    if (aa)
+                        return aa = e(Ja, b),
+                        Pi(a, "l.o.l", aa, K.callback, K.ctx)
+                }
+                return null
+            }
+        }
+        var e = Rh(a, "n", b), f = Q(b), g = Hf(a, b.id), h = F(F(f, Hi(a)), H(Re, L("accurateTrackBounce"))), k = {}, l = F((k.accurateTrackBounce = !0,
+        k), Gi(a, f)), m = Fd(a), p = m(Bd), q = !1, t = 0, v;
+        Wh(b, function(z) {
+            t = z.fh - p
+        });
+        b.Ve && c(b.Ve);
+        f = {};
+        f = (f.notBounce = d(!0),
+        f.u = v,
+        f);
+        f.accurateTrackBounce = c;
+        return f
+    });
+    function zj(a) {
+        return !(!xa("querySelectorAll", J(a, "Element.prototype.querySelectorAll")) || !a.document.querySelectorAll)
+    }
+    function Aj(a, b) {
+        if (!b || !b.querySelectorAll)
+            return [];
+        var c = b.querySelectorAll(a);
+        return c ? vb(c) : []
+    }
+    function Bj(a, b) {
+        if (b.querySelector)
+            return b.querySelector(a);
+        var c = Aj(a, b);
+        return c && c.length ? c[0] : null
+    }
+    function Cj(a, b) {
+        var c = Qe([], a)
+          , d = c.shift();
+        if (!d)
+            return [];
+        d = b.getElementsByTagName(d);
+        return c.length ? Jb(F(c, Cj), vb(d)) : vb(d)
+    }
+    function Dj(a, b, c) {
+        if (zj(a))
+            return vb(c.querySelectorAll(b));
+        var d = Cj(b.split(" "), c);
+        return nb(function(e, f) {
+            return Ba(a)(e, d) === f
+        }, d)
+    }
+    function Ej(a, b, c) {
+        if (!(b && b.Element && b.Element.prototype && b.document && c))
+            return null;
+        if (b.Element.prototype.closest && xa("closest", b.Element.prototype.closest) && c.closest)
+            return c.closest(a);
+        var d = Qf(b);
+        if (d) {
+            for (b = c; b && 1 === b.nodeType && !d.call(b, a); )
+                b = b.parentElement || b.parentNode;
+            return b && 1 === b.nodeType ? b : null
+        }
+        if (zj(b)) {
+            for (a = vb((b.document || b.ownerDocument).querySelectorAll(a)); c && 1 === c.nodeType && -1 === Ba(b)(c, a); )
+                c = c.parentElement || c.parentNode;
+            return c && 1 === c.nodeType ? c : null
+        }
+        return null
+    }
+    function Fj(a, b) {
+        return I(b, "isConnected") ? !b.isConnected : Ej("html", a, b) !== a.document.documentElement
+    }
+    function Gj(a, b) {
+        var c = b
+          , d = J(a, "document")
+          , e = Zf(c);
+        if (!c || !c.ownerDocument || "PARAM" === e || c === Rf(a) || c === d.documentElement)
+            return {
+                left: 0,
+                top: 0
+            };
+        if (d = Wf(c))
+            return c = Vf(a),
+            {
+                left: Math.round(d.left + c.x),
+                top: Math.round(d.top + c.y)
+            };
+        for (e = d = 0; c; )
+            d += c.offsetLeft,
+            e += c.offsetTop,
+            c = c.offsetParent;
+        return {
+            left: d,
+            top: e
+        }
+    }
+    function Hj(a, b) {
+        var c = J(a, "document");
+        if (b === Rf(a) || b === c.documentElement) {
+            c = Sf(a);
+            var d = r(Uf(a))
+              , e = d.next().value;
+            d = d.next().value;
+            return [Math.max(c.scrollWidth, e), Math.max(c.scrollHeight, d)]
+        }
+        return (c = Wf(b)) ? [c.width, c.height] : [b.offsetWidth, b.offsetHeight]
+    }
+    function Ij(a, b) {
+        var c = Gj(a, b)
+          , d = c.left;
+        c = c.top;
+        var e = r(Hj(a, b))
+          , f = e.next().value;
+        e = e.next().value;
+        return [d, c, f, e]
+    }
+    function Jj(a, b) {
+        var c = J(a, "document");
+        return b && b !== c.documentElement ? b === Rf(a) ? c.documentElement : J(b, "parentNode") : null
+    }
+    function Kj(a, b, c) {
+        if (a = Jj(a, b)) {
+            a = a.childNodes;
+            for (var d = b && b.nodeName, e = 0, f = 0; f < a.length; f += 1)
+                if (d === (a[f] && a[f].nodeName)) {
+                    if (b === a[f])
+                        return e;
+                    c && a[f] === c || (e += 1)
+                }
+        }
+        return 0
+    }
+    var Lj = x(function() {
+        for (var a = 59, b = {}, c = 0; c < pf.length; c += 1)
+            b[pf[c]] = String.fromCharCode(a),
+            a += 1;
+        return b
+    });
+    function Mj(a, b, c) {
+        for (var d = "", e = Lj(), f = Zf(b) || "*"; b && b.parentNode && !M(f, ["BODY", "HTML"]); )
+            d += e[f] || "*",
+            d += Kj(a, b, c) || "",
+            b = b.parentElement,
+            f = Zf(b) || "*";
+        return le(d, 128)
+    }
+    function Nj(a) {
+        var b = ["ym-disable-keys", "-metrika-nokeys"];
+        b = N(b) ? b : [b];
+        a = a || document;
+        if (a.querySelectorAll)
+            return b = U(", ", O(function(c) {
+                return "." + c
+            }, b)),
+            vb(a.querySelectorAll(b));
+        if (a.getElementsByClassName)
+            return Jb(H(Xa("getElementsByClassName", a), vb), b);
+        a = a.getElementsByTagName("*");
+        b = "(" + U("|", b) + ")";
+        return nb(F(b, Pf), vb(a))
+    }
+    function Oj(a, b) {
+        var c = Sf(a)
+          , d = Vf(a);
+        return {
+            x: b.pageX || b.clientX + d.x - (c.clientLeft || 0) || 0,
+            y: b.pageY || b.clientY + d.y - (c.clientTop || 0) || 0
+        }
+    }
+    function Pj(a) {
+        var b = a.which;
+        a = a.button;
+        return b || void 0 === a ? b : 1 === a || 3 === a ? 1 : 2 === a ? 3 : 4 === a ? 2 : 0
+    }
+    var Qj = qa(Pf)("(ym-disable-clickmap|ym-clickmap-ignore)");
+    function Rj(a, b, c, d, e) {
+        if (I(a, "ymDisabledClickmap") || !b || !b.element)
+            return !1;
+        a = Zf(b.element);
+        if (e && !e(b.element, a) || M(b.button, [2, 3]) && "A" !== a || Ob(sa(a), d))
+            return !1;
+        d = b.element;
+        if (b && c) {
+            if (50 > b.time - c.time)
+                return !1;
+            e = Math.abs(c.position.x - b.position.x);
+            a = Math.abs(c.position.y - b.position.y);
+            b = b.time - c.time;
+            if (c.element === d && 2 > e && 2 > a && 1E3 > b)
+                return !1
+        }
+        for (; d; ) {
+            if (Qj(d))
+                return !1;
+            d = d.parentElement
+        }
+        return !0
+    }
+    function Sj(a, b, c, d, e) {
+        var f = "clmap/" + e.id
+          , g = {};
+        b = (g["page-url"] = b,
+        g["pointer-click"] = c,
+        g);
+        f = {
+            K: Me(),
+            J: b,
+            Na: {
+                qa: f
+            }
+        };
+        d(f, e)["catch"](W(a, "c.s.c"))
+    }
+    var Tj = X("clm.p", function(a, b) {
+        if (ic(a))
+            return u;
+        var c = Rh(a, "m", b), d = Q(b), e = Fd(a), f = e(Bd), g = F(F(d, Hi(a)), H(Re, L("clickmap"))), h, k = null;
+        d = W(a, "clm.p.c", function(l) {
+            var m = g();
+            if (m) {
+                var p = R(a)
+                  , q = p.C("cls", {
+                    yc: 0,
+                    x: 0,
+                    y: 0
+                });
+                p.D("cls", {
+                    yc: q.yc + 1,
+                    x: q.x + l.clientX,
+                    y: q.y + l.clientY
+                });
+                p = "object" === typeof m ? m : {};
+                q = p.filter;
+                m = p.isTrackHash || !1;
+                var t = O(function(z) {
+                    return ("" + z).toUpperCase()
+                }, p.ignoreTags || []);
+                B(h) && (h = p.quota || null);
+                var v = !!p.quota;
+                l = {
+                    element: Of(a, l),
+                    position: Oj(a, l),
+                    button: Pj(l),
+                    time: e(Bd)
+                };
+                p = V(a).href;
+                if (Rj(a, l, k, t, q)) {
+                    if (v) {
+                        if (!h)
+                            return;
+                        --h
+                    }
+                    t = r(Hj(a, l.element));
+                    q = t.next().value;
+                    t = t.next().value;
+                    v = Gj(a, l.element);
+                    q = ["rn", Xd(a), "x", Math.floor(65535 * (l.position.x - v.left) / (q || 1)), "y", Math.floor(65535 * (l.position.y - v.top) / (t || 1)), "t", Math.floor((l.time - f) / 100), "p", Mj(a, l.element), "X", l.position.x, "Y", l.position.y];
+                    q = U(":", q);
+                    m && (q += ":wh:1");
+                    Sj(a, p, q, c, b);
+                    k = l
+                }
+            }
+        });
+        return ud(a).F(J(a, "document"), ["click"], d)
+    })
+      , Uj = X("trigger.in", function(a, b) {
+        b.hg && ai(a, E([a, "yacounter" + b.id + "inited"], Xf), "t.i")
+    });
+    function Vj(a, b) {
+        var c = {};
+        a((c.clickmap = B(b) ? !0 : b,
+        c))
+    }
+    var Wj = X("c.m.p", function(a, b) {
+        var c = Q(b)
+          , d = {};
+        return d.clickmap = F(Gi(a, c), Vj),
+        d
+    });
+    function Xj(a) {
+        a = "" + a;
+        for (var b = 2166136261, c = a.length, d = 0; d < c; d += 1)
+            b ^= a.charCodeAt(d),
+            b += (b << 1) + (b << 4) + (b << 7) + (b << 8) + (b << 24);
+        return b >>> 0
+    }
+    var Yj = {}
+      , Zj = {};
+    Yj.p = 500;
+    var ak = {
+        i: "id",
+        n: "name",
+        h: "href",
+        ty: "type"
+    };
+    Zj.h = !0;
+    Zj.c = !0;
+    var bk = {
+        p: function(a, b, c) {
+            if (b && Fj(a, b) && b._ymp)
+                return b._ymp;
+            a = Mj(a, b, c);
+            b && (b._ymp = a);
+            return a
+        },
+        c: function(a, b, c) {
+            (a = le(J(b, "textContent"))) && c && (c = c(b),
+            c.length && Ob(H(L("textContent"), le, sa(a)), c) && (a = ""));
+            ag(b) && (a = le(b.getAttribute && b.getAttribute("value") || a));
+            return a
+        }
+    };
+    function ck(a, b, c, d) {
+        return G(function(e, f) {
+            var g = null;
+            f in ak ? g = b.getAttribute && b.getAttribute(ak[f]) : f in bk && (g = "p" === f ? bk[f](a, b, void 0) : "c" === f ? bk[f](a, b, d) : bk[f](a, b));
+            g && (g = g.slice(0, Yj[f] || 100),
+            e[f] = Zj[f] ? "" + Xj(g) : g);
+            return e
+        }, {}, c)
+    }
+    var dk = F("form", Ej)
+      , ek = x(H(Ea, ra(Wh)(L("settings.form_goals"))), Ea);
+    function fk(a, b, c, d) {
+        return ek(a, b).then(H(E([$h(a, b, c, d), u], hb), Re))
+    }
+    function gk(a, b, c, d, e, f) {
+        var g = Ba(b)(e, d)
+          , h = -1 !== g;
+        if (a || h)
+            h && d.splice(g, 1),
+            a = ck(b, e, ["i", "n", "p"]),
+            a = "?" + Wd(a),
+            d = {},
+            d = E([b, c, "fg", (d.id = c.id,
+            d.query = a,
+            d)], fk),
+            C(f) ? f = void 0 : (e = {},
+            g = {},
+            f = (g.__ym = (e.ite = jb(f),
+            e),
+            g)),
+            fj(b, c, "form", d).reachGoal(a, f)
+    }
+    function hk(a, b, c, d) {
+        var e = J(d, "target");
+        e && (d = J(d, "isTrusted"),
+        (e = Ej("button,input", a, e)) && "submit" === e.type && (e = dk(a, e))) && (c.push(e),
+        Y(a, E([!1, a, b, c, e, d], gk), 300))
+    }
+    var ik = X("s.f.i", function(a, b) {
+        var c = []
+          , d = []
+          , e = ud(a);
+        c.push(e.F(a, ["click"], W(a, "s.f.c", E([a, b, d], hk))));
+        c.push(e.F(a, ["submit"], W(a, "s.f.e", function(f) {
+            var g = J(f, "target");
+            f = J(f, "isTrusted");
+            gk(!0, a, b, d, g, f)
+        })));
+        e = {};
+        fk(a, b, "fgi", (e.id = b.id,
+        e));
+        return E([Se, c], O)
+    });
+    function jk(a, b, c, d) {
+        return function() {
+            if (fi(a, b)) {
+                var e = Ia(arguments);
+                return d.apply(null, da(e))
+            }
+        }
+    }
+    var kk = "button," + U(",", O(function(a) {
+        return 'input[type="' + a + '"]'
+    }, ["button", "submit", "reset", "file"])) + ",a"
+      , lk = F(kk, Aj)
+      , mk = {}
+      , nk = (mk.A = "h",
+    mk.BUTTON = "i",
+    mk.DIV = "i",
+    mk.INPUT = "ty",
+    mk);
+    function ok(a, b, c) {
+        var d = J(c, "target");
+        if (d) {
+            var e = Ej(kk, a, d);
+            e || (d = Ej("div", a, d)) && (Aj(kk + ",div", d).length || (e = d));
+            if (e = (d = Zf(e)) && ck(a, e, ob(["p", nk[d], "c"]), lk)) {
+                e = "?" + Wd(e);
+                d = {};
+                d = $h(a, b, "gbn", (d.id = b.id,
+                d.query = e,
+                d));
+                c = J(c, "isTrusted");
+                if (C(c))
+                    c = void 0;
+                else {
+                    var f = {}
+                      , g = {};
+                    c = (g.__ym = (f.ite = jb(c),
+                    f),
+                    g)
+                }
+                fj(a, b, "btn", d).reachGoal(e, c)
+            }
+        }
+    }
+    var pk = X("s.f.i", function(a, b) {
+        return Wh(b, function(c) {
+            if (J(c, "settings.button_goals")) {
+                c = ud(a).F(a, ["click"], W(a, "c.t.c", H(E([a, b], jk(a, b, "", ok)))));
+                var d = {};
+                $h(a, b, "gbi", (d.id = b.id,
+                d))();
+                return c
+            }
+        })
+    })
+      , qk = {}
+      , rk = (qk.transaction_id = "id",
+    qk.item_brand = "brand",
+    qk.index = "position",
+    qk.item_variant = "variant",
+    qk.value = "revenue",
+    qk.item_category = "category",
+    qk.item_list_name = "list",
+    qk)
+      , sk = {}
+      , tk = (sk.item_id = "id",
+    sk.item_name = "name",
+    sk.promotion_name = "coupon",
+    sk)
+      , uk = {}
+      , vk = (uk.promotion_name = "name",
+    uk)
+      , wk = {}
+      , xk = (wk.promotion_name = "name",
+    wk.promotion_id = "id",
+    wk.item_id = "product_id",
+    wk.item_name = "product_name",
+    wk)
+      , yk = "currencyCode add delete remove purchase checkout detail impressions click promoView promoClick".split(" ")
+      , zk = {}
+      , Ak = (zk.view_item = {
+        event: "detail",
+        Ba: tk,
+        Ma: "products"
+    },
+    zk.add_to_cart = {
+        event: "add",
+        Ba: tk,
+        Ma: "products"
+    },
+    zk.remove_from_cart = {
+        event: "remove",
+        Ba: tk,
+        Ma: "products"
+    },
+    zk.begin_checkout = {
+        event: "checkout",
+        Ba: tk,
+        Ma: "products"
+    },
+    zk.purchase = {
+        event: "purchase",
+        Ba: tk,
+        Ma: "products"
+    },
+    zk.view_item_list = {
+        event: "impressions",
+        Ba: tk
+    },
+    zk.select_item = {
+        event: "click",
+        Ma: "products",
+        Ba: tk
+    },
+    zk.view_promotion = {
+        event: "promoView",
+        Ma: "promotions",
+        Ba: xk
+    },
+    zk.select_promotion = {
+        event: "promoClick",
+        Ma: "promotions",
+        Ba: xk
+    },
+    zk);
+    function Bk(a, b) {
+        var c = {};
+        O(function(d) {
+            var e = a[d] || rk[d] || d;
+            -1 !== Na(d, "item_category") ? (e = rk.item_category,
+            c[e] = c[e] ? c[e] + ("/" + b[d]) : b[d]) : c[e] = b[d]
+        }, cc(b));
+        return c
+    }
+    function Ck(a, b) {
+        var c = y(a) ? Ak[a] : a;
+        if (c) {
+            var d = c.event
+              , e = c.Ma
+              , f = void 0 === c.pf ? "items" : c.pf
+              , g = b.purchase || b
+              , h = g[f];
+            if (h) {
+                c = O(F(c.Ba, Bk), h);
+                h = {};
+                var k = {}
+                  , l = (k[d] = e ? (h[e] = c,
+                h) : c,
+                k);
+                c = cc(g);
+                e && 1 < c.length && (l[d].actionField = G(function(m, p) {
+                    if (p === f)
+                        return m;
+                    if ("currency" === p)
+                        return l.currencyCode = g.currency,
+                        m;
+                    m[vk[p] || rk[p] || p] = g[p];
+                    return m
+                }, {}, c));
+                return l
+            }
+        }
+    }
+    var Dk = X("dl.w", function(a, b, c) {
+        function d() {
+            var g = J(a, b);
+            (e = N(g) && Zi(a, g, c)) || (f = Y(a, d, 1E3, "ec.dl"))
+        }
+        var e, f = 0;
+        d();
+        return function() {
+            return tg(a, f)
+        }
+    });
+    function Ek(a) {
+        var b = J(a, "ecommerce");
+        if (Ta(b))
+            return a = nb(sb(yk), cc(b)),
+            a = G(function(c, d) {
+                c[d] = b[d];
+                return c
+            }, {}, a),
+            0 === cc(a).length ? void 0 : a
+    }
+    function Fk(a, b, c, d) {
+        if (c) {
+            var e = J(d, "ecommerce") || {};
+            var f = J(d, "event") || "";
+            e = Ta(e) && y(f) ? Ck(f, e) : void 0;
+            if (!e)
+                a: {
+                    e = d;
+                    !N(d) && Sb(a, eb(d)) && (e = Ia(e));
+                    if (N(e)) {
+                        var g = r(e);
+                        e = g.next().value;
+                        f = g.next().value;
+                        g = g.next().value;
+                        if (y(f) && Ta(g) && "event" === e) {
+                            e = Ck(f, g);
+                            break a
+                        }
+                    }
+                    e = void 0
+                }
+            if (d = e || Ek(d))
+                e = {},
+                Ge(a, (e.counterKey = b,
+                e.name = "ecommerce",
+                e.data = d,
+                e)),
+                a = {},
+                b = {},
+                c((b.__ym = (a.ecommerce = [d],
+                a),
+                b))
+        }
+    }
+    function Gk(a, b, c) {
+        var d;
+        a = [Dk(a, b, function(e) {
+            d = e;
+            e.oa.F(c)
+        }), function() {
+            d && d.unsubscribe()
+        }
+        ];
+        return E([Se, a], O)
+    }
+    var Hk = X("p.e", function(a, b) {
+        var c = fi(a, b);
+        if (c) {
+            var d = R(a);
+            c = c.params;
+            var e = W(a, "h.ee", E([a, Q(b), c], Fk));
+            return b.Dd ? (d.D("ecs", 0),
+            Gk(a, b.Dd, e)) : Wh(b, function(f) {
+                if ((f = J(f, "settings.ecommerce")) && y(f))
+                    return d.D("ecs", 1),
+                    Gk(a, f, e)
+            })
+        }
+    });
+    function Ik(a, b) {
+        var c = []
+          , d = H(w, Xa("push", c));
+        if (A()) {
+            var e = (void 0)(b);
+            (C(e) || e === a.NodeFilter.FILTER_ACCEPT) && d(b)
+        } else
+            d(b);
+        if (b.childNodes && 0 < b.childNodes.length) {
+            e = b.childNodes;
+            for (var f = 0, g = e.length; f < g; f += 1) {
+                var h = Ik(a, e[f]);
+                O(d, h)
+            }
+        }
+        return c
+    }
+    function Jk(a, b, c, d, e, f) {
+        function g(k) {
+            return A(d) ? d(k) ? a.NodeFilter.FILTER_ACCEPT : a.NodeFilter.FILTER_REJECT : a.NodeFilter.FILTER_ACCEPT
+        }
+        e = void 0 === e ? -1 : e;
+        f = void 0 === f ? !1 : f;
+        var h = g(b);
+        if (A(c) && (f || h === a.NodeFilter.FILTER_ACCEPT) && (h && c(b),
+        !If(b)))
+            for (b = a.document.createTreeWalker(b, e, d ? {
+                acceptNode: g
+            } : null, !1); b.nextNode() && !1 !== c(b.currentNode); )
+                ;
+    }
+    function Kk(a, b, c) {
+        if (b) {
+            var d = [];
+            b && (a.document.documentElement.contains(b) ? Jk(a, b, Xa("push", d)) : Qe(d, Ik(a, b)));
+            O(c, d)
+        }
+    }
+    var Lk = x(function(a) {
+        a = V(a);
+        a = Vd(a.search.substring(1));
+        return {
+            id: Vb(a["_ym_status-check"] || ""),
+            lang: a._ym_lang || "ru"
+        }
+    })
+      , Mk = X("suid.int", function(a, b) {
+        var c = {};
+        return c.setUserID = function(d, e, f) {
+            if (y(d) || Sb(a, d)) {
+                var g = fi(a, b);
+                d = fb(["__ym", "user_id", d]);
+                g.params(d, e || u, f)
+            } else
+                Yh(a, Q(b)).error("wuid")
+        }
+        ,
+        c
+    })
+      , Nk = X("up.int", function(a, b) {
+        var c = {};
+        return c.userParams = W(a, "up.c", function(d, e, f) {
+            var g = fi(a, b)
+              , h = Yh(a, Q(b)).warn;
+            g ? Ta(d) ? (h = {},
+            d = (h.__ymu = d,
+            h),
+            (g = g.params) && g(d, e || u, f)) : h("wup") : h("nci")
+        }),
+        c
+    })
+      , Ok = /[\*\.\?\(\)]/g
+      , Pk = x(function(a, b, c) {
+        try {
+            var d = c.replace("\\s", " ").replace(Ok, "");
+            b = {};
+            Yh(a, "").warn("nnw", (b.name = d,
+            b))
+        } catch (e) {}
+    }, Ea)
+      , Qk = X("r.nn", function(a) {
+        Ce(a) && Zi(a, va, function(b) {
+            b.oa.F(function(c) {
+                var d = r(c);
+                c = d.next().value;
+                d = d.next().value;
+                Pk(a, d, c);
+                va.splice(100)
+            })
+        })
+    })
+      , Rk = X("e.a.p", function(a, b) {
+        var c = fi(a, b);
+        c = E([H(w, ua(!0)), ob(O(F(c, J), ["clickmap", "trackLinks", "accurateTrackBounce"]))], O);
+        b.Yg && c();
+        var d = {};
+        return d.enableAll = c,
+        d
+    });
+    function Sk(a, b) {
+        return {
+            T: function(c, d) {
+                ah(c) ? d() : Wh(b, function(e) {
+                    if (e = J(e, "settings.hittoken")) {
+                        var f = {};
+                        e = (f.hittoken = e,
+                        f);
+                        c.J = P(c.J || {}, e)
+                    }
+                    d()
+                })
+            }
+        }
+    }
+    var Tk = x(De, Q)
+      , Uk = X("fpi", function(a) {
+        var b = wd(a);
+        if (b && !a.document.hidden) {
+            var c = R(a).wa;
+            c("fpe", 1);
+            var d = ud(a).F(a, ["visibilitychange", "webkitvisibilitychange"], function() {
+                a.document.hidden && (c("fht", b.now()),
+                d())
+            })
+        }
+    })
+      , Vk = x(function(a) {
+        a = J(a, "console");
+        var b = J(a, "log");
+        b = wa("log", b) ? D(b, a) : u;
+        var c = J(a, "warn");
+        c = wa("warn", c) ? D(c, a) : b;
+        var d = J(a, "error");
+        a = wa("error", d) ? D(d, a) : b;
+        return {
+            log: b,
+            error: a,
+            warn: c
+        }
+    });
+    function Wk(a, b, c) {
+        var d = !1
+          , e = "";
+        if (!Ta(b))
+            return Zh(c, "", "ecomeo"),
+            d;
+        var f = b.goods;
+        switch (a) {
+        case "detail":
+        case "add":
+        case "remove":
+            N(f) && f.length ? (d = Rb(function(g) {
+                return Ta(g) && (y(g.id) || Sb(c, g.id) || y(g.name))
+            }, f)) || (e = "ecomgi") : e = "ecomgei";
+            break;
+        case "purchase":
+            Sb(c, b.id) || y(b.id) ? d = !0 : e = "ecompi"
+        }
+        Zh(c, "", e);
+        return d
+    }
+    function Xk(a, b, c) {
+        return function(d) {
+            var e = fi(b, c);
+            if (e && Wk(a, d, b) && (e = D(e.params, e),
+            (d = Ck({
+                event: a,
+                Ma: "products",
+                Ba: tk,
+                pf: "goods"
+            }, d)) && e)) {
+                var f = {}
+                  , g = {};
+                e((g.__ym = (f.ecommerce = [d],
+                f),
+                g))
+            }
+        }
+    }
+    var Yk = F("add", Xk)
+      , Zk = F("remove", Xk)
+      , $k = F("detail", Xk)
+      , al = F("purchase", Xk)
+      , bl = "FB_IAB FBAV OKApp GSA/ yandex yango uber EatsKit YKeyboard iOSAppUslugi YangoEats PassportSDK".split(" ")
+      , cl = x(function(a) {
+        var b = zb(a);
+        a = b.kg;
+        if (!b.uf)
+            return !1;
+        b = Xa("indexOf", a);
+        b = Ob(H(b, sa(-1), Fa), bl);
+        var c = /CFNetwork\/[0-9][0-9.]*.*Darwin\/[0-9][0-9.]*/.test(a)
+          , d = /YaBrowser\/[\d.]+/.test(a)
+          , e = /Mobile/.test(a);
+        return b || c || d && e || !/Safari/.test(a) && e
+    })
+      , dl = x(function(a) {
+        var b = Bb(a);
+        return b ? Pa(b, "YangoEats") || oc(a) : !1
+    })
+      , el = /([0-9\\.]+) Safari/
+      , fl = /\sYptp\/\d\.(\d+)\s/;
+    function gl(a) {
+        return lc(a) && (a = Bb(a).match(el)) && a.length ? "14.1" === a[1] : !1
+    }
+    var hl = x(function(a) {
+        var b;
+        a: {
+            if ((b = Bb(a)) && (b = fl.exec(b)) && 1 < b.length) {
+                b = Vb(b[1]);
+                break a
+            }
+            b = 0
+        }
+        return 50 <= b && 99 >= b || Gc(a) ? !1 : !Ec(a) || cl(a)
+    });
+    function il(a, b, c, d, e, f, g, h) {
+        var k = c.C(f);
+        C(k) && (c.D(f, g),
+        e(a, b, c, d),
+        k = c.C(f, g));
+        B(h) || h.Db(f, "" + k);
+        return k
+    }
+    var jl = []
+      , kl = !1
+      , ll = !1;
+    function ml(a) {
+        if (jl.length) {
+            var b = jl.shift();
+            ll ? b() : Y(a, b, 100)
+        } else
+            kl = !1
+    }
+    function nl(a, b, c, d) {
+        c = void 0 === c ? 1 : c;
+        d = void 0 === d ? Pd : d;
+        ll = Infinity === c;
+        return ua(function(e, f) {
+            function g() {
+                try {
+                    var k = b(d(a, c));
+                    h = h.concat(k)
+                } catch (l) {
+                    return e(l)
+                }
+                b(Kd);
+                if (b(Hd))
+                    return f(h),
+                    ml(a);
+                ll ? (b(d(a, 1E4)),
+                f(h),
+                ml(a)) : Y(a, g, 100)
+            }
+            var h = [];
+            kl ? jl.push(g) : (kl = !0,
+            g())
+        })
+    }
+    var ol = "monospace;sans-serif;serif;Andale Mono;Arial;Arial Black;Arial Hebrew;Arial MT;Arial Narrow;Arial Rounded MT Bold;Arial Unicode MS;Bitstream Vera Sans Mono;Book Antiqua;Bookman Old Style;Calibri;Cambria;Cambria Math;Century;Century Gothic;Century Schoolbook;Comic Sans;Comic Sans MS;Consolas;Courier;Courier New;Garamond;Geneva;Georgia;Helvetica;Helvetica Neue;Impact;Lucida Bright;Lucida Calligraphy;Lucida Console;Lucida Fax;LUCIDA GRANDE;Lucida Handwriting;Lucida Sans;Lucida Sans Typewriter;Lucida Sans Unicode;Microsoft Sans Serif;Monaco;Monotype Corsiva;MS Gothic;MS Outlook;MS PGothic;MS Reference Sans Serif;MS Sans Serif;MS Serif;MYRIAD;MYRIAD PRO;Palatino;Palatino Linotype;Segoe Print;Segoe Script;Segoe UI;Segoe UI Light;Segoe UI Semibold;Segoe UI Symbol;Tahoma;Times;Times New Roman;Times New Roman PS;Trebuchet MS;Verdana;Wingdings;Wingdings 2;Wingdings 3".split(";")
+      , pl = x(function(a) {
+        a = Mf(a)("canvas");
+        var b = J(a, "getContext");
+        if (!b)
+            return null;
+        try {
+            var c = D(b, a)("2d");
+            c.font = "72px mmmmmmmmmmlli";
+            var d = c.measureText("mmmmmmmmmmlli").width;
+            return function(e) {
+                c.font = "72px " + e;
+                return c.measureText("mmmmmmmmmmlli").width === d
+            }
+        } catch (e) {
+            return null
+        }
+    })
+      , ql = ya(String.prototype.repeat, "repeat");
+    function rl(a, b) {
+        for (var c = "", d = 0; d < b; d += 1)
+            c += a;
+        return c
+    }
+    var sl = ql ? function(a, b) {
+        return ql.call(a, b)
+    }
+    : rl
+      , tl = F(!0, function(a, b, c, d) {
+        c = b.length && (c - d.length) / b.length;
+        if (0 >= c)
+            return d;
+        b = sl(b, c);
+        return a ? b + d : d + b
+    });
+    function ul(a, b) {
+        a = [a[0] >>> 16, a[0] & 65535, a[1] >>> 16, a[1] & 65535];
+        b = [b[0] >>> 16, b[0] & 65535, b[1] >>> 16, b[1] & 65535];
+        var c = [0, 0, 0, 0];
+        c[3] += a[3] * b[3];
+        c[2] += c[3] >>> 16;
+        c[3] &= 65535;
+        c[2] += a[2] * b[3];
+        c[1] += c[2] >>> 16;
+        c[2] &= 65535;
+        c[2] += a[3] * b[2];
+        c[1] += c[2] >>> 16;
+        c[2] &= 65535;
+        c[1] += a[1] * b[3];
+        c[0] += c[1] >>> 16;
+        c[1] &= 65535;
+        c[1] += a[2] * b[2];
+        c[0] += c[1] >>> 16;
+        c[1] &= 65535;
+        c[1] += a[3] * b[1];
+        c[0] += c[1] >>> 16;
+        c[1] &= 65535;
+        c[0] += a[0] * b[3] + a[1] * b[2] + a[2] * b[1] + a[3] * b[0];
+        c[0] &= 65535;
+        return [c[0] << 16 | c[1], c[2] << 16 | c[3]]
+    }
+    function vl(a, b) {
+        a = [a[0] >>> 16, a[0] & 65535, a[1] >>> 16, a[1] & 65535];
+        b = [b[0] >>> 16, b[0] & 65535, b[1] >>> 16, b[1] & 65535];
+        var c = [0, 0, 0, 0];
+        c[3] += a[3] + b[3];
+        c[2] += c[3] >>> 16;
+        c[3] &= 65535;
+        c[2] += a[2] + b[2];
+        c[1] += c[2] >>> 16;
+        c[2] &= 65535;
+        c[1] += a[1] + b[1];
+        c[0] += c[1] >>> 16;
+        c[1] &= 65535;
+        c[0] += a[0] + b[0];
+        c[0] &= 65535;
+        return [c[0] << 16 | c[1], c[2] << 16 | c[3]]
+    }
+    function wl(a, b) {
+        b %= 64;
+        if (32 === b)
+            return [a[1], a[0]];
+        if (32 > b)
+            return [a[0] << b | a[1] >>> 32 - b, a[1] << b | a[0] >>> 32 - b];
+        b -= 32;
+        return [a[1] << b | a[0] >>> 32 - b, a[0] << b | a[1] >>> 32 - b]
+    }
+    function xl(a, b) {
+        b %= 64;
+        return 0 === b ? a : 32 > b ? [a[0] << b | a[1] >>> 32 - b, a[1] << b] : [a[1] << b - 32, 0]
+    }
+    function yl(a, b) {
+        return [a[0] ^ b[0], a[1] ^ b[1]]
+    }
+    function zl(a) {
+        a = yl(a, [0, a[0] >>> 1]);
+        a = ul(a, [4283543511, 3981806797]);
+        a = yl(a, [0, a[0] >>> 1]);
+        a = ul(a, [3301882366, 444984403]);
+        return a = yl(a, [0, a[0] >>> 1])
+    }
+    var Al = [2277735313, 289559509]
+      , Bl = [1291169091, 658871167];
+    function Cl(a, b) {
+        var c = a || ""
+          , d = (void 0 === b ? 210 : b) || 0
+          , e = c.length - c.length % 16
+          , f = [0, d];
+        d = [0, d];
+        for (var g = 0; g < e; g += 16) {
+            var h = [a.charCodeAt(g + 4) & 255 | (a.charCodeAt(g + 5) & 255) << 8 | (a.charCodeAt(g + 6) & 255) << 16 | (a.charCodeAt(g + 7) & 255) << 24, a.charCodeAt(g) & 255 | (a.charCodeAt(g + 1) & 255) << 8 | (a.charCodeAt(g + 2) & 255) << 16 | (a.charCodeAt(g + 3) & 255) << 24]
+              , k = [a.charCodeAt(g + 12) & 255 | (a.charCodeAt(g + 13) & 255) << 8 | (a.charCodeAt(g + 14) & 255) << 16 | (a.charCodeAt(g + 15) & 255) << 24, a.charCodeAt(g + 8) & 255 | (a.charCodeAt(g + 9) & 255) << 8 | (a.charCodeAt(g + 10) & 255) << 16 | (a.charCodeAt(g + 11) & 255) << 24];
+            h = ul(h, Al);
+            h = wl(h, 31);
+            h = ul(h, Bl);
+            f = yl(f, h);
+            f = wl(f, 27);
+            f = vl(f, d);
+            f = vl(ul(f, [0, 5]), [0, 1390208809]);
+            k = ul(k, Bl);
+            k = wl(k, 33);
+            k = ul(k, Al);
+            d = yl(d, k);
+            d = wl(d, 31);
+            d = vl(d, f);
+            d = vl(ul(d, [0, 5]), [0, 944331445])
+        }
+        e = c.length % 16;
+        g = c.length - e;
+        h = [0, 0];
+        k = [0, 0];
+        switch (e) {
+        case 15:
+            k = yl(k, xl([0, c.charCodeAt(g + 14)], 48));
+        case 14:
+            k = yl(k, xl([0, c.charCodeAt(g + 13)], 40));
+        case 13:
+            k = yl(k, xl([0, c.charCodeAt(g + 12)], 32));
+        case 12:
+            k = yl(k, xl([0, c.charCodeAt(g + 11)], 24));
+        case 11:
+            k = yl(k, xl([0, c.charCodeAt(g + 10)], 16));
+        case 10:
+            k = yl(k, xl([0, c.charCodeAt(g + 9)], 8));
+        case 9:
+            k = yl(k, [0, c.charCodeAt(g + 8)]),
+            k = ul(k, Bl),
+            k = wl(k, 33),
+            k = ul(k, Al),
+            d = yl(d, k);
+        case 8:
+            h = yl(h, xl([0, c.charCodeAt(g + 7)], 56));
+        case 7:
+            h = yl(h, xl([0, c.charCodeAt(g + 6)], 48));
+        case 6:
+            h = yl(h, xl([0, c.charCodeAt(g + 5)], 40));
+        case 5:
+            h = yl(h, xl([0, c.charCodeAt(g + 4)], 32));
+        case 4:
+            h = yl(h, xl([0, c.charCodeAt(g + 3)], 24));
+        case 3:
+            h = yl(h, xl([0, c.charCodeAt(g + 2)], 16));
+        case 2:
+            h = yl(h, xl([0, c.charCodeAt(g + 1)], 8));
+        case 1:
+            h = yl(h, [0, c.charCodeAt(g)]),
+            h = ul(h, Al),
+            h = wl(h, 31),
+            h = ul(h, Bl),
+            f = yl(f, h)
+        }
+        f = yl(f, [0, c.length]);
+        d = yl(d, [0, c.length]);
+        f = vl(f, d);
+        d = vl(d, f);
+        f = zl(f);
+        d = zl(d);
+        f = vl(f, d);
+        d = vl(d, f);
+        return ("00000000" + (f[0] >>> 0).toString(16)).slice(-8) + ("00000000" + (f[1] >>> 0).toString(16)).slice(-8) + ("00000000" + (d[0] >>> 0).toString(16)).slice(-8) + ("00000000" + (d[1] >>> 0).toString(16)).slice(-8)
+    }
+    var Dl = X("p.cd", function(a) {
+        if (rc(a) || jc(a)) {
+            var b = Gf(a);
+            if (C(b.C("jn"))) {
+                b.D("jn", !1);
+                var c = a.chrome || lc(a) ? function() {}
+                : /./;
+                a = Vk(a);
+                c.toString = function() {
+                    b.D("jn", !0);
+                    return "Yandex.Metrika counter is initialized"
+                }
+                ;
+                a.log("%c%s", "color: inherit", c)
+            }
+        }
+    });
+    function El(a, b) {
+        return Array.prototype.sort.call(b, a)
+    }
+    var Fl = qa(El);
+    function Gl(a) {
+        return U(",", [a.description, a.suffixes, a.type])
+    }
+    function Hl(a) {
+        try {
+            var b = eb(a) ? a : [];
+            return U(",", [a.name, a.description, H(vb, ob, Kb(Gl), pd(","))(b)])
+        } catch (c) {
+            return ""
+        }
+    }
+    var Il = x(function(a) {
+        a = J(a, "navigator.plugins");
+        return !!(a && eb(a) && Ob(H(L("name"), Ya(/Chrome PDF Viewer/)), a))
+    })
+      , Jl = qa(function(a, b) {
+        return R(b).C(a, null)
+    })
+      , Kl = ["bl", "mf", "ntq", "rt", "tl2"]
+      , Ll = {
+        "*": "+",
+        "-": "/",
+        Pi: "=",
+        "+": "*",
+        "/": "-",
+        "=": "_"
+    };
+    function Ml(a) {
+        return a ? a.replace(/[+/=]/g, function(b) {
+            return Ll[b] || b
+        }) : ""
+    }
+    function Nl(a) {
+        var b = ""
+          , c = 0;
+        if (!a)
+            return "";
+        for (; a.length % 4; )
+            a += "=";
+        do {
+            var d = Oa("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=", a.charAt(c++))
+              , e = Oa("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=", a.charAt(c++))
+              , f = Oa("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=", a.charAt(c++))
+              , g = Oa("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=", a.charAt(c++));
+            if (0 > d || 0 > e || 0 > f || 0 > g)
+                return "";
+            var h = d << 18 | e << 12 | f << 6 | g;
+            d = h >> 16 & 255;
+            e = h >> 8 & 255;
+            h &= 255;
+            b = 64 === f ? b + String.fromCharCode(d) : 64 === g ? b + String.fromCharCode(d, e) : b + String.fromCharCode(d, e, h)
+        } while (c < a.length);
+        return b
+    }
+    function Ol(a, b) {
+        b = void 0 === b ? !1 : b;
+        for (var c = a.length, d = c - c % 3, e = [], f = 0; f < d; f += 3) {
+            var g = (a[f] << 16) + (a[f + 1] << 8) + a[f + 2];
+            e.push("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="[g >> 18 & 63], "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="[g >> 12 & 63], "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="[g >> 6 & 63], "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="[g & 63])
+        }
+        switch (c - d) {
+        case 1:
+            c = a[d] << 4;
+            e.push("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="[c >> 6 & 63], "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="[c & 63], "=", "=");
+            break;
+        case 2:
+            c = (a[d] << 10) + (a[d + 1] << 2),
+            e.push("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="[c >> 12 & 63], "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="[c >> 6 & 63], "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="[c & 63], "=")
+        }
+        e = U("", e);
+        return b ? Ml(e) : e
+    }
+    function Pl(a) {
+        for (var b = "", c = 0; c < a.length; ) {
+            var d = a.charCodeAt(c);
+            128 > d ? (b += String.fromCharCode(d),
+            c++) : 191 < d && 224 > d ? (b += String.fromCharCode((d & 31) << 6 | a.charCodeAt(c + 1) & 63),
+            c += 2) : (b += String.fromCharCode((d & 15) << 12 | (a.charCodeAt(c + 1) & 63) << 6 | a.charCodeAt(c + 2) & 63),
+            c += 3)
+        }
+        return b
+    }
+    function Ql(a) {
+        for (var b = [], c = 0; c < a.length; c++) {
+            var d = a.charCodeAt(c);
+            128 > d ? b.push(d) : (127 < d && 2048 > d ? b.push(d >> 6 | 192) : (b.push(d >> 12 | 224),
+            b.push(d >> 6 & 63 | 128)),
+            b.push(d & 63 | 128))
+        }
+        return b
+    }
+    function Rl(a) {
+        return a ? Ol(Ql(a)) : null
+    }
+    var Sl = x(function(a) {
+        return Ab(/tizen/i, a)
+    });
+    function Tl(a) {
+        if (!Sl(a))
+            return null;
+        a = J(a, "webapis.adinfo.getTIFA");
+        if (A(a))
+            try {
+                return Rl(a())
+            } catch (b) {}
+        return null
+    }
+    function Ul(a) {
+        if (!Sl(a))
+            return null;
+        a = J(a, "tizen.systeminfo.getCapability");
+        if (A(a))
+            try {
+                return Rl(a("http://tizen.org/system/tizenid"))
+            } catch (b) {}
+        return null
+    }
+    function Vl(a) {
+        if (!Sl(a))
+            return null;
+        a = J(a, "tizen.systeminfo.getCapabilities");
+        try {
+            if (A(a))
+                return Rl(J(a(), "duid"))
+        } catch (b) {}
+        return null
+    }
+    var Wl = x(function(a) {
+        return Ab(/webos|web0s/i, a)
+    });
+    function Xl(a) {
+        var b = J(a, "webOS.service.request");
+        return A(b) ? new S(function(c) {
+            var d = {}
+              , e = {};
+            b("luna://com.webos.service.sm", (e.method = "deviceid/getIDs",
+            e.parameters = (d.idType = ["LGUDID"],
+            d),
+            e.onSuccess = function(f) {
+                c(Rl(J(f, "idList.0.idValue")))
+            }
+            ,
+            e))
+        }
+        ) : S.resolve(null)
+    }
+    var Yl = x(function(a) {
+        return A(J(a, "yandex.getSiteUid")) ? a.yandex.getSiteUid() : null
+    });
+    function Zl(a, b) {
+        try {
+            var c = b.localStorage.getItem(a);
+            return c && Ol(Ql(c))
+        } catch (d) {}
+        return null
+    }
+    var $l = x(F("panoramaId", Zl))
+      , am = x(function(a) {
+        return Zl("pubcid.org", a) || Zl("_pubCommonId", a)
+    })
+      , bm = x(F("_sharedid", Zl))
+      , cm = x(function(a, b) {
+        if (b.eb)
+            return null;
+        var c = Ae(a, "").C("_ga");
+        return c && Ol(Ql(c))
+    }, H(Ea, Q))
+      , dm = [["domainLookupEnd", "domainLookupStart"], ["connectEnd", "connectStart"], ["responseStart", "requestStart"], ["responseEnd", "responseStart"], ["fetchStart", "navigationStart"], ["redirectEnd", "redirectStart"], [function(a, b) {
+        return J(b, "redirectCount") || J(a, "navigation.redirectCount")
+    }
+    ], ["domInteractive", "domLoading"], ["domContentLoadedEventEnd", "domContentLoadedEventStart"], ["domComplete", "navigationStart"], ["loadEventStart", "navigationStart"], ["loadEventEnd", "loadEventStart"], ["domContentLoadedEventStart", "navigationStart"]]
+      , em = [["domainLookupEnd", "domainLookupStart"], ["connectEnd", "connectStart"], ["responseStart", "requestStart"], ["responseEnd", "responseStart"], ["fetchStart"], ["redirectEnd", "redirectStart"], ["redirectCount"], ["domInteractive", "responseEnd"], ["domContentLoadedEventEnd", "domContentLoadedEventStart"], ["domComplete"], ["loadEventStart"], ["loadEventEnd", "loadEventStart"], ["domContentLoadedEventStart"]]
+      , fm = {}
+      , gm = (fm.responseEnd = 1,
+    fm.domInteractive = 1,
+    fm.domContentLoadedEventStart = 1,
+    fm.domContentLoadedEventEnd = 1,
+    fm.domComplete = 1,
+    fm.loadEventStart = 1,
+    fm.loadEventEnd = 1,
+    fm.unloadEventStart = 1,
+    fm.unloadEventEnd = 1,
+    fm.secureConnectionStart = 1,
+    fm)
+      , hm = x(Ee);
+    function im(a, b, c) {
+        return O(function(d) {
+            var e = r(d)
+              , f = e.next().value;
+            e = e.next().value;
+            if (A(f))
+                return f(a, b) || null;
+            if (1 === d.length)
+                return b[f] ? Math.round(b[f]) : null;
+            var g;
+            !(g = b[f] && b[e]) && (g = 0 === b[f] && 0 === b[e]) && (g = r(d),
+            d = g.next().value,
+            g = g.next().value,
+            g = !(gm[d] || gm[g]));
+            if (!g)
+                return null;
+            f = Math.round(b[f]) - Math.round(b[e]);
+            return 0 > f || 36E5 < f ? null : f
+        }, c)
+    }
+    function jm(a, b) {
+        var c = a.length ? O(function(d, e) {
+            var f = b[e];
+            return f === d ? null : f
+        }, a) : b;
+        a.length = 0;
+        O(H(w, Xa("push", a)), b);
+        return nb(sa(null), c).length === a.length ? null : c
+    }
+    function km(a, b, c) {
+        if ((void 0 === c.J ? {} : c.J).nohit)
+            return null;
+        a = wd(a);
+        if (!a)
+            return null;
+        var d = c = null;
+        J(a, "getEntriesByType") && (d = J(a.getEntriesByType("navigation"), "0")) && (c = em);
+        if (!c) {
+            var e = J(a, "timing");
+            e && (c = dm,
+            d = e)
+        }
+        if (!c)
+            return null;
+        a = im(a, d, c);
+        b = Q(b);
+        b = hm(b);
+        return (b = jm(b, a)) && U(",", b)
+    }
+    var lm = x(De)
+      , mm = x(function(a) {
+        var b = J(a, "webkitRequestFileSystem");
+        if (A(b) && !rc(a))
+            return (new S(D(b, a, 0, 0))).then(function() {
+                var d = J(a, "navigator.storage") || {};
+                return d.estimate ? d.estimate() : {}
+            }).then(function(d) {
+                return (d = d.quota) && 12E7 > d ? !0 : !1
+            })["catch"](F(!0, w));
+        if (Db(a))
+            return b = J(a, "navigator.serviceWorker"),
+            S.resolve(B(b));
+        b = J(a, "openDatabase");
+        if (lc(a) && A(b)) {
+            var c = !1;
+            try {
+                b(null, null, null, null)
+            } catch (d) {
+                c = !0
+            }
+            return S.resolve(c)
+        }
+        return S.resolve(!J(a, "indexedDB") && (J(a, "PointerEvent") || J(a, "MSPointerEvent")))
+    });
+    function nm(a) {
+        if (oc(a))
+            return null;
+        var b = lm(a)
+          , c = b.Hf;
+        B(c) && (b.Hf = null,
+        mm(a).then(function(d) {
+            b.Hf = d
+        }));
+        return c ? 1 : null
+    }
+    var om = /(\?|&)turbo_uid=([\w\d]+)($|&)/
+      , pm = x(function(a, b) {
+        var c = Be(a)
+          , d = V(a).search.match(om);
+        return d && 2 <= d.length ? (d = r(d),
+        d.next(),
+        d.next(),
+        d = d.next().value,
+        b.eb || c.D("turbo_uid", d),
+        d) : (c = c.C("turbo_uid")) ? c : ""
+    })
+      , qm = X("pa.plgn", function(a, b) {
+        var c = Wi(a, b);
+        c && c.$.F(["pluginInfo"], W(a, "c.plgn", function() {
+            var d = R(a);
+            d.D("cmc", d.C("cmc", 0) + 1);
+            return Xe(b)
+        }))
+    })
+      , rm = {}
+      , sm = (rm.am = "com.am",
+    rm.tr = "com.tr",
+    rm.ge = "com.ge",
+    rm.il = "co.il",
+    rm["\u0440\u0444"] = "ru",
+    rm["xn--p1ai"] = "ru",
+    rm["\u0431\u0435\u043b"] = "by",
+    rm["xn--90ais"] = "by",
+    rm)
+      , tm = {
+        "mc.edadeal.ru": /^([^/]+\.)?edadeal\.ru$/,
+        "mc.yandexsport.ru": /^([^/]+\.)?yandexsport\.ru$/,
+        "mc.kinopoisk.ru": /^([^/]+\.)?kinopoisk\.ru$/
+    }
+      , um = {}
+      , vm = (um.ka = "ge",
+    um.ro = "md",
+    um.tg = "tj",
+    um.tk = "tm",
+    um.et = "ee",
+    um.hy = "com.am",
+    um.he = "co.li",
+    um.ky = "kg",
+    um.be = "by",
+    um.tr = "com.tr",
+    um.kk = "kz",
+    um)
+      , wm = /^https?:\/\//
+      , xm = {
+        1882689622: 1,
+        2318205080: 1,
+        3115871109: 1,
+        1996539654: 1,
+        2065498185: 1,
+        823651274: 1,
+        12282461: 1,
+        1555719328: 1,
+        1417229093: 1,
+        138396985: 1
+    };
+    function zm(a) {
+        a = r(a.replace(wm, "").split("?")).next().value;
+        var b = a + "?"
+          , c = Xj(b);
+        if (oa[c])
+            return [b, c, !0];
+        b = Xj(a);
+        return oa[b] ? [a, b, !0] : [a, b, !1]
+    }
+    var Am = x(function(a) {
+        a = wd(a);
+        if (!a || !A(a.getEntriesByType))
+            return null;
+        a = a.getEntriesByType("resource");
+        return (a = Ke(H(L("name"), zm, L("2")), a)) ? jb(a.transferSize) : null
+    });
+    function Bm(a, b) {
+        var c = El(function(d, e) {
+            return d[1].fa > e[1].fa ? 1 : -1
+        }, bc(Rc));
+        c = O(function(d) {
+            var e = r(d);
+            d = e.next().value;
+            var f = e.next().value.Ta;
+            e = I(b, d) && !C(b[d]);
+            d = b[d] !== (f || w)(void 0);
+            return jb(e && d)
+        }, c);
+        return Wb(U("", c))
+    }
+    var Cm = "ar:1:pv:1:v:" + Nc.mb + ":vf:" + na.version
+      , Dm = Nc.Pa + "//" + Kc + "/watch/" + Nc.Se;
+    function Em(a, b) {
+        try {
+            var c = r(b)
+              , d = r(c.next().value);
+            d.next();
+            var e = d.next().value
+        } catch (f) {
+            return function() {
+                return S.resolve()
+            }
+        }
+        return function(f) {
+            var g = {};
+            g = (g["browser-info"] = Cm,
+            g["page-url"] = a.location && "" + a.location.href,
+            g);
+            return e && (f = zf(a, f)) ? e(Dm, {
+                Ua: g,
+                ha: [],
+                aa: "site-info=" + Td(f)
+            })["catch"](u) : S.resolve()
+        }
+    }
+    var Fm = {}
+      , Gm = X("exps.int", function(a, b) {
+        var c = {};
+        return c.experiments = function(d, e, f) {
+            if (y(d) && !(0 >= d.length)) {
+                var g = Rh(a, "e", b)
+                  , h = Qi(b).url
+                  , k = {}
+                  , l = {};
+                d = g({
+                    K: Me((k.ex = 1,
+                    k.ar = 1,
+                    k)),
+                    J: (l["page-url"] = h || V(a).href,
+                    l.exp = d,
+                    l)
+                }, b);
+                return Pi(a, "exps.s", d, e || u, f)
+            }
+        }
+        ,
+        c
+    })
+      , Hm = []
+      , Im = X("p.fh", function(a, b) {
+        b = void 0 === b ? !0 : b;
+        var c = Gf(a)
+          , d = Fd(a)
+          , e = c.C("wasSynced")
+          , f = {
+            id: 3,
+            Z: "0"
+        };
+        if (b && e && e.time + 864E5 > d(Bd))
+            return S.resolve(e);
+        e = {};
+        var g = {};
+        return Rh(a, "f", f)({
+            K: Me((e.pv = 1,
+            e)),
+            J: (g["page-url"] = V(a).href,
+            g["page-ref"] = a.document.referrer,
+            g)
+        }, f).then(function(h) {
+            var k = {};
+            h = (k.time = d(Bd),
+            k.params = J(h, "settings"),
+            k.bkParams = J(h, "userData"),
+            k);
+            c.D("wasSynced", h);
+            return h
+        })["catch"](W(a, "f.h"))
+    })
+      , Jm = qa(function(a, b) {
+        0 === parseFloat(J(b, "settings.c_recp")) && (a.ee.D("ymoo" + a.ya, a.fg(Cd)),
+        a.zd && a.zd.destruct && a.zd.destruct())
+    })
+      , Km = H(L("settings.pcs"), sa("1"))
+      , Lm = x(function(a) {
+        a = V(a).hostname.split(".");
+        return a[a.length - 1]
+    })
+      , Mm = x(function(a) {
+        return -1 !== V(a).hostname.search(/(?:^|\.)(?:ya|yandex|beru|kinopoisk|edadeal)\.(?:\w+|com?\.\w+)$/)
+    })
+      , Nm = RegExp("^(.*\\.)?((yandex(-team)?)\\.(com?\\.)?[a-z]+|(auto|kinopoisk|beru|bringly)\\.ru|ya\\.(ru|cc)|yadi\\.sk|yastatic\\.net|.*\\.yandex|turbopages\\.org|turbo\\.site|diplodoc\\.(com|tech)|datalens\\.tech|white-label\\.yango-tech\\.com|al-sadhan\\.com|spar\\.sa)$")
+      , Om = x(function(a) {
+        a = V(a).hostname;
+        var b = !1;
+        a && (b = -1 !== a.search(Nm));
+        return b
+    })
+      , Pm = /(?:^|\.)dzen\.ru$/
+      , Qm = x(function(a) {
+        a = V(a).hostname;
+        var b = !1;
+        a && (b = -1 !== a.search(Pm));
+        return b
+    })
+      , Rm = /(?:^|\.)vk\.link$/
+      , Sm = x(function(a) {
+        a = V(a).hostname;
+        var b = !1;
+        a && (b = -1 !== a.search(Rm));
+        return b
+    });
+    function Tm(a, b) {
+        this.l = a;
+        this.type = b
+    }
+    Tm.isEnabled = function(a) {
+        return !!a.JSON
+    }
+    ;
+    Tm.prototype.ra = function(a) {
+        return Bg(zf(this.l, a))
+    }
+    ;
+    Tm.prototype.Cb = function(a) {
+        var b = a.data;
+        return "string" === typeof b ? b : zf(this.l, a.data)
+    }
+    ;
+    Tm.prototype.tb = function(a) {
+        return encodeURIComponent(a).length
+    }
+    ;
+    Tm.prototype.Be = function(a, b) {
+        for (var c = Math.ceil(a.length / b), d = [], e = 0; e < b; e += 1)
+            d.push(a.slice(e * c, c * (e + 1)));
+        return d
+    }
+    ;
+    function Um(a) {
+        if (!a)
+            return [0, 0];
+        var b = 0 > a;
+        b && (a = -a);
+        var c = a >>> 0;
+        a = (a - c) / 4294967296 >>> 0;
+        b && (a = ~a >>> 0,
+        c = ~c >>> 0,
+        4294967295 < ++c && (c = 0,
+        4294967295 < ++a && (a = 0)));
+        return [a, c]
+    }
+    function Vm(a, b, c, d) {
+        b = r(b);
+        a = b.next().value;
+        for (b = b.next().value; a; )
+            c[d++] = b & 127 | 128,
+            b = (b >>> 7 | a << 25) >>> 0,
+            a >>>= 7;
+        for (; 127 < b; )
+            c[d++] = b & 127 | 128,
+            b >>>= 7;
+        c[d++] = b
+    }
+    function Wm(a, b, c) {
+        b[c] = a & 255;
+        b[c + 1] = a >>> 8 & 255;
+        b[c + 2] = a >>> 16 & 255;
+        b[c + 3] = a >>> 24
+    }
+    function Xm(a, b, c, d) {
+        var e = 0 > b ? 1 : 0;
+        e && (b = -b);
+        if (0 === b)
+            Wm(0 < 1 / b ? 0 : 2147483648, c, d);
+        else if (a.isNaN(b))
+            Wm(2143289344, c, d);
+        else if (3.4028234663852886E38 < b)
+            Wm((e << 31 | 2139095040) >>> 0, c, d);
+        else if (1.1754943508222875E-38 > b)
+            Wm((e << 31 | a.Math.round(b / 1.401298464324817E-45)) >>> 0, c, d);
+        else {
+            var f = a.Math.floor(a.Math.log(b) / Math.LN2);
+            Wm((e << 31 | f + 127 << 23 | Math.round(b * a.Math.pow(2, -f) * 8388608) & 8388607) >>> 0, c, d)
+        }
+    }
+    var Ym = x(function(a) {
+        function b(f, g, h, k) {
+            d[0] = g;
+            h[k] = e[3];
+            h[k + 1] = e[2];
+            h[k + 2] = e[1];
+            h[k + 3] = e[0]
+        }
+        function c(f, g, h, k) {
+            d[0] = g;
+            h[k] = e[0];
+            h[k + 1] = e[1];
+            h[k + 2] = e[2];
+            h[k + 3] = e[3]
+        }
+        if ("undefined" === typeof a.Float32Array || "undefined" === typeof a.Uint8Array)
+            return Xm;
+        var d = new Float32Array([-0])
+          , e = new Uint8Array(d.buffer);
+        return 128 === e[3] ? c : b
+    });
+    function Zm(a, b, c, d) {
+        return Ym(a)(a, b, c, d)
+    }
+    function $m(a) {
+        return function(b, c, d, e) {
+            for (var f, g = 0, h = 0; h < c.length; ++h)
+                if (b = c.charCodeAt(h),
+                128 > b)
+                    a ? g += 1 : d[e++] = b;
+                else {
+                    if (2048 > b) {
+                        if (a) {
+                            g += 2;
+                            continue
+                        }
+                        d[e++] = b >> 6 | 192
+                    } else {
+                        if (55296 === (b & 64512) && 56320 === ((f = c.charCodeAt(h + 1)) & 64512)) {
+                            if (a) {
+                                g += 4;
+                                continue
+                            }
+                            b = 65536 + ((b & 1023) << 10) + (f & 1023);
+                            ++h;
+                            d[e++] = b >> 18 | 240;
+                            d[e++] = b >> 12 & 63 | 128
+                        } else {
+                            if (a) {
+                                g += 3;
+                                continue
+                            }
+                            d[e++] = b >> 12 | 224
+                        }
+                        d[e++] = b >> 6 & 63 | 128
+                    }
+                    d[e++] = b & 63 | 128
+                }
+            return a ? g : e
+        }
+    }
+    var an = $m(!1)
+      , bn = $m(!0);
+    function cn(a, b, c, d) {
+        for (a = 0; a < b.length; ++a)
+            c[d + a] = b[a]
+    }
+    function dn(a, b, c, d) {
+        c[d] = b
+    }
+    function en(a, b, c, d) {
+        for (a = b; 127 < a; )
+            c[d++] = a & 127 | 128,
+            a >>>= 7;
+        c[d] = a
+    }
+    function fn(a) {
+        return [en, 128 > a ? 1 : 16384 > a ? 2 : 2097152 > a ? 3 : 268435456 > a ? 4 : 5, a]
+    }
+    function gn(a) {
+        return 0 > a ? [Vm, 10, Um(a)] : fn(a)
+    }
+    function hn(a) {
+        return [Zm, 4, a]
+    }
+    function jn(a) {
+        a = Um(a);
+        var b = r(a)
+          , c = b.next().value;
+        b = b.next().value;
+        var d = (b >>> 28 | c << 4) >>> 0;
+        c >>>= 24;
+        return [Vm, 0 === c ? 0 === d ? 16384 > b ? 128 > b ? 1 : 2 : 2097152 > b ? 3 : 4 : 16384 > d ? 128 > d ? 5 : 6 : 2097152 > d ? 7 : 8 : 128 > c ? 9 : 10, a]
+    }
+    function kn(a) {
+        return [dn, 1, a ? 1 : 0]
+    }
+    function ln(a) {
+        return [cn, a.length, a]
+    }
+    function mn(a) {
+        var b = bn({}, a, [], 0);
+        return b ? [an, b, a] : [dn, 0, 0]
+    }
+    function nn(a) {
+        return [[513, a.hidden, kn], [449, a.prev, fn], [385, a.next, fn], [337, a.content, mn], [257, a.parent, fn], [210, a.attributes, 81, mn, 145, mn], [145, a.name, mn], [65, a.id, fn]]
+    }
+    function on(a) {
+        return [[129, a.height, gn], [65, a.width, gn]]
+    }
+    function pn(a) {
+        return [[209, a.path, mn], [145, a.protocol, mn], [81, a.host, mn]]
+    }
+    function qn(a) {
+        return [[852, a.content, nn], [785, a.tabId, mn], [705, a.recordStamp, jn], [656, a.location, pn], [592, a.viewport, on], [528, a.screen, on], [449, a.hasBase, kn], [401, a.base, mn], [337, a.referrer, mn], [273, a.ua, mn], [209, a.address, mn], [145, a.title, mn], [81, a.doctype, mn]]
+    }
+    function rn(a) {
+        return [[277, a.deletedAttributes, mn], [210, a.attributes, 81, mn, 145, mn], [129, a.index, fn], [65, a.target, fn]]
+    }
+    function sn(a) {
+        return [[129, a.index, fn], [84, a.nodes, nn]]
+    }
+    function tn(a) {
+        return [[129, a.index, fn], [69, a.nodes, gn]]
+    }
+    function un(a) {
+        return [[209, a.value, mn], [129, a.index, fn], [65, a.target, fn]]
+    }
+    function vn(a) {
+        return [[193, a.index, fn], [145, a.op, mn], [81, a.style, mn]]
+    }
+    function wn(a) {
+        return [[148, a.changes, vn], [65, a.target, gn]]
+    }
+    function xn(a) {
+        return [[193, a.target, gn], [129, a.y, fn], [65, a.x, fn]]
+    }
+    function yn(a) {
+        return [[257, a.target, gn], [193, a.page, kn], [129, a.y, gn], [65, a.x, gn]]
+    }
+    function zn(a) {
+        return [[133, a.filledDomNodes, gn], [65, a.formId, gn]]
+    }
+    function An(a) {
+        return [[257, a.endNode, fn], [193, a.startNode, fn], [129, a.end, gn], [65, a.start, gn]]
+    }
+    function Bn(a) {
+        return [[257, a.target, gn], [193, a.hidden, kn], [129, a.checked, kn], [81, a.value, mn]]
+    }
+    function Cn(a) {
+        return [[297, a.force, hn], [233, a.y, hn], [169, a.x, hn], [81, a.id, mn]]
+    }
+    function Dn(a) {
+        return [[129, a.target, gn], [84, a.touches, Cn]]
+    }
+    function En(a) {
+        return [[193, a.y, gn], [129, a.x, gn], [105, a.level, hn]]
+    }
+    function Fn(a) {
+        return [[257, a.pageHeight, fn], [193, a.pageWidth, fn], [129, a.height, fn], [65, a.width, fn]]
+    }
+    function Gn(a) {
+        return [[273, a.modifier, mn], [193, a.isMeta, kn], [145, a.key, mn], [65, a.id, fn]]
+    }
+    function Hn(a) {
+        return [[84, a.keystrokes, Gn]]
+    }
+    function In(a) {
+        return [[193, a.orientation, gn], [129, a.height, fn], [65, a.width, fn]]
+    }
+    function Jn(a) {
+        return [[209, a.stack, mn], [145, a.bh, mn], [81, a.code, mn]]
+    }
+    function Kn(a) {
+        return [[65, a.target, gn]]
+    }
+    function Ln(a) {
+        return [[257, a.lj, gn], [209, a.name, mn], [129, a.formId, gn], [65, a.Vi, gn]]
+    }
+    function Mn(a) {
+        return [[129, a.involvedTime, gn], [84, a.articleMeta, Nn]]
+    }
+    function Nn(a) {
+        return [[513, a.chars, gn], [489, a.maxScrolled, hn], [385, a.involvedTime, gn], [321, a.height, gn], [257, a.width, gn], [193, a.y, gn], [129, a.x, gn], [65, a.id, fn]]
+    }
+    function On(a) {
+        return [[593, a.updateDate, mn], [532, a.rubric, Pn], [449, a.chars, gn], [401, a.publicationDate, mn], [340, a.topics, Qn], [276, a.authors, Rn], [209, a.pageTitle, mn], [145, a.pageUrlCanonical, mn], [65, a.id, fn]]
+    }
+    function Rn(a) {
+        return [[81, a.name, mn]]
+    }
+    function Qn(a) {
+        return [[81, a.name, mn]]
+    }
+    function Pn(a) {
+        return [[129, a.position, gn], [81, a.name, mn]]
+    }
+    function Sn(a) {
+        return [[84, a.bi, Tn]]
+    }
+    function Tn(a) {
+        return [[1857, a.partsTotal, fn], [2E3, a.Yi, Ln], [1936, a.submitEvent, zn], [1793, a.activity, fn], [1744, a.textChangeMutation, un], [1680, a.removedNodesMutation, tn], [1616, a.addedNodesMutation, sn], [1552, a.attributesChangeMutation, rn], [1488, a.publishersHeader, Mn], [1424, a.articleInfo, On], [1360, a.focusEvent, Kn], [1296, a.fatalErrorEvent, Jn], [1232, a.deviceRotationEvent, In], [1168, a.keystrokesEvent, Hn], [1104, a.resizeEvent, Fn], [1040, a.zoomEvent, En], [976, a.touchEvent, Dn], [912, a.changeEvent, Bn], [848, a.selectionEvent, An], [784, a.scrollEvent, yn], [720, a.mouseEvent, xn], [656, a.styleChangeEvent, wn], [592, a.page, qn], [513, a.end, kn], [449, a.partNum, fn], [401, a.chunk, ln], [257, a.frameId, gn], [193, a.event, fn], [129, a.type, fn], [65, a.stamp, fn]]
+    }
+    var Un = {}
+      , Vn = (Un.mousemove = 0,
+    Un.mouseup = 1,
+    Un.mousedown = 2,
+    Un.click = 3,
+    Un.scroll = 4,
+    Un.windowblur = 5,
+    Un.windowfocus = 6,
+    Un.focus = 7,
+    Un.blur = 8,
+    Un.eof = 9,
+    Un.selection = 10,
+    Un.change = 11,
+    Un.input = 12,
+    Un.touchmove = 13,
+    Un.touchstart = 14,
+    Un.touchend = 15,
+    Un.touchcancel = 16,
+    Un.touchforcechange = 17,
+    Un.zoom = 18,
+    Un.resize = 19,
+    Un.keystroke = 20,
+    Un.deviceRotation = 21,
+    Un.fatalError = 22,
+    Un.hashchange = 23,
+    Un.stylechange = 24,
+    Un.articleInfo = 25,
+    Un.publishersHeader = 26,
+    Un.pageData = 27,
+    Un.mutationAdd = 28,
+    Un.mutationRemove = 29,
+    Un.mutationTextChange = 30,
+    Un.mutationAttributesChange = 31,
+    Un.formNodeData = 32,
+    Un.submit = 33,
+    Un)
+      , Wn = {}
+      , Xn = (Wn.page = 0,
+    Wn.event = 1,
+    Wn.mutation = 2,
+    Wn.publishers = 3,
+    Wn.activity = 4,
+    Wn.formNode = 5,
+    Wn);
+    function Yn(a, b) {
+        a[0] += b[1];
+        a[2][3] = b;
+        a[2] = b
+    }
+    function Zn(a) {
+        a[3] = [a[0], a[1], a[2], a[3]];
+        a[1] = [u, 0, 0];
+        a[2] = a[1];
+        a[0] = 0
+    }
+    function $n(a) {
+        var b = a[1]
+          , c = a[0]
+          , d = a[2];
+        a[3] ? (a[0] = a[3][0],
+        a[1] = a[3][1],
+        a[2] = a[3][2],
+        a[3] = a[3][3]) : (a[0] = 0,
+        a[1] = [u, 0, 0],
+        a[2] = a[1]);
+        Yn(a, fn(c));
+        c && (a[2][3] = b[3],
+        a[2] = d,
+        a[0] += c)
+    }
+    function ao(a, b) {
+        var c = a(b)
+          , d = [u, 0, 0]
+          , e = [0, d, d, void 0];
+        return Rd(c, function(f, g) {
+            var h = r(f)
+              , k = h.next().value
+              , l = h.next().value
+              , m = h.next().value;
+            if (0 === k)
+                return m(e, l),
+                e;
+            if (void 0 === l || null === l)
+                return e;
+            h = k >> 3;
+            if (k & 4)
+                for (var p = l.length - 1; 0 <= p; ) {
+                    var q = l[p];
+                    k & 1 ? Qe(g, [[k - 4, q, m]]) : (q = m(q),
+                    q.push([0, 0, Zn]),
+                    q.push([0, fn(h), Yn]),
+                    q.unshift([0, 0, $n]),
+                    Qe(g, q));
+                    --p
+                }
+            else if (k & 1)
+                Yn(e, fn(h)),
+                l = m(l),
+                h & 2 && Yn(e, fn(l[1])),
+                Yn(e, l);
+            else if (k & 2) {
+                q = r(f);
+                q.next();
+                q.next();
+                k = q.next().value;
+                m = q.next().value;
+                p = q.next().value;
+                q = q.next().value;
+                for (var t = cc(l), v = t.length - 1; 0 <= v; ) {
+                    var z = t[v];
+                    Qe(g, [[0, 0, $n], [p, l[z], q], [k, z, m], [0, 0, Zn], [0, fn(h), Yn]]);
+                    --v
+                }
+            } else
+                l = m(l),
+                l.push([0, 0, Zn]),
+                l.push([0, fn(h), Yn]),
+                l.unshift([0, 0, $n]),
+                Qe(g, l);
+            return e
+        })
+    }
+    function bo(a, b) {
+        var c = b[1][3]
+          , d = 0
+          , e = new a.Uint8Array(b[0]);
+        return Rd([c], function(f, g) {
+            if (!f)
+                return e;
+            f[0](a, f[2], e, d);
+            d += f[1];
+            g.push(f[3]);
+            return e
+        })
+    }
+    function co(a, b) {
+        var c = this;
+        this.isSync = !1;
+        this.Lb = [];
+        var d = {};
+        this.$g = (d.ad = "mutationAdd",
+        d.re = "mutationRemove",
+        d.tc = "mutationTextChange",
+        d.ac = "mutationAttributesChange",
+        d.page = "pageData",
+        d);
+        d = {};
+        this.Tg = (d.ad = "addedNodesMutation",
+        d.re = "removedNodesMutation",
+        d.tc = "textChangeMutation",
+        d.ac = "attributesChangeMutation",
+        d.touchmove = "touchEvent",
+        d.touchstart = "touchEvent",
+        d.touchend = "touchEvent",
+        d.touchforcechange = "touchEvent",
+        d.touchcancel = "touchEvent",
+        d.resize = "resizeEvent",
+        d.scroll = "scrollEvent",
+        d.change = "changeEvent",
+        d.mousemove = "mouseEvent",
+        d.mousedown = "mouseEvent",
+        d.mouseup = "mouseEvent",
+        d.click = "mouseEvent",
+        d.focus = "focusEvent",
+        d.blur = "focusEvent",
+        d.deviceRotation = "deviceRotationEvent",
+        d.zoom = "zoomEvent",
+        d.keystroke = "keystrokesEvent",
+        d.selection = "selectionEvent",
+        d.stylechange = "styleChangeEvent",
+        d.fatalError = "fatalErrorEvent",
+        d.pageData = "page",
+        d.submit = "submitEvent",
+        d);
+        this.qh = function(e) {
+            var f = e.type;
+            return e.event || "publishersHeader" !== f && "articleInfo" !== f ? {
+                type: Xn[f],
+                event: Vn[c.$g[e.event] || e.event]
+            } : {
+                type: Xn.publishers,
+                event: Vn[f]
+            }
+        }
+        ;
+        this.Bf = function(e) {
+            var f = !B(e.partNum)
+              , g = c.qh(e);
+            g = {
+                stamp: e.stamp,
+                type: g.type,
+                event: g.event,
+                frameId: e.frameId,
+                chunk: f ? e.data : void 0,
+                partNum: e.partNum,
+                end: e.end,
+                partsTotal: e.partsTotal
+            };
+            !f && e.data && (f = c.Tg[e.event] || e.event || e.type) && (g[f] = e.data);
+            return g
+        }
+        ;
+        this.l = a;
+        this.type = b
+    }
+    co.prototype.ra = function(a, b) {
+        var c = this
+          , d = this.isSync || (void 0 === b ? 0 : b) ? Infinity : 10
+          , e = nl(this.l, Rd(a, this.Bf), d)
+          , f = [e];
+        this.Lb.push(e);
+        return e(yg(function(g) {
+            g = ao(Sn, {
+                bi: g
+            });
+            g = nl(c.l, g, d, Od);
+            f.push(g);
+            c.Lb.push(g);
+            return g
+        }))(yg(function(g) {
+            g = bo(c.l, g.slice(-4));
+            g = nl(c.l, g, d, Od);
+            f.push(g);
+            c.Lb.push(g);
+            return g
+        }))(xg(function(g) {
+            g = g[g.length - 1];
+            O(function(h) {
+                h = wb(c.l)(h, c.Lb);
+                c.Lb.splice(h, 1)
+            }, f);
+            return g
+        }))
+    }
+    ;
+    co.prototype.Cb = function(a) {
+        return ao(Tn, this.Bf(a))(Nd(u))
+    }
+    ;
+    co.prototype.tb = function(a) {
+        return a[0]
+    }
+    ;
+    co.prototype.Be = function(a, b) {
+        for (var c = bo(this.l, a)(Nd(u)), d = Math.ceil(c.length / b), e = [], f = 0; f < b; f += 1)
+            e.push(c.slice(f * d, d * (f + 1)));
+        return e
+    }
+    ;
+    co.isEnabled = function(a) {
+        var b = Ce(a)
+          , c = !1;
+        try {
+            c = (c = 2 === (new a.Blob(["\u00e4"])).size) && 2 === (new a.Blob([new a.Uint8Array([1, 2])])).size
+        } catch (d) {}
+        return !b && c && !(!a.Uint8Array || !J(a, "Uint8Array.prototype.slice"))
+    }
+    ;
+    function eo(a, b, c) {
+        if (co.isEnabled(a))
+            return new co(a,b);
+        if (Tm.isEnabled(a))
+            return new Tm(a,c)
+    }
+    var fo = df("wv");
+    function go(a, b, c, d, e) {
+        var f = c.J;
+        f.wmode = "0";
+        f["wv-hit"] = f["wv-hit"] || "" + ng(a);
+        f["page-url"] = f["page-url"] || V(a).href;
+        d && (f[d] = f[d] || "" + Xd(a));
+        a = {};
+        b = {
+            Na: {
+                qa: (e || "webvisor") + "/" + b.id
+            },
+            N: P(c.N || {}, {
+                jb: (a["Content-Type"] = "text/plain",
+                a),
+                md: "POST"
+            }),
+            J: f
+        };
+        P(c, b)
+    }
+    function ho(a, b) {
+        return {
+            T: function(c, d) {
+                go(a, b, c);
+                d()
+            }
+        }
+    }
+    var io = "resize scroll mousemove mousedown click windowfocus keydown orientationchange change focus touchmove touchstart".split(" ")
+      , jo = "id pageTitle stamp chars authors updateDate publicationDate pageUrlCanonical topics rubric".split(" ");
+    function ko(a, b, c, d, e) {
+        var f = this;
+        this.Oc = !1;
+        this.meta = {};
+        this.scroll = {
+            x: 0,
+            y: 0
+        };
+        this.involvedTime = this.zf = 0;
+        this.ie = this.Gf = "";
+        this.ia = [];
+        this.Ae = this.Fa = 0;
+        this.Fb = {
+            h: 0,
+            w: 0
+        };
+        this.buffer = [];
+        this.og = jo;
+        this.flush = function() {
+            f.Ae = Y(f.l, f.flush, 2500);
+            var g = f.Nd();
+            if (f.buffer.length || g) {
+                var h = yb(f.buffer);
+                g && h.push(g);
+                f.Gf = f.ie;
+                f.ma.ra(h)(wg(W(f.l, "p.b.st"), function(k) {
+                    k && f.ic(k)
+                }))
+            }
+        }
+        ;
+        this.ic = d;
+        this.ma = c;
+        this.qc = D(this.qc, this);
+        this.Nd = D(this.Nd, this);
+        this.flush = D(this.flush, this);
+        this.l = a;
+        this.ya = e;
+        this.ed = b;
+        this.ae = "pai" + b.id;
+        this.Qb();
+        this.cf = ud(this.l);
+        this.time = Fd(this.l);
+        lo(this);
+        this.Pd = R(this.l);
+        this.Me = null
+    }
+    n = ko.prototype;
+    n.start = function() {
+        this.Ae = Y(this.l, this.flush, 2500);
+        if (!this.Oc) {
+            this.cf.F(this.l, io, this.qc);
+            var a = this.Pd.C(this.ae, [])
+              , b = !a.length;
+            a.push(D(this.Hh, this));
+            this.Pd.wa(this.ae, a);
+            b && this.Pf();
+            this.Me = ud(this.l).F(this.l, ["click"], D(this.mi, this));
+            this.qc({
+                type: "page",
+                target: this.l
+            })
+        }
+    }
+    ;
+    n.stop = function() {
+        this.Me && this.Me();
+        this.cf.nc(this.l, io, this.qc);
+        this.Oc = !0;
+        this.flush();
+        tg(this.l, this.Ae)
+    }
+    ;
+    n.Pf = function() {
+        var a = this;
+        W(this.l, "p.ic" + this.ed.id, function() {
+            if (!a.Oc) {
+                var b = a.Pd.C(a.ae)
+                  , c = mo(a.ed);
+                O(function(d) {
+                    var e = O(function(f) {
+                        return P({}, f)
+                    }, c);
+                    A(d) && d(e)
+                }, b);
+                a.Fa = Y(a.l, D(a.Pf, a), 1E3, "p")
+            }
+        })()
+    }
+    ;
+    n.Hh = function(a) {
+        this.Oc || (no(this, a),
+        oo(this),
+        po(this))
+    }
+    ;
+    n.Mg = function(a, b) {
+        return (a.xe || 0) <= (b.xe || 0) ? b : a
+    }
+    ;
+    n.mi = function(a) {
+        if (this.ia.length) {
+            a = mj(a);
+            var b = V(this.l).hostname;
+            a && fe(a.hostname) === fe(b) && (a = G(this.Mg, this.ia[0], this.ia).id,
+            b = ng(this.l),
+            Hf(this.l, this.ya.split(":")[0]).D("pai", a + "-" + b))
+        }
+    }
+    ;
+    n.qc = function(a) {
+        var b = this;
+        W(this.l, "p.ec." + this.ed.id, function() {
+            try {
+                var c = a.type;
+                var d = a.target
+            } catch (k) {
+                return
+            }
+            var e = "page" === c;
+            if ("scroll" === c || e) {
+                var f = [b.l, b.l.document, b.l.document.documentElement, Rf(b.l)];
+                M(d, f) && b.Qb()
+            }
+            ("resize" === c || e) && lo(b);
+            c = b.time(Bd);
+            var g = Math.min(c - b.zf, 5E3);
+            b.involvedTime += Math.round(g);
+            b.zf = c;
+            if (b.meta && b.scroll && b.Fb) {
+                var h = b.Fb.h * b.Fb.w;
+                b.ia = O(function(k) {
+                    var l = P({}, k)
+                      , m = b.meta[l.id]
+                      , p = Wf(k.Kb);
+                    if (!m || Ej("html", b.l, l.element) !== b.l.document.documentElement || !p)
+                        return l;
+                    k = b.l.Math;
+                    m = k.max((b.scroll.y + b.Fb.h - m.y) / m.height, 0);
+                    var q = p.height * p.width;
+                    p = lg(b.l, p, b.Fb);
+                    l.xe = p / h;
+                    l.visibility = p / q;
+                    if (.9 <= l.visibility || .1 <= l.xe)
+                        l.involvedTime += g;
+                    l.maxScrolled = k.round(1E4 * m) / 1E4;
+                    return l
+                }, b.ia);
+                c = {};
+                d = {};
+                Ge(b.l, (d.name = "publishers",
+                d.counterKey = b.ya,
+                d.data = (c.involvedTime = b.involvedTime,
+                c.contentItems = O(function(k) {
+                    var l = {};
+                    return P((l.contentElement = k.Kb,
+                    l), k)
+                }, b.ia),
+                c),
+                d))
+            }
+        })()
+    }
+    ;
+    function no(a, b) {
+        var c = O(function(d) {
+            return d.id
+        }, a.ia);
+        a.ia = a.ia.concat(nb(function(d) {
+            return !M(d.id, c)
+        }, b))
+    }
+    function lo(a) {
+        var b = r(Tf(a.l) || Uf(a.l))
+          , c = b.next().value;
+        b = b.next().value;
+        a.Fb = {
+            w: c,
+            h: b
+        }
+    }
+    function oo(a) {
+        W(a.l, "p.um." + a.ed.id, function() {
+            var b = [];
+            a.Qb();
+            a.meta = G(function(c, d) {
+                if (Ej("html", a.l, d.element) !== a.l.document.documentElement)
+                    return b.push(d),
+                    delete c[d.id],
+                    c;
+                var e = {};
+                e = (e.id = d.id,
+                e.involvedTime = Math.max(d.involvedTime, 0),
+                e.maxScrolled = d.maxScrolled || 0,
+                e.chars = d.update ? d.update("chars") || 0 : 0,
+                e);
+                if (d.Kb) {
+                    var f = Wf(d.Kb);
+                    f && (e.x = Math.max(Math.round(f.left) + a.scroll.x, 0),
+                    e.y = Math.max(Math.round(f.top) + a.scroll.y, 0),
+                    e.width = Math.round(f.width),
+                    e.height = Math.round(f.height))
+                }
+                c[d.id] = e;
+                return c
+            }, {}, a.ia);
+            O(function(c) {
+                c = wb(a.l)(c, a.ia);
+                a.ia.splice(c, 1)
+            }, b)
+        })()
+    }
+    n.Nd = function() {
+        var a = O(F(this.meta, J), cc(this.meta));
+        if (a.length && (this.ie = zf(this.l, a),
+        this.Gf !== this.ie)) {
+            var b = {}
+              , c = {};
+            return c.type = "publishersHeader",
+            c.data = (b.articleMeta = a || [],
+            b.involvedTime = this.involvedTime,
+            b),
+            c
+        }
+        return null
+    }
+    ;
+    function po(a) {
+        if (a.ia.length) {
+            var b = O(function(c) {
+                var d = G(function(f, g) {
+                    c[g] && (f[g] = c[g]);
+                    return f
+                }, {}, a.og);
+                c.Yf = !0;
+                var e = {};
+                return e.type = "articleInfo",
+                e.stamp = d.stamp,
+                e.data = d,
+                e
+            }, nb(function(c) {
+                return !c.Yf
+            }, a.ia));
+            b.length && (a.buffer = a.buffer.concat(b),
+            Zh(a.l, a.ya, ["pdf", b]))
+        }
+    }
+    n.Qb = function() {
+        this.scroll = {
+            x: this.l.pageXOffset || J(this.l, "document.documentElement.scrollLeft") || 0,
+            y: this.l.pageYOffset || J(this.l, "document.documentElement.scrollLeft") || 0
+        }
+    }
+    ;
+    var qo = {}
+      , ro = (qo[1] = 500,
+    qo[2] = 500,
+    qo[3] = 0,
+    qo);
+    function so(a, b, c) {
+        var d = b.getAttribute("itemtype");
+        c = Aj('[itemprop~="' + c + '"]', b);
+        return d ? nb(function(e) {
+            return e.parentNode && Ej("[itemtype]", a, e.parentNode) === b
+        }, c) : c
+    }
+    function to(a, b, c) {
+        return (a = so(a, b, c)) && a.length ? a[0] : null
+    }
+    function uo(a) {
+        if (!a)
+            return "";
+        a = N(a) ? a : [a];
+        return a.length ? a[0].getAttribute("content") || Jf(a[0]) : ""
+    }
+    function vo(a) {
+        return a ? a.attributes && a.getAttribute("datetime") ? a.getAttribute("datetime") : uo(a) : ""
+    }
+    var wo = ["topics", "rubric", "authors"];
+    function xo(a, b) {
+        var c = this;
+        this.id = "a";
+        this.Wd = !1;
+        this.Nb = {};
+        this.Bb = {
+            "schema.org": "Article NewsArticle Movie BlogPosting Review Recipe Answer".split(" "),
+            Df: ["article"]
+        };
+        var d = {};
+        this.lc = (d.Answer = 3,
+        d.Review = 2,
+        d);
+        this.ef = x(function(e, f, g) {
+            var h = {};
+            Zh(c.l, c.ya, "pfi", (h.field = e,
+            h.itemField = f,
+            h.value = g,
+            h))
+        }, function(e, f, g) {
+            return "" + e + f + g
+        });
+        this.Di = function(e) {
+            O(function(f) {
+                e[f] && (e[f] = G(function(g, h) {
+                    var k = h.name
+                      , l = h.position;
+                    if (!k)
+                        return c.ef(f, "name", k),
+                        g;
+                    if ("string" === typeof l) {
+                        k = Tb(l);
+                        if (null === k || c.l.isNaN(k))
+                            return c.ef(f, "position", l),
+                            g;
+                        h.position = k
+                    }
+                    g.push(h);
+                    return g
+                }, [], e[f]))
+            }, wo);
+            return e
+        }
+        ;
+        this.Ng = x(function(e, f) {
+            var g = {};
+            Zh(c.l, c.ya, ["pcs", f], (g.chars = f.chars,
+            g.limit = ro[f.type],
+            g))
+        });
+        this.l = a;
+        this.root = Sf(a);
+        this.ya = b
+    }
+    xo.prototype.Ra = function(a) {
+        return a.element
+    }
+    ;
+    function yo(a, b, c) {
+        var d;
+        W(a.l, "P.s." + c, function() {
+            d = a.Nb[c].call(a, b)
+        })();
+        return d
+    }
+    function zo(a, b) {
+        var c = P({}, b);
+        if (a.Wd && !c.id && M(b.type, [3, 2])) {
+            var d = U(", ", O(L("name"), c.authors || []));
+            c.pageTitle = d + ": " + c.pageTitle
+        }
+        if (!c.pageTitle) {
+            a: {
+                d = c.Kb;
+                for (var e = 1; 5 >= e; e += 1) {
+                    var f = uo(Bj("h" + e, d));
+                    if (f) {
+                        d = f;
+                        break a
+                    }
+                }
+                d = void 0
+            }
+            c.pageTitle = d
+        }
+        c.pageUrlCanonical || (d = c.id,
+        d = ("string" !== typeof d ? 0 : /^(https?:)\/\//.test(d)) ? c.id : (d = Bj('[rel="canonical"]', a.root)) ? d.href : void 0,
+        c.pageUrlCanonical = d);
+        c.id || (c.id = c.pageTitle || c.pageUrlCanonical);
+        return c
+    }
+    xo.prototype.Ha = function(a) {
+        var b = this
+          , c = {}
+          , d = this.Ra(a);
+        if (!d)
+            return null;
+        c.type = a.type;
+        O(function(f) {
+            c[f] = yo(b, a, f)
+        }, cc(this.Nb));
+        var e = Fd(this.l);
+        c.stamp = e(Ed);
+        c.element = a.element;
+        c.Kb = d;
+        c = this.Di(zo(this, c));
+        c.id = c.id ? Xj(c.id) : 1;
+        c.update = function(f) {
+            return b.Ra(a) ? yo(b, a, f) : void 0
+        }
+        ;
+        return c
+    }
+    ;
+    xo.prototype.getType = function() {
+        return 1
+    }
+    ;
+    xo.prototype.Jc = function() {
+        return []
+    }
+    ;
+    function mo(a) {
+        var b = a.Jc()
+          , c = 1;
+        return G(function(d, e) {
+            var f = a.Ha({
+                element: e,
+                type: a.getType(e)
+            }) || [];
+            N(f) || (f = [f]);
+            f = G(function(g, h) {
+                var k = g.values
+                  , l = g.rf;
+                h && h.chars > ro[h.type] && !M(h.id, l) ? (k.push(h),
+                l.push(h.id)) : h && h.chars <= ro[h.type] && a.Ng(h.id, h);
+                return {
+                    values: k,
+                    rf: l
+                }
+            }, {
+                values: [],
+                rf: O(L("id"), d)
+            }, f).values;
+            return d.concat(O(function(g) {
+                var h = {};
+                g = P((h.index = c,
+                h.Yf = !1,
+                h.involvedTime = 0,
+                h), g);
+                c += 1;
+                return g
+            }, f))
+        }, [], b)
+    }
+    function Ao() {
+        xo.apply(this, arguments);
+        this.id = "j";
+        this.Wd = !0;
+        this.Ze = U(",", ['script[type="application/ld+json"]', 'script[type="application/json+ld"]', 'script[type="ld+json"]', 'script[type="json+ld"]']);
+        var a = {};
+        this.Nb = (a.id = function(b) {
+            var c = b.data["@id"];
+            b = b.data.mainEntity || b.data.mainEntityOfPage;
+            !c && Ta(b) && (c = b["@id"]);
+            return c
+        }
+        ,
+        a.chars = function(b) {
+            var c = b.data;
+            return y(c.text) ? c.text.length : Jf(this.Ra(b)).length
+        }
+        ,
+        a.authors = function(b) {
+            b = b.data;
+            var c = [];
+            c = c.concat(Bo(b, "author"));
+            c = c.concat(Bo(b.mainEntity, "author"));
+            return c.concat(Bo(b.mainEntityOfPage, "author"))
+        }
+        ,
+        a.pageTitle = function(b) {
+            var c = b.data
+              , d = c.headline || "";
+            c.alternativeHeadline && (d += " " + c.alternativeHeadline);
+            "" === d && (c.name ? d = c.name : c.itemReviewed && (d = c.itemReviewed));
+            3 === b.type && Ta(c.parentItem) && (d = c.parentItem.text);
+            return d
+        }
+        ,
+        a.updateDate = function(b) {
+            return b.data.dateModified || ""
+        }
+        ,
+        a.publicationDate = function(b) {
+            return b.data.datePublished || ""
+        }
+        ,
+        a.pageUrlCanonical = function(b) {
+            return b.data.url
+        }
+        ,
+        a.topics = function(b) {
+            return Bo(b.data, "about", ["name", "alternateName"])
+        }
+        ,
+        a.rubric = function(b) {
+            var c = this
+              , d = this.Ra(b);
+            b = ob(O(function(e) {
+                e = yf(c.l, Jf(e));
+                if (Ta(e) || N(e)) {
+                    var f = Co(e);
+                    if (f)
+                        return G(function(g, h) {
+                            return g ? g : Ta(h) && "BreadcrumbList" === h["@type"] ? h : g
+                        }, null, f);
+                    if ("BreadcrumbList" === e["@type"])
+                        return e
+                }
+                return null
+            }, [b.element].concat(Aj(this.Ze, this.l.document.body === d ? this.l.document.documentElement : d))));
+            return b.length && (b = b[0].itemListElement,
+            N(b)) ? ob(O(function(e) {
+                return Ta(e) && e.item && Ta(e.item) && !c.l.isNaN(e.position) ? {
+                    name: e.item.name || e.name,
+                    position: e.position
+                } : null
+            }, b)) : []
+        }
+        ,
+        a)
+    }
+    la(Ao, xo);
+    function Bo(a, b, c) {
+        c = void 0 === c ? ["name"] : c;
+        if (!Ta(a) || !a[b])
+            return [];
+        a = a[b];
+        a = N(a) ? a : [a];
+        a = ob(O(function(d) {
+            return d ? "string" === typeof d ? d : Ta(d) ? G(function(e, f) {
+                return e || "" + d[f]
+            }, "", c) : null : null
+        }, a));
+        return O(function(d) {
+            var e = {};
+            return e.name = d,
+            e
+        }, a)
+    }
+    Ao.prototype.Ra = function(a) {
+        var b = a.element
+          , c = a.data || {};
+        a = c["@id"];
+        var d = c.url;
+        c = null;
+        d && y(d) && (c = Do(this, d));
+        !c && a && y(a) && (c = Do(this, a));
+        c || (c = a = b.parentNode,
+        !Ej("head", this.l, b) && a && 0 !== Jf(a).length) || (c = this.l.document.body);
+        return c
+    }
+    ;
+    function Do(a, b) {
+        try {
+            var c = qh(a.l, b).hash;
+            if (c) {
+                var d = Bj(c, a.l.document.body);
+                if (d)
+                    return d
+            }
+        } catch (e) {}
+        return null
+    }
+    Ao.prototype.Ha = function(a) {
+        var b = this
+          , c = a.element
+          , d = a.data;
+        if (!d && (d = yf(this.l, Jf(c)),
+        !d || !/schema\.org/.test(d["@context"]) && !N(d)))
+            return null;
+        var e = Co(d);
+        if (e)
+            return O(function(g) {
+                return Ta(g) && M(g["@type"], b.Bb["schema.org"]) ? xo.prototype.Ha.call(b, {
+                    element: c,
+                    data: g,
+                    type: b.lc[g["@type"]] || 1
+                }) : null
+            }, e);
+        a.data = d;
+        if ("QAPage" === a.data["@type"]) {
+            var f = a.data.mainEntity || a.data.mainEntityOfPage;
+            if (!f)
+                return null
+        }
+        "Question" === a.data["@type"] && (f = a.data);
+        return f ? (a = Jb(F(f, J), ["acceptedAnswer", "suggestedAnswer"]),
+        O(function(g) {
+            if (!Ta(g) || !M(g["@type"], b.Bb["schema.org"]))
+                return null;
+            var h = {};
+            g = {
+                element: c,
+                type: b.lc[g["@type"]] || 1,
+                data: P((h.parentItem = f,
+                h), g)
+            };
+            return xo.prototype.Ha.call(b, g)
+        }, a)) : M(a.data["@type"], this.Bb["schema.org"]) ? xo.prototype.Ha.call(this, P(a, {
+            type: this.lc[a.data["@type"]] || 1
+        })) : null
+    }
+    ;
+    Ao.prototype.Jc = function() {
+        return Aj(this.Ze, this.root)
+    }
+    ;
+    function Co(a) {
+        if (N(a))
+            return a;
+        if (a && N(a["@graph"]))
+            return a["@graph"]
+    }
+    function Eo() {
+        xo.apply(this, arguments);
+        this.id = "s";
+        this.Wd = !0;
+        this.Bi = Xa("exec", new RegExp("schema.org\\/(" + U("|", cc(this.lc)) + ")$"));
+        var a = {};
+        this.Nb = (a.id = function(b) {
+            b = b.element;
+            var c = to(this.l, b, "identifier");
+            return c ? uo(c) : (c = to(this.l, b, "mainEntityOfPage")) && c.getAttribute("itemid") ? c.getAttribute("itemid") : null
+        }
+        ,
+        a.chars = function(b) {
+            var c = 0;
+            b = b.element;
+            for (var d = ["articleBody", "reviewBody", "recipeInstructions", "description", "text"], e = 0; e < d.length; e += 1) {
+                var f = to(this.l, b, d[e]);
+                if (f) {
+                    c = uo(f).length;
+                    break
+                }
+            }
+            b = Jf(b);
+            0 === c && b && (c += b.length);
+            return c
+        }
+        ,
+        a.topics = function(b) {
+            var c = this
+              , d = so(this.l, b.element, "about");
+            return O(function(e) {
+                var f = {
+                    name: uo(e)
+                };
+                if (d = to(c.l, e, "name"))
+                    f.name = uo(d);
+                return f
+            }, d)
+        }
+        ,
+        a.rubric = function(b) {
+            var c = this;
+            (b = Bj('[itemtype$="schema.org/BreadcrumbList"]', b.element)) || (b = Bj('[itemtype$="schema.org/BreadcrumbList"]', this.root));
+            return b ? O(function(d) {
+                return {
+                    name: uo(to(c.l, d, "name")),
+                    position: uo(to(c.l, d, "position"))
+                }
+            }, so(this.l, b, "itemListElement")) : []
+        }
+        ,
+        a.updateDate = function(b) {
+            return (b = to(this.l, b.element, "dateModified")) ? vo(b) : ""
+        }
+        ,
+        a.publicationDate = function(b) {
+            return (b = to(this.l, b.element, "datePublished")) ? vo(b) : ""
+        }
+        ,
+        a.pageUrlCanonical = function(b) {
+            b = so(this.l, b.element, "url");
+            if (b.length) {
+                var c = b[0];
+                return c.href ? c.href : uo(b)
+            }
+            return null
+        }
+        ,
+        a.pageTitle = function(b) {
+            var c = ""
+              , d = b.element
+              , e = to(this.l, d, "headline");
+            e && (c += uo(e));
+            (e = to(this.l, d, "alternativeHeadline")) && (c += " " + uo(e));
+            "" === c && ((e = to(this.l, d, "name")) || (e = to(this.l, d, "itemReviewed")),
+            e && (c += uo(e)));
+            3 === b.type && (b = Ej('[itemtype$="schema.org/Question"]', this.l, d)) && (b = to(this.l, b, "text")) && (c += uo(b));
+            return c
+        }
+        ,
+        a.authors = function(b) {
+            var c = this;
+            b = so(this.l, b.element, "author");
+            return O(function(d) {
+                var e = {};
+                e = (e.name = "",
+                e);
+                if (/.+schema.org\/(Person|Organization)/.test(d.getAttribute("itemtype") || "")) {
+                    var f = to(c.l, d, "name");
+                    f && (e.name = uo(f))
+                }
+                e.name || (e.name = d.getAttribute("content") || Jf(d) || d.getAttribute("href"));
+                return e
+            }, b)
+        }
+        ,
+        a)
+    }
+    la(Eo, xo);
+    Eo.prototype.getType = function(a) {
+        a = a.getAttribute("itemtype") || "";
+        return (a = this.Bi(a)) ? this.lc[a[1]] : 1
+    }
+    ;
+    Eo.prototype.Ha = function(a) {
+        return a.element && Jf(a.element).length ? xo.prototype.Ha.call(this, a) : null
+    }
+    ;
+    Eo.prototype.Jc = function() {
+        var a = U(",", O(function(b) {
+            return '[itemtype$="schema.org/' + b + '"]'
+        }, this.Bb["schema.org"]));
+        return Aj(a, this.root)
+    }
+    ;
+    function Fo(a, b) {
+        xo.call(this, a, b);
+        this.id = "o";
+        var c = {};
+        this.Nb = (c.chars = function(d) {
+            d = this.Ra(d);
+            return Jf(d).length
+        }
+        ,
+        c.authors = function(d) {
+            return Go(d.data.author)
+        }
+        ,
+        c.pageTitle = function(d) {
+            return Ho(d.data.title) || ""
+        }
+        ,
+        c.updateDate = function(d) {
+            return Ho(d.data.modified_time)
+        }
+        ,
+        c.publicationDate = function(d) {
+            return Ho(d.data.published_time)
+        }
+        ,
+        c.pageUrlCanonical = function(d) {
+            return Ho(d.data.url)
+        }
+        ,
+        c.rubric = function(d) {
+            return Go(d.data.section)
+        }
+        ,
+        c.topics = function(d) {
+            return Go(d.data.tag)
+        }
+        ,
+        c);
+        this.Zg = new RegExp("^(og:)?((" + U("|", this.Bb.Df) + "):)?")
+    }
+    la(Fo, xo);
+    function Go(a) {
+        if (a) {
+            if (N(a))
+                return O(function(c) {
+                    var d = {};
+                    return d.name = c ? "" + c : null,
+                    d
+                }, a);
+            var b = {};
+            return [(b.name = a ? "" + a : null,
+            b)]
+        }
+        return []
+    }
+    function Ho(a) {
+        return N(a) ? a.length ? "" + a[0] : null : a ? "" + a : null
+    }
+    Fo.prototype.Jc = function() {
+        var a = Aj('meta[property="og:type"]', this.l.document.body);
+        return [this.l.document.head].concat(a)
+    }
+    ;
+    function Io(a, b) {
+        var c = b.element
+          , d = {}
+          , e = a.Ra(b);
+        c = Aj("meta[property]", c === a.l.document.head ? c : e);
+        if (c.length)
+            O(function(f) {
+                try {
+                    if (f.parentNode === e || f.parentNode === a.l.document.head) {
+                        var g = f.getAttribute("property").replace(a.Zg, "")
+                          , h = uo(f);
+                        d[g] ? N(d[g]) ? d[g].push(h) : d[g] = [d[g], h] : d[g] = h
+                    }
+                } catch (k) {
+                    mf(a.l, "og.ed", k)
+                }
+            }, c);
+        else
+            return null;
+        return M(d.type, a.Bb.Df) ? P(b, {
+            data: d
+        }) : null
+    }
+    Fo.prototype.Ra = function(a) {
+        a = a.element;
+        var b = this.l.document;
+        return a === b.head ? b.body : a.parentNode
+    }
+    ;
+    Fo.prototype.Ha = function(a) {
+        return (a = Io(this, a)) ? xo.prototype.Ha.call(this, a) : null
+    }
+    ;
+    function Jo(a, b, c, d, e) {
+        d = Nh(a, b, c, d);
+        b = mh(a, e || c, b);
+        var f = cf(a, d, b);
+        return function(g) {
+            g = P({
+                N: {
+                    ha: ["mms." + c]
+                }
+            }, g);
+            return f(g)
+        }
+    }
+    var Ko = "et w v z i u vf".split(" ")
+      , Lo = {};
+    Ao && (Lo.json_ld = Ao);
+    Eo && (Lo.schema = Eo,
+    Lo.microdata = Eo);
+    Fo && (Lo.opengraph = Fo);
+    var Mo = X("p.p", function(a, b) {
+        function c(l) {
+            var m = P({}, k);
+            m.N.aa = l;
+            return e(m)["catch"](W(a, "s.ww.p"))
+        }
+        var d = eo(a, "9", "8");
+        if (!xa("querySelectorAll", a.document.querySelectorAll) || !d)
+            return S.resolve();
+        var e = Jo(a, b, "p", ["f", "x"], [[Wg(Ko), 1], [ho, 1]])
+          , f = Me()
+          , g = Hf(a, b.id)
+          , h = g.C("pai");
+        h && (g.Ec("pai"),
+        f.D("pai", h));
+        g = {};
+        var k = {
+            J: (g["wv-type"] = d.type,
+            g),
+            K: f,
+            N: {}
+        };
+        return Wh(b, W(a, "ps.s", function(l) {
+            if (l = J(l, "settings.publisher.schema")) {
+                Mi(b) && (l = "microdata");
+                var m = Lo[l];
+                if (m && d) {
+                    var p = Q(b);
+                    m = new m(a,p);
+                    m = new ko(a,m,d,c,p);
+                    m.start();
+                    var q = {};
+                    Zh(a, p, "ps", (q.schema = l,
+                    q));
+                    return D(m.stop, m)
+                }
+            }
+        }))
+    });
+    function No(a) {
+        var b = Oo;
+        this.type = "0";
+        this.l = a;
+        this.oh = b
+    }
+    n = No.prototype;
+    n.ra = function(a) {
+        return Bg(Jb(D(this.Cb, this), a))
+    }
+    ;
+    n.Cb = function(a, b) {
+        var c = this
+          , d = []
+          , e = this.oh(this.l, b && b.type, a.type);
+        e && (d = Jb(function(f) {
+            return f({
+                l: c.l,
+                sa: a
+            }) || []
+        }, e));
+        return d
+    }
+    ;
+    n.tb = function(a) {
+        return a.length
+    }
+    ;
+    n.Be = function(a) {
+        return [a]
+    }
+    ;
+    n.isEnabled = function() {
+        return !0
+    }
+    ;
+    function Po(a, b) {
+        this.$e = 0;
+        this.pe = 1;
+        this.nd = 5E3;
+        this.l = a;
+        this.ic = b
+    }
+    Po.prototype.gd = function() {
+        this.$e = Y(this.l, H(D(this.flush, this), D(this.gd, this)), this.nd, "b.f")
+    }
+    ;
+    Po.prototype.send = function(a, b) {
+        var c = this.ic(a, b || [], this.pe);
+        this.pe += 1;
+        return c
+    }
+    ;
+    Po.prototype.push = function() {}
+    ;
+    Po.prototype.flush = function() {}
+    ;
+    function Qo(a, b, c) {
+        Po.call(this, a, c);
+        this.buffer = [];
+        this.pg = 7500;
+        this.nd = 3E4;
+        this.ma = b;
+        this.gd()
+    }
+    la(Qo, Po);
+    Qo.prototype.push = function(a, b) {
+        var c = this.ma.Cb(a, b);
+        Qe(this.buffer, c);
+        this.ma.tb(this.buffer) > this.pg && this.flush()
+    }
+    ;
+    Qo.prototype.flush = function() {
+        var a = this.buffer;
+        a.length && (this.send(a),
+        this.buffer = [])
+    }
+    ;
+    var Ro = /opera mini/i;
+    function So(a, b) {
+        var c = Be(a)
+          , d = c.C("visorc");
+        M(d, ["w", "b"]) || (d = "");
+        ye(a) && se(a, "visorc") && !Ro.test(Bb(a) || "") || (d = "b");
+        var e = J(b, "settings.webvisor.recp");
+        if (!a.isFinite(e) || 0 > e || 1 < e)
+            d = "w";
+        d || (d = R(a).C("hitId") % 1E4 / 1E4 < e ? "w" : "b");
+        c.D("visorc", d, 30);
+        return "w" === d
+    }
+    var To = ["phone", "email"]
+      , Uo = "first(-|\\.|_|\\s){0,2}name last(-|\\.|_|\\s){0,2}name zip postal address passport (bank|credit)(-|\\.|_|\\s){0,2}card card(-|\\.|_|\\s){0,2}number card(-|\\.|_|\\s){0,2}holder cvv card(-|\\.|_|\\s){0,2}exp card(-|\\.|_|\\s){0,2}name card.*month card.*year card.*month card.*year password birth(-|\\.|_|\\s){0,2}(day|date) second(-|\\.|_|\\s){0,2}name third(-|\\.|_|\\s){0,2}name patronymic middle(-|\\.|_|\\s){0,2}name birth(-|\\.|_|\\s){0,2}place house street city flat state contact.*".split(" ")
+      , Vo = /^[\w\u0410-\u042f\u0430-\u044f]$/
+      , Wo = [65, 90]
+      , Xo = [97, 122];
+    function Yo(a, b) {
+        if (C(b))
+            return !1;
+        if (If(b)) {
+            var c = b.parentNode;
+            return (C(c) ? 0 : 11 === c.nodeType) ? !1 : Yo(a, b.parentNode)
+        }
+        c = Qf(a);
+        if (!c)
+            return !1;
+        var d = c.call(b, ".ym-hide-content,.ym-hide-content *");
+        return d && c.call(b, ".ym-show-content,.ym-hide-content .ym-show-content *") ? !1 : d
+    }
+    function Zo(a, b) {
+        return U("", O(function(c) {
+            if (!a.isNaN(c))
+                return "" + Xd(a, 0, 9);
+            if (Vo.test(c)) {
+                var d = r(c.toUpperCase() === c ? Wo : Xo);
+                c = d.next().value;
+                d = d.next().value;
+                return String.fromCharCode(Xd(a, c, d))
+            }
+            return c
+        }, b.split("")))
+    }
+    var $o = "color radio checkbox date datetime-local email month number password range search tel text time url week".split(" ")
+      , ap = new RegExp("(" + Uo.join("|") + ")","i")
+      , bp = new RegExp("(" + To.join("|") + ")","i")
+      , cp = ["password", "passwd", "pswd"]
+      , dp = new RegExp("(" + Uo.concat("\u0438\u043c\u044f \u0444\u0430\u043c\u0438\u043b\u0438\u044f \u043e\u0442\u0447\u0435\u0441\u0442\u0432\u043e \u0438\u043d\u0434\u0435\u043a\u0441 \u0442\u0435\u043b\u0435\u0444\u043e\u043d \u0430\u0434\u0440\u0435\u0441 \u043f\u0430\u0441\u043f\u043e\u0440\u0442 \u043d\u043e\u043c\u0435\u0440(-|\\.|_|\\s){0,2}\u043a\u0430\u0440\u0442\u044b \u0434\u0430\u0442\u0430(-|\\.|_|\\s){0,2}\u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f \u0434\u043e\u043c \u0443\u043b\u0438\u0446\u0430 \u043a\u0432\u0430\u0440\u0442\u0438\u0440\u0430 \u0433\u043e\u0440\u043e\u0434 \u043e\u0431\u043b\u0430\u0441\u0442\u044c".split(" ")).join("|") + ")","i");
+    function ep(a) {
+        return a && Pf("(ym-disable-submit|-metrika-noform)", a)
+    }
+    function fp(a) {
+        try {
+            var b = Zf(a);
+            if (M(b, ig)) {
+                if ("INPUT" === b) {
+                    var c = a.type;
+                    return !c || M(c.toLocaleLowerCase(), $o)
+                }
+                return !0
+            }
+        } catch (d) {}
+        return !1
+    }
+    function gp(a) {
+        return !!(a && 2 < a.length)
+    }
+    function hp(a, b) {
+        var c = a && (Pa(a.className, "ym-disable-keys") || Pa(a.className, "-metrika-nokeys"));
+        return b && a ? c || !!Nj(a).length : c
+    }
+    function ip(a) {
+        return ag(a) ? "password" === a.type || a.name && M(a.name.toLowerCase(), cp) || a.id && M(a.id.toLowerCase(), cp) : !1
+    }
+    function jp(a, b) {
+        return ip(b) || hp(b) ? !0 : Yo(a, b)
+    }
+    function kp(a, b, c) {
+        c = void 0 === c ? !1 : c;
+        if (!b)
+            return {
+                fb: !1,
+                pb: !1,
+                yb: !1
+            };
+        var d = b.getAttribute("type") || b.type;
+        if ("button" === d)
+            return {
+                fb: !1,
+                pb: !1,
+                yb: !1
+            };
+        var e = nb(gp, [b.className, b.id, b.name])
+          , f = b && Pf("ym-record-keys", b);
+        d = d && M(d, To) || Ob(Ya(bp), e);
+        var g;
+        (g = d) || (g = b.placeholder,
+        g = Ob(Ya(ap), e) || gp(g) && dp.test(g || ""));
+        e = g;
+        return {
+            fb: !f && (jp(a, b) || e && c || e && !d && !c),
+            pb: f,
+            yb: e
+        }
+    }
+    var lp = ya(Array.prototype.reverse, "reverse");
+    function mp(a) {
+        for (var b = [], c = a.length - 1; 0 <= c; --c)
+            b[a.length - 1 - c] = a[c];
+        return b
+    }
+    var np = lp ? function(a) {
+        return lp.call(a)
+    }
+    : mp
+      , op = "metrikaId_" + Math.random()
+      , pp = {
+        counter: 0
+    }
+      , qp = x(function() {
+        var a = {};
+        return a.A = 1,
+        a.ABBR = 2,
+        a.ACRONYM = 3,
+        a.ADDRESS = 4,
+        a.APPLET = 5,
+        a.AREA = 6,
+        a.B = 7,
+        a.BASE = 8,
+        a.BASEFONT = 9,
+        a.BDO = 10,
+        a.BIG = 11,
+        a.BLOCKQUOTE = 12,
+        a.BODY = 13,
+        a.BR = 14,
+        a.BUTTON = 15,
+        a.CAPTION = 16,
+        a.CENTER = 17,
+        a.CITE = 18,
+        a.CODE = 19,
+        a.COL = 20,
+        a.COLGROUP = 21,
+        a.DD = 22,
+        a.DEL = 23,
+        a.DFN = 24,
+        a.DIR = 25,
+        a.DIV = 26,
+        a.DL = 27,
+        a.DT = 28,
+        a.EM = 29,
+        a.FIELDSET = 30,
+        a.FONT = 31,
+        a.FORM = 32,
+        a.FRAME = 33,
+        a.FRAMESET = 34,
+        a.H1 = 35,
+        a.H2 = 36,
+        a.H3 = 37,
+        a.H4 = 38,
+        a.H5 = 39,
+        a.H6 = 40,
+        a.HEAD = 41,
+        a.HR = 42,
+        a.HTML = 43,
+        a.I = 44,
+        a.IFRAME = 45,
+        a.IMG = 46,
+        a.INPUT = 47,
+        a.INS = 48,
+        a.ISINDEX = 49,
+        a.KBD = 50,
+        a.LABEL = 51,
+        a.LEGEND = 52,
+        a.LI = 53,
+        a.LINK = 54,
+        a.MAP = 55,
+        a.MENU = 56,
+        a.META = 57,
+        a.NOFRAMES = 58,
+        a.NOSCRIPT = 59,
+        a.OBJECT = 60,
+        a.OL = 61,
+        a.OPTGROUP = 62,
+        a.OPTION = 63,
+        a.P = 64,
+        a.PARAM = 65,
+        a.PRE = 66,
+        a.Q = 67,
+        a.S = 68,
+        a.SAMP = 69,
+        a.SCRIPT = 70,
+        a.SELECT = 71,
+        a.SMALL = 72,
+        a.SPAN = 73,
+        a.STRIKE = 74,
+        a.STRONG = 75,
+        a.STYLE = 76,
+        a.SUB = 77,
+        a.SUP = 78,
+        a.TABLE = 79,
+        a.TBODY = 80,
+        a.TD = 81,
+        a.TEXTAREA = 82,
+        a.TFOOT = 83,
+        a.TH = 84,
+        a.THEAD = 85,
+        a.TITLE = 86,
+        a.TR = 87,
+        a.TT = 88,
+        a.U = 89,
+        a.UL = 90,
+        a.VAR = 91,
+        a.NOINDEX = 100,
+        a
+    })
+      , rp = [17, 18, 38, 32, 39, 15, 11, 7, 1];
+    function sp(a, b) {
+        var c = Math.max(0, Math.min(b, 65535));
+        Qe(a, [c >> 8, c & 255])
+    }
+    function tp(a, b) {
+        Qe(a, [b & 255])
+    }
+    function up(a, b, c) {
+        return -1 !== Ba(a)(c, rp) ? (tp(b, c),
+        !1) : !0
+    }
+    function vp(a, b) {
+        for (var c = Math.max(0, b | 0); 127 < c; )
+            Qe(a, [c & 127 | 128]),
+            c >>= 7;
+        Qe(a, [c])
+    }
+    function wp(a, b) {
+        vp(a, b.length);
+        for (var c = 0; c < b.length; c += 1)
+            vp(a, b.charCodeAt(c))
+    }
+    function xp(a, b) {
+        var c = b;
+        255 < c.length && (c = c.substr(0, 255));
+        a.push(c.length);
+        for (var d = 0; d < c.length; d += 1)
+            sp(a, c.charCodeAt(d))
+    }
+    function yp(a, b) {
+        var c = [];
+        if (up(a, c, 27))
+            return [];
+        vp(c, b);
+        return c
+    }
+    function zp(a, b) {
+        var c = Zf(b);
+        if (!c)
+            return b[op] = -1,
+            null;
+        var d = +b[op];
+        if (!isFinite(d) || 0 >= d)
+            return null;
+        if (b.attributes)
+            for (var e = b; e; ) {
+                if (e.attributes.Qi)
+                    return null;
+                e = e.parentElement
+            }
+        e = 64;
+        var f = Jj(a, b)
+          , g = f && f[op] ? f[op] : 0;
+        0 > g && (g = 0);
+        c = (c || "").toUpperCase();
+        var h = qp()[c];
+        h || (e |= 2);
+        var k = Kj(a, b);
+        k || (e |= 4);
+        var l = Ij(a, b);
+        (f = f ? Ij(a, f) : null) && l[0] === f[0] && l[1] === f[1] && l[2] === f[2] && l[3] === f[3] && (e |= 8);
+        pp[d].Ef = l[0] + "x" + l[1];
+        pp[d].size = l[2] + "x" + l[3];
+        b.id && "string" === typeof b.id && (e |= 32);
+        f = [];
+        if (up(a, f, 1))
+            return null;
+        vp(f, d);
+        tp(f, e);
+        vp(f, g);
+        h ? tp(f, h) : xp(f, c);
+        k && vp(f, k);
+        e & 8 || (vp(f, l[0]),
+        vp(f, l[1]),
+        vp(f, l[2]),
+        vp(f, l[3]));
+        e & 32 && xp(f, b.id);
+        tp(f, 0);
+        return f
+    }
+    function Ap(a, b) {
+        var c = b[op];
+        if (!c || 0 > c || !gg(b) || !b.form || ep(b.form))
+            return [];
+        var d = Yf(a, b.form);
+        if (0 > d)
+            return [];
+        if (ag(b))
+            var e = {
+                text: 0,
+                color: 0,
+                Dc: 0,
+                Ui: 0,
+                "datetime-local": 0,
+                email: 0,
+                Cf: 0,
+                hj: 0,
+                search: 0,
+                qj: 0,
+                time: 0,
+                url: 0,
+                month: 0,
+                sj: 0,
+                password: 2,
+                gj: 3,
+                Si: 4,
+                file: 6,
+                image: 7
+            }[b.type];
+        else {
+            e = {
+                Ni: 1,
+                Oi: 5
+            };
+            var f = Zf(b);
+            e = B(f) ? "" : e[f]
+        }
+        if ("number" !== typeof e)
+            return [];
+        f = -1;
+        for (var g = b.form.elements, h = g.length, k = 0, l = 0; k < h; k += 1)
+            if (g[k].name === b.name) {
+                if (g[k] === b) {
+                    f = l;
+                    break
+                }
+                l += 1
+            }
+        if (0 > f)
+            return [];
+        g = [];
+        if (up(a, g, 7))
+            return [];
+        vp(g, c);
+        vp(g, d);
+        vp(g, e);
+        wp(g, b.name || "");
+        vp(g, f);
+        return g
+    }
+    var Bp = Kb(F("\u2022", w));
+    function Cp(a, b, c) {
+        var d = b[op];
+        if (d) {
+            a: {
+                var e = Gd(a)
+                  , f = b[op];
+                if (0 < f) {
+                    var g = [];
+                    b = Ij(a, b);
+                    var h = pp[f]
+                      , k = b[0] + "x" + b[1]
+                      , l = b[2] + "x" + b[3];
+                    if (k !== h.Ef) {
+                        h.Ef = k;
+                        if (up(a, g, 9)) {
+                            a = [];
+                            break a
+                        }
+                        vp(g, e);
+                        vp(g, f);
+                        vp(g, b[0]);
+                        vp(g, b[1])
+                    }
+                    if (l !== h.size) {
+                        h.size = l;
+                        if (up(a, g, 10)) {
+                            a = [];
+                            break a
+                        }
+                        vp(g, e);
+                        vp(g, f);
+                        vp(g, b[2]);
+                        vp(g, b[3])
+                    }
+                    if (g.length) {
+                        a = g;
+                        break a
+                    }
+                }
+                a = []
+            }
+            Qe(c, a)
+        }
+        return d
+    }
+    function Dp(a, b) {
+        var c = void 0 === c ? [] : c;
+        for (var d = [], e = b; e && !Cp(a, e, c); e = Jj(a, e))
+            d.push(e);
+        O(function(f) {
+            pp.counter += 1;
+            var g = pp.counter;
+            f[op] = g;
+            pp[g] = {};
+            g = zp(a, f);
+            f = Ap(a, f);
+            g && f && (Qe(c, g),
+            Qe(c, f))
+        }, np(d));
+        return c
+    }
+    var Ep = !0;
+    function Fp(a) {
+        if (!Ep) {
+            Ep = !0;
+            a = Gd(a.l);
+            var b = [];
+            tp(b, 14);
+            vp(b, a);
+            return b
+        }
+    }
+    function Gp(a) {
+        if (Ep) {
+            Ep = !1;
+            var b = a.l;
+            a = Gd(a.l);
+            var c = [];
+            up(b, c, 15) ? b = [] : (vp(c, a),
+            b = c);
+            return b
+        }
+    }
+    function Hp(a) {
+        var b = a.sa;
+        if (!Ep || b && !b.fromElement)
+            return Fp(a)
+    }
+    function Ip(a) {
+        var b = a.sa;
+        if (b && !b.toElement)
+            return Gp(a)
+    }
+    function Jp(a, b) {
+        var c = a.l
+          , d = []
+          , e = b.form;
+        if (!b[op] && e) {
+            var f = e.elements;
+            e = e.length;
+            for (var g = 0; g < e; g += 1) {
+                var h = f[g];
+                hg(h) && !h[op] && Qe(d, Dp(c, h))
+            }
+        } else
+            Qe(d, Dp(c, b));
+        return d
+    }
+    function Kp(a) {
+        var b = Of(a.l, a.sa);
+        if (b && hg(b)) {
+            var c = Jp(a, b)
+              , d = c.concat;
+            var e = a.l;
+            a = Gd(a.l);
+            var f = [];
+            up(e, f, 17) ? b = [] : (vp(f, a),
+            vp(f, b[op]),
+            b = f);
+            return d.call(c, b)
+        }
+    }
+    function Lp(a) {
+        var b = a.l
+          , c = a.sa.target;
+        if (c && hg(c)) {
+            b = Dp(b, c);
+            var d = b.concat;
+            var e = a.l;
+            a = Gd(a.l);
+            var f = [];
+            up(e, f, 18) ? c = [] : (vp(f, a),
+            vp(f, c[op]),
+            c = f);
+            return d.call(b, c)
+        }
+    }
+    function Mp(a) {
+        var b = a.l
+          , c = Of(b, a.sa);
+        if (!c || ip(c) || hp(c))
+            return [];
+        if (gg(c)) {
+            var d = R(b).C("isEU")
+              , e = kp(b, c, d)
+              , f = e.fb;
+            d = e.yb;
+            e = e.pb;
+            if (fg(c))
+                var g = c.checked;
+            else
+                g = c.value,
+                g = f ? U("", Bp(g.split(""))) : g;
+            b = Dp(b, c);
+            f = b.concat;
+            var h = a.l;
+            a = Gd(a.l);
+            var k = [];
+            up(h, k, 39) ? c = [] : (vp(k, a),
+            vp(k, c[op]),
+            xp(k, String(g)),
+            tp(k, d && !e ? 1 : 0),
+            c = k);
+            return f.call(b, c)
+        }
+    }
+    function Np(a) {
+        var b = a.l
+          , c = a.sa
+          , d = Of(b, c);
+        if (!d || "SCROLLBAR" === d.nodeName)
+            return [];
+        var e = []
+          , f = F(e, Qe);
+        d && hg(d) ? f(Jp(a, d)) : f(Dp(b, d));
+        var g = Oj(b, c);
+        f = e.concat;
+        a = Gd(a.l);
+        var h = c.type
+          , k = [g.x, g.y];
+        g = c.which;
+        c = c.button;
+        var l = r(Hj(b, d))
+          , m = l.next().value;
+        for (l = l.next().value; d && (!m || !l); )
+            if (d = Jj(b, d))
+                l = r(Hj(b, d)),
+                m = l.next().value,
+                l = l.next().value;
+        if (d)
+            if (m = d[op],
+            !m || 0 > m)
+                b = [];
+            else {
+                l = {};
+                var p = (l.mousemove = 2,
+                l.click = 32,
+                l.dblclick = 33,
+                l.mousedown = 4,
+                l.mouseup = 30,
+                l.touch = 12,
+                l)[h];
+                p ? (l = [],
+                d = Gj(b, d),
+                up(b, l, p) ? b = [] : (vp(l, a),
+                vp(l, m),
+                vp(l, Math.max(0, k[0] - d.left)),
+                vp(l, Math.max(0, k[1] - d.top)),
+                /^mouse(up|down)|click$/.test(h) && (b = g || c,
+                tp(l, 2 > b ? 1 : b === (g ? 2 : 4) ? 4 : 2)),
+                b = l)) : b = []
+            }
+        else
+            b = [];
+        return f.call(e, b)
+    }
+    var Op = "";
+    function Pp(a) {
+        var b = null
+          , c = a.l
+          , d = c.document;
+        if (c.getSelection) {
+            try {
+                var e = c.getSelection()
+            } catch (g) {
+                return []
+            }
+            if (Sa(e))
+                return [];
+            var f = "" + e;
+            b = e.anchorNode
+        } else
+            d.selection && d.selection.createRange && (b = d.selection.createRange(),
+            f = b.text,
+            b = b.parentElement());
+        if ("string" !== typeof f)
+            return [];
+        try {
+            for (; b && 1 !== b.nodeType; )
+                b = b.parentNode
+        } catch (g) {
+            return []
+        }
+        if (!b)
+            return [];
+        d = kp(c, b).fb || hp(b, !0);
+        b = b.getElementsByTagName("*");
+        for (e = 0; e < b.length && !d; )
+            d = b[e],
+            d = kp(c, d).fb || hp(d, !0),
+            e += 1;
+        if (f !== Op)
+            return Op = f,
+            b = d ? U("", Bp(f.split(""))) : f,
+            f = a.l,
+            a = Gd(a.l),
+            0 === b.length ? b = c = "" : 100 >= b.length ? (c = b,
+            b = "") : 200 >= b.length ? (c = b.substr(0, 100),
+            b = b.substr(100)) : (c = b.substr(0, 97),
+            b = b.substr(b.length - 97)),
+            d = [],
+            up(f, d, 29) ? a = [] : (vp(d, a),
+            wp(d, c),
+            wp(d, b),
+            a = d),
+            a
+    }
+    function Qp(a) {
+        return Np(a).concat(Pp(a) || [])
+    }
+    function Rp(a) {
+        return (a.shiftKey ? 2 : 0) | (a.ctrlKey ? 4 : 0) | (a.altKey ? 1 : 0) | (a.metaKey ? 8 : 0) | (a.ctrlKey || a.altKey ? 16 : 0)
+    }
+    var Sp = !1;
+    function Tp(a) {
+        var b = [];
+        Sp || (Sp = !0,
+        Op && Qe(b, yp(a.l, Gd(a.l))),
+        ai(a.l, function() {
+            Sp = !1
+        }, "fv.c"));
+        return b
+    }
+    function Up(a, b, c, d) {
+        b = Of(a, b);
+        if (!b || jp(a, b))
+            return [];
+        var e = kp(a, b)
+          , f = e.yb
+          , g = e.pb;
+        e = e.fb;
+        var h = R(a);
+        if (!g && (f && h.C("isEU") || hp(b)))
+            a = [];
+        else {
+            f = Dp(a, b);
+            g = f.concat;
+            var k = Gd(a);
+            h = [];
+            if (up(a, h, 38))
+                a = [];
+            else {
+                vp(h, k);
+                sp(h, c);
+                tp(h, d);
+                a = b[op];
+                if (!a || 0 > a)
+                    a = 0;
+                vp(h, a);
+                tp(h, e ? 1 : 0);
+                a = h
+            }
+            a = g.call(f, a)
+        }
+        return a
+    }
+    var Vp = !0;
+    function Wp(a) {
+        var b = a.l
+          , c = a.sa
+          , d = c.keyCode
+          , e = Rp(c)
+          , f = []
+          , g = F(f, Qe);
+        if ({
+            3: 1,
+            8: 1,
+            9: 1,
+            13: 1,
+            16: 1,
+            17: 1,
+            18: 1,
+            19: 1,
+            20: 1,
+            27: 1,
+            33: 1,
+            34: 1,
+            35: 1,
+            36: 1,
+            37: 1,
+            38: 1,
+            39: 1,
+            40: 1,
+            45: 1,
+            46: 1,
+            91: 1,
+            92: 1,
+            93: 1,
+            106: 1,
+            110: 1,
+            111: 1,
+            144: 1,
+            145: 1
+        }[d] || 112 <= d && 123 >= d || 96 <= d && 105 >= d || e & 16)
+            19 === d && 4 === (e & -17) && (d = 144),
+            g(Up(b, c, d, e | 16)),
+            Vp = !1,
+            ai(b, function() {
+                Vp = !0
+            }, "fv.kd"),
+            !(67 === d && e & 4) || e & 1 || e & 2 || g(Tp(a));
+        return f
+    }
+    var Xp = !1;
+    function Yp(a) {
+        var b = a.l;
+        a = a.sa;
+        var c = [];
+        Vp && !Xp && 0 !== a.which && (Qe(c, Up(b, a, a.charCode || a.keyCode, Rp(a))),
+        Xp = !0,
+        ai(b, function() {
+            Xp = !1
+        }, "fv.kp"));
+        return c
+    }
+    function Zp(a) {
+        var b = a.l
+          , c = Of(b, a.sa);
+        if (!c || ep(c))
+            return [];
+        var d = [];
+        if ("FORM" === c.nodeName) {
+            for (var e = c.elements, f = 0; f < e.length; f += 1)
+                kg(e[f]) || Qe(d, Dp(b, e[f]));
+            a = Gd(a.l);
+            e = Yf(b, c);
+            if (0 > e)
+                b = [];
+            else {
+                f = c.elements;
+                var g = f.length;
+                c = [];
+                for (var h = 0; h < g; h += 1)
+                    if (!kg(f[h])) {
+                        var k = f[h][op];
+                        k && 0 < k && c.push(k)
+                    }
+                f = [];
+                if (up(b, f, 11))
+                    b = [];
+                else {
+                    vp(f, a);
+                    vp(f, e);
+                    vp(f, c.length);
+                    for (b = 0; b < c.length; b += 1)
+                        vp(f, c[b]);
+                    b = f
+                }
+            }
+            Qe(d, b)
+        }
+        return d
+    }
+    function $p(a) {
+        var b = a.flush;
+        "BODY" === Zf(Of(a.l, a.sa)) && b()
+    }
+    var aq = qa(function(a, b) {
+        var c = E([a, "efv." + b.event], W);
+        b.X = O(H(w, c), b.X);
+        return b
+    });
+    function bq(a, b) {
+        var c = nb(function(e) {
+            return 0 < e.X.length
+        }, b)
+          , d = hc({
+            target: a.document,
+            type: "document"
+        });
+        return O(H(w, d, aq(a)), c)
+    }
+    var cq = x(function(a) {
+        var b = []
+          , c = []
+          , d = [];
+        a.document.attachEvent && !a.opera && (b.push(Gp),
+        c.push(Hp),
+        c.push(Ip));
+        a.document.addEventListener ? b.push(Lp) : (c.push(Kp),
+        d.push(Lp));
+        return bq(a, (vd(a) ? [] : [{
+            target: a,
+            type: "window",
+            event: "beforeunload",
+            X: [u]
+        }, {
+            target: a,
+            type: "window",
+            event: "unload",
+            X: [u]
+        }]).concat([{
+            event: "click",
+            X: [Np]
+        }, {
+            event: "dblclick",
+            X: [Np]
+        }, {
+            event: "mousedown",
+            X: [Np]
+        }, {
+            event: "mouseup",
+            X: [Qp]
+        }, {
+            event: "keydown",
+            X: [Wp]
+        }, {
+            event: "keypress",
+            X: [Yp]
+        }, {
+            event: "copy",
+            X: [Tp]
+        }, {
+            event: "blur",
+            X: b
+        }, {
+            event: "focusin",
+            X: c
+        }, {
+            event: "focusout",
+            X: d
+        }]).concat(!a.document.attachEvent || a.opera ? [{
+            target: a,
+            type: "window",
+            event: "focus",
+            X: [Fp]
+        }, {
+            target: a,
+            type: "window",
+            event: "blur",
+            X: [Gp]
+        }] : []).concat(a.document.addEventListener ? [{
+            event: "focus",
+            X: [Kp]
+        }, {
+            event: "change",
+            X: [Mp]
+        }, {
+            event: "submit",
+            X: [Zp]
+        }] : [{
+            type: "formInput",
+            event: "change",
+            X: [Mp]
+        }, {
+            type: "form",
+            event: "submit",
+            X: [Zp]
+        }]))
+    })
+      , dq = x(function(a) {
+        var b = [];
+        Rf(a) && b.push({
+            target: a,
+            type: "document",
+            event: "mouseleave",
+            X: [$p]
+        });
+        vd(a) && b.push({
+            target: a,
+            type: "window",
+            event: "pagehide",
+            X: [function(c) {
+                c = c.flush;
+                c()
+            }
+            ]
+        });
+        return b
+    })
+      , eq = ["submit", "beforeunload", "unload"]
+      , fq = x(function(a, b) {
+        var c = b(a);
+        return G(function(d, e) {
+            d[e.type + ":" + e.event] = e.X;
+            return d
+        }, {}, c)
+    })
+      , Oo = F(cq, function(a, b, c, d) {
+        return fq(b, a)[c + ":" + d] || []
+    })
+      , gq = /^\s*function submit\(\)/;
+    function hq(a, b) {
+        var c = a.document
+          , d = []
+          , e = ud(a)
+          , f = ":submit" + Math.random()
+          , g = []
+          , h = D(b.flush, b)
+          , k = qa(function(l, m) {
+            W(a, "hfv." + l, function() {
+                try {
+                    var p = m.type
+                } catch (q) {
+                    return
+                }
+                p = M(p, eq);
+                b.push(m, {
+                    type: l
+                });
+                p && h()
+            })()
+        });
+        return {
+            start: W(a, "sfv", function() {
+                var l = cq(a)
+                  , m = dq(a);
+                O(function(p) {
+                    d.push(e.F(p.target, [p.event], k(p.type)))
+                }, l);
+                O(function(p) {
+                    d.push(e.F(p.target, [p.event], W(a, "hff." + p.type + "." + p.event, function(q) {
+                        O(ua({
+                            l: a,
+                            sa: q,
+                            flush: h
+                        }), p.X)
+                    })))
+                }, m);
+                g = Dj(a, "form", c);
+                c.attachEvent && (l = Dj(a, "form *", c),
+                O(function(p) {
+                    d.push(e.F(p, ["submit"], k("form")))
+                }, g),
+                O(function(p) {
+                    gg(p) && d.push(e.F(p, ["change"], k("formInput")))
+                }, l));
+                O(function(p) {
+                    var q = p.submit;
+                    if (A(q) || "object" === typeof q && gq.test("" + q))
+                        p[f] = q,
+                        p.submit = W(a, "fv", function() {
+                            var t = {
+                                target: p,
+                                type: "submit"
+                            };
+                            k("document")(t);
+                            return p[f]()
+                        })
+                }, g)
+            }),
+            stop: W(a, "ufv", function() {
+                O(Re, d);
+                O(function(l) {
+                    l && (l.submit = l[f])
+                }, g);
+                b.flush()
+            })
+        }
+    }
+    function iq(a, b, c) {
+        function d() {
+            h && h.stop()
+        }
+        if (!b.Gb)
+            return S.resolve(u);
+        var e = Rh(a, "4", b)
+          , f = {
+            K: Me()
+        }
+          , g = new Qo(a,c,function(k, l, m) {
+            if (!e)
+                return S.resolve();
+            l = "wv-data=" + Ol(k, !0);
+            var p = {};
+            p["wv-part"] = "" + m;
+            m = k.length;
+            for (var q = 0, t = 255, v = 255, z, K, aa; m; ) {
+                z = 21 < m ? 21 : m;
+                m -= z;
+                do
+                    K = "string" === typeof k ? k.charCodeAt(q) : k[q],
+                    q += 1,
+                    255 < K && (aa = K >> 8,
+                    K &= 255,
+                    K ^= aa),
+                    t += K,
+                    v += t;
+                while (--z);
+                t = (t & 255) + (t >> 8);
+                v = (v & 255) + (v >> 8)
+            }
+            k = (t & 255) + (t >> 8) << 8 | (v & 255) + (v >> 8);
+            return e(P({}, f, {
+                N: {
+                    aa: l
+                },
+                J: (p["wv-check"] = "" + (65535 === k ? 0 : k),
+                p["wv-type"] = c.type,
+                p)
+            }), b)["catch"](W(a, "m.n.m.s"))
+        }
+        )
+          , h = hq(a, g);
+        return Wh(b, function(k) {
+            k && R(a).D("isEU", J(k, "settings.eu"));
+            R(a).C("oo") || h && So(a, k) && h.start();
+            return d
+        })
+    }
+    var jq = X("fw.p", function(a, b) {
+        var c;
+        if (c = b.Gb && !b.Ug) {
+            var d = R(a)
+              , e = !1;
+            c = d.C("hitParam", {});
+            var f = Q(b);
+            c[f] && (d = d.C("counters", {}),
+            e = Oc(b.Z) && !d[f]);
+            c[f] = 1;
+            c = !e
+        }
+        if (c)
+            return iq(a, b, new No(a))
+    })
+      , kq = X("w2.cs", function(a, b) {
+        var c = Q(b)
+          , d = {};
+        Ei(a, c, (d.webvisor = !!b.Gb,
+        d))
+    });
+    function lq(a, b, c, d) {
+        d = void 0 === d ? 0 : d;
+        Po.call(this, a, c);
+        this.He = this.Ib = this.Ie = 0;
+        this.buffer = [];
+        this.nd = 2E3;
+        this.ma = b;
+        this.$ = Eg(a);
+        this.gd();
+        this.He = d
+    }
+    la(lq, Po);
+    function mq(a, b) {
+        return ob(a.$.ba("ag", b))
+    }
+    function nq(a, b, c) {
+        b(wg(W(a.l, "wv2.b.st"), function(d) {
+            a.send(d, c)
+        }))
+    }
+    function oq(a, b, c) {
+        tg(a.l, a.$e);
+        var d = Math.ceil(a.ma.tb(c) / 63E4)
+          , e = a.ma.Be(c, d);
+        O(function(f, g) {
+            var h = {};
+            h = P({}, b, (h.data = f,
+            h.partNum = g + 1,
+            h.end = g + 1 === d,
+            h.partsTotal = e.length,
+            h));
+            var k = a.ma.ra([h], !1);
+            nq(a, k, [h])
+        }, e);
+        a.gd()
+    }
+    n = lq.prototype;
+    n.send = function(a, b) {
+        var c = this;
+        this.$.ba("se", b);
+        return Po.prototype.send.call(this, a, b).then(w, function() {
+            c.$.ba("see", b)
+        })
+    }
+    ;
+    n.push = function(a) {
+        var b = this;
+        if (!(this.He && this.Ie >= this.He)) {
+            this.$.ba("p", a);
+            var c = this.ma.Cb(a)
+              , d = this.ma.tb(c);
+            7E5 < d ? oq(this, a, c) : (c = mq(this, this.buffer.concat([a])),
+            c = G(function(e, f) {
+                return e + b.ma.tb(b.ma.Cb(f))
+            }, 0, c),
+            this.Ib + c + d >= 7E5 * .7 && this.flush(),
+            this.buffer.push(a),
+            this.Ib += d)
+        }
+    }
+    ;
+    n.F = function(a, b) {
+        this.$.F([a], b)
+    }
+    ;
+    n.ea = function(a, b) {
+        this.$.ea([a], b)
+    }
+    ;
+    n.flush = function(a) {
+        var b = this.buffer.concat(mq(this, this.buffer));
+        b.length && (this.buffer = [],
+        this.Ie += this.Ib,
+        this.Ib = 0,
+        a = this.ma.ra(b, a),
+        nq(this, a, b))
+    }
+    ;
+    function pq(a, b, c, d, e) {
+        d = void 0 === d ? 1 : d;
+        e = void 0 === e ? "itc" : e;
+        b = Rd(b, c);
+        nl(a, b, d)(wg(W(a, e), u))
+    }
+    var qq = {
+        type: "event",
+        event: "fatalError",
+        data: {
+            code: "invalid-snapshot",
+            bh: "p.s.f",
+            stack: ""
+        }
+    }
+      , rq = x(function(a) {
+        var b = a.document;
+        return {
+            Od: function() {
+                if (b.scrollingElement)
+                    return b.scrollingElement;
+                var c = 0 === Na(b.compatMode, "CSS1") ? b.documentElement : b.body;
+                return J(b, "documentElement.scrollHeight") >= J(b, "body.scrollHeight") ? c : null
+            },
+            sh: function() {
+                var c = a.screen;
+                if (!c)
+                    return 0;
+                var d = Ke(F(c, J), ["orientation", "mozOrientation", "msOrientation"]);
+                return J(c, d + ".angle") || 0
+            },
+            ej: F(a, xc),
+            tf: F(a, rc),
+            dj: F(a, jc)
+        }
+    })
+      , sq = ["sr", "sd", "\u043d"];
+    function tq(a) {
+        return !B(a.frameId) && !B(a.data)
+    }
+    function uq(a, b, c) {
+        b || md(hf());
+        b.postMessage(zf(a, c), "*")
+    }
+    function vq(a, b) {
+        try {
+            return Ke(H(L("contentWindow"), sa(b)), vb(a.document.querySelectorAll("iframe")))
+        } catch (c) {
+            return null
+        }
+    }
+    function wq(a, b, c) {
+        var d = Eg(a)
+          , e = ud(a)
+          , f = xc(a)
+          , g = b.Ld()
+          , h = !J(a, "postMessage") || f && !J(a, "parent.postMessage")
+          , k = F(d, w);
+        if (h) {
+            if (!g)
+                return Y(a, D(d.ba, d, "i", {
+                    na: !1
+                }), 10),
+                {
+                    Kd: k,
+                    Tf: u,
+                    stop: u
+                };
+            md(hf())
+        }
+        d.F(["sr"], function(t) {
+            if (y(t.origin) && !B(t.source)) {
+                var v = vq(a, t.source);
+                if (v) {
+                    var z = {};
+                    uq(a, t.source, (z.type = "\u043d",
+                    z.frameId = b.ta().Y(v),
+                    z))
+                }
+            }
+        });
+        d.F(["sd"], function(t) {
+            if (y(t.origin) && !B(t.source)) {
+                var v = t.data;
+                t = t.source;
+                (a === t || vq(a, t)) && d.ba("sdr", {
+                    data: v.data,
+                    frameId: v.frameId
+                })
+            }
+        });
+        if (f && !g) {
+            var l = !1
+              , m = 0
+              , p = function() {
+                var t = {};
+                uq(a, a.parent, (t.type = "sr",
+                t));
+                m = Y(a, p, 100, "if.i")
+            };
+            p();
+            var q = function(t) {
+                if (y(t.origin) && !B(t.source)) {
+                    d.ea(["\u043d"], q);
+                    tg(a, m);
+                    var v = qh(a, t.origin).host;
+                    l || t.source !== a.parent || !t.data.frameId || "about:blank" !== V(a).host && !M(v, c) || (l = !0,
+                    d.ba("i", {
+                        frameId: t.data.frameId,
+                        na: !0
+                    }))
+                }
+            };
+            d.F(["\u043d"], q);
+            Y(a, function() {
+                d.ea(["\u043d"], q);
+                tg(a, m);
+                l || (l = !0,
+                d.ba("i", {
+                    na: !1
+                }))
+            }, 2E3, "if.r")
+        }
+        e = e.F(a, ["message"], function(t) {
+            var v = yf(a, t.data);
+            v && v.type && M(v.type, sq) && d.ba(v.type, {
+                data: v,
+                source: t.source,
+                origin: t.origin
+            })
+        });
+        return {
+            Kd: k,
+            Tf: function(t) {
+                var v = {};
+                return uq(a, a.parent, (v.frameId = b.Ld(),
+                v.data = t,
+                v.type = "sd",
+                v))
+            },
+            stop: e
+        }
+    }
+    function xq(a) {
+        return {
+            nh: function() {
+                var b = a.document.querySelector("base[href]");
+                return b ? b.getAttribute("href") : null
+            },
+            ph: function() {
+                if (a.document.doctype) {
+                    var b = P({
+                        name: "html",
+                        publicId: "",
+                        systemId: ""
+                    }, a.document.doctype)
+                      , c = b.publicId
+                      , d = b.systemId;
+                    return "<!DOCTYPE " + U("", [b.name, c ? ' PUBLIC "' + c + '"' : "", !c && d ? " SYSTEM" : "", d ? ' "' + d + '"' : ""]) + ">"
+                }
+                return null
+            }
+        }
+    }
+    function yq(a, b, c, d) {
+        d = void 0 === d ? "wv2" : d;
+        return {
+            H: function(e, f) {
+                return W(a, d + "." + c + "." + f, e, void 0, b)
+            }
+        }
+    }
+    var zq = L("location.href");
+    function Aq(a, b) {
+        var c = this;
+        this.Tb = 0;
+        this.Cc = [];
+        this.Sb = null;
+        this.na = this.pc = this.ag = !1;
+        this.recordStamp = 0;
+        this.stopped = !1;
+        this.th = function() {
+            return c.page
+        }
+        ;
+        this.Ld = function() {
+            return c.Tb
+        }
+        ;
+        this.lf = function() {
+            return c.recordStamp
+        }
+        ;
+        this.rh = function() {
+            return c.ab
+        }
+        ;
+        this.kf = function() {
+            return c.Sb
+        }
+        ;
+        this.ta = function() {
+            return c.Vd
+        }
+        ;
+        this.stamp = function() {
+            return c.Ge ? c.l.Math.max(c.Ge(Bd) - c.recordStamp, 0) : 0
+        }
+        ;
+        this.Pb = function() {
+            return c.options
+        }
+        ;
+        this.rb = function() {
+            return c.Dg
+        }
+        ;
+        this.V = function(f, g, h, k) {
+            k = void 0 === k ? c.stamp() : k;
+            c.ca([{
+                type: f,
+                data: g,
+                stamp: k,
+                frameId: c.Tb,
+                event: h
+            }])
+        }
+        ;
+        this.ca = function(f) {
+            c.ag && !c.pc ? c.na ? c.kf().Tf(O(function(g) {
+                return g.frameId ? g : P(g, {
+                    frameId: c.Tb
+                })
+            }, f)) : c.ic(f) : c.Cc = c.Cc.concat(f)
+        }
+        ;
+        this.l = a;
+        var d = yq(a, this, "R");
+        this.De = d.H(this.De, "s");
+        this.ca = d.H(this.ca, "sd");
+        d = R(a);
+        var e = d.C;
+        d = d.D;
+        e = e("wv2e");
+        e = N(e) ? e : [];
+        M(b.bc, e) && jf();
+        e.push(b.bc);
+        d("wv2e", e);
+        this.options = b;
+        this.ab = ud(a);
+        this.Vd = new b.sc(a,b);
+        this.Dg = rq(a);
+        this.$a = O(function(f) {
+            return new f(a,c)
+        }, b.$a);
+        Bq(this);
+        this.page = xq(this.l);
+        this.De()
+    }
+    Aq.prototype.start = function(a) {
+        this.ag = !0;
+        this.ic = a;
+        a = yb(this.Cc);
+        this.ca(a)
+    }
+    ;
+    Aq.prototype.stop = function() {
+        this.stopped || (this.stopped = !0,
+        zq(this.l) && (O(function(a) {
+            return a.stop()
+        }, this.$a),
+        this.Vd.stop(),
+        this.Sb && this.Sb.stop(),
+        this.na || this.V("event", {}, "eof")))
+    }
+    ;
+    Aq.prototype.Bc = function(a, b) {
+        var c = new Aq(a,P({}, this.options, {
+            frameId: b
+        }));
+        c.start(u);
+        return c
+    }
+    ;
+    function Bq(a) {
+        a.na = !!a.options.frameId;
+        a.Tb = a.options.frameId || 0;
+        a.pc = !a.na;
+        var b = a.options.ig || [];
+        b.push(V(a.l).host);
+        a.Sb = wq(a.l, a, b);
+        b = a.Sb.Kd();
+        xc(a.l) ? a.pc && b.F(["i"], function(c) {
+            if (!1 === c.na || !0 === c.na)
+                a.na = c.na,
+                a.pc = !1,
+                c.frameId && (a.Tb = c.frameId),
+                c = yb(a.Cc),
+                a.ca(c)
+        }) : (a.na = !1,
+        a.pc = !1)
+    }
+    Aq.prototype.De = function() {
+        this.Ge = Ad(this.l);
+        this.recordStamp = this.Ge(Bd);
+        O(function(a) {
+            a.start()
+        }, this.$a);
+        this.Vd.start()
+    }
+    ;
+    function Cq(a, b, c) {
+        var d = this;
+        this.qd = this.Yb = !1;
+        this.hb = [];
+        this.Af = [];
+        this.bf = [];
+        this.send = function(e, f, g) {
+            e = d.sender(e, d.Pg);
+            f && g && e.then(f, g);
+            return e
+        }
+        ;
+        this.Fe = function(e, f, g) {
+            return new S(function(h, k) {
+                e.push([f, h, k, g])
+            }
+            )
+        }
+        ;
+        this.Ah = function() {
+            d.hb = El(function(g, h) {
+                return g[3].partNum - h[3].partNum
+            }, d.hb);
+            var e = G(function(g, h, k) {
+                h = h[3];
+                return g && k + 1 === h.partNum
+            }, !0, d.hb)
+              , f = !!d.hb[d.hb.length - 1][3].end;
+            return e && f
+        }
+        ;
+        this.Hd = function(e) {
+            pq(d.l, e.slice(), function(f) {
+                var g = r(f);
+                f = g.next().value;
+                var h = g.next().value;
+                g = g.next().value;
+                d.send(f, h, g)
+            }, 20, "s.w2.sf.fes");
+            yb(e)
+        }
+        ;
+        this.hh = function() {
+            d.qd || (d.qd = !0,
+            d.Hd(d.Af),
+            d.Hd(d.bf))
+        }
+        ;
+        this.Hg = function(e) {
+            return G(function(f, g) {
+                var h = "page" === g.type && !g.frameId
+                  , k = "eof" === g.event
+                  , l = h && !!g.partNum;
+                return {
+                    wd: f.wd || l,
+                    vd: f.vd || h,
+                    ud: f.ud || k
+                }
+            }, {
+                vd: !1,
+                ud: !1,
+                wd: !1
+            }, e)
+        }
+        ;
+        this.xh = function(e, f, g) {
+            g ? (e = d.Fe(d.hb, e, f[0]),
+            d.Ah() && (d.Hd(d.hb),
+            d.Yb = !0)) : (d.Yb = !0,
+            e = d.send(e));
+            return e
+        }
+        ;
+        this.mf = function(e, f, g) {
+            var h = {};
+            f = {
+                J: (h["wv-part"] = "" + g,
+                h["wv-type"] = d.li,
+                h),
+                K: Me(),
+                N: {
+                    aa: f
+                }
+            };
+            e && f.K.D("bt", 1);
+            return f
+        }
+        ;
+        this.ah = function(e, f, g) {
+            e = d.mf(!1, e, g);
+            return d.Yb ? d.send(e) : d.Fe(d.bf, e, f)
+        }
+        ;
+        this.Mh = function(e, f, g) {
+            e = d.mf(!0, e, g);
+            if (d.Yb)
+                return d.send(e);
+            var h = d.Hg(f);
+            g = h.vd;
+            var k = h.ud;
+            h = h.wd;
+            var l;
+            g && (l = d.xh(e, f, h));
+            d.qd ? g || (l = d.send(e)) : (g || (l = d.Fe(d.Af, e, f)),
+            (d.Yb || k) && d.hh());
+            return l
+        }
+        ;
+        this.l = a;
+        this.li = c;
+        this.sender = Rh(a, "W", b);
+        this.Pg = b
+    }
+    function Dq() {
+        var a = G(function(b, c) {
+            var d = r(c)
+              , e = d.next().value;
+            d = d.next().value;
+            b[e] = {
+                rd: 0,
+                Fg: 1 / d
+            };
+            return b
+        }, {}, [["blur", .0034], ["change", .0155], ["click", .01095], ["deviceRotation", 2E-4], ["focus", .0061], ["mousemove", .5132], ["scroll", .4795], ["selection", .0109], ["touchcancel", 2E-4], ["touchend", .0265], ["touchforcechange", .0233], ["touchmove", .1442], ["touchstart", .027], ["zoom", .0014]]);
+        return {
+            Bg: function(b) {
+                if (b.length)
+                    return {
+                        type: "activity",
+                        data: G(function(c, d) {
+                            var e = a[d];
+                            return Math.round(c + e.rd * e.Fg)
+                        }, 0, cc(a))
+                    }
+            },
+            Lg: function(b) {
+                b && (b = b.event) && (b = a[b]) && (b.rd += 1)
+            }
+        }
+    }
+    var Eq = x(function(a) {
+        var b = R(a)
+          , c = b.C("isEU");
+        if (B(c)) {
+            var d = Vb(te(a, "is_gdpr") || "");
+            if (M(d, [0, 1]))
+                b.D("isEU", d),
+                c = !!d;
+            else if (a = Gf(a).C("wasSynced"),
+            a = J(a, "params.eu"))
+                b.D("isEU", a),
+                c = !!a
+        }
+        return c
+    }, function(a) {
+        return R(a).C("isEU")
+    })
+      , Fq = X("i.e", Eq)
+      , Gq = X("i.ep", function(a) {
+        Eq(a)
+    });
+    function Z(a, b, c) {
+        this.Jh = "wv2.c";
+        this.gb = [];
+        this.ja = [];
+        this.l = a;
+        this.L = yq(a, this, c, this.Jh);
+        this.G = b;
+        this.ab = this.G.rh();
+        this.start = this.L.H(this.start, "st");
+        this.stop = this.L.H(this.stop, "sp")
+    }
+    Z.prototype.start = function() {
+        var a = this;
+        this.gb = O(function(b) {
+            var c = r(b);
+            b = c.next().value;
+            var d = c.next().value;
+            c = c.next().value;
+            d = D(a.L.H(d, b[0]), a);
+            return a.ab.F(c || a.l, b, d)
+        }, this.ja)
+    }
+    ;
+    Z.prototype.stop = function() {
+        O(Re, this.gb)
+    }
+    ;
+    Z.prototype.Y = function(a) {
+        return this.G.ta().Y(a)
+    }
+    ;
+    var Hq = ["focus", "blur"];
+    function Iq(a, b) {
+        Z.call(this, a, b, "f");
+        this.ja.push([Hq, this.ih])
+    }
+    la(Iq, Z);
+    Iq.prototype.ih = function(a) {
+        var b = a.target;
+        a = a.type;
+        this.G.V("event", {
+            target: this.Y(b === this.l ? this.l.document.documentElement : b)
+        }, a)
+    }
+    ;
+    var Jq = ["checkbox", "radio"]
+      , Kq = /pwd|value|password/i;
+    function Lq(a, b, c, d, e, f) {
+        f = void 0 === f ? Zf(b) : f;
+        var g = {
+            xb: !1,
+            value: d
+        };
+        fp(b) ? "value" === c ? !C(d) && "" !== d && (c = e.Vb,
+        f = e.Jf,
+        e = Yo(a, b),
+        f ? (c = kp(a, b, c),
+        b = c.yb,
+        a = c.pb,
+        c = c.fb,
+        g.xb = !a && (e || b)) : (g.xb = e,
+        c = !(b && Pf("ym-record-keys", b))),
+        c || e) && (d = "" + d,
+        g.value = 0 < d.length ? sl("\u2022", d.length) : "") : "checked" === c && M((b.getAttribute("type") || "").toLowerCase(), Jq) ? g.value = b.checked ? "checked" : null : Kq.test(c) && ip(b) && (g.value = null) : "IMG" === f && "src" === c ? (d = Yo(a, b)) ? (g.xb = d,
+        g.value = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=") : g.value = (b.getAttribute("srcset") ? b.currentSrc : "") || b.src : "A" === f && "href" === c ? g.value = d ? "#" : "" : y(c) && (M(c, ["srcset", "integrity", "crossorigin", "password"]) || 2 < c.length && 0 === Na(c, "on") || "IFRAME" === f && "src" === c || "SCRIPT" === f && M(c, ["src", "type"])) && (g.value = null);
+        return g
+    }
+    function Mq(a, b, c) {
+        var d = {};
+        fp(a) ? d.value = a.value || c.value : "IMG" !== b || c.src || (d.src = "");
+        return d
+    }
+    function Nq(a, b, c, d, e) {
+        d = void 0 === d ? {} : d;
+        e = void 0 === e ? Zf(b) : e;
+        var f = P(G(function(h, k) {
+            h[k.name] = k.value;
+            return h
+        }, {}, vb(b.attributes)), d);
+        P(f, Mq(b, e, f));
+        var g = (d = G(function(h, k) {
+            var l = r(k)
+              , m = l.next().value;
+            l = l.next().value;
+            l = Lq(a, b, m, l, c, e);
+            var p = l.value;
+            C(p) ? delete f[m] : f[m] = p;
+            return h || l.xb
+        }, !1, bc(f))) && Wf(b);
+        g && (f.width = g.width,
+        f.height = g.height);
+        return {
+            xb: d,
+            Cg: f
+        }
+    }
+    function Oq(a, b) {
+        if (y(b))
+            return b;
+        var c = a.textContent;
+        if (y(c))
+            return c;
+        c = a.data;
+        if (y(c))
+            return c;
+        c = a.nodeValue;
+        return y(c) ? c : ""
+    }
+    function Pq(a, b) {
+        var c = this;
+        this.Hc = [];
+        this.ob = [];
+        this.ke = 1;
+        this.Xe = this.Uf = 0;
+        this.Ca = {};
+        this.bb = {};
+        this.Ob = [];
+        this.Td = function(e) {
+            return c.ob.length ? M(e, c.ob) : !1
+        }
+        ;
+        this.removeNode = function(e) {
+            var f = c.Y(e)
+              , g = Zf(e);
+            if (g && !B(f))
+                return g = "NR:" + g.toLowerCase(),
+                c.Td(g) && c.$.ba(g, {
+                    data: {
+                        node: e,
+                        id: f
+                    }
+                }),
+                f
+        }
+        ;
+        this.sb = function(e) {
+            var f = Zf(e);
+            if (!f)
+                return null;
+            var g = e.__ym_indexer;
+            if (g)
+                return g;
+            g = c.ke;
+            e.__ym_indexer = g;
+            c.ke += 1;
+            f = "NA:" + f.toLowerCase();
+            c.Td(f) && c.$.ba(f, {
+                data: {
+                    node: e,
+                    id: g
+                }
+            });
+            return g
+        }
+        ;
+        this.Qf = function() {
+            c.Uf = Y(c.l, H(D(c.ca, c, !1), c.Qf), 50, "i.s")
+        }
+        ;
+        this.Of = function() {
+            c.Xe = Y(c.l, H(D(c.sd, c, !1), c.Of), 50, "i.g")
+        }
+        ;
+        this.di = function(e) {
+            null === c.Ca[e] && delete c.Ca[e];
+            null === c.bb[e] && delete c.bb[e]
+        }
+        ;
+        this.l = a;
+        var d = yq(a, this, "i");
+        this.$ = Eg(a);
+        this.options = b;
+        this.start = d.H(this.start, "st");
+        this.stop = d.H(this.stop, "sp");
+        this.Y = d.H(this.Y, "i");
+        this.hd = d.H(this.hd, "o");
+        this.Rb = d.H(this.Rb, "a");
+        this.removeNode = d.H(this.removeNode, "r");
+        this.ca = d.H(this.ca, "s");
+        this.sd = d.H(this.sd, "g")
+    }
+    n = Pq.prototype;
+    n.hd = function(a, b) {
+        var c = this.sb(a);
+        Sa(c) || (this.bb[c] && this.Y(a),
+        this.bb[c] = b)
+    }
+    ;
+    n.F = function(a, b, c) {
+        a = "" + b + a;
+        this.ob.push(a);
+        this.Td(a) || this.ob.push(a);
+        this.$.F([a], c)
+    }
+    ;
+    n.ea = function(a, b, c) {
+        var d = "" + b + a;
+        this.ob = nb(function(e) {
+            return e !== d
+        }, this.ob);
+        this.$.ea([d], c)
+    }
+    ;
+    n.start = function() {
+        this.Qf();
+        this.Of()
+    }
+    ;
+    n.stop = function() {
+        this.flush();
+        tg(this.l, this.Xe);
+        tg(this.l, this.Uf);
+        this.Hc = [];
+        this.Ob = [];
+        this.Ca = {};
+        this.bb = {}
+    }
+    ;
+    n.Rb = function(a) {
+        var b = this
+          , c = []
+          , d = 0
+          , e = {
+            fc: a.fc,
+            result: [],
+            Mc: 0,
+            nodes: c
+        };
+        this.Hc.push(e);
+        O(function(f) {
+            Kk(b.l, f, function(g) {
+                var h = b.sb(g);
+                Sa(h) || (c.push(g),
+                b.Ca[h] && b.Y(g),
+                b.Ca[h] = {
+                    node: g,
+                    event: e,
+                    zi: d
+                },
+                d += 1)
+            })
+        }, a.nodes)
+    }
+    ;
+    n.Y = function(a) {
+        if (a === this.l)
+            return 0;
+        var b = this.sb(a);
+        if (Sa(b))
+            return 0;
+        var c = this.Ca[b], d;
+        (d = this.bb[b]) ? (this.bb[b] = null,
+        this.Ob.push(b)) : d = {};
+        var e = d.hf
+          , f = d.Id
+          , g = d.jf
+          , h = d.jh
+          , k = d.kh;
+        if (c) {
+            d = c.event;
+            c = c.zi;
+            var l = Kf(this.l) === a;
+            h = h || a.nextSibling;
+            var m = k || a.previousSibling;
+            k = !l && h ? this.sb(h) : null;
+            m = !l && m ? this.sb(m) : null;
+            l = this.l;
+            h = this.options;
+            e = this.sb(e || a.parentNode || a.parentElement) || 0;
+            var p = f;
+            m = void 0 === m ? null : m;
+            k = void 0 === k ? null : k;
+            p = void 0 === p ? {} : p;
+            var q = void 0 === q ? Zf(a) : q;
+            if (B(q))
+                a = void 0;
+            else {
+                f = {
+                    id: b,
+                    prev: m !== e ? m : null,
+                    next: k !== e ? k : null,
+                    parent: e,
+                    name: q.toLowerCase(),
+                    node: a
+                };
+                if (If(a)) {
+                    if (q = Oq(a, g),
+                    f.attributes = {},
+                    f.content = q)
+                        if (a = Yo(l, a))
+                            f.content = "" !== le(q) ? Zo(l, q) : q,
+                            f.hidden = a
+                } else
+                    q = Nq(l, a, h, p, q),
+                    g = q.xb,
+                    f.attributes = q.Cg,
+                    g && (f.hidden = g),
+                    a.namespaceURI && Pa(a.namespaceURI, "svg") && (f.namespace = a.namespaceURI);
+                a = f
+            }
+            if (B(a))
+                return;
+            this.Ca[b] = null;
+            this.Ob.push(b);
+            d.result[c] = a;
+            d.Mc += 1;
+            d.nodes.length === d.Mc && d.fc(d.result)
+        }
+        return b
+    }
+    ;
+    n.flush = function() {
+        this.ca(!0)
+    }
+    ;
+    n.sd = function() {
+        this.Ob.length && Rd(this.Ob, this.di)(Od(this.l, 30))
+    }
+    ;
+    n.ca = function(a) {
+        var b = this;
+        if (zq(this.l)) {
+            var c = cc(this.Ca);
+            c = G(function(d, e) {
+                b.Ca[e] && d.push(b.Ca[e].node);
+                return d
+            }, [], c);
+            c = Rd(c, this.Y);
+            a = a ? Md(u) : Pd(this.l, 20);
+            c(a);
+            this.Hc = nb(function(d) {
+                return d.Mc !== d.result.length
+            }, this.Hc)
+        }
+    }
+    ;
+    var Qq = /allow-same-origin/;
+    function Rq(a, b) {
+        Z.call(this, a, b, "if");
+        this.jc = [];
+        this.Jd = {};
+        this.me = this.L.H(this.me, "fi");
+        this.ne = this.L.H(this.ne, "sd");
+        this.oe = this.L.H(this.oe, "src");
+        this.oa = new a.MutationObserver(this.oe)
+    }
+    la(Rq, Z);
+    n = Rq.prototype;
+    n.start = function() {
+        Z.prototype.start.call(this);
+        this.G.Pb().xc && this.G.ta().F("iframe", "NA:", D(this.me, this));
+        this.G.kf().Kd().F(["sdr"], D(this.ne, this))
+    }
+    ;
+    n.stop = function() {
+        Z.prototype.stop.call(this);
+        O(function(a) {
+            a.G.stop()
+        }, this.jc)
+    }
+    ;
+    n.oe = function(a) {
+        var b = a.pop().target;
+        if (a = Ke(function(d) {
+            return d.sf === b
+        }, this.jc)) {
+            this.jc = nb(function(d) {
+                return d.sf !== b
+            }, this.jc);
+            var c = a.G.Ld();
+            try {
+                a.G.stop()
+            } catch (d) {}
+            this.Bc(b, c)
+        }
+    }
+    ;
+    n.me = function(a) {
+        if (a) {
+            var b = a.data.node;
+            this.oa.observe(b, {
+                attributes: !0,
+                attributeFilter: ["src"]
+            });
+            this.Bc(b, a.data.id)
+        }
+    }
+    ;
+    n.Bc = function(a, b) {
+        var c = this;
+        Sq(this, a) && Cg(this.l, a)(wg(u, function() {
+            var d = c.G.Bc(a.contentWindow, b);
+            c.jc.push({
+                G: d,
+                sf: a
+            })
+        }))
+    }
+    ;
+    n.ne = function(a) {
+        var b = this;
+        if (tq(a)) {
+            var c = a.frameId;
+            a = a.data;
+            this.Jd[c] || (this.Jd[c] = {
+                data: []
+            });
+            var d = this.Jd[c];
+            d.data = d.data.concat(a);
+            this.l.isNaN(d.Bd) && O(function(e) {
+                "page" === e.type && (d.Bd = e.data.recordStamp - b.G.lf())
+            }, d.data);
+            this.l.isNaN(d.Bd) || (this.G.ca(O(function(e) {
+                e.stamp += d.Bd;
+                e.stamp = b.l.Math.max(0, e.stamp);
+                return e
+            }, d.data)),
+            d.data = [])
+        }
+    }
+    ;
+    function Sq(a, b) {
+        var c = b.getAttribute("src")
+          , d = b.getAttribute("sandbox");
+        return b.getAttribute("_ym_ignore") || d && !d.match(Qq) || c && "about:blank" !== c && (c = qh(a.l, c).host) && V(a.l).host !== c ? !1 : J(b, "contentWindow.location.href")
+    }
+    var Tq = ["input", "change", "keyup", "paste", "cut"];
+    function Uq(a, b) {
+        Z.call(this, a, b, "in");
+        this.inputs = {};
+        this.Cd = !1;
+        this.Tc = this.L.H(this.Tc, "ii");
+        this.Uc = this.L.H(this.Uc, "ir");
+        this.cd = this.L.H(this.cd, "ri");
+        this.ld = this.L.H(this.ld, "ur");
+        this.Rd = this.L.H(this.Rd, "ce");
+        this.Lc = this.L.H(this.Lc, "vc")
+    }
+    la(Uq, Z);
+    n = Uq.prototype;
+    n.start = function() {
+        var a = this
+          , b = this.G.ta();
+        this.Cd = Vq(this);
+        O(function(c) {
+            c = c.toLowerCase();
+            b.F(c, "NA:", D(a.Tc, a));
+            b.F(c, "NR:", D(a.Uc, a))
+        }, ig);
+        this.gb = [this.ab.F(this.l.document, Tq, D(this.Rd, this)), function() {
+            O(function(c) {
+                c = c.toLowerCase();
+                b.ea(c, "NA:", a.Tc);
+                b.ea(c, "NR:", a.Uc)
+            }, ig);
+            O(a.ld, cc(a.inputs))
+        }
+        ]
+    }
+    ;
+    n.ld = function(a) {
+        var b = this.inputs[a];
+        if (b) {
+            if (this.Cd) {
+                var c = b.Xh;
+                b = b.element;
+                c && this.l.Object.defineProperty(b, Wq(b), c)
+            }
+            delete this.inputs[a]
+        }
+    }
+    ;
+    n.Uc = function(a) {
+        a && this.ld(a.data.id)
+    }
+    ;
+    n.Tc = function(a) {
+        a && (a = a.data,
+        this.cd(a.node, a.id))
+    }
+    ;
+    function Wq(a) {
+        return fg(a) ? "checked" : "value"
+    }
+    n.Rd = function(a) {
+        if (a = a.target) {
+            var b = Wq(a);
+            this.Lc(a[b], a)
+        }
+    }
+    ;
+    n.Lc = function(a, b) {
+        var c = this.Y(b)
+          , d = this.inputs[c];
+        if (!d && (d = this.cd(d, c),
+        !d))
+            return;
+        var e = d;
+        c = e.Jg;
+        var f = e.value
+          , g = Wq(b)
+          , h = !a || M(typeof a, ["string", "boolean", "number"]);
+        e = this.G.Pb().Vb;
+        h && a !== f && (f = Lq(this.l, b, g, a, this.G.Pb()).value,
+        c ? this.G.V("event", {
+            target: this.Y(b),
+            checked: !!a
+        }, "change") : (c = kp(this.l, b, e),
+        e = c.pb,
+        this.G.V("event", {
+            value: f,
+            hidden: c.yb && !e,
+            target: this.Y(b)
+        }, "change")),
+        d.value = a)
+    }
+    ;
+    n.cd = function(a, b) {
+        var c = this;
+        if (!fp(a) || "__ym_input_override_test" === a.getAttribute("class") || this.inputs[b])
+            return null;
+        var d = fg(a)
+          , e = Wq(a)
+          , f = {
+            element: a,
+            Jg: d,
+            value: a[e]
+        };
+        this.inputs[b] = f;
+        this.Cd && ai(this.l, function() {
+            var g = c.l.Object.getOwnPropertyDescriptor(Object.getPrototypeOf(a), e) || {}
+              , h = c.l.Object.getOwnPropertyDescriptor(a, e) || {}
+              , k = P({}, g, h);
+            if (xa("((set)?(\\s?" + e + ")?)?", k.set)) {
+                try {
+                    c.l.Object.defineProperty(a, e, P({}, k, {
+                        configurable: !0,
+                        set: function(l) {
+                            c.Lc(l, this);
+                            return k.set.call(this, l)
+                        }
+                    }))
+                } catch (l) {}
+                f.Xh = k
+            }
+        });
+        return f
+    }
+    ;
+    function Vq(a) {
+        var b = !0
+          , c = Mf(a.l)("input");
+        try {
+            c = Mf(a.l)("input");
+            c.value = "INPUT_VALUE";
+            c.style.setProperty("display", "none", "important");
+            c.setAttribute("type", "text");
+            c.setAttribute("class", "__ym_input_override_test");
+            var d = a.l.Object.getOwnPropertyDescriptor(Object.getPrototypeOf(c), "value") || {}
+              , e = a.l.Object.getOwnPropertyDescriptor(c, "value") || {}
+              , f = P({}, d, e);
+            a.l.Object.defineProperty(c, "value", P({}, f, {
+                configurable: !0,
+                set: function(g) {
+                    return f.set.call(c, g)
+                }
+            }));
+            "INPUT_VALUE" !== c.value && (b = !1);
+            c.value = "INPUT_TEST";
+            "INPUT_TEST" !== c.value && (b = !1)
+        } catch (g) {
+            b = !1
+        }
+        return b
+    }
+    var Xq = {
+        91: "super",
+        93: "super",
+        224: "super",
+        18: "alt",
+        17: "ctrl",
+        16: "shift",
+        9: "tab",
+        8: "backspace",
+        46: "delete"
+    }
+      , Yq = {
+        nj: 1,
+        Ti: 2,
+        alt: 3,
+        shift: 4,
+        pj: 5,
+        "delete": 6,
+        Ri: 6
+    }
+      , Zq = [4, 9, 8, 32, 37, 38, 39, 40, 46]
+      , $q = {}
+      , ar = ($q["1"] = {
+        91: "&#8984;",
+        93: "&#8984;",
+        224: "&#8984;",
+        18: "&#8997;",
+        17: "&#8963;",
+        16: "&#8679;",
+        9: "&#8677;",
+        8: "&#9003;",
+        46: "&#9003;"
+    },
+    $q["2"] = {
+        91: "&#xff;",
+        93: "&#xff;",
+        224: "&#xff;",
+        18: "Alt",
+        17: "Ctrl",
+        16: "Shift",
+        9: "Tab",
+        8: "Backspace",
+        46: "Delete"
+    },
+    $q.Lh = {
+        32: "SPACEBAR",
+        37: "&larr;",
+        38: "&uarr;",
+        39: "&rarr;",
+        40: "&darr;",
+        13: "Enter"
+    },
+    $q)
+      , br = /flash/
+      , cr = /ym-disable-keys/
+      , dr = /^&#/;
+    function er(a, b) {
+        Z.call(this, a, b, "ks");
+        this.ub = {};
+        this.Sa = 0;
+        this.Ia = [];
+        this.cg = [];
+        this.Lf = this.Fc = 0;
+        this.ja.push([["keydown"], this.uh]);
+        this.ja.push([["keyup"], this.vh]);
+        this.xg = -1 !== Oa(J(a, "navigator.appVersion") || "", "Mac") ? "1" : "2";
+        this.Qc = this.L.H(this.Qc, "v");
+        this.Ed = this.L.H(this.Ed, "ec");
+        this.fd = this.L.H(this.fd, "sk");
+        this.Md = this.L.H(this.Md, "gk");
+        this.Ce = this.L.H(this.Ce, "sc");
+        this.vc = this.L.H(this.vc, "cc");
+        this.reset = this.L.H(this.reset, "r");
+        this.dd = this.L.H(this.dd, "rs")
+    }
+    la(er, Z);
+    n = er.prototype;
+    n.uh = function(a) {
+        if (this.Qc(a) && (!a.target || "INPUT" !== a.target.nodeName || !a.shiftKey && 32 !== a.keyCode && "shift" !== Xq[a.keyCode])) {
+            var b = a.keyCode;
+            a.repeat || this.ub[b] || (this.ub[a.keyCode] = !0,
+            Xq[a.keyCode] && !this.Sa ? (this.Sa += 1,
+            this.Ce(a),
+            this.reset(300)) : this.Sa ? (tg(this.l, this.Lf),
+            fr(this, a),
+            this.Ed()) : (this.reset(),
+            fr(this, a)))
+        }
+    }
+    ;
+    n.vh = function(a) {
+        if (this.Qc(a)) {
+            var b = a.keyCode
+              , c = Xq[a.keyCode];
+            this.ub[a.keyCode] && (this.ub[b] = !1);
+            c && this.Sa && (this.Sa = 0,
+            this.ub = {});
+            1 === this.Ia.length && (a = r(this.Ia).next().value,
+            M(a.keyCode, Zq) && (this.fd([a], !0),
+            this.reset()));
+            this.Ia = nb(H(L("keyCode"), sa(b), Fa), this.Ia);
+            tg(this.l, this.Fc)
+        }
+    }
+    ;
+    n.Qc = function(a) {
+        var b = this.l.document.activeElement;
+        b = b && "OBJECT" === b.nodeName && br.test(b.getAttribute("type") || "");
+        a = a.target;
+        if (!a)
+            return !b;
+        a = "INPUT" === a.nodeName && "password" === a.getAttribute("type") && cr.test(a.className);
+        return !b && !a
+    }
+    ;
+    n.Ed = function() {
+        this.cg = this.Ia.slice(0);
+        tg(this.l, this.Fc);
+        this.Fc = Y(this.l, F(this.cg, D(this.fd, this)), 0, "e.c")
+    }
+    ;
+    n.fd = function(a, b) {
+        if (1 < a.length || (void 0 === b ? 0 : b)) {
+            var c = this.Md(a);
+            this.G.V("event", {
+                keystrokes: c
+            }, "keystroke")
+        }
+    }
+    ;
+    n.Md = function(a) {
+        var b = this;
+        a = O(function(c) {
+            c = c.keyCode;
+            var d = Xq[c]
+              , e = ar[b.xg][c] || ar.Lh[c] || String.fromCharCode(c);
+            return {
+                id: c,
+                key: e,
+                isMeta: !!d && dr.test(e),
+                modifier: d
+            }
+        }, a);
+        return El(function(c, d) {
+            return (Yq[c.modifier] || 100) - (Yq[d.modifier] || 100)
+        }, a)
+    }
+    ;
+    function fr(a, b) {
+        M(b, a.Ia) || a.Ia.push(b)
+    }
+    n.Ce = function(a) {
+        fr(this, a);
+        this.vc()
+    }
+    ;
+    n.vc = function() {
+        this.Sa ? Y(this.l, this.vc, 100) : this.Ia = []
+    }
+    ;
+    n.reset = function(a) {
+        a ? this.Lf = Y(this.l, D(this.dd, this), a) : this.dd()
+    }
+    ;
+    n.dd = function() {
+        this.Sa = 0;
+        this.Ia = [];
+        this.ub = {};
+        tg(this.l, this.Fc)
+    }
+    ;
+    function gr(a) {
+        this.index = 0;
+        this.Eb = {};
+        this.l = a
+    }
+    function hr(a, b, c, d) {
+        d = void 0 === d ? {} : d;
+        var e = Fd(a.l)
+          , f = a.index;
+        a.index += 1;
+        a.Eb[f] = {
+            Fa: 0,
+            ec: !1,
+            fn: b,
+            pd: [],
+            ce: e(Bd)
+        };
+        return function() {
+            var g = Ia(arguments)
+              , h = d.ff && !a.Eb[f].ec
+              , k = a.Eb[f];
+            tg(a.l, k.Fa);
+            k.pd = g;
+            k.ec = !0;
+            var l = e(Bd);
+            if (h || l - k.ce >= c)
+                b.apply(null, da(g)),
+                k.ce = l;
+            k.Fa = Y(a.l, function() {
+                h || (b.apply(null, da(g)),
+                k.ce = e(Bd));
+                k.ec = !1;
+                k.pd = []
+            }, c, "th")
+        }
+    }
+    gr.prototype.flush = function() {
+        var a = this;
+        O(function(b) {
+            var c = a.Eb[b]
+              , d = c.Fa
+              , e = c.fn
+              , f = c.pd;
+            c.ec && (a.Eb[b].ec = !1,
+            e.apply(null, da(f)),
+            tg(a.l, d))
+        }, cc(this.Eb))
+    }
+    ;
+    var ir = ["mousemove", "mousedown", "mouseup", "click"];
+    function jr(a, b) {
+        Z.call(this, a, b, "mo");
+        this.ja.push([ir, this.Sh]);
+        this.Ea = new gr(a);
+        this.Sc = this.L.H(this.Sc, "n");
+        this.ri = this.L.H(hr(this.Ea, D(this.Sc, this), 100), "t")
+    }
+    la(jr, Z);
+    jr.prototype.stop = function() {
+        Z.prototype.stop.call(this);
+        this.Ea.flush()
+    }
+    ;
+    jr.prototype.Sh = function(a) {
+        var b = null;
+        try {
+            b = a.type
+        } catch (c) {
+            return
+        }
+        "mousemove" === b ? this.ri(a) : this.Sc(a)
+    }
+    ;
+    jr.prototype.Sc = function(a) {
+        var b = a.type
+          , c = void 0 === a.clientX ? null : a.clientX
+          , d = void 0 === a.clientY ? null : a.clientY;
+        a = a.target || this.l.document.elementFromPoint(c, d);
+        this.G.V("event", {
+            x: c || 0,
+            y: d || 0,
+            target: this.Y(a)
+        }, b)
+    }
+    ;
+    function kr(a, b) {
+        Z.call(this, a, b, "mu");
+        this.xa = {
+            elements: [],
+            attributes: []
+        };
+        this.index = 0;
+        this.le = this.L.H(this.le, "o");
+        this.Ad = this.L.H(this.Ad, "io");
+        this.od = this.L.H(this.od, "ao");
+        this.te = this.L.H(this.te, "a");
+        this.qe = this.L.H(this.qe, "at");
+        this.ue = this.L.H(this.ue, "r");
+        this.se = this.L.H(this.se, "c");
+        this.oa = new a.MutationObserver(this.le)
+    }
+    la(kr, Z);
+    n = kr.prototype;
+    n.start = function() {
+        this.oa.observe(this.l.document.documentElement, {
+            attributes: !0,
+            characterData: !0,
+            childList: !0,
+            subtree: !0,
+            attributeOldValue: !0,
+            characterDataOldValue: !0
+        })
+    }
+    ;
+    n.stop = function() {
+        this.oa.disconnect()
+    }
+    ;
+    n.od = function(a) {
+        var b = a.target
+          , c = a.attributeName
+          , d = a.oldValue;
+        a = b.getAttribute(c);
+        if (a === d)
+            return !1;
+        d = Ba(this.l)(b, this.xa.elements);
+        -1 === d && (d = this.xa.elements.push(b) - 1,
+        this.xa.attributes[d] = {});
+        this.xa.attributes[d] || (this.xa.attributes[d] = {});
+        this.xa.attributes[d][c] = Lq(this.l, b, c, a, this.G.Pb()).value;
+        return !0
+    }
+    ;
+    n.Ad = function(a) {
+        function b(g) {
+            var h = Ba(c.l)(g, d);
+            return -1 === h ? (d.push(g),
+            g = {
+                Id: {}
+            },
+            e.push(g),
+            g) : e[h]
+        }
+        var c = this
+          , d = []
+          , e = [];
+        O(function(g) {
+            var h = g.attributeName
+              , k = g.removedNodes
+              , l = g.oldValue
+              , m = g.target
+              , p = g.nextSibling
+              , q = g.previousSibling;
+            switch (g.type) {
+            case "attributes":
+                if (c.od(g)) {
+                    var t = b(m);
+                    t.Id[h] || (t.Id[h] = Lq(c.l, m, h, l, c.G.Pb()).value)
+                }
+                break;
+            case "childList":
+                k && O(function(v) {
+                    t = b(v);
+                    t.hf || P(t, {
+                        hf: m,
+                        jh: p ? p : void 0,
+                        kh: q ? q : void 0
+                    })
+                }, vb(k));
+                break;
+            case "characterData":
+                t = b(m),
+                t.jf || (t.jf = l)
+            }
+        }, a);
+        var f = this.G.ta();
+        O(function(g, h) {
+            f.hd(g, e[h])
+        }, d)
+    }
+    ;
+    n.le = function(a) {
+        var b = this;
+        if (zq(this.l)) {
+            var c = this.G.stamp();
+            this.Ad(a);
+            O(function(d) {
+                var e = d.addedNodes
+                  , f = d.removedNodes
+                  , g = d.target;
+                switch (d.type) {
+                case "childList":
+                    f && f.length && b.ue(vb(f), c);
+                    e && e.length && b.te(vb(e), c);
+                    break;
+                case "characterData":
+                    b.se(g, c)
+                }
+            }, a);
+            this.qe(c)
+        } else
+            this.stop()
+    }
+    ;
+    n.qe = function(a) {
+        var b = this;
+        O(function(c, d) {
+            var e = lr(b)
+              , f = {}
+              , g = [];
+            O(function(h) {
+                var k = r(h);
+                h = k.next().value;
+                k = k.next().value;
+                Sa(k) ? g.push(h) : f[h] = k
+            }, bc(b.xa.attributes[d]));
+            b.G.V("mutation", {
+                index: e,
+                attributes: f,
+                deletedAttributes: g,
+                target: b.Y(c)
+            }, "ac", a)
+        }, this.xa.elements);
+        this.xa.elements = [];
+        this.xa.attributes = []
+    }
+    ;
+    n.te = function(a, b) {
+        var c = this
+          , d = lr(this);
+        this.G.ta().Rb({
+            nodes: a,
+            fc: function(e) {
+                e = O(function(f) {
+                    f.node = void 0;
+                    return f
+                }, e);
+                c.G.V("mutation", {
+                    index: d,
+                    nodes: e
+                }, "ad", b)
+            }
+        })
+    }
+    ;
+    n.ue = function(a, b) {
+        var c = this
+          , d = lr(this)
+          , e = this.G.ta()
+          , f = O(function(g) {
+            var h = e.removeNode(g);
+            Kk(c.l, g, function(k) {
+                e.removeNode(k)
+            });
+            return h
+        }, a);
+        this.G.V("mutation", {
+            index: d,
+            nodes: f
+        }, "re", b)
+    }
+    ;
+    n.se = function(a, b) {
+        var c = lr(this);
+        this.G.V("mutation", {
+            value: a.textContent,
+            target: this.Y(a),
+            index: c
+        }, "tc", b)
+    }
+    ;
+    function lr(a) {
+        var b = a.index;
+        a.index += 1;
+        return b
+    }
+    function mr() {
+        return Math.floor(65536 * (1 + Math.random())).toString(16).substring(1)
+    }
+    function nr() {
+        return mr() + mr() + "-" + mr() + "-" + mr() + "-" + mr() + "-" + mr() + mr() + mr()
+    }
+    var or = x(function(a) {
+        var b = J(a, "sessionStorage");
+        if (!b)
+            return null;
+        try {
+            var c = b.getItem("__ym_tab_guid");
+            b = !1;
+            var d = J(a, "opener.sessionStorage");
+            try {
+                b = !!d && c === d.getItem("__ym_tab_guid")
+            } catch (e) {
+                b = !0
+            }
+            if (!c || b)
+                c = nr(),
+                a.sessionStorage.setItem("__ym_tab_guid", c);
+            return c
+        } catch (e) {
+            return null
+        }
+    });
+    function pr(a, b) {
+        Z.call(this, a, b, "pa");
+        this.ye = this.L.H(this.ye, "ps")
+    }
+    la(pr, Z);
+    pr.prototype.start = function() {
+        this.G.ta().Rb({
+            nodes: [this.l.document.documentElement],
+            fc: this.ye
+        })
+    }
+    ;
+    pr.prototype.ye = function(a) {
+        var b = this.G.th()
+          , c = b.nh()
+          , d = V(this.l)
+          , e = d.host
+          , f = d.protocol;
+        d = d.pathname;
+        var g = r(Uf(this.l))
+          , h = g.next().value;
+        g = g.next().value;
+        this.G.V("page", {
+            content: O(function(k) {
+                k.node = void 0;
+                return k
+            }, a),
+            base: c || "",
+            hasBase: !!c,
+            viewport: {
+                width: h,
+                height: g
+            },
+            title: this.l.document.title,
+            doctype: b.ph() || "",
+            address: this.l.location.href,
+            ua: Bb(this.l) || "",
+            referrer: this.l.document.referrer,
+            screen: {
+                width: this.l.screen.width,
+                height: this.l.screen.height
+            },
+            location: {
+                host: e,
+                protocol: f,
+                path: d
+            },
+            recordStamp: this.G.lf(),
+            tabId: or(this.l)
+        }, "page", 0)
+    }
+    ;
+    function qr(a, b) {
+        Z.call(this, a, b, "r");
+        this.ib = {
+            width: 0,
+            height: 0,
+            pageHeight: 0,
+            pageWidth: 0,
+            orientation: 0
+        };
+        this.ja.push([["resize"], this.Vh]);
+        this.ja.push([["orientationchange"], this.Th])
+    }
+    la(qr, Z);
+    qr.prototype.start = function() {
+        Z.prototype.start.call(this);
+        this.Sf()
+    }
+    ;
+    qr.prototype.Vh = function() {
+        var a = rr(this);
+        if (a.height !== this.ib.height || a.width !== this.ib.width)
+            this.ib = a,
+            sr(this, a)
+    }
+    ;
+    qr.prototype.Th = function() {
+        var a = rr(this);
+        if (this.ib.orientation !== a.orientation) {
+            this.ib = a;
+            var b = void 0 === b ? this.G.stamp() : b;
+            this.G.V("event", {
+                width: a.width,
+                height: a.height,
+                orientation: a.orientation
+            }, "deviceRotation", b)
+        }
+    }
+    ;
+    function rr(a) {
+        var b = a.G.rb()
+          , c = r(Uf(a.l))
+          , d = c.next().value;
+        c = c.next().value;
+        b = b.Od();
+        return {
+            width: d,
+            height: c,
+            pageWidth: b ? b.scrollWidth : 0,
+            pageHeight: b ? b.scrollHeight : 0,
+            orientation: a.G.rb().sh()
+        }
+    }
+    function sr(a, b, c) {
+        c = void 0 === c ? a.G.stamp() : c;
+        a.G.V("event", {
+            width: b.width,
+            height: b.height,
+            pageWidth: b.pageWidth,
+            pageHeight: b.pageHeight
+        }, "resize", c)
+    }
+    qr.prototype.Sf = function() {
+        var a = rr(this);
+        if (a.height && a.width && a.pageWidth && a.pageHeight) {
+            var b = this.ib;
+            b.height && b.width && b.pageWidth && b.pageHeight || (this.ib = a);
+            sr(this, a, 0)
+        } else
+            Y(this.l, D(this.Sf, this), 300)
+    }
+    ;
+    function tr(a, b) {
+        Z.call(this, a, b, "sc");
+        this.eg = [];
+        this.Qe = {
+            x: 0,
+            y: 0
+        };
+        this.Ea = new gr(a);
+        this.Xc = this.L.H(this.Xc, "o");
+        this.ja.push([["scroll"], this.Wh])
+    }
+    la(tr, Z);
+    n = tr.prototype;
+    n.start = function() {
+        Z.prototype.start.call(this);
+        this.G.V("event", {
+            x: Math.max(this.l.scrollX, 0),
+            y: Math.max(this.l.scrollY, 0),
+            page: !0,
+            target: -1
+        }, "scroll", 0)
+    }
+    ;
+    n.stop = function() {
+        Z.prototype.stop.call(this);
+        this.Ea.flush()
+    }
+    ;
+    n.Wh = function(a) {
+        if (this.G.rb().tf())
+            this.Xc(a);
+        else {
+            var b = a.target
+              , c = nb(function(d) {
+                return r(d).next().value === b
+            }, this.eg).pop();
+            if (c)
+                (0,
+                c[1])(a);
+            else
+                c = hr(this.Ea, D(this.Xc, this), 100, {
+                    ff: !0
+                }),
+                this.eg.push([b, c]),
+                c(a)
+        }
+    }
+    ;
+    n.Xc = function(a) {
+        var b = this.G.rb().Od();
+        a = a.target;
+        var c = this.Qb(a);
+        b = b === a || this.l === a || this.l.document === a;
+        var d = Math.max(c.left, 0);
+        c = Math.max(c.top, 0);
+        if (b) {
+            if (this.Qe.x === d && this.Qe.y === c)
+                return;
+            this.Qe = {
+                x: d,
+                y: c
+            }
+        }
+        this.G.V("event", {
+            x: d,
+            y: c,
+            page: b,
+            target: b ? -1 : this.Y(a)
+        }, "scroll")
+    }
+    ;
+    n.Qb = function(a) {
+        var b = {
+            left: 0,
+            top: 0
+        };
+        if (!a)
+            return b;
+        if (a.window === a)
+            return {
+                top: a.scrollY || 0,
+                left: a.scrollX || 0
+            };
+        var c = a.ownerDocument || a
+          , d = a.documentElement
+          , e = c.defaultView || c.parentWindow
+          , f = c.body;
+        return a !== c || (a = this.G.rb().Od(),
+        a) ? M(a, [d, f]) ? {
+            top: a.scrollTop || e.scrollY,
+            left: a.scrollLeft || e.scrollX
+        } : {
+            top: a.scrollTop || 0,
+            left: a.scrollLeft || 0
+        } : b
+    }
+    ;
+    var ur = H(x(function(a) {
+        var b = ya(a.getSelection, "getSelection");
+        return b ? D(b, a) : u
+    }), Re)
+      , vr = ["mousemove", "touchmove", "mousedown", "touchdown", "select"]
+      , wr = /text|search|password|tel|url/;
+    function xr(a, b) {
+        Z.call(this, a, b, "se");
+        this.Ud = !1;
+        this.ja.push([vr, this.yh])
+    }
+    la(xr, Z);
+    xr.prototype.yh = function(a) {
+        var b = this.G
+          , c = a.type
+          , d = a.which;
+        a = a.target;
+        if ("mousemove" !== c || 1 === d) {
+            if ("select" === c)
+                a: {
+                    if (wr.test(a.type || "") && (c = this.Y(a),
+                    !B(c))) {
+                        c = {
+                            start: a.selectionStart,
+                            end: a.selectionEnd,
+                            target: c
+                        };
+                        break a
+                    }
+                    c = void 0
+                }
+            else
+                a: {
+                    if ((c = ur(this.l)) && 0 < c.rangeCount && (c = c.getRangeAt(0) || this.l.document.createRange(),
+                    d = this.Y(c.startContainer),
+                    a = this.Y(c.endContainer),
+                    !B(d) && !B(a))) {
+                        c = {
+                            start: c.startOffset,
+                            end: c.endOffset,
+                            startNode: d,
+                            endNode: a
+                        };
+                        break a
+                    }
+                    c = void 0
+                }
+            c && c.start !== c.end ? (this.Ud = !0,
+            b.V("event", c, "selection")) : this.Ud && (this.Ud = !1,
+            b.V("event", {
+                start: 0,
+                end: 0
+            }, "selection"))
+        }
+    }
+    ;
+    function yr(a, b) {
+        Z.call(this, a, b, "src");
+        this.ja.push([["load"], this.Rh, this.l.document])
+    }
+    la(yr, Z);
+    yr.prototype.Rh = function(a) {
+        a = a.target;
+        "IMG" === Zf(a) && a.getAttribute("srcset") && this.G.V("mutation", {
+            target: this.Y(a),
+            attributes: {
+                src: a.currentSrc
+            }
+        }, "ac")
+    }
+    ;
+    var zr = ["addRule", "removeRule", "insertRule", "deleteRule"];
+    function Ar(a, b) {
+        Z.call(this, a, b, "ss");
+        this.Va = {};
+        this.kc = {};
+        this.We = 0;
+        this.Vc = this.L.H(this.Vc, "a");
+        this.Da = this.L.H(this.Da, "sr");
+        this.Wc = this.L.H(this.Wc, "r");
+        this.ca = this.L.H(this.ca, "d");
+        this.zb = this.L.H(this.zb, "ro");
+        this.kb = this.L.H(this.kb, "rr")
+    }
+    la(Ar, Z);
+    n = Ar.prototype;
+    n.start = function() {
+        var a = this.G.ta();
+        a.F("style", "NA:", this.Vc);
+        a.F("style", "NR:", this.Wc);
+        this.ca()
+    }
+    ;
+    n.stop = function() {
+        var a = this;
+        Z.prototype.stop.call(this);
+        var b = this.G.ta();
+        b.ea("style", "NA:", this.Vc);
+        b.ea("style", "NR:", this.Wc);
+        this.ca();
+        tg(this.l, this.We);
+        O(function(c) {
+            a.Va[c].sheet && Br(a, a.Va[c].sheet)
+        }, cc(this.Va));
+        this.Va = {}
+    }
+    ;
+    n.ca = function() {
+        var a = this;
+        O(function(b) {
+            b = r(b);
+            var c = b.next().value;
+            b = b.next().value;
+            if (b.length) {
+                for (var d = [], e = b[0].stamp, f = [], g = 0; g < b.length; g += 1) {
+                    var h = b[g]
+                      , k = h.stamp;
+                    delete h.stamp;
+                    k <= e + 50 ? d.push(h) : (f.push(d),
+                    e = k,
+                    d = [h])
+                }
+                d.length && f.push(d);
+                f.length && O(function(l) {
+                    a.G.V("event", {
+                        target: Vb(c),
+                        changes: l
+                    }, "stylechange", e)
+                }, f);
+                delete a.kc[c]
+            }
+        }, bc(this.kc));
+        this.We = Y(this.l, this.ca, 100)
+    }
+    ;
+    n.Da = function(a, b) {
+        this.kc[a] || (this.kc[a] = []);
+        this.kc[a].push(b)
+    }
+    ;
+    function Cr(a, b, c) {
+        var d = b.addRule
+          , e = b.removeRule
+          , f = b.insertRule
+          , g = b.deleteRule;
+        A(d) && (b.addRule = function(k, l, m) {
+            var p = a.G.stamp()
+              , q = d.call(b, k, l, m);
+            a.Da(c, {
+                op: "a",
+                stamp: p,
+                style: k + "{" + l + "}",
+                index: m
+            });
+            return q
+        }
+        );
+        A(e) && (b.removeRule = function(k) {
+            var l = a.G.stamp()
+              , m = Dr(b)
+              , p = k || 0;
+            m && m[p] && a.kb(m[p]);
+            m = e.call(b, k);
+            a.Da(c, {
+                op: "r",
+                stamp: l,
+                index: k
+            });
+            return m
+        }
+        );
+        A(f) && (b.insertRule = function(k, l) {
+            var m = a.G.stamp()
+              , p = f.call(b, k, l)
+              , q = Dr(b);
+            q && q[p] && a.zb(c, null, q[p]);
+            a.Da(c, {
+                op: "a",
+                stamp: m,
+                index: l,
+                style: k
+            });
+            return p
+        }
+        );
+        A(g) && (b.deleteRule = function(k) {
+            var l = a.G.stamp()
+              , m = Dr(b)
+              , p = k || 0;
+            m && m[p] && a.kb(m[p]);
+            m = g.call(b, k);
+            a.Da(c, {
+                op: "r",
+                stamp: l,
+                index: k
+            });
+            return m
+        }
+        );
+        var h = Dr(b);
+        h && O(D(a.zb, a, c, null), h)
+    }
+    function Br(a, b) {
+        O(function(d) {
+            var e = J(a.l, "CSSStyleSheet.prototype." + d);
+            A(e) && I(b, d) && b[d] !== e && (b[d] = D(e, b))
+        }, zr);
+        var c = Dr(b);
+        c && O(D(a.kb, a), c)
+    }
+    n.zb = function(a, b, c) {
+        var d = this
+          , e = b || c;
+        b = this.Va[a];
+        if (!b || !b.sheet)
+            throw T("missing style sheet");
+        var f = b.sheet
+          , g = c.insertRule
+          , h = c.deleteRule;
+        A(g) && (c.insertRule = function(k, l) {
+            var m = d.G.stamp()
+              , p = g.call(c, k, l)
+              , q = Dr(c);
+            q && q[p] && d.zb(a, e, q[p]);
+            q = Ca(e, Dr(f) || []);
+            d.Da(a, {
+                op: "r",
+                stamp: m,
+                index: q
+            });
+            d.Da(a, {
+                op: "a",
+                stamp: m,
+                index: q,
+                style: e.cssText
+            });
+            return p
+        }
+        );
+        A(h) && (c.deleteRule = function(k) {
+            var l = d.G.stamp()
+              , m = Dr(f)
+              , p = k || 0;
+            m && m[p] && d.kb(m[p]);
+            k = h.call(c, k);
+            m = Ca(c, Dr(f) || []);
+            d.Da(a, {
+                op: "r",
+                stamp: l,
+                index: m
+            });
+            d.Da(a, {
+                op: "a",
+                stamp: l,
+                index: m,
+                style: e.cssText
+            });
+            return k
+        }
+        );
+        (b = Dr(c)) && O(D(this.zb, this, a, e), b)
+    }
+    ;
+    n.kb = function(a) {
+        var b = J(this.l, "CSSGroupingRule.prototype.insertRule");
+        A(b) && I(a, "insertRule") && a.insertRule !== b && (a.insertRule = D(b, a));
+        b = J(this.l, "CSSGroupingRule.prototype.deleteRule");
+        A(b) && I(a, "removeRule") && a.deleteRule !== b && (a.deleteRule = D(b, a));
+        (a = Dr(a)) && O(D(this.kb, this), a)
+    }
+    ;
+    function Dr(a) {
+        try {
+            return a.cssRules || a.rules
+        } catch (b) {
+            return null
+        }
+    }
+    n.Vc = function(a) {
+        var b = a.data;
+        a = b.id;
+        b = b.node;
+        if (b.sheet && !b.getAttribute("src") && !b.innerText) {
+            var c = b.sheet
+              , d = Dr(c);
+            if (d && d.length) {
+                for (var e = [], f = 0; f < d.length; f += 1)
+                    e.push({
+                        style: d[f].cssText,
+                        index: f,
+                        op: "a"
+                    });
+                this.G.V("event", {
+                    changes: e,
+                    target: a
+                }, "stylechange")
+            }
+            this.Va[a] = b;
+            Cr(this, c, a)
+        }
+    }
+    ;
+    n.Wc = function(a) {
+        a = a.data.id;
+        var b = this.Va[a];
+        b && (delete this.Va[a],
+        b.sheet && Br(this, b.sheet))
+    }
+    ;
+    var Er = ["touchmove", "touchstart", "touchend", "touchcancel", "touchforcechange"];
+    function Fr(a, b) {
+        Z.call(this, a, b, "t");
+        this.kd = {};
+        this.scrolling = !1;
+        this.Rf = 0;
+        this.ja.push([["scroll"], this.ki, this.l.document]);
+        this.ja.push([Er, this.ui, this.l.document]);
+        this.Ea = new gr(a);
+        this.Wb = this.L.H(this.Wb, "nh");
+        this.ti = this.L.H(hr(this.Ea, this.Wb, this.G.rb().tf() ? 0 : 50, {
+            ff: !0
+        }), "th")
+    }
+    la(Fr, Z);
+    Fr.prototype.ki = function() {
+        var a = this;
+        this.scrolling = !0;
+        tg(this.l, this.Rf);
+        this.Rf = Y(this.l, function() {
+            a.scrolling = !1
+        }, 150)
+    }
+    ;
+    Fr.prototype.ui = function(a) {
+        var b = this
+          , c = "touchcancel" === a.type || "touchend" === a.type;
+        a.changedTouches && 0 < a.changedTouches.length && O(function(d) {
+            b.kd[d.identifier] || (b.kd[d.identifier] = nr());
+            d.__ym_touch_id = b.kd[d.identifier];
+            c && delete b.kd[d.identifier]
+        }, vb(a.changedTouches));
+        "touchmove" === a.type ? this.scrolling ? this.Wb(a) : this.ti(a, this.G.stamp()) : this.Wb(a)
+    }
+    ;
+    Fr.prototype.Wb = function(a, b) {
+        b = void 0 === b ? this.G.stamp() : b;
+        var c = a.type
+          , d = O(function(e) {
+            return {
+                id: e.__ym_touch_id,
+                x: Math.round(e.clientX),
+                y: Math.round(e.clientY),
+                force: e.force
+            }
+        }, vb(a.changedTouches));
+        0 < d.length && this.G.V("event", {
+            touches: d,
+            target: this.Y(a.target)
+        }, c, b)
+    }
+    ;
+    var Gr = {}
+      , Hr = (Gr.focus = "windowfocus",
+    Gr.blur = "windowblur",
+    Gr.pageshow = "windowfocus",
+    Gr.pagehide = "windowblur",
+    Gr);
+    function Ir(a, b) {
+        Z.call(this, a, b, "wf");
+        this.visibility = null;
+        B(this.l.document.hidden) ? B(this.l.document.msHidden) ? B(this.l.document.webkitHidden) || (this.visibility = {
+            hidden: "webkitHidden",
+            event: "webkitvisibilitychange"
+        }) : this.visibility = {
+            hidden: "msHidden",
+            event: "msvisibilitychange"
+        } : this.visibility = {
+            hidden: "hidden",
+            event: "visibilitychange"
+        };
+        this.Qd = this.L.H(this.Qd, "fbe");
+        this.Sd = this.L.H(this.Sd, "she")
+    }
+    la(Ir, Z);
+    Ir.prototype.start = function() {
+        this.gb = [this.ab.F(this.l, this.visibility ? [this.visibility.event] : ["focus", "blur"], D(this.Qd, this))];
+        vd(this.l) && this.gb.push(this.ab.F(this.l, ["pageshow", "pagehide"], D(this.Sd, this), null))
+    }
+    ;
+    Ir.prototype.Sd = function(a) {
+        this.G.V("event", {}, Hr[a.type])
+    }
+    ;
+    Ir.prototype.Qd = function(a) {
+        this.visibility ? this.G.V("event", {}, Hr[this.l.document[this.visibility.hidden] ? "blur" : "focus"]) : this.G.V("event", {}, Hr[a.type])
+    }
+    ;
+    function Jr(a, b) {
+        Z.call(this, a, b, "z");
+        this.ng = 1;
+        this.Ea = new gr(a);
+        this.wc = this.L.H(this.wc, "z")
+    }
+    la(Jr, Z);
+    Jr.prototype.start = function() {
+        if (Kr(this)) {
+            Z.prototype.start.call(this);
+            this.wc();
+            var a = this.ab.F(J(this.l, "visualViewport"), ["resize"], hr(this.Ea, this.wc, 10));
+            this.gb.push(a)
+        }
+    }
+    ;
+    Jr.prototype.stop = function() {
+        Z.prototype.stop.call(this);
+        this.Ea.flush()
+    }
+    ;
+    Jr.prototype.wc = function() {
+        var a = Kr(this);
+        if (a && a !== this.ng) {
+            this.ng = a;
+            var b = Vf(this.l);
+            this.G.V("event", {
+                x: b.x,
+                y: b.y,
+                level: a
+            }, "zoom")
+        }
+    }
+    ;
+    function Kr(a) {
+        return (a = Tf(a.l)) ? a[2] : null
+    }
+    var Lr = /^\s*function submit\(\)/;
+    function Mr(a, b) {
+        Z.call(this, a, b, "smc");
+        this.forms = {};
+        this.Xb = ":submit" + a.Math.random();
+        this.ja.push([["submit"], this.zh]);
+        this.bd = this.L.H(this.bd, "rf");
+        this.oc = this.L.H(this.oc, "uf")
+    }
+    la(Mr, Z);
+    Mr.prototype.start = function() {
+        var a = this;
+        Z.prototype.start.call(this);
+        var b = this.G.ta();
+        b.F("form", "NA:", this.bd);
+        b.F("form", "NR:", this.oc);
+        this.gb.push(function() {
+            b.ea("form", "NA:", a.bd);
+            b.ea("form", "NR:", a.oc);
+            O(a.oc, fc(a.forms))
+        })
+    }
+    ;
+    Mr.prototype.bd = function(a) {
+        var b = a.data
+          , c = b.id;
+        b = b.node;
+        this.forms[c] || (this.forms[c] = a,
+        Nr(this, b))
+    }
+    ;
+    Mr.prototype.oc = function(a) {
+        var b = a.data;
+        a = b.id;
+        b = b.node;
+        b[this.Xb] && (b.submit = b[this.Xb],
+        delete b[this.Xb]);
+        delete this.forms[a]
+    }
+    ;
+    function Or(a) {
+        a = a.submit;
+        return A(a) || Ta(a) && Lr.test("" + a)
+    }
+    function Nr(a, b) {
+        Or(b) && (b[a.Xb] = b.submit,
+        b.submit = a.L.H(function() {
+            Pr(a, b);
+            return b[a.Xb]()
+        }, "os"))
+    }
+    Mr.prototype.zh = function(a) {
+        a.target && Pr(this, a.target)
+    }
+    ;
+    function Pr(a, b) {
+        if ("FORM" === b.nodeName && !ep(b)) {
+            var c = a.Y(b);
+            if (c) {
+                var d = G(function(e, f) {
+                    if (!kg(f)) {
+                        var g = a.Y(f);
+                        g && e.push(g)
+                    }
+                    return e
+                }, [], b.elements);
+                a.G.V("event", {
+                    formId: c,
+                    filledDomNodes: d
+                }, "submit")
+            }
+        }
+    }
+    var Qr = [Ar, Uq, kr, qr, tr, jr, Iq, xr, Ir, Fr, yr, Jr, er, Mr];
+    Qr.push(Rq);
+    Qr.push(pr);
+    function Rr(a, b) {
+        var c = Gf(a)
+          , d = "wv2rf:" + Q(b)
+          , e = b.xc
+          , f = Fq(a)
+          , g = c.C(d)
+          , h = b.Ai;
+        return B(f) || Sa(g) ? Ag(Wh(b, function(k) {
+            var l = !!J(k, "settings.webvisor.forms");
+            l = !J(k, "settings.x3") && l;
+            f = Fq(a) || J(k, "settings.eu");
+            c.D(d, jb(l));
+            return {
+                xc: e,
+                Vb: !!f,
+                Jf: l,
+                ig: h,
+                $a: Qr,
+                sc: Pq,
+                bc: "W"
+            }
+        })) : Bg({
+            xc: e,
+            Vb: f,
+            Jf: !!Vb(g),
+            ig: h,
+            $a: Qr,
+            sc: Pq,
+            bc: "W"
+        })
+    }
+    var Sr = X("w2", function(a, b) {
+        var c = R(a)
+          , d = Q(b);
+        if (b.Gb && !ic(a) && a.MutationObserver && xa("Element", a.Element)) {
+            xa("MutationObserver", a.MutationObserver) || Yh(a, d).warn("w2mo");
+            var e = Ag(Wh(b, w))
+              , f = Cg(a)(yg(E([a, b], Rr)))(xg(function(k) {
+                return new Aq(a,k)
+            }))
+              , g = !1
+              , h = function() {
+                g = !0
+            };
+            zg([f, e])(wg(W(a, "wv2.R.c"), function(k) {
+                k = r(k);
+                var l = k.next().value;
+                k = k.next().value;
+                if (!g) {
+                    h = D(l.stop, l);
+                    var m = c.C("wv2Counter");
+                    if (!So(a, k) || m)
+                        h();
+                    else if (c.D("wv2Counter", d),
+                    c.D("stopRecorder", h),
+                    k = eo(a, "7", "6")) {
+                        m = new Cq(a,b,k.type);
+                        var p = new lq(a,k,D(m.Mh, m),31457280)
+                          , q = new lq(a,k,D(m.ah, m));
+                        vd(a) ? ud(a).F(a, ["pagehide"], function(v) {
+                            v.persisted ? (p.flush(!0),
+                            q.flush(!0)) : h()
+                        }, null) : ud(a).F(a, ["beforeunload", "unload"], h);
+                        k = Dq();
+                        m = k.Lg;
+                        q.F("ag", k.Bg);
+                        q.F("p", m);
+                        p.F("see", function(v) {
+                            var z = !1;
+                            O(function(K) {
+                                "page" === K.type && (z = !0)
+                            }, v);
+                            z && (g || q.push(qq),
+                            h())
+                        });
+                        var t = Kb(function(v) {
+                            "eof" === J(v, "data.type") || "eof" === v.event ? (q.push(v),
+                            p.push(v),
+                            q.flush(!0),
+                            p.flush(!0)) : ("event" === v.type ? q : p).push(v)
+                        });
+                        Y(a, h, 864E5);
+                        ai(a, function() {
+                            var v = {}
+                              , z = {};
+                            Ge(a, (z.counterKey = d,
+                            z.name = "webvisor",
+                            z.data = (v.version = 2,
+                            v),
+                            z));
+                            l.start(t)
+                        })
+                    }
+                }
+            }));
+            return function() {
+                return h()
+            }
+        }
+    })
+      , Tr = df("ev");
+    function Ur() {}
+    n = Ur.prototype;
+    n.start = function() {}
+    ;
+    n.stop = function() {}
+    ;
+    n.flush = function() {}
+    ;
+    n.Rb = function(a) {
+        a.fc([])
+    }
+    ;
+    n.removeNode = function() {}
+    ;
+    n.Y = function() {}
+    ;
+    n.hd = function() {}
+    ;
+    n.F = function() {}
+    ;
+    n.ea = function() {}
+    ;
+    function Vr(a, b) {
+        var c = Fq(a)
+          , d = [qr, tr, jr, Iq, xr, Ir, Fr, Jr, er];
+        return B(c) ? Ag(Wh(b, function(e) {
+            return {
+                Vb: !(!Fq(a) && !J(e, "settings.eu")),
+                $a: d,
+                sc: Ur,
+                bc: "ev"
+            }
+        })) : Bg({
+            Vb: c,
+            $a: d,
+            sc: Ur,
+            bc: "ev"
+        })
+    }
+    function Wr(a, b, c) {
+        var d = Rh(a, "ev", b);
+        return function(e, f, g) {
+            f = {};
+            return d({
+                J: (f["wv-part"] = "" + g,
+                f["wv-type"] = c,
+                f),
+                K: Me(),
+                N: {
+                    aa: e
+                }
+            }, b)
+        }
+    }
+    var Xr = X("ev", function(a, b) {
+        if (!xc(a)) {
+            var c = Ag(Wh(b, w))
+              , d = Vr(a, b)(xg(function(g) {
+                return new Aq(a,g)
+            }))
+              , e = !1
+              , f = function() {
+                e = !0
+            };
+            zg([d, c])(wg(W(a, "ev.R.c"), function(g) {
+                var h = r(g);
+                g = h.next().value;
+                h = h.next().value;
+                if (!e)
+                    if (f = D(g.stop, g),
+                    J(h, "settings.ev") && !Km(h) && Tm.isEnabled(a)) {
+                        var k = R(a);
+                        h = k.C;
+                        k = k.D;
+                        if (h("evCounter"))
+                            f();
+                        else {
+                            h = Q(b);
+                            k("evCounter", h);
+                            k("stopEventRecorder", f);
+                            h = new Tm(a,"6");
+                            k = Wr(a, b, h.type);
+                            var l = new lq(a,h,k);
+                            vd(a) ? ud(a).F(a, ["pagehide"], function(m) {
+                                m.persisted ? l.flush(!0) : f()
+                            }, null) : ud(a).F(a, ["beforeunload", "unload"], f);
+                            ai(a, D(g.start, g, Kb(function(m) {
+                                l.push(m);
+                                "eof" === m.event && l.flush(!0)
+                            })))
+                        }
+                    } else
+                        f()
+            }));
+            return function() {
+                return f()
+            }
+        }
+    })
+      , Yr = Nc.Pa + "//" + Kc + "/metrika"
+      , Zr = Yr + "/metrika_match.html"
+      , $r = x(function(a) {
+        return {
+            Zi: a,
+            qb: null,
+            Ab: []
+        }
+    });
+    function as(a, b) {
+        var c = $r(Zr);
+        M(b, c.Ab) || c.Ab.push(b);
+        if (Sa(c.qb)) {
+            var d = Mf(a);
+            if (!d)
+                return null;
+            d = d("iframe");
+            P(d.style, {
+                display: "none",
+                width: "1px",
+                height: "1px",
+                visibility: "hidden"
+            });
+            d.src = Zr;
+            var e = Sf(a);
+            if (!e)
+                return null;
+            e.appendChild(d);
+            c.qb = d
+        } else
+            (d = J(c.qb, "contentWindow")) && d.postMessage("frameReinit", "*");
+        return c.qb
+    }
+    function bs(a) {
+        var b = $r(Zr);
+        M(a, b.Ab) && (b.Ab = nb(H(sa(a), Fa), b.Ab),
+        b.Ab.length || (Nf(b.qb),
+        b.qb = null))
+    }
+    function cs(a, b, c, d) {
+        var e = d.data;
+        if (y(e)) {
+            var f = r(e.split("*"));
+            e = f.next().value;
+            var g = f.next().value
+              , h = f.next().value;
+            f = f.next().value;
+            "sc.frame" === e && d.source ? d.source.postMessage(("bl" === a || "ntq" === a ? "sc.bl" : "sc.images") + "*" + b, "*") : e === ("bl" === a || "ntq" === a ? "sc.blr" : "sc.image") && g === b.split("?")[0] && c(h, y(f) ? Pl(Nl(f)) : null)
+        }
+    }
+    function ds(a, b, c) {
+        return new S(function(d, e) {
+            if (as(a, "isp")) {
+                var f = u
+                  , g = function(h, k) {
+                    "1" === h ? d({
+                        Ka: k,
+                        jg: 0
+                    }) : e(h);
+                    f();
+                    bs("isp")
+                };
+                f = ud(a).F(a, ["message"], E([b, c, g], W(a, "isp.stat.m", cs)));
+                Y(a, F("7", g), 1500)
+            } else
+                e(6)
+        }
+        )
+    }
+    function es(a, b, c, d, e) {
+        var f = {};
+        c = Me((f[c] = 1,
+        f.u = d,
+        f)).ra();
+        d = {};
+        a = Wd((d["browser-info"] = c,
+        d["page-url"] = V(a).href,
+        d["page-ref"] = a.document.referrer,
+        d["site-info"] = b,
+        d));
+        return "https://" + e + ".mc.yandex.ru/watch/99742118/1?" + a
+    }
+    function fs() {
+        return U("", O(function(a) {
+            return String.fromCharCode(a.charCodeAt(0) + 15)
+        }, Pl(Nl("VCNUKCkkUiMeIlUjVx4lIydVHiohJyEeVyZWKFNVVSEmIyoj"))))
+    }
+    function gs(a, b, c, d, e) {
+        if ("rt" === d)
+            return es(a, b, "rt", e, "" + Xj(e));
+        if ("mf" === d) {
+            b = V(a);
+            b = Td(b.protocol + "//" + b.hostname + b.pathname);
+            c = "";
+            do
+                c += Xd(a);
+            while (c.length < e.length);
+            c = c.slice(0, e.length);
+            a = "";
+            for (d = 0; d < e.length; d += 1)
+                a += (e.charCodeAt(d) + c.charCodeAt(d) - 96) % 10;
+            e = r([c, a]);
+            a = e.next().value;
+            return "https://adstat.yandex.ru/track?service=metrika&id=" + e.next().value + "&mask=" + a + "&ref=" + b
+        }
+        if ("bl" === d)
+            return e = fs(),
+            U("=", ["https://fcpe.beeline.ru/sync/me?guid", e]);
+        if ("ntq" === d)
+            return a = new a.Date,
+            a.setMonth(a.getMonth() + 1),
+            a = Math.floor(a.getTime() / 1E3),
+            e = tl("0", 30, "" + Xj(e)),
+            e = U("-", [e.slice(0, 8), e.slice(8, 12), "4" + e.slice(12, 15), "8" + e.slice(15, 18), e.slice(18, 30)]),
+            "https://spadsync.com/partner?brandid=pyan0002&consent=" + a + "&zenithid=" + e;
+        if ("tl2" === d)
+            return (c = J(c, "settings.tl2")) ? es(a, b, "tl2", e, c) : void 0
+    }
+    var hs = Yd("isp", function(a, b) {
+        return Wh(b, function(c) {
+            var d = Ke(function(k) {
+                return J(c, "settings." + k)
+            }, Kl)
+              , e = R(a).D;
+            if (d) {
+                var f = Ng(a, b)
+                  , g = {}
+                  , h = zf(a, (g.counterId = b.id,
+                g["cnt-class"] = b.Z,
+                g));
+                if (g = gs(a, h, c, d, f))
+                    return e("oms", 1),
+                    ds(a, d, g).then(function(k) {
+                        k = k.Ka;
+                        if (y(k)) {
+                            if ("bl" === d || "ntq" === d)
+                                if (k = "bl" === d ? J(yf(a, k), "cid") : k) {
+                                    var l = Ol(Ql(k));
+                                    e("oms", 8);
+                                    k = {
+                                        id: 99742118,
+                                        Z: "0"
+                                    };
+                                    var m = Rh(a, "pi", k)
+                                      , p = {};
+                                    l = Me((p[d] = l,
+                                    p.u = f,
+                                    p));
+                                    p = {};
+                                    p = (p["page-url"] = V(a).href,
+                                    p["page-ref"] = a.document.referrer,
+                                    p["site-info"] = h,
+                                    p);
+                                    return m({
+                                        K: l,
+                                        J: p
+                                    }, k).then(E(["oms", 4], e), F(9, md))
+                                }
+                            e("oms", 3)
+                        } else
+                            e("oms", 2)
+                    })["catch"](function(k) {
+                        k = Sb(a, k) || y(k) ? k : 5;
+                        e("oms", k)
+                    })
+            } else
+                e("oms", 0)
+        })["catch"](W(a, "l.isp"))
+    })
+      , is = X("fbq.o", function(a, b, c) {
+        var d = J(a, "fbq");
+        if (d && d.callMethod) {
+            var e = function() {
+                var g = Ia(arguments)
+                  , h = d.apply(null, da(g));
+                b(g);
+                return h
+            };
+            P(e, d);
+            c && O(b, c);
+            a.fbq = e
+        } else
+            var f = Y(a, E([a, b].concat(vb(d && d.queue)), is), 1E3, "fbq.d");
+        return D(tg, null, a, f)
+    })
+      , js = {}
+      , ks = (js.add_to_wishlist = "add-to-wishlist",
+    js.begin_checkout = "begin-checkout",
+    js.generate_lead = "submit-lead",
+    js.add_payment_info = "add-payment-info",
+    js)
+      , ls = {}
+      , ms = (ls.AddToCart = "add-to-cart",
+    ls.Lead = "submit-lead",
+    ls.InitiateCheckout = "begin-checkout",
+    ls.Purchase = "purchase",
+    ls.CompleteRegistration = "register",
+    ls.Contact = "submit-contact",
+    ls.AddPaymentInfo = "add-payment-info",
+    ls.AddToWishlist = "add-to-wishlist",
+    ls.Subscribe = "subscribe",
+    ls)
+      , ns = {}
+      , os = (ns["1"] = ks,
+    ns["2"] = ks,
+    ns["3"] = ks,
+    ns["0"] = ms,
+    ns)
+      , ps = [ms.AddToCart, ms.Purchase];
+    function qs(a, b, c) {
+        if (c) {
+            var d = c.version;
+            (c = J(os, d + "." + c.Gc)) && (b && M(c, ps) || a("ym-" + c + "-" + d))
+        }
+    }
+    var rs = qa(function(a, b) {
+        var c = J(b, "ecommerce")
+          , d = J(b, "event") || "";
+        if (!(c = c && d && {
+            version: "3",
+            Gc: d
+        }))
+            a: {
+                if (N(b) || eb(b))
+                    if (d = r(Ia(b)),
+                    c = d.next().value,
+                    d = d.next().value,
+                    "event" === c && d) {
+                        c = {
+                            version: "2",
+                            Gc: d
+                        };
+                        break a
+                    }
+                c = void 0
+            }
+        c || (c = (c = J(b, "ecommerce")) && {
+            version: "1",
+            Gc: U(",", cc(c))
+        });
+        c && a(c)
+    });
+    function ss(a, b, c) {
+        c = r(Ia(c));
+        a = c.next().value;
+        c = c.next().value;
+        "track" === a && b({
+            version: "0",
+            Gc: c
+        })
+    }
+    var ts = X("ag.e", function(a, b) {
+        if ("0" === b.Z) {
+            var c = []
+              , d = W(a, "ag.s", E([Re, c], O));
+            Wh(b, function(e) {
+                if (J(e, "settings.auto_goals") && fi(a, b) && (e = fj(a, b, "autogoal").reachGoal)) {
+                    e = E([e, !!b.Dd], qs);
+                    var f = rs(e);
+                    e = E([a, e], ss);
+                    c.push(is(a, e));
+                    c.push(Dk(a, "dataLayer", function(g) {
+                        g.oa.F(f)
+                    }))
+                }
+            });
+            return d
+        }
+    });
+    function us(a, b) {
+        if (!b)
+            return "";
+        var c = []
+          , d = J(a, "document");
+        Jk(a, b, function(e) {
+            if (e.nodeType === d.TEXT_NODE)
+                var f = e.textContent;
+            else
+                e instanceof a.HTMLImageElement ? f = e.alt : e instanceof a.HTMLInputElement && (f = e.value);
+            (f = f && le(f)) && c.push(f)
+        });
+        return 0 === c.length ? "" : U(" ", c)
+    }
+    var vs = /[^\d.,]/g
+      , ws = /[.,]$/;
+    function xs(a) {
+        a = vb(Nl(a));
+        return O(function(b) {
+            b = b.charCodeAt(0).toString(2);
+            return tl("0", 8, b)
+        }, a)
+    }
+    function ys(a, b) {
+        var c = null;
+        try {
+            c = b ? Bj(b, a) : c
+        } catch (d) {}
+        return c
+    }
+    function zs(a, b, c) {
+        if (b = fi(a, b))
+            a = fb(["dr", c || "" + Xd(a, 10, 99)]),
+            b.params(fb(["__ym", a]))
+    }
+    var As = X("ep.pp", function(a, b) {
+        if (!b)
+            return 0;
+        a: {
+            var c = b.replace(vs, "").replace(ws, "");
+            for (var d = "0" === c[c.length - 1], e = c.length; 0 < e && !(3 < c.length - e + 1 && d); --e) {
+                var f = c[e - 1];
+                if (M(f, [",", "."])) {
+                    c = f;
+                    break a
+                }
+            }
+            c = ""
+        }
+        c = (d = c) ? b.split(d) : [b];
+        d = d ? c[1] : "00";
+        c = parseFloat(oe(c[0]) + "." + oe(d));
+        d = Math.pow(10, 8) - .01;
+        a.isNaN(c) ? c = 0 : (c = a.Math.min(c, d),
+        c = a.Math.max(c, 0));
+        return c
+    })
+      , Bs = [[["EUR", "\u20ac"], "978"], [["USD", "\u0423\\.\u0415\\.", "\\$"], "840"], [["UAH", "\u0413\u0420\u041d", "\u20b4"], "980"], ["\u0422\u0413 KZT \u20b8 \u0422\u04a2\u0413 TENGE \u0422\u0415\u041d\u0413\u0415".split(" "), "398"], [["GBP", "\u00a3", "UKL"], "826"], ["RUR RUB \u0420 \u0420\u0423\u0411 \u20bd P \u0420UB P\u0423\u0411 P\u0423B PY\u0411 \u0420Y\u0411 \u0420\u0423B P\u0423\u0411".split(" "), "643"]]
+      , Cs = x(function(a) {
+        return new RegExp(U("|", a),"i")
+    })
+      , Ds = x(function() {
+        function a() {
+            var k = h + "0"
+              , l = h + "1";
+            f[k] ? f[l] ? (h = h.slice(0, -1),
+            --g) : (e[l] = c(8),
+            f[l] = 1) : (e[k] = c(8),
+            f[k] = 1)
+        }
+        function b() {
+            var k = h + "1";
+            f[h + "0"] ? f[k] ? (h = h.slice(0, -1),
+            --g) : (h += "1",
+            f[h] = 1) : (h += "0",
+            f[h] = 1)
+        }
+        function c(k) {
+            k = void 0 === k ? 1 : k;
+            var l = d.slice(g, g + k);
+            g += k;
+            return l
+        }
+        for (var d = U("", xs("Cy2FcreLJLpYXW3BXFJqldVsGMwDcBw2BGnHL5uj1TKstzse3piMo3Osz+EqDotgqs1TIoZvKtMKDaSRFztgUS8qkqZcaETgKWM54tCpTXjV5vW5OrjBpC0jF4mspUBQGd95fNSfv+vz+g+Hze33Hg8by+Yen1PP6zsdl7PQCwX9mf+f7FMb9x/Pw+v2Pp8Xy74eTwuBwTt913u4On1XW6hxOO5nIzFam00tC218S0kaeugpqST+XliLOlMoTpRQkuewUxoy4CT3efWtdFjSAAm+1BkjIhyeU4vGOf13a6U8wzNY4bGo6DIUemE7N3SBojDr7ezXahpWF022y8mma1NuTnZbq8XZZlPStejfG/CsbPhV6/bSnA==")), e = {}, f = {}, g = 1, h = ""; g < d.length - 1; )
+            ("0" === c() ? b : a)();
+        return e
+    })
+      , Es = X("ep.dec", function(a, b) {
+        if (!b || ic(a))
+            return [];
+        var c = r(xs(b))
+          , d = c.next().value
+          , e = c.next().value
+          , f = c.next().value;
+        c = ca(c);
+        if (2 !== Wb(d))
+            return [];
+        d = Ds();
+        c = U("", c);
+        e = Wb(e + f);
+        for (var g = f = "", h = 0; g.length < e && c[h]; )
+            f += c[h],
+            d[f] && (g += String.fromCharCode(Wb(d[f])),
+            f = ""),
+            h += 1;
+        d = yf(a, Pl(g));
+        return N(d) ? O(Qa, d) : []
+    })
+      , Fs = X("ep.ent", function(a, b, c) {
+        a = "" + Xd(a, 10, 99);
+        c = "" + 100 * b + c + a;
+        if (16 < eb(c))
+            return "";
+        c = tl("0", 16, c);
+        b = c.slice(0, 8);
+        c = c.slice(-8);
+        b = (+b ^ 92844).toString(35);
+        c = (+c ^ 92844).toString(35);
+        return "" + b + "z" + c
+    });
+    function Gs(a, b) {
+        var c = ys(a.document.body, b);
+        return c ? us(a, c) : ""
+    }
+    function Hs(a, b) {
+        var c = Gs(a, b);
+        return As(a, c)
+    }
+    var Is = H(Gs, X("ep.cp", function(a) {
+        if (!a)
+            return "643";
+        var b = ne(a);
+        return (a = Ke(function(c) {
+            c = r(c).next().value;
+            return Cs(c).test(b)
+        }, Bs)) ? a[1] : "643"
+    }));
+    function Js(a, b, c, d) {
+        (c = Fs(a, d, c)) && zs(a, b, c)
+    }
+    var Ks = X("ep.ctp", function(a, b, c, d) {
+        var e = Is(a, c)
+          , f = Hs(a, d);
+        Js(a, b, e, f);
+        xa("MutationObserver", a.MutationObserver) && (new a.MutationObserver(function() {
+            var g = Is(a, c)
+              , h = Hs(a, d);
+            if (e !== g || f !== h)
+                e = g,
+                f = h,
+                Js(a, b, e, f)
+        }
+        )).observe(a.document.body, {
+            attributes: !0,
+            childList: !0,
+            subtree: !0,
+            characterData: !0
+        })
+    });
+    function Ls(a, b, c, d, e) {
+        c = ys(a.document.body, c);
+        d = ys(a.document.body, d);
+        M(e.target, [c, d]) && zs(a, b)
+    }
+    var Ms = X("ep.chp", function(a, b, c, d, e) {
+        c && zs(a, b);
+        return d || e ? ud(a).F(a.document, ["click"], W(a, "ep.chp.cl", E([a, b, d, e], Ls))) : u
+    });
+    function Ns(a, b) {
+        return Wh(b, function(c) {
+            var d = J(c, "settings.dr");
+            return {
+                Xg: Es(a, d),
+                isEnabled: J(c, "settings.auto_goals")
+            }
+        })
+    }
+    function Os(a, b) {
+        if (!b)
+            return !1;
+        var c = V(a);
+        return (new RegExp(b)).test("" + c.pathname + c.hash + c.search)
+    }
+    var Ps = X("ep.i", function(a, b) {
+        if (zj(a))
+            return Ns(a, b).then(function(c) {
+                var d = r(c.Xg)
+                  , e = d.next().value
+                  , f = d.next().value
+                  , g = d.next().value
+                  , h = d.next().value
+                  , k = d.next().value
+                  , l = d.next().value
+                  , m = d.next().value
+                  , p = d.next().value
+                  , q = d.next().value
+                  , t = d.next().value
+                  , v = d.next().value
+                  , z = d.next().value
+                  , K = d.next().value
+                  , aa = d.next().value
+                  , Ja = d.next().value
+                  , Lc = d.next().value;
+                if (!c.isEnabled)
+                    return S.resolve(u);
+                var de = Os(a, e)
+                  , tf = Os(a, h)
+                  , dv = Os(a, m)
+                  , ev = Os(a, q)
+                  , fv = "" + e + f + g === "" + h + k + l;
+                return new S(function(gv, hv) {
+                    Cg(a)(wg(hv, function() {
+                        de && Ks(a, b, f, g, v, z, K);
+                        tf && !fv && Ks(a, b, k, l, aa, Ja, Lc);
+                        gv(Ms(a, b, dv || ev, p, t))
+                    }))
+                }
+                )
+            })
+    })
+      , Qs = ["RTCPeerConnection", "mozRTCPeerConnection", "webkitRTCPeerConnection"];
+    function Rs(a, b) {
+        var c = Gf(a)
+          , d = c.C
+          , e = c.D;
+        if ("" === d("cc")) {
+            e("cc", 0);
+            var f = Fd(a)
+              , g = R(a);
+            Rh(a, "6", b)({
+                N: {
+                    Xa: !0,
+                    Re: !1
+                }
+            }, ["https://mc.yandex.md/cc"]).then(function(h) {
+                h = J(h.Ka, "c");
+                e("cc", h + "&" + f(Cd));
+                g.D("cc", h)
+            })["catch"](function(h) {
+                var k = f(Cd);
+                e("cc", "&" + k);
+                mf(a, "cc", h)
+            })
+        }
+    }
+    var Ss = X("cc.i", function(a, b) {
+        var c = E([a, b], Rs);
+        c = E([a, c, 300, void 0], Y);
+        Wh(b, c)
+    });
+    function Ts(a, b) {
+        var c = Of(a, b)
+          , d = Nc.Ac
+          , e = Sc(a);
+        if (c && Pf("ym-advanced-informer", c)) {
+            var f = e.C("ifc", 0) + 1;
+            e.D("ifc", f);
+            f = c.getAttribute("data-lang");
+            var g = Vb(c.getAttribute("data-cid") || "");
+            if (g || 0 === g)
+                (d = J(a, "Ya." + d + ".informer")) ? (e = {},
+                d((e.i = c,
+                e.id = g,
+                e.lang = f,
+                e))) : e.D("ib", !0),
+                c = b || window.event,
+                c.preventDefault ? c.preventDefault() : c.returnValue = !1
+        }
+    }
+    function Us(a) {
+        var b = W(a, "i.clch", Ts);
+        ud(a).F(a.document, ["click"], F(a, b), {
+            passive: !1
+        });
+        return function(c) {
+            var d = Nc.Pa
+              , e = a.Ya[Nc.Ac]
+              , f = !!e._informer;
+            e._informer = P({
+                domain: "informer.yandex.ru"
+            }, c);
+            f || oh(a, {
+                src: d + "//informer.yandex.ru/metrika/informer.js"
+            })
+        }
+    }
+    function Vs(a) {
+        return {
+            T: function(b, c) {
+                var d = b.K;
+                if (d) {
+                    var e = R(a).C("adBlockEnabled");
+                    e && d.D("adb", e)
+                }
+                c()
+            }
+        }
+    }
+    function Ws(a, b) {
+        var c = a.document;
+        if (M(c.readyState, ["interactive", "complete"]))
+            ai(a, b);
+        else {
+            var d = ud(a)
+              , e = d.F
+              , f = d.nc
+              , g = function() {
+                f(c, ["DOMContentLoaded"], g);
+                f(a, ["load"], g);
+                b()
+            };
+            e(c, ["DOMContentLoaded"], g);
+            e(a, ["load"], g)
+        }
+    }
+    var Xs = F("9-d5ve+.r%7", w)
+      , Ys = X("ad", function(a, b) {
+        if (!b.eb) {
+            var c = R(a);
+            if (!c.C("adBlockEnabled")) {
+                var d = function(m) {
+                    M(m, ["2", "1"]) && c.D("adBlockEnabled", m)
+                }
+                  , e = Be(a)
+                  , f = e.C("isad");
+                if (f)
+                    d(f);
+                else {
+                    var g = F("adStatus", c.D)
+                      , h = function(m) {
+                        m = m ? "1" : "2";
+                        d(m);
+                        g("complete");
+                        e.D("isad", m, 1200);
+                        return m
+                    }
+                      , k = Rh(a, "adb", b);
+                    if (!c.C("adStatus")) {
+                        g("process");
+                        var l = "metrika/a" + Xs().replace(/[^a-v]+/g, "") + "t.gif";
+                        Ws(a, function() {
+                            return k({
+                                Na: {
+                                    qa: l
+                                }
+                            }).then(F(!1, h))["catch"](F(!0, h))
+                        })
+                    }
+                }
+            }
+        }
+    })
+      , Zs = X("pr.p", function(a, b) {
+        if (Dc(a)) {
+            var c = Rh(a, "5", b)
+              , d = {};
+            d = Me((d.pq = 1,
+            d.ar = 1,
+            d));
+            var e = {};
+            c({
+                K: d,
+                J: (e["page-url"] = V(a).href,
+                e["page-ref"] = J(a, "document.referrer") || "",
+                e)
+            }, b)["catch"](W(a, "pr.p.s"))
+        }
+    })
+      , $s = !1;
+    function at(a) {
+        return {
+            T: function(b, c) {
+                if (!b.K)
+                    return c();
+                var d = R(a).C("fid");
+                !$s && d && (of(b, "fid", d),
+                $s = !0);
+                return c()
+            }
+        }
+    }
+    var bt = X("fid", function(a) {
+        var b = u;
+        if (!A(a.PerformanceObserver))
+            return b;
+        var c = R(a);
+        if (c.C("fido"))
+            return b;
+        c.D("fido", !0);
+        var d = new a.PerformanceObserver(W(a, "fid", function(f) {
+            f = f.getEntries()[0];
+            c.D("fid", a.Math.round(100 * (f.processingStart - f.startTime)));
+            b()
+        }));
+        b = function() {
+            return d.disconnect()
+        }
+        ;
+        try {
+            var e = {};
+            d.observe((e.type = "first-input",
+            e.buffered = !0,
+            e))
+        } catch (f) {}
+        return b
+    })
+      , ct = x(De);
+    function dt(a) {
+        var b = ct();
+        b.dg || (b.dg = a)
+    }
+    function et(a, b, c) {
+        if (J(c, "settings.ins")) {
+            var d = R(a);
+            if (!d.C("scip")) {
+                var e = Gf(a)
+                  , f = Fd(a)(Cd);
+                c = Tb(e.C("sci"));
+                if (!(c && 1440 >= f - c)) {
+                    c = Rh(a, "ci", b);
+                    var g = ["sync.cook.int"]
+                      , h = function(p) {
+                        p = d.C("scip", "") + p;
+                        d.D("scip", p)
+                    }
+                      , k = F("a", h);
+                    d.D("scip", "0");
+                    var l = {};
+                    l = (l.tag = "cm-urls",
+                    l.stage = "mc-yandex-ru",
+                    l["mc-id"] = "" + b.id,
+                    l.duid = Ng(a, b),
+                    l);
+                    var m = ct().dg;
+                    m && (l.scid = m);
+                    return c({
+                        N: {
+                            ha: g,
+                            Wa: 3E3,
+                            Xa: !0
+                        },
+                        J: l
+                    }, ["https://eu.asas.yango.com/mapuid"]).then(function(p) {
+                        p = J(p.Ka, "CookieMatchUrls");
+                        if (N(p) && eb(p)) {
+                            h("1");
+                            var q = Rh(a, "c", b);
+                            p = O(function(t, v) {
+                                return q({
+                                    N: {
+                                        ha: g,
+                                        Wa: 3E3
+                                    }
+                                }, ["https://" + t]).then(H(F("c", h), F("" + v, h)))["catch"](H(F("b", h), F("" + v, h)))
+                            }, nb(y, p));
+                            return S.all(p)
+                        }
+                        k()
+                    }, k).then(function() {
+                        var p = d.C("scip");
+                        !p || Pa(p, "a") || Pa(p, "b") || (e.D("sci", f),
+                        h("d"))
+                    }, u)
+                }
+            }
+        }
+    }
+    function ft(a) {
+        a = J(a, "navigator") || {};
+        return a.doNotTrack || a.msDoNotTrack || "unknown"
+    }
+    var gt = x(H(L("performance.memory.jsHeapSizeLimit"), Xa("concat", "")))
+      , ht = ["availWidth", "availHeight", "availTop"];
+    function it(a) {
+        a = J(a, "screen") || {};
+        return U("x", O(F(a, J), ht))
+    }
+    var jt = "appName vendor deviceMemory hardwareConcurrency maxTouchPoints appVersion productSub appCodeName vendorSub".split(" ");
+    function kt(a) {
+        var b = void 0 === b ? jt : b;
+        var c = J(a, "navigator") || {};
+        b = O(F(c, J), b);
+        b = U("x", b);
+        try {
+            var d = J(a, "navigator.getGamepads");
+            var e = ya(d, "getGamepads") && a.navigator.getGamepads() || []
+        } catch (f) {
+            e = []
+        }
+        return b + "x" + eb(e)
+    }
+    var lt = ["webgl", "experimental-webgl"];
+    function mt(a, b) {
+        b.clearColor(0, 0, 0, 1);
+        b.enable(b.DEPTH_TEST);
+        b.depthFunc(b.LEQUAL);
+        b.clear(b.COLOR_BUFFER_BIT | b.DEPTH_BUFFER_BIT);
+        return "[" + J(a, "0") + ", " + J(a, "1") + "]"
+    }
+    var nt = [-.2, -.9, 0, .4, -.26, 0, 0, .732134444, 0];
+    function ot(a, b) {
+        if (!A(a.Float32Array))
+            return !1;
+        var c = J(b, "canvas");
+        if (!c || !xa("toDataUrl", c.toDataURL))
+            return !1;
+        try {
+            b.createBuffer()
+        } catch (d) {
+            return !1
+        }
+        return !0
+    }
+    var pt = F(hf("ccf"), md);
+    function qt(a, b) {
+        return [function() {
+            var c = b.createBuffer();
+            c && b.getParameter && xa("getParameter", b.getParameter) || pt();
+            b.bindBuffer(b.ARRAY_BUFFER, c);
+            var d = new a.Float32Array(nt);
+            b.bufferData(b.ARRAY_BUFFER, d, b.STATIC_DRAW);
+            c.Gh = 3;
+            c.Oh = 3;
+            d = b.createProgram();
+            var e = b.createShader(b.VERTEX_SHADER);
+            d && e || pt();
+            return {
+                ve: d,
+                Hi: e,
+                Gi: c
+            }
+        }
+        , function(c) {
+            var d = c.ve
+              , e = c.Hi;
+            b.shaderSource(e, "attribute vec2 attrVertex;varying vec2 varyinTexCoordinate;uniform vec2 uniformOffset;void main(){varyinTexCoordinate=attrVertex+uniformOffset;gl_Position=vec4(attrVertex,0,1);}");
+            b.compileShader(e);
+            b.attachShader(d, e);
+            (d = b.createShader(b.FRAGMENT_SHADER)) || pt();
+            return P(c, {
+                mh: d
+            })
+        }
+        , function(c) {
+            var d = c.ve
+              , e = c.mh;
+            b.shaderSource(e, "precision mediump float;varying vec2 varyinTexCoordinate;void main() {gl_FragColor=vec4(varyinTexCoordinate,0,1);}");
+            b.compileShader(e);
+            b.attachShader(d, e);
+            b.linkProgram(d);
+            b.useProgram(d);
+            return c
+        }
+        , function(c) {
+            var d = c.ve;
+            c = c.Gi;
+            d.Fi = b.getAttribLocation(d, "attrVertex");
+            d.Ph = b.getUniformLocation(d, "uniformOffset");
+            b.enableVertexAttribArray(d.rj);
+            b.vertexAttribPointer(d.Fi, c.Gh, b.FLOAT, !1, 0, 0);
+            b.uniform2f(d.Ph, 1, 1);
+            b.drawArrays(b.TRIANGLE_STRIP, 0, c.Oh);
+            return b.canvas
+        }
+        ]
+    }
+    function rt(a) {
+        return G(function(b, c) {
+            var d = r(c)
+              , e = d.next().value;
+            d = d.next().value;
+            b[e + " precision"] = J(d, "precision") || "n";
+            b[e + " precision rangeMin"] = J(d, "rangeMin") || "n";
+            b[e + " precision rangeMax"] = J(d, "rangeMax") || "n";
+            return b
+        }, {}, [["webgl vertex shader high float", a.getShaderPrecisionFormat(a.VERTEX_SHADER, a.HIGH_FLOAT)], ["webgl vertex shader medium", a.getShaderPrecisionFormat(a.VERTEX_SHADER, a.MEDIUM_FLOAT)], ["webgl vertex shader low float", a.getShaderPrecisionFormat(a.VERTEX_SHADER, a.LOW_FLOAT)], ["webgl fragment shader high float", a.getShaderPrecisionFormat(a.FRAGMENT_SHADER, a.HIGH_FLOAT)], ["webgl fragment shader medium float", a.getShaderPrecisionFormat(a.FRAGMENT_SHADER, a.MEDIUM_FLOAT)], ["webgl fragment shader low float", a.getShaderPrecisionFormat(a.FRAGMENT_SHADER, a.LOW_FLOAT)], ["webgl vertex shader high int", a.getShaderPrecisionFormat(a.VERTEX_SHADER, a.HIGH_INT)], ["webgl vertex shader medium int", a.getShaderPrecisionFormat(a.VERTEX_SHADER, a.MEDIUM_INT)], ["webgl vertex shader low int", a.getShaderPrecisionFormat(a.VERTEX_SHADER, a.LOW_INT)], ["webgl fragment shader high int", a.getShaderPrecisionFormat(a.FRAGMENT_SHADER, a.HIGH_INT)], ["webgl fragment shader medium int", a.getShaderPrecisionFormat(a.FRAGMENT_SHADER, a.MEDIUM_INT)], ["webgl fragment shader low int precision", a.getShaderPrecisionFormat(a.FRAGMENT_SHADER, a.LOW_INT)]])
+    }
+    var st = "prefers-reduced-motion;prefers-reduced-transparency;prefers-color-scheme: dark;prefers-color-scheme: light;pointer: none;pointer: coarse;pointer: fine;any-pointer: none;any-pointer: coarse;any-pointer: fine;scan: interlace;scan: progressive;color-gamut: srgb;color-gamut: p3;color-gamut: rec2020;update: fast;update: slow;update: none;grid: 0;grid: 2;hover: hover;inverted-colors: inverted;inverted-colors: none".split(";");
+    function tt(a) {
+        var b = J(a, "matchMedia");
+        if (b && xa("matchMedia", b)) {
+            var c = Xa("matchMedia", a);
+            return G(function(d, e) {
+                d[e] = c("(" + e + ")");
+                return d
+            }, {}, st)
+        }
+    }
+    var ut = "video/ogg video/mp4 video/webm audio/x-aiff audio/x-m4a audio/mpeg audio/aac audio/wav audio/ogg audio/mp4".split(" ")
+      , vt = "theora vorbis 1 avc1.4D401E mp4a.40.2 vp8.0 mp4a.40.5".split(" ");
+    function wt(a) {
+        a = Mf(a);
+        if (!a)
+            return "";
+        a = a("video");
+        try {
+            var b = Xa("canPlayType", a)
+              , c = Jb(function(d) {
+                return O(H(w, Xa("concat", d + "; codecs=")), vt)
+            }, ut);
+            return O(b, ut.concat(c))
+        } catch (d) {
+            return "canPlayType"
+        }
+    }
+    function xt(a, b, c) {
+        var d = J(a, "location.host");
+        a = Ng(a, b);
+        c.D("pu", "" + Xj(d) + a)
+    }
+    function yt(a, b, c) {
+        var d = Mg(a, b);
+        if (d) {
+            d.$.F(["gpu-get"], function() {
+                var g = {};
+                return g.type = "gpu-get",
+                g.pu = c.C("pu"),
+                g
+            });
+            var e = J(a, "opener");
+            if (e) {
+                var f = Y(a, E([a, b, c], xt), 200, "pu.m");
+                b = {};
+                d.ze(e, (b.type = "gpu-get",
+                b), function(g, h) {
+                    var k = J(h, "pu");
+                    k && (tg(a, f),
+                    c.D("pu", k))
+                })
+            } else
+                xt(a, b, c)
+        }
+    }
+    function zt(a, b, c) {
+        b = Ke(F(a, J), Qs);
+        b = B(b) ? null : J(a, b);
+        if (J(a, "navigator.onLine") && b && b && J(b, "prototype.constructor.name")) {
+            a = {};
+            var d = new b((a.iceServers = [],
+            a));
+            a = J(d, "createDataChannel");
+            A(a) && (D(a, d, "y.metrika")(),
+            a = J(d, "createOffer"),
+            A(a) && !a.length && (a = D(a, d)(),
+            b = J(a, "then"),
+            A(b) && D(b, a, function(e) {
+                var f = J(d, "setLocalDescription");
+                A(f) && D(f, d, e, u, u)()
+            })(),
+            a = {},
+            P(d, (a.onicecandidate = function() {
+                var e, f = J(d, "close");
+                if (A(f)) {
+                    f = D(f, d);
+                    try {
+                        var g = (e = J(d, "localDescription.sdp")) && e.match(/c=IN\s[\w\d]+\s([\w\d:.]+)/)
+                    } catch (h) {
+                        d.onicecandidate = u;
+                        "closed" !== d.iceConnectionState && f();
+                        return
+                    }
+                    g && 0 < g.length && c.D("pp", Xj(g[1]));
+                    d.onicecandidate = u;
+                    f()
+                }
+            }
+            ,
+            a))))
+        }
+    }
+    function At(a, b, c, d) {
+        return Wh(b, function(e) {
+            if (!Km(e) && !ic(a))
+                if (e = d.C("zzlc"),
+                B(e) || Sa(e) || "na" === e) {
+                    var f = Mf(a);
+                    if (f && (e = Sf(a))) {
+                        var g = f("iframe");
+                        P(g.style, {
+                            display: "none",
+                            width: "1px",
+                            height: "1px",
+                            visibility: "hidden"
+                        });
+                        f = Hc(a);
+                        var h = Gc(a);
+                        g.src = "https://mc.yandex." + (f || h ? "md" : "ru") + Nl("L21ldHJpa2EvenpsYy5odG1s");
+                        e.appendChild(g);
+                        var k = 0
+                          , l = ud(a).F(a, ["message"], W(a, "zz.m", function(m) {
+                            (m = J(m, "data")) && m.substr && "__ym__zz" === m.substr(0, 8) && (Nf(g),
+                            m = m.substr(8),
+                            d.D("zzlc", m),
+                            c.D("zzlc", m),
+                            l(),
+                            tg(a, k))
+                        }));
+                        k = Y(a, H(l, F(g, Nf)), 3E3)
+                    }
+                } else
+                    c.D("zzlc", e)
+        })
+    }
+    function Bt(a, b, c, d) {
+        b = d.C("cc");
+        d = E(["cc", ""], d.D);
+        if (b) {
+            var e = r(b.split("&"));
+            b = e.next().value;
+            (e = (e = e.next().value) && Vb(e)) && 1440 < Fd(a)(Cd) - e ? d() : c.D("cc", b)
+        } else
+            sa(0)(b) || d()
+    }
+    var Ct = x(function(a, b) {
+        var c = R(a)
+          , d = Gf(a)
+          , e = []
+          , f = E([a, b, c, d], il);
+        oc(a) || gl(a) || e.push(E([zt, "pp", ""], f));
+        var g = !hl(a) || Hc(a);
+        g && e.push(E([yt, "pu", ""], f));
+        !g || d.Xd || Ec(a) || (e.push(E([At, "zzlc", "na"], f)),
+        e.push(E([Bt, "cc", ""], f)));
+        return e.length ? {
+            Ga: function(h, k) {
+                if (0 === c.C("isEU"))
+                    try {
+                        O(Se, e)
+                    } catch (l) {}
+                k()
+            },
+            T: function(h, k) {
+                var l = h.K;
+                if (l && 0 === c.C("isEU"))
+                    try {
+                        O(ua(l), e)
+                    } catch (m) {}
+                k()
+            }
+        } : {}
+    }, H(Ea, Q));
+    function Dt(a) {
+        var b = J(a, "ApplePaySession")
+          , c = V(a).protocol;
+        a = b && "https:" === c && !xc(a) ? b : void 0;
+        b = "";
+        if (!a)
+            return b;
+        try {
+            b = "" + a.canMakePayments();
+            c = "";
+            var d = a.supportsVersion;
+            if (A(d))
+                for (var e = 1; 20 >= e; e += 1)
+                    c += d.call(a, e) ? "" + e : "0";
+            return c + b
+        } catch (f) {
+            return b
+        }
+    }
+    var Et = H(function(a) {
+        return (a = J(a, "navigator.plugins")) && eb(a) ? H(vb, ob, Fl(function(b, c) {
+            return b.name > c.name ? 1 : 2
+        }), Kb(Hl))(a) : ""
+    }, pd(","));
+    function Ft(a, b, c) {
+        c = void 0 === c ? ":" : c;
+        O(function(d) {
+            var e = r(d);
+            d = e.next().value;
+            e = e.next().value;
+            return a.push("" + d + c + e)
+        }, bc(b))
+    }
+    function Gt(a, b) {
+        var c = b.Gg;
+        if (!ot(a, c))
+            return "";
+        var d = [];
+        a: {
+            var e = qt(a, c);
+            try {
+                var f = E(e, H)()();
+                break a
+            } catch (K) {
+                if ("ccf" === J(K, "message")) {
+                    f = null;
+                    break a
+                }
+                md(K)
+            }
+            f = void 0
+        }
+        if (Sa(f))
+            var g = "";
+        else
+            try {
+                g = f.toDataURL()
+            } catch (K) {
+                g = ""
+            }
+        g && d.push(g);
+        var h = c.getContextAttributes();
+        try {
+            var k = ya(c.getSupportedExtensions, "getSupportedExtensions") ? c.getSupportedExtensions() || [] : []
+        } catch (K) {
+            k = []
+        }
+        k = U(";", k);
+        g = mt(c.getParameter(c.ALIASED_LINE_WIDTH_RANGE), c);
+        f = mt(c.getParameter(c.ALIASED_POINT_SIZE_RANGE), c);
+        e = c.getParameter(c.ALPHA_BITS);
+        h = h && h.antialias ? "yes" : "no";
+        var l = c.getParameter(c.BLUE_BITS)
+          , m = c.getParameter(c.DEPTH_BITS)
+          , p = c.getParameter(c.GREEN_BITS)
+          , q = c.getExtension("EXT_texture_filter_anisotropic") || c.getExtension("WEBKIT_EXT_texture_filter_anisotropic") || c.getExtension("MOZ_EXT_texture_filter_anisotropic");
+        if (q) {
+            var t = c.getParameter(q.MAX_TEXTURE_MAX_ANISOTROPY_EXT);
+            0 === t && (t = 2)
+        }
+        t = {
+            Xi: k,
+            "webgl aliased line width range": g,
+            "webgl aliased point size range": f,
+            "webgl alpha bits": e,
+            "webgl antialiasing": h,
+            "webgl blue bits": l,
+            "webgl depth bits": m,
+            "webgl green bits": p,
+            "webgl max anisotropy": q ? t : null,
+            "webgl max combined texture image units": c.getParameter(c.MAX_COMBINED_TEXTURE_IMAGE_UNITS),
+            "webgl max cube map texture size": c.getParameter(c.MAX_CUBE_MAP_TEXTURE_SIZE),
+            "webgl max fragment uniform vectors": c.getParameter(c.MAX_FRAGMENT_UNIFORM_VECTORS),
+            "webgl max render buffer size": c.getParameter(c.MAX_RENDERBUFFER_SIZE),
+            "webgl max texture image units": c.getParameter(c.MAX_TEXTURE_IMAGE_UNITS),
+            "webgl max texture size": c.getParameter(c.MAX_TEXTURE_SIZE),
+            "webgl max varying vectors": c.getParameter(c.MAX_VARYING_VECTORS),
+            "webgl max vertex attribs": c.getParameter(c.MAX_VERTEX_ATTRIBS),
+            "webgl max vertex texture image units": c.getParameter(c.MAX_VERTEX_TEXTURE_IMAGE_UNITS),
+            "webgl max vertex uniform vectors": c.getParameter(c.MAX_VERTEX_UNIFORM_VECTORS),
+            "webgl max viewport dims": mt(c.getParameter(c.MAX_VIEWPORT_DIMS), c),
+            "webgl red bits": c.getParameter(c.RED_BITS),
+            "webgl renderer": c.getParameter(c.RENDERER),
+            "webgl shading language version": c.getParameter(c.SHADING_LANGUAGE_VERSION),
+            "webgl stencil bits": c.getParameter(c.STENCIL_BITS),
+            "webgl vendor": c.getParameter(c.VENDOR),
+            "webgl version": c.getParameter(c.VERSION)
+        };
+        Ft(d, t, ": ");
+        a: {
+            try {
+                var v = c.getExtension("WEBGL_debug_renderer_info");
+                if (v) {
+                    var z = {
+                        "webgl unmasked vendor": c.getParameter(v.UNMASKED_VENDOR_WEBGL),
+                        "webgl unmasked renderer": c.getParameter(v.UNMASKED_RENDERER_WEBGL)
+                    };
+                    break a
+                }
+            } catch (K) {}
+            z = {}
+        }
+        Ft(d, z);
+        if (!c.getShaderPrecisionFormat)
+            return U("~", d);
+        Ft(d, rt(c));
+        return U("~", d)
+    }
+    var Ht = function(a) {
+        return function(b) {
+            var c = Mf(b);
+            if (!c)
+                return "";
+            c = c("canvas");
+            var d = []
+              , e = a()
+              , f = e.dh;
+            e = e.Sg;
+            try {
+                var g = Xa("getContext", c);
+                d = O(H(w, g), e)
+            } catch (h) {
+                return ""
+            }
+            return (g = Ke(w, d)) ? f(b, {
+                canvas: c,
+                Gg: g
+            }) : ""
+        }
+    }(function() {
+        return {
+            Sg: lt,
+            dh: Gt
+        }
+    });
+    function It(a, b, c) {
+        return U("x", O(H(w, Xa("concat", "" + a), F(c, J)), b))
+    }
+    function Jt(a) {
+        return (a = tt(a)) ? U("x", O(E(["", ["matches", "media"]], It), ob(fc(a)))) : ""
+    }
+    function Kt(a) {
+        if (a = pl(a))
+            try {
+                for (var b = [], c = 0; c < ol.length; c += 1) {
+                    var d = a(ol[c]);
+                    b.push(d)
+                }
+                var e = b
+            } catch (f) {
+                e = []
+            }
+        else
+            e = [];
+        return e ? U("x", e) : ""
+    }
+    var Lt = ["name", "lang", "localService", "voiceURI", "default"];
+    function Mt(a) {
+        var b = J(a, "speechSynthesis.getVoices");
+        if (b)
+            return a = D(b, a.speechSynthesis),
+            Jb(function(c) {
+                return O(F(c, J), Lt)
+            }, a())
+    }
+    function Nt(a) {
+        return U("x", Mt(a) || [])
+    }
+    function Ot(a) {
+        a = wt(a);
+        return N(a) ? U("x", a) : a
+    }
+    function Pt(a, b, c, d, e) {
+        if (!zj(a))
+            return u;
+        var f = [], g = [], h = ud(a), k;
+        Cg(a)(wg(u, function() {
+            var l = Aj(b, a.document.body);
+            e && (l = nb(e, l));
+            O(function(p) {
+                f.push(p);
+                g.push(h.F(p, c, d))
+            }, l);
+            if (xa("MutationObserver", a.MutationObserver)) {
+                var m = b.toUpperCase();
+                l = new a.MutationObserver(W(a, "de.m", function(p) {
+                    O(function(q) {
+                        var t = q.addedNodes;
+                        q = q.removedNodes;
+                        t && t.length && O(function(v) {
+                            Jk(a, v, function(z) {
+                                z.nodeName !== m || e && !e(z) || Ke(sa(z), f) || (f.push(z),
+                                g.push(h.F(z, c, d)))
+                            }, void 0, a.NodeFilter.SHOW_ELEMENT, !0)
+                        }, t);
+                        q && q.length && O(function(v) {
+                            Jk(a, v, function(z) {
+                                z.nodeName !== m || e && !e(z) || (z = wb(a)(z, f),
+                                -1 !== z && (g[z](),
+                                g.splice(z, 1),
+                                f.splice(z, 1)))
+                            }, void 0, a.NodeFilter.SHOW_ELEMENT, !0)
+                        }, q)
+                    }, p)
+                }));
+                l.observe(a.document.body, {
+                    childList: !0,
+                    subtree: !0
+                });
+                k = D(l.disconnect, l)
+            }
+        }));
+        return function() {
+            k && k();
+            O(Re, g);
+            yb(g);
+            yb(f)
+        }
+    }
+    function Qt(a, b) {
+        var c = b.vb
+          , d = le(b.Ub);
+        if (d && !(100 <= eb(d))) {
+            var e = "tel" === J(c, "type")
+              , f = 0 < Na(d, "@") && !e
+              , g = oe(d);
+            g = eb(g);
+            if (f || !f && (e || g))
+                if (d = f ? qi(d) : vi(a, d))
+                    return e = J(b, "isTrusted"),
+                    {
+                        vb: c,
+                        Fh: f,
+                        Ub: d,
+                        isTrusted: e,
+                        Zd: b.Zd
+                    }
+        }
+    }
+    function Rt(a, b, c, d, e) {
+        var f = b.Fh
+          , g = b.Ub
+          , h = b.isTrusted
+          , k = b.Zd;
+        b = b.vb.readOnly;
+        var l = {}
+          , m = {};
+        c = (m.fi = nf((l.a = f ? 1 : 0,
+        l.b = c,
+        l.c = e || 0,
+        l.d = b ? 1 : null,
+        l.e = k ? 1 : null,
+        l)).ra(),
+        m);
+        C(h) || (c.ite = jb(h));
+        d && (f ? (d = r(g.split("@")),
+        f = d.next().value,
+        g = d.next().value.split("."),
+        d = g[g.length - 1],
+        g = U(".", g.slice(0, -1)),
+        e = eb(f),
+        h = eb(g),
+        f = 3 >= e ? "***" : 4 === e ? f[0] + "***" : f[0] + sl("*", e - 2) + f[e - 1],
+        2 >= h ? g = sl("*", h) : 3 === h ? g = g[0] + "**" : (h = Math.floor(h / 2) + h % 2,
+        g = "" + g[0] + sl("*", h) + g.slice(h + 1)),
+        d = "e:" + (f + "@" + g + "." + d)) : (d = oe(g),
+        f = d.slice(-4),
+        d = "p:" + tl("*", eb(d), f)),
+        c.mfpd = d);
+        d = {};
+        a.params((d.__ym = c,
+        d))
+    }
+    var St = X("ice", function(a, b, c, d) {
+        if (b = fi(a, b))
+            if (d = Qt(a, d))
+                return a = Mj(a, d.vb),
+                Rt(b, d, a, !1),
+                !0
+    })
+      , Tt = X("ice", function(a, b, c, d) {
+        if (b = fi(a, b))
+            if (d = Qt(a, d)) {
+                var e = Mj(a, d.vb);
+                xi(a, d.Ub).then(E([b, d, e, c], Rt), W(a, "ice.s"));
+                return !0
+            }
+    });
+    function Ut(a, b, c, d, e) {
+        var f = e.target;
+        a = Ba(a)(f, c);
+        f = -1 !== a;
+        if (b || f)
+            f && c.splice(a, 1),
+            d(e)
+    }
+    function Vt(a, b, c, d, e) {
+        var f = J(e, "target");
+        e = J(e, "isTrusted") || !1;
+        f && (f = Ej("button,input", a, f)) && "submit" === f.type && (f = dk(a, f)) && (d = d(f),
+        b.push(f),
+        Y(a, E([a, !1, b, c, {
+            target: f,
+            isTrusted: e,
+            formData: d
+        }], Ut), 300))
+    }
+    function Wt(a, b) {
+        var c = Xt
+          , d = []
+          , e = [];
+        d.push(Pt(a, "form", ["submit"], W(a, "ltfs.s", function(f) {
+            var g = J(f, "target");
+            f = J(f, "isTrusted") || !1;
+            g && Ut(a, !0, e, b, {
+                target: g,
+                isTrusted: f,
+                formData: c(g)
+            })
+        })));
+        d.push(Pt(a, "button", ["click"], W(a, "ltfs.bc", E([a, e, b, c], Vt))));
+        d.push(Pt(a, "input", ["click"], W(a, "ltfs.ic", E([a, e, b, c], Vt)), function(f) {
+            return "submit" === f.type
+        }));
+        return E([Se, d], O)
+    }
+    var Yt = ["text", "email", "tel"]
+      , Zt = ["cc-", "name", "shipping"];
+    function Xt(a) {
+        a = Aj("input", a);
+        return O(function(b) {
+            return [b, b.value]
+        }, a)
+    }
+    var $t = X("icei", function(a, b) {
+        if (wi(a)) {
+            var c = !1
+              , d = u
+              , e = u;
+            Wh(b, function(f) {
+                if (!(Fq(a) || J(f, "settings.eu") || c)) {
+                    var g = J(f, "settings.cf")
+                      , h = !!J(f, "settings.mcf")
+                      , k = g ? Tt : St
+                      , l = function(m) {
+                        return jp(a, m) || !M(m.type, Yt) || Ob(kb, O(F(m.autocomplete, Pa), Zt)) ? !1 : !0
+                    };
+                    d = Pt(a, "input", ["blur"], function(m) {
+                        if (m = J(m, "target")) {
+                            var p = J(m, "value") || "";
+                            k(a, b, h, {
+                                vb: m,
+                                Ub: p
+                            })
+                        }
+                    }, l);
+                    e = Wt(a, function(m) {
+                        var p = m.isTrusted
+                          , q = 0;
+                        O(function(t) {
+                            var v = r(t);
+                            t = v.next().value;
+                            v = v.next().value;
+                            20 <= q || !l(t) || k(a, b, h, {
+                                vb: t,
+                                Ub: v,
+                                isTrusted: p,
+                                Zd: !0
+                            }) && (q += 1)
+                        }, m.formData)
+                    })
+                }
+            });
+            return function() {
+                c = !0;
+                d();
+                e()
+            }
+        }
+    }), au;
+    function bu(a, b, c) {
+        var d = J(a, "AppMetricaInitializer")
+          , e = J(d, "init");
+        if (e)
+            try {
+                D(e, d)(zf(a, b))
+            } catch (f) {}
+        else
+            au = Y(a, E([a, b, 2 * c], bu), c, "ai.d");
+        return function() {
+            return tg(a, au)
+        }
+    }
+    var cu = X("p.ai", function(a, b) {
+        if (oc(a) || cl(a))
+            return Wh(b, function(c) {
+                if (c = J(c, "settings.sbp")) {
+                    var d = {};
+                    return bu(a, P({}, c, (d.c = b.id,
+                    d)), 10)
+                }
+            })
+    })
+      , du = "architecture bitness model platformVersion uaFullVersion fullVersionList".split(" ")
+      , eu = Yd("uah", function(a) {
+        if (!xa("getHighEntropyValues", J(a, "navigator.userAgentData.getHighEntropyValues")))
+            return S.reject("0");
+        try {
+            return a.navigator.userAgentData.getHighEntropyValues(du).then(function(b) {
+                if (!Ta(b))
+                    throw "2";
+                return b
+            }, function() {
+                throw "1";
+            })
+        } catch (b) {
+            return S.reject("3")
+        }
+    })
+      , fu = new RegExp(U("|", "yandex.com/bots;Googlebot;APIs-Google;Mediapartners-Google;AdsBot-Google;FeedFetcher-Google;Google-Read-Aloud;DuplexWeb-Google;Google Favicon;googleweblight;Lighthouse;Mail.RU_Bot;StackRambler;Slurp;msnbot;bingbot;www.baidu.com/search/spi_?der.htm".split(";")).replace(/[./]/g, "\\$&"))
+      , gu = x(function(a) {
+        var b = Bb(a);
+        return (b = fu.test(b)) ? S.resolve(b) : eu(a).then(function(c) {
+            try {
+                return G(function(d, e) {
+                    return d || fu.test(e.brand)
+                }, !1, c.brands)
+            } catch (d) {
+                return !1
+            }
+        }, F(!1, w))
+    })
+      , hu = ["0", "1", "2", "3"]
+      , iu = hu[0]
+      , ju = hu[1]
+      , ku = hu[2]
+      , lu = ["GDPR-ok-view-detailed-0", "GDPR-ok-view-detailed-1", "GDPR-ok-view-detailed-2", "GDPR-ok-view-detailed-3"]
+      , mu = ["GDPR-ok-view-default", "GDPR-ok-view-detailed"].concat(lu);
+    function nu(a) {
+        if (M(a, ["GDPR-ok-view-default", "GDPR-ok-view-detailed"]))
+            return iu;
+        a = a.replace("GDPR-ok-view-detailed-", "");
+        return M(a, hu) ? a : iu
+    }
+    var ou = "GDPR-ok GDPR-cross GDPR-cancel 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 GDPR-settings GDPR-ok-view-default GDPR-ok-view-detailed 21 22 23".split(" ").concat(lu).concat(["28", "29", "30", "31"])
+      , pu = "3 13 14 31 15 16 17 28".split(" ")
+      , qu = H(Kb(L("ymetrikaEvent.type")), pb(sb(ou)));
+    function ru(a, b, c) {
+        a = c || wc(a);
+        return M(a, b) ? a : "en"
+    }
+    var su = {
+        Ih: !0,
+        url: "https://yastatic.net/s3/gdpr/v3/gdpr",
+        Ff: "",
+        yf: "az be en es et fi fr hy ka kk ky lt lv no pt ro ru sl tg tr uz cs da de el hr it nl pl sk sv".split(" ")
+    }
+      , tu = Yd("gdpr", function(a, b, c, d, e) {
+        function f(p) {
+            b("10");
+            c.F(mu, function(q) {
+                q = q.type;
+                var t = {};
+                l.Wf((t.type = q,
+                t));
+                p({
+                    value: nu(q)
+                })
+            })
+        }
+        var g = void 0 === e ? su : e;
+        e = g.url;
+        var h = g.Ff
+          , k = g.Ih;
+        g = ru(a, g.yf, d.Ji);
+        var l = Wi(a, d);
+        if (!l)
+            return S.resolve({
+                value: iu,
+                Yd: !0
+            });
+        if (a._yaGdprLoaded)
+            return new S(function(p) {
+                b("7");
+                f(p)
+            }
+            );
+        var m = oh(a, {
+            src: "" + e + (k ? "" : g) + h + ".js"
+        });
+        return new S(function(p, q) {
+            m ? (b("7"),
+            m.onerror = function() {
+                b("9");
+                var t = {};
+                l.Wf((t.type = "GDPR-ok-view-default",
+                t));
+                p(null)
+            }
+            ,
+            m.onload = F(p, f)) : (b("9"),
+            q(hf("gdp.e")))
+        }
+        )
+    });
+    function uu(a, b) {
+        var c = Wi(a, b);
+        c && c.$.F(["isYandex"], function() {
+            var d = {};
+            return d.type = "isYandex",
+            d.isYandex = Om(a),
+            d
+        })
+    }
+    function vu(a, b, c) {
+        var d = Wi(a, c);
+        return new S(function(e) {
+            if (d) {
+                var f = d.$
+                  , g = H(F("4", b), F(null, e))
+                  , h = Y(a, g, 2E3, "gdp.f.t")
+                  , k = {};
+                d.Xf((k.type = "isYandex",
+                k)).then(function(l) {
+                    l.isYandex ? (b("5"),
+                    f.F(mu, function(m) {
+                        m = r(m);
+                        m.next();
+                        m = m.next().value.type;
+                        e({
+                            value: nu(m)
+                        })
+                    })) : (b("6"),
+                    e(null))
+                })["catch"](g).then(E([a, h], tg))
+            } else
+                e({
+                    value: ju,
+                    Yd: !0
+                })
+        }
+        )
+    }
+    var wu = {}
+      , xu = (wu["GDPR-ok"] = "ok",
+    wu["GDPR-ok-view-default"] = "ok-default",
+    wu["GDPR-ok-view-detailed"] = "ok-detailed",
+    wu["GDPR-ok-view-detailed-0"] = "ok-detailed-all",
+    wu["GDPR-ok-view-detailed-1"] = "ok-detailed-tech",
+    wu["GDPR-ok-view-detailed-2"] = "ok-detailed-tech-analytics",
+    wu["GDPR-ok-view-detailed-3"] = "ok-detailed-tech-other",
+    wu);
+    function yu(a, b) {
+        if (Om(a)) {
+            var c = Yi(a)
+              , d = fi(a, b);
+            d = d && d.params;
+            c = O(F(xu, J), qu(c));
+            d && c.length && d("gdpr", ob(c))
+        }
+    }
+    var zu = "az be en es et fi fr hy ka kk ky lt lv no pt ro ru sl tg tr uz ar he sr uk zh".split(" ")
+      , Au = []
+      , Bu = Xa("push", Au)
+      , Cu = x(function(a, b) {
+        var c = b.C("gdpr");
+        return M(c, hu) ? "-" + c : ""
+    });
+    function Du(a, b, c, d) {
+        if (!c.K || Oc(b.Z))
+            d();
+        else {
+            var e = Yi(a)
+              , f = F(e, Xi)
+              , g = Ae(a, "")
+              , h = function() {
+                var q = U(",", O(Da(ou), qu(e)));
+                q = "" + q + Cu(q, g);
+                of(c, "gdpr", q);
+                d()
+            };
+            if (b.Ii)
+                f("31"),
+                h();
+            else if (3 === b.id)
+                h();
+            else {
+                var k = R(a)
+                  , l = k.C("f1");
+                if (l)
+                    l(h);
+                else if (l = qu(e),
+                Ob(sb(ou), l))
+                    h();
+                else if (g.C("yandex_login"))
+                    f("13"),
+                    g.D("gdpr", iu, 525600),
+                    h();
+                else {
+                    l = Om(a);
+                    var m = V(a);
+                    var p = /(^|\w+\.)yango(\.yandex)?\.com$/.test(m.hostname) ? {
+                        url: "https://yastatic.net/s3/taxi-front/yango-gdpr-popup/",
+                        version: 2,
+                        yf: zu,
+                        Ff: "_inversed_buttons"
+                    } : void 0;
+                    l || p ? (l = g.C("gdpr"),
+                    M(l, hu) ? (f(l === ju ? "12" : "3"),
+                    h()) : cl(a) || dl(a) ? (f("17"),
+                    h()) : gu(a).then(w, u).then(function(q) {
+                        q ? (f("28"),
+                        h()) : (Bu(h),
+                        k.D("f1", Bu),
+                        q = r(Hm).next().value,
+                        q(a).then(L("params.eu")).then(function(t) {
+                            if (t || Pa(m.href, "yagdprcheck=1") || g.C("yaGdprCheck")) {
+                                g.D("gdpr_popup", ju);
+                                uu(a, b);
+                                if (xc(a))
+                                    return vu(a, f, b);
+                                var v = aj(a, e);
+                                if (v)
+                                    return t = tu(a, f, v, b, p),
+                                    t.then(E([a, b], yu)),
+                                    t
+                            }
+                            t || f("8");
+                            return S.resolve({
+                                value: iu,
+                                Yd: !0
+                            })
+                        }).then(function(t) {
+                            g.Ec("gdpr_popup");
+                            if (t) {
+                                var v = t.value;
+                                t = t.Yd;
+                                M(v, hu) && g.D("gdpr", v, t ? void 0 : 525600)
+                            }
+                            v = Rd(Au, Re);
+                            nl(a, v, 20)(wg(W(a, "gdr"), u));
+                            k.D("f1", Re)
+                        })["catch"](W(a, "gdp.a")))
+                    })) : (f("14"),
+                    h())
+                }
+            }
+        }
+    }
+    var Eu = Kc.split(".")
+      , Fu = Eu.pop()
+      , Gu = U(".", Eu)
+      , Hu = {};
+    function Iu(a, b) {
+        Hu[b] || (Hu[b] = {
+            ji: oh(a, {
+                src: b
+            }),
+            state: 0
+        });
+        return Hu[b]
+    }
+    function Ju(a, b, c, d) {
+        function e() {
+            g.state = 1;
+            c()
+        }
+        function f() {
+            g.state = 2;
+            d && d()
+        }
+        var g = Iu(a, b);
+        b = g.ji;
+        var h = g.state;
+        b && 2 !== h ? 1 === h ? e() : (a = ud(a),
+        a.F(b, ["load"], e),
+        a.F(b, ["error"], f)) : f()
+    }
+    var Ku = x(De, Q);
+    function Lu(a, b, c, d) {
+        var e = Ku(c).ai;
+        if (!e)
+            throw T("im.no");
+        Ju(a, Yr + "/" + b + ".js?ver=" + Nc.mb + "&b=p", function() {
+            var f = R(a).C("ytmm");
+            (f = J(f, b + ".init")) && f(e, d, Nc.mb)
+        })
+    }
+    var Mu = x(Ee);
+    function Nu(a) {
+        a = wc(a);
+        return vm[a] || "ru"
+    }
+    function Ou(a) {
+        a = Lm(a);
+        return sm[a] || a
+    }
+    var Pu = x(function() {
+        var a = G(function(b, c) {
+            "ru" !== c && (b[c] = Gu + "." + c);
+            return b
+        }, {}, be);
+        O(function(b) {
+            a[b] = b
+        }, cc(tm));
+        return a
+    })
+      , Qu = x(function(a) {
+        a = V(a).hostname;
+        return (a = Ke(H(L("1"), cb("test"), ra(Re)(a)), bc(tm))) && a[0]
+    });
+    function Ru(a, b) {
+        var c = Nu(a)
+          , d = [Qu(a) || Ou(a)];
+        Mm(a) && d.push(c);
+        var e = Fd(a);
+        c = Gf(a);
+        var f = c.C("synced", {});
+        d = nb(function(g) {
+            if (b[g]) {
+                var h = (f[g] || 1) + 1440 < e(Cd);
+                h && delete f[g];
+                return h
+            }
+        }, d);
+        c.D("synced", f);
+        return O(function(g) {
+            return {
+                oi: b[g],
+                Kh: g
+            }
+        }, d)
+    }
+    var Su = function(a, b) {
+        return function(c, d) {
+            if (Ec(c) || Db(c))
+                return {};
+            var e = Q(d);
+            e = Pu(e);
+            var f = Ru(c, e)
+              , g = R(c)
+              , h = xc(c);
+            return {
+                T: function(k, l) {
+                    var m = k.K
+                      , p = Mm(c);
+                    m = !(m && m.C("pv"));
+                    if (!p || h || m || !f.length)
+                        return l();
+                    if (g.C("startSync"))
+                        Mu(c).push(l);
+                    else {
+                        g.D("startSync", !0);
+                        p = E([c, d, f, u, !1], a);
+                        m = r(Hm).next().value;
+                        if (!m)
+                            return l();
+                        m(c).then(p).then(l, H(ta(l), W(c, b)))["catch"](u)
+                    }
+                }
+            }
+        }
+    }(function(a, b, c, d, e) {
+        var f = Fd(a)
+          , g = R(a)
+          , h = Gf(a);
+        d = Nh(a, b, "c");
+        var k = Pe(a, d)
+          , l = nr();
+        dt(l);
+        return G(function(m, p) {
+            function q() {
+                var z = h.C("synced");
+                g.D("startSync", !1);
+                z && (z[p.Kh] = t,
+                h.D("synced", z));
+                z = Mu(a);
+                O(Re, z);
+                yb(z)
+            }
+            var t, v = {};
+            v = k({
+                N: {
+                    ha: ["sync.cook"],
+                    Wa: 1500
+                },
+                J: (v.scid = l,
+                v.cid = "" + b.id,
+                v)
+            }, [Nc.Pa + "//" + p.oi + "/sync_cookie_image_check" + (e ? "_secondary" : "")]).then(function() {
+                t = f(Cd);
+                q()
+            })["catch"](function() {
+                t = f(Cd) - 1435;
+                q()
+            });
+            v = F(v, w);
+            return m.then(v)
+        }, S.resolve(), c)["catch"](W(a, "ctl"))
+    }, "sy.c")
+      , Tu = {}
+      , Uu = (Tu.brands = "chu",
+    Tu.architecture = "cha",
+    Tu.bitness = "chb",
+    Tu.uaFullVersion = "chf",
+    Tu.fullVersionList = "chl",
+    Tu.mobile = "chm",
+    Tu.model = "cho",
+    Tu.platform = "chp",
+    Tu.platformVersion = "chv",
+    Tu);
+    function Vu(a) {
+        return y(a) ? a : N(a) ? U(",", O(function(b) {
+            return '"' + b.brand + '";v="' + b.version + '"'
+        }, a)) : C(a) ? "" : a ? "?1" : "?0"
+    }
+    function Wu(a) {
+        return "che\n" + a
+    }
+    function Xu(a) {
+        var b = G(function(c, d) {
+            var e = r(d)
+              , f = e.next().value;
+            e = e.next().value;
+            (f = Vu(a[f])) && c.push("" + e + "\n" + f);
+            return c
+        }, [], bc(Uu));
+        return U("\n", b)
+    }
+    var Yu = x(function(a) {
+        return eu(a).then(Xu, Wu)
+    });
+    function Zu(a) {
+        return {
+            T: function(b, c) {
+                Yu(a).then(function(d) {
+                    b.J || (b.J = {});
+                    b.J.uah = d;
+                    c()
+                }, c)
+            }
+        }
+    }
+    function $u(a, b) {
+        b = void 0 === b ? !0 : b;
+        var c = Bj("canvas", a.document);
+        if (c && (c = Wf(c))) {
+            var d = r(Tf(a) || Uf(a))
+              , e = d.next().value;
+            d = d.next().value;
+            if (.3 <= lg(a, c, {
+                h: d,
+                w: e
+            }) / (d * e)) {
+                R(a).D("hc", 1);
+                return
+            }
+        }
+        b && Y(a, E([a, !1], $u), 3E3)
+    }
+    function av(a, b) {
+        if ("https://oauth.yandex.ru" === J(b, "origin") && J(b, "source.window") && "_ym_uid_request" === J(b.data, "_ym")) {
+            var c = b.source
+              , d = {};
+            d = (d._ym_uid = a,
+            d);
+            c.postMessage(d, "https://oauth.yandex.ru")
+        }
+    }
+    var bv = Yd("ot", function(a, b) {
+        if (Ic(a)) {
+            var c = ud(a);
+            return Wh(b, W(a, "ot.s", function(d) {
+                if (J(d, "settings.oauth")) {
+                    var e = []
+                      , f = Ng(a, b);
+                    e.push(c.F(a, ["message"], W(a, "ot.m", F(f, av))));
+                    Cg(a)(wg(u, W(a, "ot.b", function() {
+                        function g(p) {
+                            var q = p.href;
+                            if (q && ri(q, "https://oauth.yandex.ru/") && !Pa(q, "_ym_uid=")) {
+                                q = Pa(q, "?") ? "&" : "?";
+                                var t = {};
+                                p.href += "" + q + Wd((t._ym_uid = f,
+                                t.mc = "v",
+                                t));
+                                c.F(p, ["click"], W(a, "ot.click", function() {
+                                    var v = "et=" + k(Bd);
+                                    p.href += "&" + v
+                                }))
+                            }
+                        }
+                        var h = a.document.body
+                          , k = Fd(a)
+                          , l = Aj("a", h);
+                        O(g, l);
+                        if (xa("MutationObserver", a.MutationObserver)) {
+                            l = new a.MutationObserver(W(a, "ot.m", F(function(p) {
+                                p = p.addedNodes;
+                                for (var q = 0; q < p.length; q += 1) {
+                                    var t = p[q];
+                                    "A" === t.nodeName && g(t)
+                                }
+                            }, O)));
+                            var m = {};
+                            m = (m.childList = !0,
+                            m.subtree = !0,
+                            m);
+                            l.observe(h, m);
+                            e.push(D(l.disconnect, l))
+                        }
+                    })));
+                    return E([Se, e], O)
+                }
+            }))
+        }
+    });
+    function cv(a) {
+        return new S(function(b) {
+            return Y(a, b, 2E3)
+        }
+        )
+    }
+    var iv = "wss://" + Kc + "/solid.ws";
+    function jv(a) {
+        return new S(function(b, c) {
+            function d() {
+                tg(a, k);
+                m.removeEventListener("error", f, h);
+                m.removeEventListener("open", e, h);
+                m.removeEventListener("close", d, h)
+            }
+            function e() {
+                b(m);
+                tg(a, l);
+                g()
+            }
+            function f() {
+                m && m.close()
+            }
+            function g() {
+                k = Y(a, function() {
+                    1 === m.readyState && (m.send(new Uint8Array([10])),
+                    g())
+                }, 5E3)
+            }
+            var h = {
+                once: !0
+            }
+              , k = 0
+              , l = 0;
+            try {
+                var m = new a.WebSocket(iv);
+                l = Y(a, function() {
+                    c(hf("so.t"));
+                    m.close()
+                }, 2E3);
+                m.addEventListener("open", e, h);
+                m.addEventListener("error", f, h);
+                m.addEventListener("close", d, h)
+            } catch (p) {
+                c(hf("so.e"))
+            }
+        }
+        )
+    }
+    var kv = x(function() {
+        return {
+            type: 1,
+            ga: -1,
+            Zb: []
+        }
+    });
+    function lv(a, b) {
+        var c = kv()
+          , d = c.ga;
+        if (0 === c.type) {
+            if (1 === c.lb.readyState)
+                return S.resolve({
+                    rc: c.rc,
+                    lb: c.lb,
+                    ga: d,
+                    If: !1
+                });
+            try {
+                c.lb.close()
+            } catch (e) {}
+            P(c, {
+                type: 1,
+                lb: void 0,
+                rc: void 0,
+                zc: !1
+            })
+        }
+        c.zc || (c.ga += 1);
+        if (3 <= c.ga)
+            return S.reject(hf("so.r"));
+        c.zc || (c.zc = !0,
+        b().then(function(e) {
+            function f() {
+                c.ga += 1;
+                return 3 <= c.ga ? S.reject() : cv(a).then(F(a, jv))
+            }
+            function g(l) {
+                P(c, {
+                    type: 0,
+                    lb: l,
+                    rc: e,
+                    zc: !1
+                });
+                O(function(m, p) {
+                    var q = m.resolve;
+                    return q({
+                        rc: e,
+                        lb: l,
+                        ga: c.ga,
+                        If: !p && c.ga !== d
+                    })
+                }, c.Zb);
+                yb(c.Zb);
+                return l
+            }
+            for (var h = jv(a), k = c.ga; 3 > k; k += 1)
+                h = h.then(g, f);
+            h["catch"](function() {
+                O(function(l) {
+                    l = l.reject;
+                    return l()
+                }, c.Zb);
+                yb(c.Zb)
+            })
+        }));
+        return new S(function(e, f) {
+            c.Zb.push({
+                resolve: e,
+                reject: f
+            })
+        }
+        )
+    }
+    var mv = x(function(a) {
+        return new RegExp("^" + a + ":([^:]+)|:" + a + ":([^:]+)")
+    })
+      , nv = qa(function(a, b) {
+        return G(function(c, d) {
+            var e = mv(d);
+            (e = b.match(e)) && c.Db(d, e[1] || e[2]);
+            return c
+        }, Me(), a).ra()
+    })
+      , ov = {}
+      , pv = (ov["wv-part"] = w,
+    ov["browser-info"] = nv(["bt", "et", "st", "i", "w"]),
+    ov);
+    function qv(a) {
+        return G(function(b, c) {
+            var d = r(c)
+              , e = d.next().value;
+            d = d.next().value;
+            I(pv, e) && d && (d = (0,
+            pv[e])(d)) && (b[e] = d);
+            return b
+        }, {}, bc(a))
+    }
+    var rv = 1
+      , sv = {};
+    function tv(a) {
+        var b;
+        return function(c, d) {
+            if (!d.nf)
+                return S.reject(hf("n.wst"));
+            var e = rv;
+            rv += 1;
+            return lv(a, d.nf).then(function(f) {
+                var g = f.lb
+                  , h = f.rc
+                  , k = f.ga
+                  , l = f.If;
+                l && g.addEventListener("message", function(m) {
+                    if ((m = yf(a, m.data)) && (m = m.ack) && sv[m]) {
+                        var p = sv[m]
+                          , q = p.resolve;
+                        tg(a, p.Fa);
+                        q(null);
+                        delete sv[m]
+                    }
+                });
+                return new S(function(m, p) {
+                    var q = d.aa
+                      , t = d.qa
+                      , v = d.Ua
+                      , z = !b;
+                    z && (b = {
+                        query: v,
+                        ga: k
+                    });
+                    if (!z && (l || k > b.ga)) {
+                        var K = {};
+                        g.send(zf(a, (K.resource = t,
+                        K.query = b.query,
+                        K.wstoken = h,
+                        K.reconnects = k,
+                        K)));
+                        b.ga += 1
+                    }
+                    v = !z && v ? qv(v) : v;
+                    K = {};
+                    t = zf(a, (K.reconnects = z ? k : void 0,
+                    K.resource = t,
+                    K.wstoken = z ? h : void 0,
+                    K.query = v,
+                    K.seq = e,
+                    K));
+                    q && (q = y(q) ? q : '"' + Ol(q) + '"',
+                    t = t.substring(0, t.length - 1) + ',"body":' + q + "}");
+                    g.send(t);
+                    q = Y(a, function() {
+                        p(hf("s.t.to"));
+                        delete sv[e]
+                    }, 1E3);
+                    sv[e] = {
+                        resolve: m,
+                        Fa: q
+                    }
+                }
+                )
+            })
+        }
+    }
+    function uv(a, b, c, d) {
+        var e = J(d, "data");
+        if (y(e)) {
+            var f = r(e.split("*"));
+            e = f.next().value;
+            var g = f.next().value;
+            f = f.next().value;
+            "sc.topics-response" === e ? (g && ("1" === g && f ? (a = yf(a, f),
+            N(a) && b.D("cta", a)) : b.D("cta.e", g)),
+            c()) : "sc.frame" === e && d.source && d.source.postMessage("sc.topics", "*")
+        }
+    }
+    function vv(a) {
+        var b = J(a, "featurePolicy");
+        return b ? "browsingTopics"in a && b.allowsFeature("browsing-topics") : !1
+    }
+    var wv = X("p.cta", function(a) {
+        Cg(a)(wg(u, function() {
+            var b = R(a);
+            if (vv(a.document)) {
+                var c = 0;
+                if (as(a, "cta")) {
+                    var d = u
+                      , e = function() {
+                        bs("cta");
+                        d();
+                        tg(a, c)
+                    };
+                    d = ud(a).F(a, ["message"], X("p.cta.o", E([a, b, e], uv)));
+                    c = Y(a, e, 1500)
+                } else
+                    b.D("cta.e", "if")
+            } else
+                b.D("cta.e", "ns")
+        }))
+    })
+      , xv = "pbjsInit bidRequested bidAdjustment bidWon bidResponse bidTimeout auctionInit auctionEnd adRenderSucceeded adRenderFailed".split(" ")
+      , yv = ["cpm", "currency", "netRevenue", "requestTimestamp", "responseTimestamp"]
+      , zv = {}
+      , Av = (zv.netRevenue = function(a) {
+        return y(a) ? "net" === a : !!a
+    }
+    ,
+    zv);
+    function Bv(a, b, c) {
+        Cg(a)(wg(u, function() {
+            var d = O(function(g) {
+                var h = {};
+                h = (h.auc = g,
+                h);
+                g = Bj("[id='" + g + "']", a.document.body) || Bj("[id='" + g.slice(1) + "']", a.document.body);
+                if (!g)
+                    return h;
+                var k = Wf(g);
+                if (k) {
+                    var l = {};
+                    P(h, (l.y = "" + k.top,
+                    l.x = "" + k.left,
+                    l.w = "" + k.width,
+                    l.h = "" + k.height,
+                    l))
+                }
+                if (g = Bj("iframe", g))
+                    k = {},
+                    P(h, (k.wi = g.width,
+                    k.hi = g.height,
+                    k.si = g.src,
+                    k));
+                return h
+            }, c);
+            if (0 < d.length) {
+                var e = {}
+                  , f = {};
+                b((f.__ym = (e.adi = d,
+                e),
+                f))
+            }
+        }))
+    }
+    var Cv = {}, Dv;
+    function Ev(a) {
+        var b = Cv[a]
+          , c = b.jd
+          , d = b.af
+          , e = b.ei;
+        return O(function(f) {
+            var g = r(f);
+            f = g.next().value;
+            g = g.next().value;
+            var h = g.fe
+              , k = g.timeout
+              , l = g.Mb
+              , m = {};
+            return P((m.renderState = g.cc,
+            m.mediaTypes = h,
+            m.auctionId = a,
+            m.adUnitCode = f,
+            m.startStamp = c,
+            m.endStamp = d,
+            m.requestedBidders = e,
+            m.bidTimeout = k,
+            m), l)
+        }, bc(b.Zc))
+    }
+    function Fv(a, b, c) {
+        var d = Cv[c];
+        d.ca = !1;
+        d.Fa && tg(a, d.Fa);
+        d.Fa = Y(a, function() {
+            var e = Ev(c)
+              , f = {}
+              , g = {};
+            b((g.__ym = (f.pbjsv = Dv,
+            f.pbjs = e,
+            f),
+            g));
+            delete Cv[c]
+        }, 2E3)
+    }
+    function Gv(a, b) {
+        O(function(c) {
+            Cv[c].ca && Fv(a, b, c)
+        }, cc(Cv))
+    }
+    function Hv(a, b) {
+        a.Zc[b] || (a.Zc[b] = {
+            Mb: {}
+        });
+        return a.Zc[b]
+    }
+    function Iv(a, b, c) {
+        var d = c.adUnitCode
+          , e = c.bidderCode || c.bidder;
+        if (e && d) {
+            var f = Hv(b, d);
+            !f.fe && c.mediaTypes && (f.fe = {},
+            O(function(g) {
+                var h = r(g);
+                g = h.next().value;
+                h = h.next().value;
+                var k;
+                N(h) ? k = h : h.sizes ? k = h.sizes : h.playerSize && (k = h.playerSize);
+                k && (f.fe[g] = k)
+            }, bc(c.mediaTypes)));
+            "bidTimeout" === a ? (f.timeout || (f.timeout = {}),
+            f.timeout[e] = !0) : (f.Mb[a] || (f.Mb[a] = {}),
+            f.Mb[a][e] = G(function(g, h) {
+                C(c[h]) || (g[h] = Av[h] ? Av[h](c[h]) : c[h]);
+                return g
+            }, {}, yv),
+            b = J(c, "meta.advertiserDomains"),
+            N(b) && (f.Mb[a][e].advertiserDomains = b))
+        }
+    }
+    function Jv(a, b, c) {
+        var d = c.bid
+          , e = d.bidderCode || d.bidder;
+        d = d.adUnitCode;
+        e && d && (b = Hv(b, d),
+        b.cc || (b.cc = {}),
+        a = "adRenderSucceeded" === a,
+        d = {},
+        b.cc[e] = (d.success = a,
+        d),
+        a || (b.cc[e].reason = c.reason,
+        b.cc[e].message = c.message))
+    }
+    function Kv(a, b) {
+        if (M(a, xv))
+            if ("pbjsInit" === a)
+                Dv = b.version;
+            else {
+                var c = J(b, "auctionId") || J(b, "bid.auctionId") || void 0;
+                if (c) {
+                    Cv[c] || (Cv[c] = {
+                        Zc: {}
+                    });
+                    c = Cv[c];
+                    var d = "auctionInit" === a
+                      , e = "auctionEnd" === a
+                      , f = "adRenderFailed" === a || "adRenderSucceeded" === a;
+                    f || c.jd && !d || (c.jd = J(b, "auctionStart") || void 0,
+                    !c.jd && d && (c.jd = b.timestamp));
+                    var g = E([a, c], Iv);
+                    "bidRequested" === a ? O(g, b.bids) : f ? Jv(a, c, b) : e ? (c.af = b.auctionEnd || b.timestamp,
+                    c.ei = nb(function(h, k, l) {
+                        return Ca(h, l) === k
+                    }, O(L("bidderCode"), b.bidderRequests))) : d || g(b);
+                    c.af && (c.ca = !0)
+                }
+            }
+    }
+    function Lv(a, b) {
+        var c = !1;
+        return function(d) {
+            c || (c = !0,
+            d = E([a, b, d], Bv),
+            Y(a, d, 5E3),
+            Y(a, d, 2E4))
+        }
+    }
+    function Mv(a, b) {
+        O(function(c) {
+            var d = c.event
+              , e = c.data
+              , f = F(d, Kv);
+            "bidTimeout" === d ? O(f, e) : f(e);
+            "auctionEnd" === d && (c = J(c, "data.adUnitCodes")) && b(c)
+        }, a)
+    }
+    var Nv = X("pj", function(a, b) {
+        var c = fi(a, b)
+          , d = c && c.params;
+        if (!d)
+            return u;
+        var e = Lv(a, d);
+        c = {};
+        return c.pbjs = function(f) {
+            N(f) && (f = nb(kb, O(function(g) {
+                if (Ta(g) && g.data && g.event && (Ta(g.data) || N(g.data))) {
+                    var h = J(g, "data.args");
+                    return h ? {
+                        event: g.event,
+                        data: h
+                    } : g
+                }
+            }, f)),
+            Mv(f, e),
+            Gv(a, d))
+        }
+        ,
+        c
+    })
+      , Ov = x(function() {
+        var a = Lj();
+        return G(function(b, c) {
+            b[a[c]] = c;
+            return b
+        }, {}, cc(a))
+    })
+      , Pv = /(\D\d*)/g;
+    function Qv(a) {
+        if (!a)
+            return "";
+        a = a.match(Pv);
+        if (!a || 0 === a.length)
+            return "";
+        var b = Ov();
+        return "//HTML/BODY/" + G(function(c, d) {
+            var e = d[0]
+              , f = Vb(d.slice(1));
+            return "/" + b[e] + (f ? "[" + (f + 1) + "]" : "") + c
+        }, "", a)
+    }
+    function Rv(a, b) {
+        var c = Qv(b);
+        return c ? J(a, "document.evaluate") ? a.document.evaluate(c, a.document, null, a.XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue : null : null
+    }
+    var Sv = x(De);
+    function Tv(a) {
+        return {
+            Zh: Jf(a.element),
+            Gd: a.Gd
+        }
+    }
+    function Uv(a, b) {
+        var c = a.document.body;
+        if (c) {
+            var d = b.price_patterns
+              , e = Sv(b.id);
+            if (e.Jb) {
+                if (!Fj(a, e.Jb.element))
+                    return Tv(e.Jb);
+                e.Jb = void 0
+            }
+            d = G(function(h, k) {
+                var l = r(k)
+                  , m = l.next().value;
+                l = l.next().value;
+                h[m] = l;
+                return h
+            }, {}, d);
+            var f = null
+              , g = null;
+            d.cs && zj(a) && (f = Bj(d.cs, c),
+            g = "c");
+            d.p && !f && (f = Rv(a, d.p),
+            g = "x");
+            if (f && g)
+                return e.Jb = {
+                    element: f,
+                    Gd: g
+                },
+                Tv(e.Jb)
+        }
+    }
+    function Vv(a, b) {
+        var c = a[b[0]];
+        return !(!c || c !== b[1])
+    }
+    function Wv(a, b) {
+        var c = b.patterns;
+        if (0 === c.length)
+            return !1;
+        if (1 === c.length)
+            return Vv(a, c[0]);
+        c = G(function(f, g) {
+            var h = r(g)
+              , k = h.next().value;
+            h = h.next().value;
+            var l = a[k];
+            if (l === h) {
+                if (f.Fd += 1,
+                "i" === k || "c" === k)
+                    f.wf = !0
+            } else
+                l && "p" === k && pe(l) === pe(h) && (f.xf = !0);
+            return f
+        }, {
+            Fd: 0,
+            wf: !1,
+            xf: !1
+        }, c);
+        var d = c.wf
+          , e = c.xf;
+        return 2 <= c.Fd || d && e
+    }
+    function Xv(a, b) {
+        var c = b.patterns;
+        return 0 === c.length ? !1 : Ob(F(a, Vv), c)
+    }
+    function Yv(a, b, c, d) {
+        c = O(function(e) {
+            if (!d(b, e))
+                return !1;
+            var f = {};
+            f = (f.rg = e.id,
+            f);
+            if (e = Uv(a, e))
+                f.gp = Rl(e.Zh),
+                f.mg = e.Gd;
+            return f
+        }, c);
+        return ob(c)
+    }
+    var Zv = ra(ri)("btn:")
+      , $v = ra(ri)("form:");
+    function aw(a) {
+        var b = r(a)
+          , c = b.next().value;
+        b = b.next().value;
+        return "bp" === c ? ["p", Pl(Nl(b))] : a
+    }
+    var bw = Kb(function(a) {
+        a.patterns = O(aw, a.patterns);
+        a.price_patterns = O(aw, a.price_patterns);
+        return a
+    });
+    function cw(a) {
+        switch (a) {
+        case 2:
+            return "read";
+        case 1:
+            return "write";
+        default:
+            throw T("usoc");
+        }
+    }
+    function dw(a) {
+        switch (a) {
+        case "read":
+            return 2;
+        case "write":
+            return 1;
+        case "execute":
+            return 4
+        }
+    }
+    function ew(a, b) {
+        var c = a.permissionType
+          , d = a.M
+          , e = {
+            counterId: b,
+            permissionType: a.permissionType
+        };
+        if ("globals" === c) {
+            c = d.key;
+            a: switch (d.operation) {
+            case 2:
+                d = "read";
+                break a;
+            case 1:
+                d = "write";
+                break a;
+            case 4:
+                d = "execute";
+                break a;
+            default:
+                throw T("uvac");
+            }
+            return P(e, {
+                data: {
+                    key: c,
+                    operation: d
+                }
+            })
+        }
+        if ("dataLayer" === c || "localStorage" === c)
+            return P(e, {
+                data: {
+                    key: d.key,
+                    operation: cw(d.operation)
+                }
+            });
+        if ("url" === c || "referrer" === c)
+            return P(e, {
+                data: "queryVar" === d.urlComponent ? {
+                    component: d.urlComponent,
+                    key: d.variableName
+                } : {
+                    component: d.urlComponent
+                }
+            });
+        if ("iframe" === c || "loadScript" === c || "pixel" === c)
+            return P(e, {
+                data: {
+                    url: d.url
+                }
+            });
+        if ("cookies" === c) {
+            c = cw(d.operation);
+            var f = d.name
+              , g = d.options;
+            d = 1 === d.operation && g ? {
+                operation: c,
+                name: f,
+                options: P({}, g)
+            } : {
+                operation: c,
+                name: f
+            };
+            return P(e, {
+                data: d
+            })
+        }
+        return P(e, {
+            data: null
+        })
+    }
+    var fw = "cookies dataLayer globals iframe loadScript localStorage log pixel readTitle referrer url html".split(" ")
+      , gw = x(function() {
+        var a = {};
+        return {
+            Ag: function(b, c) {
+                M(b, fw) && A(c) && (I(a, b) || (a[b] = []),
+                a[b].push(c))
+            },
+            Ig: function(b, c) {
+                var d = I(a, b.permissionType) && a[b.permissionType];
+                if (!d)
+                    return !0;
+                var e = ew(b, c);
+                return !Ob(function(f) {
+                    try {
+                        return !1 === f(e)
+                    } catch (g) {
+                        return !0
+                    }
+                }, d)
+            }
+        }
+    })
+      , hw = x(function(a) {
+        var b = V(a).search;
+        b = Vd(b.substring(1))._ytm_preview;
+        var c = Ae(a, "");
+        a = c.D;
+        c = c.C;
+        return b ? (a("_ytm_preview", b, 10),
+        b) : c("_ytm_preview")
+    })
+      , iw = "ytm.js ytm.dom ytm.load ytm.init ytm.click ytm.linkClick ytm.formSubmit".split(" ")
+      , jw = ["ytm.click", "ytm.linkClick", "ytm.formSubmit"];
+    function kw(a, b, c) {
+        if (M(b, jw) && c) {
+            a = Ga(c.classList);
+            var d = c.innerText
+              , e = c.getAttribute("id");
+            var f = c.getAttribute("formAction") || c.getAttribute("action") || c.getAttribute("href") || c.getAttribute("src") || c.getAttribute("code") || c.getAttribute("codebase") || "";
+            c = {
+                element: c,
+                elementClasses: a,
+                elementText: d,
+                elementId: e,
+                elementUrl: f,
+                Wi: c.getAttribute("formTarget") || c.getAttribute("target") || ""
+            };
+            return {
+                event: b,
+                ytm: c
+            }
+        }
+        return "ytm.init" === b ? {
+            event: b,
+            ytm: {
+                timestamp: Fd(a)(Bd)
+            }
+        } : {
+            event: b,
+            ytm: {}
+        }
+    }
+    function lw(a, b) {
+        return ud(a).F(a.document, ["click"], function(c) {
+            "A" === c.target.nodeName && b(kw(a, "ytm.linkClick", c.target))
+        })
+    }
+    function mw(a, b, c, d, e) {
+        e = void 0 === e ? a.document : e;
+        return ud(a).F(e, d, function(f) {
+            b(kw(a, c, f.target))
+        })
+    }
+    function nw(a, b, c) {
+        return M(a.document.readyState, ["complete", "interactive"]) ? (b(kw(a, c)),
+        u) : mw(a, b, c, ["DOMContentLoaded"])
+    }
+    function ow(a, b, c) {
+        if ("ytm.linkClick" === b)
+            return lw(a, c);
+        if ("ytm.js" === b)
+            return nw(a, c, "ytm.js");
+        if ("ytm.dom" === b)
+            return nw(a, c, "ytm.dom");
+        if ("ytm.load" === b)
+            return "complete" === a.document.readyState ? (c(kw(a, "ytm.load")),
+            a = u) : a = mw(a, c, "ytm.load", ["load"], a),
+            a;
+        if ("ytm.click" === b)
+            return mw(a, c, "ytm.click", ["click"]);
+        if ("ytm.formSubmit" === b)
+            return mw(a, c, "ytm.formSubmit", ["submit"], a)
+    }
+    var pw = ["ytm.js"]
+      , qw = ["ytm.js", "ytm.dom", "ytm.load"];
+    function rw(a, b) {
+        var c = a[b["var"]]
+          , d = "eq" === b.fn
+          , e = b.target;
+        return c && "event" === c.type && d && y(e) && e
+    }
+    function sw(a) {
+        return G(function(b, c) {
+            -1 === Ca(c, b) && b.push(c);
+            return b
+        }, [], Jb(H(L("conditions"), Kb(F(a.variables, rw)), ob), a.triggers))
+    }
+    function tw(a, b, c) {
+        var d = void 0 === d ? "dataLayer" : d;
+        c = sw(c);
+        var e = []
+          , f = [];
+        O(function(g) {
+            if (M(g, iw)) {
+                var h = ow(a, g, b);
+                h && e.push(h);
+                M(g, pw) && f.push(g)
+            } else
+                f.push(g)
+        }, El(function(g, h) {
+            var k = wb(a)(g, qw)
+              , l = wb(a)(h, qw);
+            return -1 === k ? 1 : -1 === l ? -1 : k - l
+        }, c));
+        c = J(a, d);
+        c || (c = [],
+        a[d] = c);
+        Zi(a, c, function(g) {
+            g.oa.F(function(h) {
+                var k = J(h, "event");
+                y(k) && M(k, f) && b(h)
+            });
+            e.push(g.unsubscribe)
+        });
+        return function() {
+            return O(Re, e)
+        }
+    }
+    function uw(a, b) {
+        return a === b
+    }
+    function vw(a, b, c) {
+        return Xb(a, b) && Xb(a, c) ? b > c : !1
+    }
+    function ww(a, b, c) {
+        return Xb(a, b) && Xb(a, c) ? b < c : !1
+    }
+    function xw(a, b, c) {
+        if (!y(b) || !y(c))
+            return !1;
+        try {
+            return (new RegExp(c,a ? "i" : "")).test(b)
+        } catch (d) {
+            return !1
+        }
+    }
+    function yw(a, b) {
+        return N(a) ? M(b, a) : y(a) ? Pa(a, "" + b) : !1
+    }
+    function zw(a, b, c, d) {
+        var e = b.defaultValue
+          , f = c(b.key);
+        if (f)
+            return d.checkPermission({
+                Qa: b,
+                permissionType: "dataLayer",
+                M: {
+                    key: f,
+                    operation: 2
+                }
+            }),
+            a = J(a, f),
+            C(a) ? e ? c(e) : void 0 : a
+    }
+    var Aw = x(function(a, b, c) {
+        b = void 0 === c.min ? 0 : c.min;
+        b = a.Math.random() * ((void 0 === c.max ? 2147483647 : c.max) - b + 1) + b;
+        return (void 0 === c.isInt ? 0 : c.isInt) ? a.Math.floor(b) : b
+    }, Ea);
+    function Bw(a, b, c, d) {
+        d = void 0 === d ? !1 : d;
+        return "query" === b ? a.query : "queryVar" === b ? (a = c ? Vd(a.query)[c] : void 0,
+        a) : "protocol" === b ? a.protocol : "host" === b ? d ? fe(a.host) : a.host : "port" === b ? (b = a.protocol,
+        a = Vb(a.port) ? a.port : "http:" === b ? "80" : "https:" === b ? "443" : void 0,
+        a) : "path" === b ? a.pathname : "fragment" === b ? a.hash.replace("#", "") : "extension" === b ? (a = a.pathname.split("."),
+        ((1 < a.length ? a.pop() : void 0) || "").split("/")[0]) : a.href
+    }
+    function Cw(a, b) {
+        var c = a(b);
+        return C(c) ? void 0 : "" + c
+    }
+    var Dw = /^[\s\xa0]+/g
+      , Ew = /[\s\xa0]+$/g
+      , Fw = /(\xa0+|\s{2,}|\n|\r\t)/g;
+    function Gw(a) {
+        return (a = a.innerText || a.textContent || "") ? a.replace(Dw, "").replace(Ew, "").replace(Fw, " ") : a
+    }
+    function Hw(a, b, c, d, e) {
+        var f = F(d, Cw);
+        if ("event" === c.type)
+            return zw(b, {
+                type: "dataLayer",
+                key: "event",
+                permissions: c.permissions
+            }, f, e);
+        if ("dataLayer" === c.type)
+            return zw(b, c, f, e);
+        if ("cnst" === c.type)
+            return d(c.value);
+        if ("rand" === c.type)
+            return Aw(a, b, c);
+        if ("url" === c.type || "ref" === c.type) {
+            a: {
+                b = !1;
+                d = c.component;
+                var g = "url" === c.type ? (g = c.urlSource) ? f(g) : J(a, "location.href") : J(a, "document.referrer");
+                if (g) {
+                    if ("queryVar" === d) {
+                        var h = f(c.key);
+                        if (!h) {
+                            c = void 0;
+                            break a
+                        }
+                    }
+                    "host" === d && (b = c.mj);
+                    e.checkPermission({
+                        Qa: c,
+                        permissionType: "url" === c.type ? "url" : "referrer",
+                        M: {
+                            urlComponent: d,
+                            variableName: h
+                        }
+                    });
+                    c = qh(a, g);
+                    c = Bw(c, d, h, b)
+                } else
+                    c = void 0
+            }
+            return c
+        }
+        if ("cookie" === c.type)
+            return "null" === a.origin ? c = "" : (f = f(c.cookieName)) ? (e.checkPermission({
+                Qa: c,
+                permissionType: "cookies",
+                M: {
+                    name: f,
+                    operation: 2
+                }
+            }),
+            c = (c = ue(a)) ? c[f] || "" : "") : c = "",
+            c;
+        if ("js" === c.type)
+            return (f = f(c.key)) ? (e.checkPermission({
+                Qa: c,
+                permissionType: "globals",
+                M: {
+                    key: f,
+                    operation: 2
+                }
+            }),
+            c = J(a, f)) : c = void 0,
+            c;
+        if ("dom" === c.type)
+            return e = c.dataType,
+            c = (h = f(c.selector)) ? (a = Bj(h, a.document.body)) ? "text" === e ? Gw(a) : (c = f(c.attr)) ? a.getAttribute && a.getAttribute(c) : Gw(a) : null : null,
+            c
+    }
+    function Iw(a, b, c, d, e) {
+        var f = d[c];
+        if (!f)
+            throw T("var: " + c);
+        c = E([a, b, d, e], Jw);
+        return Hw(a, b, f, c, e)
+    }
+    var Kw = /[\x00\x08-\x0d\x22\x24\x26-\x29\x2a-\x2e/\x3a\x3c-\x3f\x5b-\x5e\x7b-\x7d\\\x85\u2028\u2029]/g
+      , Lw = {
+        "\x00": "\\x00",
+        "\b": "\\x08",
+        "\t": "\\t",
+        "\n": "\\n",
+        "\v": "\\x0b",
+        "\f": "\\f",
+        "\r": "\\r",
+        '"': "\\x22",
+        "&": "\\x26",
+        "'": "\\x27",
+        "/": "\\/",
+        "<": "\\x3c",
+        "=": "\\x3d",
+        ">": "\\x3e",
+        "\\": "\\\\",
+        "\u0085": "\\x85",
+        "\u2028": "\\u2028",
+        "\u2029": "\\u2029",
+        Ki: "\\x24",
+        "(": "\\x28",
+        ")": "\\x29",
+        "*": "\\x2a",
+        "+": "\\x2b",
+        ",": "\\x2c",
+        "-": "\\x2d",
+        ".": "\\x2e",
+        ":": "\\x3a",
+        "?": "\\x3f",
+        "[": "\\x5b",
+        "]": "\\x5d",
+        "^": "\\x5e",
+        "{": "\\x7b",
+        "|": "\\x7c",
+        "}": "\\x7d"
+    };
+    function Mw(a) {
+        return a.replace(Kw, function(b) {
+            return Lw[b]
+        })
+    }
+    var Nw = /[\x00\x09-\x0d\x22\x26\x27\x2d\x2f\x3c\x3e\x3d\x60\x85\xa0\u2028\u2029]/g
+      , Ow = {
+        "\x00": "&#0;",
+        '"': "&quot;",
+        "&": "&amp;",
+        "'": "&#39;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\t": "&#9;",
+        "\n": "&#10;",
+        "\v": "&#11;",
+        "\f": "&#12;",
+        "\r": "&#13;",
+        "-": "&#45;",
+        "/": "&#47;",
+        "=": "&#61;",
+        "`": "&#96;",
+        "\u0085": "&#133;",
+        "\u00a0": "&#160;",
+        "\u2028": "&#8232;",
+        "\u2029": "&#8233;"
+    };
+    function Pw(a) {
+        return a.replace(Nw, function(b) {
+            return Ow[b]
+        })
+    }
+    var Qw = /^(?:(?:https?|mailto|tel):|[^&:/?#]*(?:[/?#]|$))/i
+      , Rw = /[\x00-\x22\x27-\x29\x3c\x3e\\\x7b\x7d\x7f\x85\xa0\u2028\u2029\uff01\uff03\uff04\uff06-\uff0c\uff0f\uff1a\uff1b\uff1d\uff1f\uff20\uff3b\uff3d]/g
+      , Sw = {
+        "\x00": "%00",
+        "\u0001": "%01",
+        "\u0002": "%02",
+        "\u0003": "%03",
+        "\u0004": "%04",
+        "\u0005": "%05",
+        "\u0006": "%06",
+        "\u0007": "%07",
+        "\b": "%08",
+        "\t": "%09",
+        "\n": "%0A",
+        "\v": "%0B",
+        "\f": "%0C",
+        "\r": "%0D",
+        "\u000e": "%0E",
+        "\u000f": "%0F",
+        "\u0010": "%10",
+        "\u0011": "%11",
+        "\u0012": "%12",
+        "\u0013": "%13",
+        "\u0014": "%14",
+        "\u0015": "%15",
+        "\u0016": "%16",
+        "\u0017": "%17",
+        "\u0018": "%18",
+        "\u0019": "%19",
+        "\u001a": "%1A",
+        "\u001b": "%1B",
+        "\u001c": "%1C",
+        "\u001d": "%1D",
+        "\u001e": "%1E",
+        "\u001f": "%1F",
+        " ": "%20",
+        '"': "%22",
+        "'": "%27",
+        "(": "%28",
+        ")": "%29",
+        "<": "%3C",
+        ">": "%3E",
+        "\\": "%5C",
+        "{": "%7B",
+        "}": "%7D",
+        "\u007f": "%7F",
+        "\u0085": "%C2%85",
+        "\u00a0": "%C2%A0",
+        "\u2028": "%E2%80%A8",
+        "\u2029": "%E2%80%A9",
+        "\uff01": "%EF%BC%81",
+        "\uff03": "%EF%BC%83",
+        "\uff04": "%EF%BC%84",
+        "\uff06": "%EF%BC%86",
+        "\uff07": "%EF%BC%87",
+        "\uff08": "%EF%BC%88",
+        "\uff09": "%EF%BC%89",
+        "\uff0a": "%EF%BC%8A",
+        "\uff0b": "%EF%BC%8B",
+        "\uff0c": "%EF%BC%8C",
+        "\uff0f": "%EF%BC%8F",
+        "\uff1a": "%EF%BC%9A",
+        "\uff1b": "%EF%BC%9B",
+        "\uff1d": "%EF%BC%9D",
+        "\uff1f": "%EF%BC%9F",
+        "\uff20": "%EF%BC%A0",
+        "\uff3b": "%EF%BC%BB",
+        "\uff3d": "%EF%BC%BD"
+    };
+    function Tw(a) {
+        Qw.lastIndex = 0;
+        return Qw.test(a) ? a.replace(Rw, function(b) {
+            return Sw[b]
+        }) : "#sYTMs"
+    }
+    var Uw = /^(?!-*(?:expression|(?:moz-)?binding))(?:[.#]?-?(?:[_a-z0-9-]+)(?:-[_a-z0-9-]+)*-?|-?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:[a-z]{1,2}|%)?|!important|)$/i
+      , Vw = /[\x00\x08-\x0d\x22\x26-\x2a/\x3a-\x3e@\\\x7b\x7d\x85\xa0\u2028\u2029]/g
+      , Ww = {
+        "\x00": "\\0 ",
+        "\b": "\\8 ",
+        "\t": "\\9 ",
+        "\n": "\\a ",
+        "\v": "\\b ",
+        "\f": "\\c ",
+        "\r": "\\d ",
+        '"': "\\22 ",
+        "&": "\\26 ",
+        "'": "\\27 ",
+        "(": "\\28 ",
+        ")": "\\29 ",
+        "*": "\\2a ",
+        "/": "\\2f ",
+        ":": "\\3a ",
+        ";": "\\3b ",
+        "<": "\\3c ",
+        "=": "\\3d ",
+        ">": "\\3e ",
+        "@": "\\40 ",
+        "\\": "\\5c ",
+        "{": "\\7b ",
+        "}": "\\7d ",
+        "\u0085": "\\85 ",
+        "\u00a0": "\\a0 ",
+        "\u2028": "\\2028 ",
+        "\u2029": "\\2029 "
+    };
+    function Xw(a) {
+        return a.replace(Vw, function(b) {
+            return Ww[b]
+        })
+    }
+    var Yw = /['()]/g;
+    function Zw(a) {
+        return "%" + a.charCodeAt(0).toString(16)
+    }
+    function $w(a, b) {
+        var c = "" + a;
+        4 === b ? c = Mw(c) : 3 === b ? c = Pw(c) : 2 === b ? c = Tw(c) : 6 === b ? C(a) ? c = "" : (c = "" + a,
+        c = Uw.test(c) ? c : "sYTMs") : 5 === b ? c = Xw(c) : 1 === b && (c = Td(c),
+        Yw.lastIndex = 0,
+        c = Yw.test(c) ? c.replace(Yw, Zw) : c);
+        return c
+    }
+    function Jw(a, b, c, d, e) {
+        if (N(e)) {
+            if ("template" === e[0])
+                return U("", O(function(g) {
+                    return Jw(a, b, c, d, g)
+                }, e.slice(1)));
+            if ("var" === e[0])
+                return e = r(e),
+                e.next(),
+                e = e.next().value,
+                Iw(a, b, e, c, d);
+            if ("escape" === e[0]) {
+                var f = r(e);
+                f.next();
+                e = f.next().value;
+                f = f.next().value;
+                e = Jw(a, b, c, d, e);
+                return $w(e, f)
+            }
+        } else
+            return e
+    }
+    var ax = u
+      , bx = x(function(a, b) {
+        ax = b
+    });
+    function cx(a, b, c) {
+        return function() {
+            try {
+                return b.apply(null, arguments)
+            } catch (d) {
+                ax(a, d)
+            }
+            return c
+        }
+    }
+    function dx(a) {
+        bx(a, function(b, c) {
+            mf(a, "ytm." + b, c)
+        })
+    }
+    function ex(a, b, c) {
+        a = Qf(a);
+        if (!(a && y(c) && b instanceof HTMLElement))
+            return !1;
+        try {
+            return a.call(b, c)
+        } catch (d) {
+            return !1
+        }
+    }
+    function fx(a, b) {
+        if ("eq" === b)
+            return uw;
+        if ("more" === b)
+            return F(a, vw);
+        if ("less" === b)
+            return F(a, ww);
+        if ("regex" === b)
+            return F(!1, xw);
+        if ("iRegex" === b)
+            return F(!0, xw);
+        if ("css" === b)
+            return F(a, ex);
+        if ("inc" === b)
+            return yw
+    }
+    var gx = cx("c.ch", function(a, b, c, d, e) {
+        var f = Iw(a, b, c["var"], d, e)
+          , g = c.target
+          , h = c.not
+          , k = fx(a, c.fn);
+        if (!k)
+            throw T("fn: " + c.fn);
+        a = Jw(a, b, d, e, g);
+        return h ? !k(f, a) : k(f, a)
+    }, !1);
+    function hx(a, b) {
+        if (C(b) || !!b === b || Sb(a, b) || y(b))
+            return b
+    }
+    function ix(a, b) {
+        if (C(b))
+            return b;
+        var c = hx(a, b);
+        if (!C(c))
+            return c;
+        if (Ta(b))
+            return G(function(d, e) {
+                var f = r(e)
+                  , g = f.next().value;
+                f = f.next().value;
+                d[g] = ix(a, f);
+                return d
+            }, {}, bc(b));
+        if (N(b))
+            return O(F(a, ix), b)
+    }
+    var jx = "clientInformation globalThis this caches console cookieStore credentialless crypto customElements document documentPictureInPicture event external fence frameElement frames history indexedDB launchQueue localStorage location mozInnerScreenX mozInnerScreenY navigation navigator opener orientation origin originAgentCluster parent performance scheduler self sessionStorage sharedStorage speechSynthesis top trustedTypes visualViewport window alert atob back blur btoa cancelAnimationFrame cancelIdleCallback captureEvents clearImmediate clearInterval clearTimeout close confirm dump execScript fetch find focus forward getComputedStyle getDefaultComputedStyle getScreenDetails getSelection matchMedia moveBy moveTo open postMessage print prompt queryLocalFonts queueMicrotask releaseEvents reportError requestAnimationFrame requestFileSystem requestIdleCallback resizeBy resizeTo scroll scrollBy scrollByLines scrollByPages scrollTo setImmediate setInterval setTimeout showDirectoryPicker showModalDialog showOpenFilePicker showSaveFilePicker sizeToContent stop structuredClone".split(" ");
+    function kx(a) {
+        if (!y(a))
+            throw T("gppns");
+        if (M(a.split(".")[0], jx))
+            throw T("rwp");
+        if (ri(a, "on"))
+            throw T("rwp");
+    }
+    function lx(a, b) {
+        var c = b.split(".")
+          , d = c.pop();
+        c = c.length ? J(a, U(".", c)) : a;
+        if (!c)
+            throw T("noma");
+        return {
+            value: J(c, d),
+            parent: c,
+            $b: d
+        }
+    }
+    function mx(a, b, c, d) {
+        var e = Mf(a)("img");
+        e.src = b;
+        b = F(e, Nf);
+        var f = F(void 0, w);
+        e.onerror = H(b, f, d);
+        e.onload = H(b, f, c);
+        lc(a) && (a = Rf(a),
+        P(e.style, {
+            position: "absolute",
+            visibility: "hidden",
+            width: "0px",
+            height: "0px"
+        }),
+        a.appendChild(e))
+    }
+    var nx = x(function(a, b) {
+        return G(function(c, d) {
+            c[d] = a[d];
+            return c
+        }, {}, b)
+    });
+    function ox(a, b) {
+        return B(b) ? "undefined" : Sa(b) ? "null" : Sb(a, b) ? "number" : y(b) ? "string" : !0 === b || !1 === b ? "boolean" : A(b) ? "function" : N(b) ? "array" : "object"
+    }
+    var px = "protocol host port path query queryVar extension fragment href".split(" ");
+    function qx(a, b, c, d, e) {
+        if (!d)
+            return !1;
+        c = (a = "set_cookies" === c) ? 1 : 2;
+        return a && !Ta(e) ? !1 : b.va({
+            permissionType: "cookies",
+            M: {
+                name: d,
+                operation: c,
+                options: e
+            }
+        })
+    }
+    function rx(a, b, c, d) {
+        if (!d)
+            return !1;
+        a = "iframe";
+        "load_script" === c ? a = "loadScript" : "send_pixel" === c && (a = "pixel");
+        return b.va({
+            permissionType: a,
+            M: {
+                url: d
+            }
+        })
+    }
+    function sx(a, b, c, d, e) {
+        return b.va({
+            permissionType: "get_url" === c ? "url" : "referrer",
+            M: {
+                urlComponent: d || "href",
+                variableName: y(e) ? e : void 0
+            }
+        })
+    }
+    var tx = {}
+      , ux = (tx.access_globals = function(a, b, c, d, e) {
+        return d && y(d) && y(e) ? (a = dw(d)) ? b.va({
+            permissionType: "globals",
+            M: {
+                key: e,
+                operation: a
+            }
+        }) : !1 : !1
+    }
+    ,
+    tx.access_local_storage = function(a, b, c, d, e) {
+        return d && y(d) && y(e) ? (a = dw(d)) && 4 !== a ? b.va({
+            permissionType: "localStorage",
+            M: {
+                key: e,
+                operation: a
+            }
+        }) : !1 : !1
+    }
+    ,
+    tx.get_cookies = qx,
+    tx.get_referrer = sx,
+    tx.get_url = sx,
+    tx.inject_hidden_iframe = rx,
+    tx.load_script = rx,
+    tx.logging = function(a, b) {
+        return b.va({
+            permissionType: "log",
+            M: {
+                logLevel: hw(a) ? 1 : 0
+            }
+        })
+    }
+    ,
+    tx.read_data_layer = function(a, b, c, d) {
+        return d ? b.va({
+            permissionType: "dataLayer",
+            M: {
+                key: d,
+                operation: 2
+            }
+        }) : !1
+    }
+    ,
+    tx.read_title = function(a, b) {
+        return b.va({
+            permissionType: "readTitle",
+            M: null
+        })
+    }
+    ,
+    tx.send_pixel = rx,
+    tx.set_cookies = qx,
+    tx)
+      , vx = {}
+      , wx = (vx.callInWindow = function(a) {
+        var b = a.l
+          , c = a.da;
+        return function(d) {
+            var e = ma.apply(1, arguments);
+            kx(d);
+            c.checkPermission({
+                permissionType: "globals",
+                M: {
+                    key: d,
+                    operation: 4
+                }
+            });
+            var f = lx(b, d)
+              , g = f.value;
+            f = f.parent;
+            if (!A(g))
+                throw T("ca.c.wenf");
+            e = g.apply(f, e);
+            return ix(b, e)
+        }
+    }
+    ,
+    vx.callLater = function(a) {
+        var b = a.l;
+        return function(c) {
+            if (!A(c))
+                throw T("ca.c.cinf");
+            Y(b, c, 0)
+        }
+    }
+    ,
+    vx.copyFromDataLayer = function(a) {
+        var b = a.l
+          , c = a.da
+          , d = a.event;
+        return function(e) {
+            if (!d)
+                throw T("No dataLayer data");
+            c.checkPermission({
+                permissionType: "dataLayer",
+                M: {
+                    key: e,
+                    operation: 2
+                }
+            });
+            return ix(b, J(d, e))
+        }
+    }
+    ,
+    vx.copyFromWindow = function(a) {
+        var b = a.l
+          , c = a.da;
+        return function(d) {
+            kx(d);
+            c.checkPermission({
+                permissionType: "globals",
+                M: {
+                    operation: 2,
+                    key: d
+                }
+            });
+            d = J(b, d);
+            return ix(b, d)
+        }
+    }
+    ,
+    vx.createArgumentsQueue = function(a) {
+        var b = a.l
+          , c = a.da;
+        return function(d, e) {
+            function f() {
+                return g.push(arguments)
+            }
+            c.checkPermission({
+                permissionType: "globals",
+                M: {
+                    key: d,
+                    operation: 2
+                }
+            });
+            c.checkPermission({
+                permissionType: "globals",
+                M: {
+                    key: d,
+                    operation: 1
+                }
+            });
+            c.checkPermission({
+                permissionType: "globals",
+                M: {
+                    key: e,
+                    operation: 2
+                }
+            });
+            c.checkPermission({
+                permissionType: "globals",
+                M: {
+                    key: e,
+                    operation: 1
+                }
+            });
+            kx(d);
+            kx(e);
+            var g = []
+              , h = lx(b, d);
+            h.value || (h.parent[h.$b] = f);
+            h = lx(b, e);
+            if (h.value) {
+                if (!N(h.value))
+                    throw T("ca.akna");
+                g = h.value
+            } else
+                h.parent[h.$b] = g;
+            return f
+        }
+    }
+    ,
+    vx.createQueue = function(a) {
+        var b = a.l
+          , c = a.da;
+        return function(d) {
+            c.checkPermission({
+                permissionType: "globals",
+                M: {
+                    key: d,
+                    operation: 2
+                }
+            });
+            c.checkPermission({
+                permissionType: "globals",
+                M: {
+                    key: d,
+                    operation: 1
+                }
+            });
+            kx(d);
+            var e = lx(b, d);
+            d = e.value;
+            var f = e.parent;
+            e = e.$b;
+            if (!d)
+                f[e] = [];
+            else if (!N(d))
+                throw T("akna");
+            return D(f[e].push, f[e])
+        }
+    }
+    ,
+    vx.decodeUri = function(a) {
+        var b = a.l;
+        return function(c) {
+            try {
+                return b.decodeURI(c)
+            } catch (d) {}
+        }
+    }
+    ,
+    vx.decodeUriComponent = function(a) {
+        var b = a.l;
+        return function(c) {
+            try {
+                return b.decodeURIComponent(c)
+            } catch (d) {}
+        }
+    }
+    ,
+    vx.encodeUri = function(a) {
+        var b = a.l;
+        return function(c) {
+            try {
+                return b.encodeURI(c)
+            } catch (d) {}
+        }
+    }
+    ,
+    vx.encodeUriComponent = function(a) {
+        var b = a.l;
+        return function(c) {
+            try {
+                return b.encodeURIComponent(c)
+            } catch (d) {}
+        }
+    }
+    ,
+    vx.getCookieValues = function(a) {
+        var b = a.l
+          , c = a.da;
+        return function(d, e) {
+            e = void 0 === e ? !0 : e;
+            c.checkPermission({
+                permissionType: "cookies",
+                M: {
+                    name: d,
+                    operation: 2
+                }
+            });
+            return G(function(f, g) {
+                var h = r(le(g).split("="))
+                  , k = h.next().value;
+                h = h.next().value;
+                k === d && f.push(e ? Ud(h) : h);
+                return f
+            }, [], b.document.cookie.split(";"))
+        }
+    }
+    ,
+    vx.getTimestamp = function(a) {
+        var b = a.l;
+        return function() {
+            return Fd(b)(Bd)
+        }
+    }
+    ,
+    vx.getType = function(a) {
+        return F(a.l, ox)
+    }
+    ,
+    vx.getUrl = function(a) {
+        var b = a.l
+          , c = a.da;
+        return function(d, e) {
+            var f = M(d, px) ? d : "href";
+            c.checkPermission({
+                permissionType: "url",
+                M: {
+                    urlComponent: f,
+                    variableName: e
+                }
+            });
+            var g = V(b);
+            g.query = g.search.replace(/^\?/, "");
+            return Bw(g, f, e)
+        }
+    }
+    ,
+    vx.injectHiddenIframe = function(a) {
+        var b = a.l
+          , c = a.da;
+        return function(d, e) {
+            e = void 0 === e ? u : e;
+            c.checkPermission({
+                permissionType: "iframe",
+                M: {
+                    url: d
+                }
+            });
+            var f = Mf(b)("iframe");
+            P(f.style, {
+                display: "none",
+                width: "1px",
+                height: "1px",
+                visibility: "hidden"
+            });
+            f.src = d;
+            f.onload = function() {
+                return e()
+            }
+            ;
+            f.onerror = u;
+            Rf(b).appendChild(f)
+        }
+    }
+    ,
+    vx.JSON = function(a) {
+        var b = a.l;
+        return {
+            parse: function(c) {
+                try {
+                    return b.JSON.parse("" + c)
+                } catch (d) {}
+            },
+            stringify: function(c) {
+                try {
+                    return b.JSON.stringify(c)
+                } catch (d) {}
+            }
+        }
+    }
+    ,
+    vx.loadScript = function(a) {
+        var b = a.l
+          , c = a.da;
+        return function(d, e, f) {
+            c.checkPermission({
+                permissionType: "loadScript",
+                M: {
+                    url: d
+                }
+            });
+            Ju(b, d, A(e) ? cx("ls.ol", function() {
+                return e.apply(null)
+            }) : u, A(f) ? cx("ls.oe", function() {
+                return f.apply(null)
+            }) : void 0)
+        }
+    }
+    ,
+    vx.localStorage = function(a) {
+        var b = a.da
+          , c = a.l.localStorage;
+        return {
+            getItem: function(d) {
+                b.checkPermission({
+                    permissionType: "localStorage",
+                    M: {
+                        key: d,
+                        operation: 2
+                    }
+                });
+                return c.getItem(d)
+            },
+            setItem: function(d, e) {
+                b.checkPermission({
+                    permissionType: "localStorage",
+                    M: {
+                        key: d,
+                        operation: 1
+                    }
+                });
+                c.setItem(d, e)
+            },
+            removeItem: function(d) {
+                b.checkPermission({
+                    permissionType: "localStorage",
+                    M: {
+                        key: d,
+                        operation: 1
+                    }
+                });
+                c.removeItem(d)
+            }
+        }
+    }
+    ,
+    vx.logToConsole = function(a) {
+        var b = a.l
+          , c = a.da
+          , d = Vk(b).log
+          , e = hw(b) ? 1 : 0;
+        return function() {
+            var f = ma.apply(0, arguments);
+            c.va({
+                permissionType: "log",
+                M: {
+                    logLevel: e
+                }
+            }) && d.apply(null, da(f))
+        }
+    }
+    ,
+    vx.Math = function(a) {
+        return nx(a.l.Math, "abs floor ceil round max min pow sqrt".split(" "))
+    }
+    ,
+    vx.Object = function(a) {
+        var b = a.l;
+        return {
+            keys: cc,
+            values: fc,
+            freeze: function(c) {
+                return b.Object.freeze(c)
+            },
+            entries: bc,
+            "delete": function(c, d) {
+                if (!c || !I(c, d) || N(c) || c === b)
+                    return !1;
+                try {
+                    return delete c[d]
+                } catch (e) {
+                    return !1
+                }
+            }
+        }
+    }
+    ,
+    vx.queryPermission = function(a) {
+        var b = a.l
+          , c = a.da;
+        return function(d, e, f) {
+            return (B(e) || y(e)) && I(ux, d) ? (0,
+            ux[d])(b, c, d, e, f) : !1
+        }
+    }
+    ,
+    vx.readTitle = function(a) {
+        var b = a.l
+          , c = a.da;
+        return function() {
+            c.checkPermission({
+                permissionType: "readTitle",
+                M: null
+            });
+            return b.document.title
+        }
+    }
+    ,
+    vx.sendPixel = function(a) {
+        var b = a.da
+          , c = a.l;
+        return function(d, e, f) {
+            e = void 0 === e ? u : e;
+            f = void 0 === f ? u : f;
+            if (!y(d))
+                throw T("ca.p.uns");
+            b.checkPermission({
+                permissionType: "pixel",
+                M: {
+                    url: d
+                }
+            });
+            mx(c, d, e, f)
+        }
+    }
+    ,
+    vx.setCookie = function(a) {
+        var b = a.l
+          , c = a.da;
+        return function(d, e, f, g) {
+            f = void 0 === f ? {} : f;
+            g = void 0 === g ? !0 : g;
+            c.checkPermission({
+                permissionType: "cookies",
+                M: {
+                    name: d,
+                    operation: 1,
+                    options: f
+                }
+            });
+            e = g ? Td(e) : e;
+            d = d + "=" + e + ";";
+            if (f) {
+                I(f, "domain") && (d += " Domain=" + f.domain + ";");
+                I(f, "path") && (d += " Path=" + f.path + ";");
+                I(f, "expires") && (d += " Expires=" + f.expires + ";");
+                if (I(f, "max-age")) {
+                    if (!Sb(b, f["max-age"]))
+                        throw T("ca.c.mann");
+                    d += " Max-Age=" + f["max-age"] + ";"
+                }
+                if (I(f, "sameSite")) {
+                    if (!M(f.sameSite, ["Lax", "Strict", "None"]))
+                        throw T("ca.c.ssuop");
+                    d += " Same-Site=" + f.sameSite + ";"
+                }
+                I(f, "secure") && f.secure && (d += " Secure;")
+            }
+            b.document.cookie = d
+        }
+    }
+    ,
+    vx.setInWindow = function(a) {
+        var b = a.l
+          , c = a.da;
+        return function(d, e, f) {
+            f = void 0 === f ? !1 : f;
+            c.checkPermission({
+                permissionType: "globals",
+                M: {
+                    key: d,
+                    operation: 1
+                }
+            });
+            kx(d);
+            try {
+                var g = lx(b, d)
+                  , h = g.parent
+                  , k = g.$b;
+                if (!f && I(h, k))
+                    return !1;
+                h[k] = e;
+                return !0
+            } catch (l) {
+                return !1
+            }
+        }
+    }
+    ,
+    vx.checkInWindow = function(a) {
+        var b = a.l
+          , c = a.da;
+        return function(d, e) {
+            kx(d);
+            c.checkPermission({
+                permissionType: "globals",
+                M: {
+                    operation: 2,
+                    key: d
+                }
+            });
+            try {
+                var f = lx(b, d)
+                  , g = f.value
+                  , h = I(f.parent, f.$b);
+                if (!e || !h)
+                    return h;
+                var k = ox(b, g);
+                return h && k === e
+            } catch (l) {
+                if ("noma" === J(l, "message"))
+                    return !1;
+                throw l;
+            }
+        }
+    }
+    ,
+    vx);
+    function xx(a) {
+        return I(wx, a) ? wx[a] : void 0
+    }
+    function yx(a, b) {
+        for (var c = a.length; 0 < c; ) {
+            var d = a[--c];
+            if (I(d.Pe, b))
+                return d.Pe[b]
+        }
+    }
+    function zx(a, b) {
+        a = void 0 === a ? {} : a;
+        b = void 0 === b ? {} : b;
+        return {
+            Pe: a,
+            methods: b,
+            Ic: !0
+        }
+    }
+    function Ax(a, b, c) {
+        b = void 0 === b ? {} : b;
+        c = void 0 === c ? {} : c;
+        return a.concat(zx(b, c))
+    }
+    function Bx(a, b, c, d) {
+        for (var e = a.length - 1; 0 <= e; --e) {
+            var f = a[e];
+            f.Ic = !1;
+            if (I(f.methods, b)) {
+                f.methods[b](d ? d() : void 0);
+                return
+            }
+        }
+        throw T(c);
+    }
+    var Cx = "charAt concat indexOf match replace search slice split substring toLowerCase toLocaleLowerCase toString toUpperCase toLocaleUpperCase trim toString".split(" ")
+      , Dx = ya(Array.prototype.reduceRight, "reduceRight");
+    function Ex(a, b, c) {
+        for (var d = c.length - 1; 0 <= d; )
+            b = a(b, c[d], d),
+            --d;
+        return b
+    }
+    var Fx = Dx ? function(a, b, c) {
+        return Dx.call(c, a, b)
+    }
+    : Ex
+      , Gx = "concat every filter forEach indexOf join map pop push reduce reduceRight reverse shift slice some sort splice toString unshift".split(" ");
+    function Hx(a, b) {
+        var c = {};
+        return (c.concat = D(Array.prototype.concat, a),
+        c.every = ra(Rb)(a),
+        c.filter = ra(nb)(a),
+        c.forEach = ra(O)(a),
+        c.indexOf = ra(Ca)(a),
+        c.join = ra(U)(a),
+        c.map = ra(O)(a),
+        c.pop = D(Array.prototype.pop, a),
+        c.push = D(Array.prototype.push, a),
+        c.reduce = function(d, e) {
+            return G(d, e, a)
+        }
+        ,
+        c.reduceRight = function(d, e) {
+            return Fx(d, e, a)
+        }
+        ,
+        c.reverse = F(a, np),
+        c.shift = D(Array.prototype.shift, a),
+        c.slice = D(Array.prototype.slice, a),
+        c.some = ra(Ob)(a),
+        c.sort = ra(El)(a),
+        c.splice = D(Array.prototype.splice, a),
+        c.toString = F(a, Qa),
+        c.unshift = D(Array.prototype.unshift, a),
+        c)[b]
+    }
+    function Ix(a) {
+        return N(a) && 35 === a[0]
+    }
+    function Jx(a, b, c) {
+        var d = r(b);
+        d.next();
+        b = d.next().value;
+        d = d.next().value;
+        b = Kx(a, b);
+        a = Kx(a, d);
+        if (C(b))
+            throw T("noma");
+        if ("number" === typeof b)
+            c = c && "toString" === a ? D(Number.prototype.toString, b) : void 0;
+        else if (b === !!b)
+            c = c && "toString" === a ? F(b, Qa) : void 0;
+        else if (N(b))
+            c = c && M(a, Gx) ? Hx(b, a) : I(b, "" + a) ? b[a] : void 0;
+        else if (y(b))
+            c && M(a, Cx) ? (c = {},
+            c = (c.charAt = D(String.prototype.charAt, b),
+            c.concat = D(String.prototype.concat, b),
+            c.indexOf = F(b, Oa),
+            c.match = D(String.prototype.match, b),
+            c.replace = D(String.prototype.replace, b),
+            c.search = D(String.prototype.search, b),
+            c.slice = D(String.prototype.slice, b),
+            c.split = D(String.prototype.split, b),
+            c.substring = D(String.prototype.substring, b),
+            c.toLocaleLowerCase = D(String.prototype.toLocaleLowerCase, b),
+            c.toLocaleUpperCase = D(String.prototype.toLocaleUpperCase, b),
+            c.toLowerCase = D(String.prototype.toLowerCase, b),
+            c.toUpperCase = D(String.prototype.toUpperCase, b),
+            c.trim = F(b, le),
+            c.toString = F(b, Qa),
+            c)[a]) : c = I(b, "" + a) ? b[a] : void 0;
+        else if (Ta(b))
+            a: {
+                if (c) {
+                    if ("toString" === a) {
+                        c = F(b, Qa);
+                        break a
+                    }
+                    if ("hasOwnProperty" === a) {
+                        c = F(b, I);
+                        break a
+                    }
+                }
+                c = I(b, "" + a) ? b[a] : void 0
+            }
+        else
+            c = b["" + a];
+        return c
+    }
+    function Lx(a, b) {
+        var c = r(b);
+        c.next();
+        var d = c.next().value
+          , e = c.next().value
+          , f = c.next().value
+          , g = O(w, a);
+        return function() {
+            var h = arguments
+              , k = G(function(m, p, q) {
+                if (m[p])
+                    throw T("da");
+                m[p] = {
+                    kind: 1,
+                    value: h[q]
+                };
+                return m
+            }, {}, e);
+            d && !M(d, e) && (k[d] = {
+                kind: 0,
+                value: d
+            });
+            var l;
+            Mx(g, f, k, {
+                "return": function(m) {
+                    l = m
+                }
+            });
+            return l
+        }
+    }
+    function Nx(a) {
+        return N(a) && 42 === a[0]
+    }
+    function Ox(a, b) {
+        var c = r(b);
+        c.next();
+        c = ca(c);
+        return G(function(d, e) {
+            var f = r(e)
+              , g = f.next().value;
+            f = f.next().value;
+            g = Kx(a, g);
+            f = Kx(a, f);
+            d["" + g] = f;
+            return d
+        }, {}, c)
+    }
+    function Px(a) {
+        return N(a) && 40 === a[0]
+    }
+    function Qx(a, b) {
+        var c = r(b);
+        c.next();
+        c = ca(c);
+        return O(function(d) {
+            return Kx(a, d)
+        }, c)
+    }
+    function Rx(a, b) {
+        var c = r(b);
+        c.next();
+        var d = c.next().value
+          , e = c.next().value;
+        c = c.next().value;
+        e = Kx(a, e);
+        c = Kx(a, c);
+        switch (d) {
+        case "==":
+            return e == c;
+        case "!=":
+            return e != c;
+        case "===":
+            return e === c;
+        case "!==":
+            return e !== c;
+        case "<":
+            return e < c;
+        case "<=":
+            return e <= c;
+        case ">":
+            return e > c;
+        case ">=":
+            return e >= c;
+        case "<<":
+            return e << c;
+        case ">>":
+            return e >> c;
+        case ">>>":
+            return e >>> c;
+        case "+":
+            return e + c;
+        case "-":
+            return e - c;
+        case "*":
+            return e * c;
+        case "/":
+            return e / c;
+        case "%":
+            return e % c;
+        case "|":
+            return e | c;
+        case "^":
+            return e ^ c;
+        case "&":
+            return e & c;
+        case "in":
+            return e in c;
+        case "instanceof":
+            return e instanceof c;
+        default:
+            throw T("uo");
+        }
+    }
+    function Sx(a, b) {
+        var c = r(b);
+        c.next();
+        var d = c.next().value;
+        c = c.next().value;
+        c = Kx(a, c);
+        switch (d) {
+        case "+":
+            return +c;
+        case "!":
+            return !c;
+        case "-":
+            return -c;
+        case "~":
+            return ~c;
+        default:
+            throw T("uo");
+        }
+    }
+    function Tx(a, b, c) {
+        c = void 0 === c ? [] : c;
+        if (Px(b)) {
+            b = r(b);
+            b.next();
+            b = b.next().value;
+            a = yx(a, b);
+            if (!a)
+                throw T("vnd");
+            if (0 === a.kind && 0 === c.length)
+                throw T("cva");
+            return {
+                $h: c,
+                Ei: a
+            }
+        }
+        if (Ix(b)) {
+            var d = r(b);
+            d.next();
+            b = d.next().value;
+            d = d.next().value;
+            d = Kx(a, d);
+            c.unshift("" + d);
+            return Tx(a, b, c)
+        }
+        throw T("iat");
+    }
+    function Ux(a, b, c, d) {
+        b = Tx(a, b);
+        a = b.Ei;
+        var e = b.$h;
+        e.unshift("value");
+        b = e.pop();
+        a = G(function(f, g) {
+            return f[g]
+        }, a, e);
+        switch (d) {
+        case "=":
+            return a[b] = c;
+        case "+=":
+            return a[b] += c;
+        case "-=":
+            return a[b] -= c;
+        case "*=":
+            return a[b] *= c;
+        case "/=":
+            return a[b] /= c;
+        case "%=":
+            return a[b] %= c;
+        case "<<=":
+            return a[b] <<= c;
+        case ">>=":
+            return a[b] >>= c;
+        case ">>>=":
+            return a[b] >>>= c;
+        case "|=":
+            return a[b] |= c;
+        case "^=":
+            return a[b] ^= c;
+        case "&=":
+            return a[b] &= c;
+        default:
+            throw T("uo");
+        }
+    }
+    function Vx(a, b) {
+        var c = r(b);
+        c.next();
+        var d = c.next().value
+          , e = c.next().value;
+        c = c.next().value;
+        c = Kx(a, c);
+        return Ux(a, e, c, d)
+    }
+    function Kx(a, b) {
+        if (y(b) || "[object Number]" === Object.prototype.toString.call(b) || !!b === b || Nx(b))
+            return Nx(b) ? null : b;
+        if (Px(b)) {
+            var c = r(b);
+            c.next();
+            c = c.next().value;
+            c = yx(a, c);
+            if (!c)
+                throw T("vnd");
+            return c.value
+        }
+        if (N(b) && 37 === b[0]) {
+            var d = r(b);
+            d.next();
+            c = d.next().value;
+            d = ca(d);
+            c = Ix(c) ? Jx(a, c, !0) : Kx(a, c);
+            if (!A(c))
+                throw T("tenf");
+            d = O(F(a, Kx), d);
+            return c.apply(null, d)
+        }
+        if (N(b) && 24 === b[0])
+            return Lx(a, b);
+        if (Ix(b))
+            return Jx(a, b);
+        if (N(b) && 23 === b[0])
+            return Ox(a, b);
+        if (N(b) && 22 === b[0])
+            return Qx(a, b);
+        if (N(b) && 29 === b[0])
+            return Rx(a, b);
+        if (N(b) && 25 === b[0])
+            return Sx(a, b);
+        if (N(b) && 27 === b[0]) {
+            d = r(b);
+            d.next();
+            var e = d.next().value;
+            c = d.next().value;
+            d = d.next().value;
+            switch (e) {
+            case "++":
+                e = "+=";
+                break;
+            case "--":
+                e = "-=";
+                break;
+            default:
+                throw T("uo");
+            }
+            c ? c = Ux(a, d, 1, e) : (c = Kx(a, d),
+            Ux(a, d, 1, e));
+            return c
+        }
+        if (N(b) && 31 === b[0])
+            return Vx(a, b);
+        if (N(b) && 33 === b[0]) {
+            c = r(b);
+            c.next();
+            d = c.next().value;
+            e = c.next().value;
+            c = c.next().value;
+            if ("&&" === d)
+                c = (d = Kx(a, e)) ? Kx(a, c) : d;
+            else if ("||" === d)
+                c = (d = Kx(a, e)) ? d : Kx(a, c);
+            else
+                throw T("uo");
+            return c
+        }
+        if (N(b) && 36 === b[0])
+            return e = r(b),
+            e.next(),
+            d = e.next().value,
+            c = e.next().value,
+            e = e.next().value,
+            d = Kx(a, d),
+            Kx(a, d ? c : e)
+    }
+    function Wx(a) {
+        return N(a) && (18 === a[0] || 19 === a[0])
+    }
+    function Xx(a, b) {
+        var c = r(b)
+          , d = c.next().value;
+        c = ca(c);
+        var e = 18 === d;
+        O(function(f) {
+            var g = r(f)
+              , h = g.next().value;
+            g = g.next().value;
+            if (e && 1 === f.length)
+                throw T("mca");
+            f = a[a.length - 1].Pe;
+            if (I(f, h))
+                throw T("vr");
+            g = B(g) ? g : Kx(a, g);
+            f[h] = {
+                kind: e ? 0 : 1,
+                value: g
+            }
+        }, c)
+    }
+    function Yx(a, b) {
+        var c = r(b);
+        c.next();
+        var d = c.next().value;
+        Bx(a, "return", "irs", function() {
+            return B(d) ? d : Kx(a, d)
+        })
+    }
+    function Zx(a) {
+        var b = {
+            xd: !1
+        };
+        a = Ax(a, void 0, {
+            "continue": function() {
+                b.xd = !0
+            },
+            "break": u
+        });
+        b.stack = a;
+        b.Ye = a[a.length - 1];
+        return b
+    }
+    function $x(a, b) {
+        var c = a.Ye;
+        ay(a.stack, b);
+        a.xd && (c.Ic = !0,
+        a.xd = !1);
+        return c.Ic
+    }
+    function by(a, b) {
+        b = void 0 === b ? !1 : b;
+        if (C(a))
+            return [];
+        var c = nb(function(f) {
+            return (f = Object.getOwnPropertyDescriptor(a, f)) ? f.enumerable : !1
+        }, Object.getOwnPropertyNames(a))
+          , d = Object.getPrototypeOf(a)
+          , e = d ? c.concat(by(d, !0)) : c;
+        return b ? e : nb(function(f, g) {
+            return Ca(f, e) === g
+        }, e)
+    }
+    function ay(a, b) {
+        if (N(b) && 3 === b[0])
+            Mx(a, b);
+        else if (Wx(b))
+            Xx(a, b);
+        else if (N(b) && 2 === b[0]) {
+            var c = r(b);
+            c.next();
+            c = c.next().value;
+            Kx(a, c)
+        } else if (N(b) && 7 === b[0]) {
+            var d = r(b);
+            d.next();
+            c = d.next().value;
+            var e = d.next().value;
+            d = d.next().value;
+            Kx(a, c) ? ay(a, e) : d && ay(a, d)
+        } else if (8 === b[0]) {
+            c = r(b);
+            c.next();
+            var f = c.next().value;
+            c = ca(c);
+            d = e = !1;
+            var g = []
+              , h = [];
+            f = Kx(a, f);
+            for (var k = 0; k < c.length; k += 1) {
+                var l = r(c[k]);
+                l.next();
+                var m = l.next().value;
+                l = ca(l);
+                var p = Sa(m);
+                d = d || p;
+                p || (e = e || Kx(a, m) === f);
+                e && (g = g.concat(l));
+                d && (h = h.concat(l))
+            }
+            Mx(a, [3].concat(da(e ? g : h)), {}, {
+                "break": u
+            })
+        } else if (N(b) && 4 === b[0])
+            Yx(a, b);
+        else if (N(b) && 5 === b[0])
+            Bx(a, "break", "ibs");
+        else if (N(b) && 6 === b[0])
+            Bx(a, "continue", "ics");
+        else if (N(b) && 15 === b[0])
+            for (g = r(b),
+            g.next(),
+            d = g.next().value,
+            c = g.next().value,
+            e = g.next().value,
+            g = g.next().value,
+            h = Zx(a),
+            d && (Wx(d) ? Xx(h.stack, d) : Kx(h.stack, d)),
+            d = !0; d && (!c || Kx(h.stack, c)); )
+                d = $x(h, g),
+                e && d && Kx(h.stack, e);
+        else if (N(b) && 16 === b[0])
+            for (e = r(b),
+            e.next(),
+            c = e.next().value,
+            g = e.next().value,
+            e = e.next().value,
+            d = Zx(a),
+            g = Kx(d.stack, g),
+            g = by(g),
+            f = !0,
+            h = 0; f && h < g.length; h += 1)
+                f = g[h],
+                Wx(c) ? (k = zx(),
+                d.stack.pop(),
+                d.stack.push(k),
+                d.Ye = k,
+                m = r(c),
+                k = m.next().value,
+                m = r(m.next().value).next().value,
+                Xx(d.stack, [k, [m, f]])) : Vx(d.stack, [31, "=", c, f]),
+                f = $x(d, e)
+    }
+    function Mx(a, b, c, d) {
+        b = r(b);
+        b.next();
+        b = ca(b);
+        a = Ax(a, c, d);
+        c = a[a.length - 1];
+        for (d = 0; d < b.length && c.Ic; d += 1)
+            ay(a, b[d])
+    }
+    function cy(a, b, c) {
+        b = r(b);
+        b.next();
+        b.next();
+        b = ca(b);
+        a = {
+            da: c.da,
+            l: a,
+            event: c.event
+        };
+        var d = {};
+        c = P(c.data, (d.ytmOnFailure = u,
+        d.ytmOnSuccess = u,
+        d));
+        d = {};
+        c = Ax([], (d.undefined = {
+            kind: 0,
+            value: void 0
+        },
+        d.require = {
+            kind: 0,
+            value: H(xx, ra(Re)(a))
+        },
+        d.data = {
+            kind: 0,
+            value: c
+        },
+        d));
+        Mx(c, [3].concat(da(b)))
+    }
+    function dy(a, b) {
+        return {
+            checkPermission: function(c) {
+                b.checkPermission(P({
+                    Qa: a
+                }, c))
+            },
+            va: function(c) {
+                return b.va(P({
+                    Qa: a
+                }, c))
+            }
+        }
+    }
+    function ey(a, b) {
+        if (!I(b, "code") || !N(b.code) || !b.code[a])
+            throw T("mp");
+        return b.code[a]
+    }
+    function fy(a, b, c, d, e) {
+        var f = d.data;
+        f = N(f) ? f : ey(f, b);
+        var g = dy(d, e);
+        d = G(function(h, k) {
+            var l = r(k)
+              , m = l.next().value;
+            l = l.next().value;
+            l = Jw(a, c, b.variables, e, l);
+            h[m] = ix(a, l);
+            return h
+        }, {}, bc(d.settings || {}));
+        cy(a, f, {
+            da: g,
+            data: d,
+            event: c
+        })
+    }
+    var gy = x(function(a) {
+        return (a = J(a, "trustedTypes")) ? a.createPolicy("ytm#policy", {
+            createHTML: w,
+            createScript: w,
+            createScriptURL: w
+        }) : null
+    });
+    function hy(a) {
+        for (var b = []; a.firstChild; )
+            b.push(a.removeChild(a.firstChild));
+        return b
+    }
+    function iy(a) {
+        return (a = Ke(function(b) {
+            return !!b.nonce
+        }, Aj("style, link, script", a.document))) ? a.nonce : void 0
+    }
+    function jy(a, b, c, d, e, f, g) {
+        b = b("script");
+        b.type = "text/javascript";
+        b.async = g.async;
+        g.src && (b.src = c ? c.createScriptURL(g.src) : g.src,
+        b.onload = function() {
+            return e()
+        }
+        );
+        g.text && (b.text = c ? c.createScript(g.text) : g.text,
+        b.onload = w);
+        zj(a) && (a = iy(a)) && b.setAttribute("nonce", a);
+        b.charset = g.charset;
+        b.id = g.id;
+        b.onerror = function() {
+            return f()
+        }
+        ;
+        d(b, null);
+        C(g.src) && e()
+    }
+    function ky(a, b, c, d, e) {
+        try {
+            if (0 === b.length)
+                d();
+            else {
+                var f = b.shift();
+                if (f) {
+                    var g = gb("insertBefore", a);
+                    if (Sa(g))
+                        e();
+                    else {
+                        var h = E([a, b, c, d, e], ky);
+                        if ("SCRIPT" === Zf(f) && "text/ytmscript" === f.type)
+                            c(g, h, e, {
+                                text: f.text || f.textContent || f.innerText || "",
+                                charset: f.charset || "",
+                                async: !1,
+                                id: f.id,
+                                src: f.getAttribute("data-ytmsrc")
+                            });
+                        else if (f.innerHTML && -1 < Na(f.innerHTML.toLowerCase(), "<script")) {
+                            var k = hy(f);
+                            g(f, null);
+                            ky(f, k, c, h, e)
+                        } else
+                            g(f, null),
+                            h()
+                    }
+                } else
+                    e()
+            }
+        } catch (l) {
+            e()
+        }
+    }
+    function ly(a, b) {
+        y(b) && Cg(a)(wg(u, function() {
+            var c = "<div>" + b + "</div>"
+              , d = Mf(a)
+              , e = d("div")
+              , f = gy(a);
+            e.innerHTML = f ? f.createHTML(c) : c;
+            C(e.lastChild) || (c = hy(e.lastChild),
+            d = E([a, d, f], jy),
+            ky(a.document.body, c, d, u, u))
+        }))
+    }
+    function my(a, b, c, d, e) {
+        O(cx("t.e", function(f) {
+            var g = b.tags[f];
+            if (!g)
+                throw T("i.conf." + b.containerVersion + "-" + f);
+            "pro" === g.type ? fy(a, b, c, g, e) : "pix" === g.type ? (f = Jw(a, c, b.variables, e, g.data.pixelUrl),
+            y(f) && (e.checkPermission({
+                Qa: g,
+                permissionType: "pixel",
+                M: {
+                    url: f
+                }
+            }),
+            mx(a, f, u, u))) : "html" === g.type && (e.checkPermission({
+                Qa: g,
+                permissionType: "html",
+                M: null
+            }),
+            g = Jw(a, c, b.variables, e, g.data.html),
+            ly(a, g))
+        }), El(function(f, g) {
+            return f - g
+        }, d))
+    }
+    function ny(a, b, c) {
+        var d = b.triggers
+          , e = b.variables;
+        return {
+            dispatchEvent: function(f) {
+                var g = G(function(h, k) {
+                    Ob(function(l) {
+                        return !gx(a, f, l, e, c)
+                    }, k.conditions) || O(function(l) {
+                        M(l, h) || h.push(l)
+                    }, k.tags);
+                    return h
+                }, [], d);
+                0 === g.length || my(a, b, f, g, c)
+            }
+        }
+    }
+    function oy(a, b, c, d) {
+        if (!I(a, "cookies"))
+            return !1;
+        a = a.cookies;
+        if (I(a, "allKeys") && 2 === c)
+            return !!(a.allKeys.access & c);
+        if (!I(a, "keys"))
+            return !1;
+        var e = a.keys;
+        a = I(e, b) ? e[b] : {
+            access: 0
+        };
+        if (2 === c)
+            return !!(a.access & c);
+        if (1 === c) {
+            if (!I(e, b) || !d)
+                return !1;
+            b = a.access;
+            e = a.domain;
+            var f = a.path
+              , g = a.secure
+              , h = a.kj
+              , k = !C(d.expires) || !C(d["max-age"]);
+            if (I(a, "session") && h)
+                if (1 === h) {
+                    if (k)
+                        return !1
+                } else if (!k)
+                    return !1;
+            return !(b & c) || I(a, "domain") && e !== d.domain || I(a, "path") && f !== d.path || I(a, "secure") && (1 === g && !d.secure || 2 === g && d.secure) ? !1 : !0
+        }
+        return !1
+    }
+    function py(a, b) {
+        return b.length > a.length ? !1 : a.substring(a.length - b.length) === b
+    }
+    function qy(a, b, c) {
+        b = qh(a, b);
+        if (!b.protocol || "https:" !== b.protocol)
+            return !1;
+        a = qh(a, c);
+        return b.host && a.host && (ri(a.host, "*.") ? py(b.host, a.host.substring(2)) : b.host === a.host) ? "/" === a.pathname ? !0 : py(a.pathname, "/*") ? ri(b.pathname, a.pathname.substring(0, a.pathname.length - 2)) : a.pathname === b.pathname : !1
+    }
+    function ry(a, b, c) {
+        function d(f) {
+            var g;
+            if (g = e(f, c)) {
+                g = f.permissionType;
+                var h = f.Qa
+                  , k = f.M;
+                f = !B(h.permissions) && I(b, "" + h.permissions) ? b[h.permissions] : {};
+                "globals" === g || "localStorage" === g || "dataLayer" === g ? (h = k.key,
+                k = k.operation,
+                I(f, g) ? (g = f[g],
+                I(g, "allKeys") && g.allKeys & k ? g = !0 : I(g, "keys") ? (g = g.keys,
+                g = I(g, h) ? !!(g[h] & k) : !1) : g = !1) : g = !1) : "url" === g || "referrer" === g ? (h = k.urlComponent,
+                k = k.variableName,
+                I(f, g) ? (g = f[g],
+                g = "queryVar" === h ? I(g, "query") && g.query ? !0 : I(g, "queryVars") && k ? M(k, g.queryVars) : !1 : !!g[h]) : g = !1) : "log" === g ? (g = k.logLevel,
+                g = I(f, "log") ? g >= f.log : !1) : "loadScript" === g || "pixel" === g || "iframe" === g ? (h = k.url,
+                I(f, g) ? (g = f[g],
+                g = I(g, "allUrls") ? !!g.allUrls : I(g, "allow") ? Ob(E([a, h], qy), g.allow) : !1) : g = !1) : g = "cookies" === g ? oy(f, k.name, k.operation, k.options) : "readTitle" === g ? I(f, "readTitle") ? f.readTitle : !1 : "html" === g ? I(f, "html") ? !!f.html.unsafeSet : !1 : !1
+            }
+            return g
+        }
+        var e = gw(a).Ig;
+        return {
+            checkPermission: function(f) {
+                if (!d(f)) {
+                    f = ew(f, c);
+                    var g = Error("Permission denied for " + f.permissionType);
+                    g.cause = f;
+                    md(g)
+                }
+            },
+            va: d
+        }
+    }
+    var sy = H(cc, xb);
+    function ty(a, b) {
+        return Qm(a) || Sm(a) ? S.resolve(!1) : Wh(b, L("settings.aytm"))
+    }
+    var uy = X("p.ips", function(a, b) {
+        Wh(b, function(c) {
+            (J(c, "settings.phchange") || J(c, "settings.phhide")) && Lu(a, "tag_phone", b, c)
+        })
+    })
+      , vy = X("p.suic", function(a, b) {
+        return Wh(b, function(c) {
+            var d = Sc(a)
+              , e = d.C
+              , f = d.D;
+            if (e("pic"))
+                f("prs", 0);
+            else if (Km(c))
+                f("prs", 1);
+            else {
+                if (c = J(c, "settings.pic"))
+                    return f("pic", 1),
+                    f("prs", 3),
+                    Rh(a, "pic", b)({
+                        N: {
+                            Re: !1,
+                            we: !0
+                        }
+                    }, [c]).then(function(g) {
+                        y(g.Ka) ? (g = yf(a, g.Ka)) ? (g = J(g, "ymaf"),
+                        y(g) && g ? (xe(a, "_ym_fa", g, 43200),
+                        f("prs", 8)) : f("prs", 7)) : f("prs", 6) : f("prs", 5)
+                    }, E(["prs", 4], f));
+                f("prs", 2)
+            }
+        })["catch"](W(a, "pic"))
+    })
+      , wy = X("p.tv", function(a) {
+        if (Wl(a)) {
+            var b = R(a);
+            Xl(a).then(function(c) {
+                b.D("lgguid", c)
+            }, W(a, "p.tv.p"))
+        }
+    })
+      , xy = {}
+      , yy = x(De)
+      , zy = H(Xa("exec", /counterID=(\d+)/), L("1"))
+      , Ay = qa(function(a, b) {
+        var c = vb(b)
+          , d = r(c)
+          , e = d.next().value
+          , f = ca(d);
+        d = "" + e;
+        var g = zy(d);
+        g ? d = {
+            id: g,
+            Z: "0"
+        } : -1 === Na(d, ":") ? d = (d = Vb(d)) ? {
+            id: d,
+            Z: "0"
+        } : void 0 : (g = r(d.split(":")),
+        d = g.next().value,
+        g = g.next().value,
+        d = (d = Vb(d)) ? {
+            id: d,
+            Z: Oc(g) ? "1" : "0"
+        } : void 0);
+        g = a.Ya[Nc.Ac];
+        if (d) {
+            var h = r(c);
+            h.next();
+            f = h.next().value;
+            h = ca(h);
+            if (f) {
+                var k = fi(a, d)
+                  , l = Q(d)
+                  , m = yy(a);
+                m[l] || (m[l] = {});
+                l = m[l];
+                if (!b.df) {
+                    if (m = xy[f])
+                        for (var p = 0; p < m.length; p += 1)
+                            if ((0,
+                            m[p])(a, d, h, k))
+                                return;
+                    "init" === f ? (b.df = !0,
+                    k ? (c = {},
+                    Zh(a, "" + e, "dc", (c.key = e,
+                    c))) : a["yaCounter" + d.id] = new g(P({}, h[0], d))) : k && k[f] && l.Dh ? (k[f].apply(k, da(h)),
+                    b.df = !0) : (e = l.$f,
+                    e || (e = [],
+                    l.$f = e),
+                    e.push(c))
+                }
+            }
+        } else
+            A(g[e]) && g[e].apply(g, da(f))
+    })
+      , By = X("p.cm", function(a) {
+        Sc(a).wa("mcs", X("p.cm.cs", function(b, c, d, e, f) {
+            if (fi(a, c))
+                return Jo(b, c, d, e, f);
+            md(T("cmws.cd"))
+        })).wa("wsfm", Wg)
+    })
+      , Cy = "telefone phone phone_number customer_phone mobile_phone cell_phone contact_phone phone_contact primary_phone telephone user_mobile customer_contact_number mobile_number user_telephone phone_no contact_number subscriber_phone clientPhone tel".split(" ")
+      , Dy = "email_name user_email email email_address customer_email contact_email primary_email emailID user_emailID mail user_mail subscriber_email user_contact_email clientEmail".split(" ")
+      , Ey = ["visitorContactInfo"];
+    function Fy(a, b, c) {
+        (a = vi(a, b)) && c.push(["phone", a]);
+        return a
+    }
+    function Gy(a, b, c) {
+        O(function(d) {
+            y(d) && !Fy(a, d, c) && (d = qi(d)) && c.push(["email", d])
+        }, b)
+    }
+    function Hy(a, b, c, d) {
+        c = void 0 === c ? [] : c;
+        d = void 0 === d ? 1 : d;
+        if (!(3 < d) && Ta(b))
+            return b = bc(b),
+            O(function(e) {
+                var f = r(e);
+                e = f.next().value;
+                f = f.next().value;
+                y(f) ? M(e, Cy) ? Fy(a, f, c) : M(e, Dy) && (e = c,
+                (f = qi(f)) && e.push(["email", f])) : N(f) && M(e, Ey) ? Gy(a, f, c) : Ta(f) && Hy(a, f, c, d + 1)
+            }, b),
+            c
+    }
+    function Iy(a, b, c) {
+        b && Ta(c) && (c = Hy(a, c) || [],
+        O(function(d) {
+            d = r(d);
+            var e = d.next().value;
+            d = d.next().value;
+            return xi(a, d).then(function(f) {
+                var g = {}
+                  , h = {}
+                  , k = {};
+                return b((k.__ym = (h.fpdlh = nf((g.a = "email" === e ? 1 : 0,
+                g.c = f || 0,
+                g)).ra(),
+                h),
+                k))
+            })
+        }, c))
+    }
+    var Jy = X("fpdlc", function(a, b) {
+        var c = fi(a, b);
+        if (c && wi(a))
+            return Wh(b, function(d) {
+                if (J(d, "settings.cf")) {
+                    var e = c.params, f;
+                    d = [Dk(a, "dataLayer", function(g) {
+                        f = g;
+                        g.oa.F(E([a, e], Iy))
+                    }), function() {
+                        f && f.unsubscribe()
+                    }
+                    ];
+                    return E([Se, d], O)
+                }
+            })
+    })
+      , Ky = X("destruct.e", function(a, b, c) {
+        return function() {
+            var d = R(a)
+              , e = b.id;
+            O(function(f, g) {
+                return A(f) && W(a, "dest.fr." + g, f)()
+            }, c);
+            delete d.C("counters")[Q(b)];
+            delete a["yaCounter" + e]
+        }
+    });
+    function Ly(a, b, c, d) {
+        return function() {
+            var e = Ia(arguments);
+            e = d.apply(null, da(e));
+            return B(e) ? fi(a, b) : e
+        }
+    }
+    function My(a, b, c, d) {
+        return W(a, "cm." + c, d)
+    }
+    function Ny(a, b, c, d, e) {
+        if (!c.length)
+            return e;
+        c = O(function(f) {
+            return E([a, b, d], f)
+        }, c);
+        return H.apply(null, da(c))(e)
+    }
+    var Oy = R(window);
+    Oy.wa("hitParam", {});
+    Oy.wa("lastReferrer", window.location.href);
+    ji.push(function(a, b) {
+        var c = {};
+        return c.firstPartyParams = Ai(a, b),
+        c.firstPartyParamsHashed = Ci(a, b),
+        c
+    });
+    qf.push("fpp");
+    qf.push("fpmh");
+    (function() {
+        var a = R(window);
+        a.wa("getCounters", Ii(window));
+        ii.push(Ji);
+        li.push(function(b, c) {
+            c.counters = a.C("getCounters")
+        })
+    }
+    )();
+    Qh["1"] = ef;
+    ji.push(Si);
+    Mh["1"] = Gh;
+    ih(Oi, -1);
+    kh["1"] = [[Oi, -1], [gf, 1], [ch, 2], [Wg(), 3], [fh, 4]];
+    ji.push(cj);
+    ji.push(X("p.ar", function(a, b) {
+        var c = Rh(a, "a", b)
+          , d = {};
+        return d.hit = function(e, f, g, h, k, l) {
+            var m = {};
+            m = {
+                J: {},
+                K: Me((m.pv = 1,
+                m.ar = 1,
+                m))
+            };
+            f = Ta(f) ? {
+                title: f.title,
+                Kf: f.referer,
+                R: f.params,
+                uc: f.callback,
+                l: f.ctx
+            } : {
+                title: f,
+                Kf: g,
+                R: h,
+                uc: k,
+                l: l
+            };
+            h = Qi(b);
+            g = e || V(a).href;
+            h.url !== g && (h.ref = h.url,
+            h.url = e);
+            e = f.Kf || h.ref || a.document.referrer;
+            h = {};
+            h = $h(a, b, "pv", (h.id = b.id,
+            h.url = g,
+            h.ref = e,
+            h), f.R);
+            k = P(m.O || {}, {
+                R: f.R,
+                title: f.title
+            });
+            l = {};
+            m = c(P(m, {
+                O: k,
+                J: P(m.J || {}, (l["page-url"] = g,
+                l["page-ref"] = e,
+                l))
+            }), b).then(h);
+            return Pi(a, "p.ar.s", m, f.uc || u, f.l)
+        }
+        ,
+        d
+    }));
+    Qh.a = ef;
+    kh.a = gh;
+    Mh.a = Gh;
+    ji.push(fj);
+    Qh.g = ef;
+    Mh.g = Gh;
+    kh.g = gh;
+    ji.push(gj);
+    ji.push(lj);
+    kh.t = gh;
+    Qh.t = ef;
+    Mh.t = Gh;
+    ji.push(X("cl.p", function(a, b) {
+        function c(p, q, t, v) {
+            v = void 0 === v ? {} : v;
+            t ? oj(a, b, {
+                url: t,
+                wb: !0,
+                Nc: p,
+                Rc: q,
+                sender: d,
+                lg: v
+            }) : g.warn("clel")
+        }
+        var d = Rh(a, "2", b)
+          , e = []
+          , f = Q(b)
+          , g = Yh(a, f)
+          , h = W(a, "s.s.tr", F(Gi(a, f), nj));
+        f = {
+            l: a,
+            Qg: b,
+            eh: e,
+            sender: d,
+            aj: R(a),
+            Og: Hf(a, b.id),
+            cj: ng(a),
+            yi: F(F(f, Hi(a)), H(Re, L("trackLinks")))
+        };
+        f = W(a, "cl.p.c", F(f, pj));
+        f = ud(a).F(a, ["click"], f);
+        b.gg && h(b.gg);
+        var k = W(a, "file.clc", E([!0, !1], c))
+          , l = W(a, "e.l.l.clc", E([!1, !0], c));
+        e = W(a, "add.f.e.clc", qj(e));
+        var m = {};
+        return m.file = k,
+        m.extLink = l,
+        m.addFileExtension = e,
+        m.trackLinks = h,
+        m.u = f,
+        m
+    }));
+    kh["2"] = gh;
+    Qh["2"] = ef;
+    Mh["2"] = Gh;
+    Qh.r = df("r");
+    Mh.r = ["f", "x", "j", "i"];
+    ki.push(X("p.r", function(a, b) {
+        var c = wj(a)
+          , d = Rh(a, "r", b)
+          , e = W(a, "rts.p");
+        return Wh(b, E([function(f, g) {
+            var h = {
+                id: g.counterId,
+                Z: g.Z
+            }
+              , k = {
+                N: {
+                    aa: g.Yh
+                },
+                K: Me(g.Eg),
+                J: g.R,
+                O: {
+                    dc: g.dc
+                },
+                Na: {
+                    qa: g.qa
+                }
+            };
+            g.La && (k.La = nf(g.La));
+            h = d(k, h)["catch"](e);
+            return f.then(F(h, w))
+        }
+        , S.resolve(), c], G)).then(F(void 0, w))["catch"](e)
+    }));
+    lh("r", function(a) {
+        return {
+            T: function(b, c) {
+                var d = void 0 === b.K ? Me() : b.K
+                  , e = b.O.dc
+                  , f = rj(a)
+                  , g = d.C("rqnl", 0) + 1;
+                d.D("rqnl", g);
+                if (d = J(f, U(".", [e, "browserInfo"])))
+                    d.rqnl = g,
+                    sj(a);
+                c()
+            },
+            Ga: function(b, c) {
+                tj(a, b);
+                c()
+            }
+        }
+    }, 1);
+    ih(uj, 100);
+    lh("1", uj, 100);
+    lh("n", uj, 100);
+    lh("m", uj, 100);
+    ji.push(yj);
+    lh("n", gf, 1);
+    lh("n", ch, 2);
+    lh("n", Wg(), 3);
+    lh("n", fh, 3);
+    Qh.n = ef;
+    Mh.n = Gh;
+    We({
+        Ve: {
+            fa: "accurateTrackBounce"
+        }
+    });
+    ji.push(Tj);
+    Qh.m = df("cm");
+    Mh.m = Kh;
+    lh("m", Wg(["u", "v", "vf"]), 1);
+    We({
+        Kg: {
+            fa: "clickmap"
+        }
+    });
+    ji.push(Uj);
+    ji.push(Wj);
+    ji.push(ik);
+    ji.push(pk);
+    ji.push(Hk);
+    qf.push("ecommerce");
+    We({
+        Dd: {
+            fa: "ecommerce",
+            Ta: function(a) {
+                if (a)
+                    return !0 === a ? "dataLayer" : "" + a
+            }
+        }
+    });
+    ji.push(Mk);
+    qf.push("user_id");
+    ji.push(Nk);
+    ih(function(a, b) {
+        return {
+            Ga: function(c, d) {
+                var e = fi(a, b);
+                e = e && e.userParams;
+                var f = (c.O || {}).Ne;
+                e && f && e(f);
+                d()
+            }
+        }
+    }, 0);
+    qe.push("_ym_debug");
+    mi.unshift(Qk);
+    ji.push(Rk);
+    var Py = {}
+      , Qy = (Py.tp = H(Ea, Mi, ib),
+    Py.tpid = H(Ea, function(a) {
+        a = Q(a);
+        return Ki[a] && Ki[a].xi || null
+    }),
+    Py);
+    P(Ug, Qy);
+    ih(Sk, 20);
+    lh("n", Sk, 20);
+    lh("1", Sk, 20);
+    mi.unshift(Uk);
+    Ug.fp = function(a, b, c) {
+        if (c.J && c.J.nohit)
+            return null;
+        c = R(a).C;
+        if (!c("fpe"))
+            return null;
+        b = Tk(b);
+        if (b.gh)
+            return null;
+        c = c("fht", Infinity);
+        a: {
+            var d = J(a, "performance.getEntriesByType");
+            if (A(d)) {
+                if (a = nb(H(w, L("name"), sa("first-contentful-paint")), d.call(a.performance, "paint")),
+                a.length) {
+                    a = a[0].startTime;
+                    break a
+                }
+            } else {
+                var e = J(a, "chrome.loadTimes");
+                d = Rg(a);
+                if (A(e) && (e = e.call(a.chrome),
+                e = J(e, "firstPaintTime"),
+                d && e)) {
+                    a = 1E3 * e - d;
+                    break a
+                }
+                if (a = J(a, "performance.timing.msFirstPaint")) {
+                    a -= d;
+                    break a
+                }
+            }
+            a = void 0
+        }
+        return a && c > a ? (b.gh = a,
+        Math.round(a)) : null
+    }
+    ;
+    ji.push(function(a, b) {
+        var c = {};
+        return c.ecommerceAdd = X("ecm.a", Yk(a, b)),
+        c.ecommerceRemove = X("ecm.r", Zk(a, b)),
+        c.ecommerceDetail = X("ecm.d", $k(a, b)),
+        c.ecommercePurchase = X("ecm.p", al(a, b)),
+        c
+    });
+    (function() {
+        var a = {
+            bu: Yl,
+            pri: nm
+        };
+        a.wv = F(2, w);
+        a.ds = km;
+        a.co = function(c) {
+            return jb(R(c).C("jn"))
+        }
+        ;
+        a.td = pm;
+        var b = {};
+        P(a, (b.iss = H(Ac, ib),
+        b.hdl = H(Bc, ib),
+        b.iia = H(Cc, ib),
+        b.cpf = H(Il, ib),
+        b.ntf = x(function(c) {
+            c = J(c, "Notification.permission");
+            c = "denied" === c ? !1 : "granted" === c ? !0 : null;
+            return Sa(c) ? null : c ? 2 : 1
+        }),
+        b.eu = Jl("isEU"),
+        b.ns = Rg,
+        b.np = function(c) {
+            return Xd(c, 0, 100) ? null : Rl(le(kc(c), 100))
+        }
+        ,
+        b));
+        a.pani = $l;
+        a.pci = am;
+        a.si = bm;
+        a.gi = cm;
+        a.pic = ra(te)("_ym_fa");
+        a.stlgg = Jl("lgguid");
+        a.sttdi = Vl;
+        a.stti = Ul;
+        a.sttifa = Tl;
+        a.bl = Jl("bl");
+        a.ntq = Jl("ntq");
+        P(Ug, a)
+    }
+    )();
+    (function() {
+        var a = {};
+        a.hc = Jl("hc");
+        a.oo = Jl("oo");
+        a.pmc = Jl("cmc");
+        a.re = H(qg, ib);
+        a.aw = function(b) {
+            b = Ke(H(C, Fa), [b.document.hidden, b.document.msHidden, b.document.webkitHidden]);
+            return C(b) ? null : jb(!b)
+        }
+        ;
+        a.rcm = Am;
+        a.yu = function(b) {
+            return (b = Ae(b, "").C("yandexuid")) && b.substring(0, 25)
+        }
+        ;
+        a.ifc = Jl("ifc");
+        a.ifb = Jl("ifb");
+        a.ecs = Jl("ecs");
+        a.csi = Jl("scip");
+        a.cdl = Jl("cdl");
+        a.eco = x(Bm, H(Ea, Q));
+        a.pis = Jl("pis");
+        a.ucs = function(b) {
+            return (b = Ae(b).C("ucs")) && b.substring(0, 25)
+        }
+        ;
+        a.oms = Jl("oms");
+        a.prs = Jl("prs");
+        P(xf, a)
+    }
+    )();
+    Mh.er = Ih;
+    (function() {
+        var a = window;
+        try {
+            var b = Nh(a, {
+                id: Nc.Se,
+                Z: "0"
+            }, "er")
+              , c = Em(a, b);
+            lf.push(function(d, e, f, g) {
+                if (!(.01 >= a.Math.random())) {
+                    var h = {}
+                      , k = {}
+                      , l = {}
+                      , m = {}
+                      , p = {};
+                    c((p[d] = (m[Nc.mb] = (l[e] = (k[f] = g ? (h[a.location.href] = g,
+                    h) : a.location.href,
+                    k),
+                    l),
+                    m),
+                    p))
+                }
+            })
+        } catch (d) {}
+    }
+    )();
+    hi.push(function(a, b) {
+        if (J(a, "disableYaCounter" + b.id) || J(a, "Ya.disableMetrica")) {
+            var c = Q(b);
+            delete R(a).C("counters", {})[c];
+            md(hf("oo.e"))
+        }
+    });
+    hh.unshift(function(a) {
+        return {
+            T: function(b, c) {
+                R(a).C("oo") || c()
+            }
+        }
+    });
+    ih(function(a, b) {
+        return {
+            T: function(c, d) {
+                var e = c.J
+                  , f = c.K;
+                !Fm[b.id] && f.C("pv") && b.exp && !e.nohit && (e.exp = b.exp,
+                Fm[b.id] = !0);
+                d()
+            }
+        }
+    }, -99);
+    ji.push(Gm);
+    kh.e = gh;
+    Qh.e = ef;
+    Mh.e = Gh;
+    We({
+        exp: {
+            fa: "experiments"
+        }
+    });
+    vf.experiments = "ex";
+    Hm.push(Im);
+    Qh.f = ef;
+    var Ry = {};
+    P(Mh, (Ry.f = Hh,
+    Ry));
+    lh("f", Wg(), 1);
+    lh("f", Xg, 2);
+    lh("f", Sk, 20);
+    hi.push(function(a, b) {
+        var c = {
+            ya: Q(b),
+            zd: fi(a, b),
+            fg: Fd(a),
+            ee: Gf(a)
+        }
+          , d = c.fg(Cd);
+        if (!c.ee.Xd) {
+            var e = c.ee.C("ymoo" + c.ya);
+            e && 30 > d - e ? (c = c.ya,
+            delete R(a).C("counters", {})[c],
+            md(hf("uws"))) : Wh(b, Jm(c))["catch"](W(a, "d.f"))
+        }
+    });
+    ki.push(Mo);
+    We({
+        Gb: {
+            fa: "webvisor",
+            Ta: kb
+        },
+        Ug: {
+            fa: "disableFormAnalytics",
+            Ta: kb
+        }
+    });
+    lh("4", Wg(Ko), 1);
+    Qh["4"] = fo;
+    Mh["4"] = ["f", "x", "i"];
+    ki.push(jq);
+    lh("W", Wg(Ko), 1);
+    bf("wv", function(a, b) {
+        return {
+            T: function(c, d) {
+                c.K.Db("we", ib(b.Gb));
+                go(a, b, c, "rn");
+                d()
+            }
+        }
+    }, 1);
+    Mh.W = ["f", "x"];
+    Qh.W = fo;
+    ki.push(Sr);
+    ji.push(kq);
+    We({
+        Gb: {
+            fa: "webvisor"
+        }
+    });
+    We({
+        Ai: {
+            fa: "trustedDomains"
+        },
+        xc: {
+            fa: "childIframe",
+            Ta: kb
+        }
+    });
+    bf("ev", function(a, b) {
+        return {
+            T: function(c, d) {
+                go(a, b, c, "rn", "events");
+                d()
+            }
+        }
+    }, 1);
+    lh("ev", Wg(Ko), 1);
+    lh("ev", function(a, b) {
+        function c() {
+            return h ? d(g, e).then(function(k) {
+                return J(k.Ka, "wstoken")
+            }) : (h = !0,
+            Wh(b, L("settings.wstoken")))
+        }
+        var d = Rh(a, "ws", b)
+          , e = [Nc.Pa + "//" + Kc + "/watch/" + b.id]
+          , f = {}
+          , g = {
+            J: (f.wmode = "8",
+            f),
+            N: {
+                Xa: !0
+            }
+        }
+          , h = !1;
+        return {
+            T: function(k, l) {
+                k.N || (k.N = {});
+                k.K && k.K.D("wv2se", 1);
+                k.N.nf = c;
+                l()
+            }
+        }
+    }, 2);
+    Mh.ev = ["s"];
+    Qh.ev = Tr;
+    ki.push(Xr);
+    Mh.pi = Gh;
+    Qh.pi = ef;
+    lh("pi", Wg());
+    ji.push(hs);
+    ji.push(ts);
+    ji.push(Ps);
+    Mh["6"] = ["f", "x"];
+    Qh["6"] = Pe;
+    ji.push(Ss);
+    ji.push(qm);
+    li.push(function(a, b) {
+        b.informer = Us(a)
+    });
+    ih(Vs, 6);
+    lh("1", Vs, 6);
+    lh("adb");
+    lh("n", Vs, 4);
+    Mh.adb = Ih;
+    Qh.adb = cf;
+    ii.push(Ys);
+    Mh["5"] = Gh;
+    Qh["5"] = ef;
+    kh["5"] = nb(H(xb, sb([gf, ch]), Fa), gh);
+    ji.push(Zs);
+    lh("5", Sk, 20);
+    ih(at, 7);
+    lh("n", at, 6);
+    ki.push(bt);
+    Qh.d = ef;
+    lh("d", Wg(["hid", "u", "v", "vf"]), 1);
+    Mh.d = Ih;
+    lh("n", function(a, b) {
+        return {
+            Ga: function(c, d) {
+                if (!c.O || !c.O.force) {
+                    var e = b.id === Nc.vg ? 1 : .002
+                      , f = .002;
+                    f = void 0 === f ? 1 : f;
+                    e = void 0 === e ? 1 : e;
+                    var g = wd(a);
+                    if (g && A(g.getEntriesByType)) {
+                        f = Math.random() > f;
+                        var h = Math.random() > e;
+                        if (!f || !h) {
+                            var k = g.getEntriesByType("resource")
+                              , l = {}
+                              , m = {};
+                            g = {};
+                            e = V(a).href;
+                            for (var p = 0; p < k.length; p += 1) {
+                                var q = k[p]
+                                  , t = r(zm(q.name))
+                                  , v = t.next().value
+                                  , z = t.next().value;
+                                t = t.next().value;
+                                var K = {};
+                                K = (K.dns = Math.round(q.domainLookupEnd - q.domainLookupStart),
+                                K.tcp = Math.round(q.connectEnd - q.connectStart),
+                                K.duration = Math.round(q.duration),
+                                K.response = Math.round(q.responseEnd - q.requestStart),
+                                K);
+                                if ("script" === q.initiatorType && !f) {
+                                    var aa = {};
+                                    m[v] = P(K, (aa.name = q.name,
+                                    aa.decodedBodySize = q.decodedBodySize,
+                                    aa.transferSize = Math.round(q.transferSize),
+                                    aa))
+                                }
+                                !t && !xm[z] || l[v] || h || (q = {},
+                                l[v] = P(K, (q.pages = e,
+                                q)))
+                            }
+                            cc(l).length && (g.timings8 = l);
+                            cc(m).length && (g.scripts = m);
+                            cc(g).length && (f = {},
+                            h = {},
+                            Rh(a, "d", b)({
+                                K: Me((f.ar = 1,
+                                f.pv = 1,
+                                f)),
+                                N: {
+                                    aa: zf(a, g) || void 0
+                                },
+                                J: (h["page-url"] = e,
+                                h)
+                            }, {
+                                id: Nc.yg,
+                                Z: "0"
+                            })["catch"](W(a, "r.tim.ng2")))
+                        }
+                    }
+                }
+                d()
+            }
+        }
+    }, 7);
+    Mh.ci = ["x"];
+    Qh.ci = Pe;
+    ki.push(X("p.sci", function(a, b) {
+        return Wh(b, E([a, b], et))["catch"](W(a, "ins.cs"))
+    }));
+    ki.push(Dl);
+    ih(Ct, 8);
+    lh("f", Ct, 3);
+    lh("n", Ct, 5);
+    ii.push(function() {
+        var a = [Ht, Et, Dt, ft, Kt, kt, gt, it, Nt, Ot, Jt];
+        return X("fip", function(b) {
+            if (!hl(b) || Db(b)) {
+                var c = Gf(b);
+                if (!c.C("fip")) {
+                    var d = H(Kb(H(function(e, f) {
+                        return X("fip." + f, e)(b)
+                    }, D(Cl, null))), pd("-"))(a);
+                    c.D("fip", d)
+                }
+            }
+        })
+    }());
+    ih(function(a) {
+        return {
+            T: function(b, c) {
+                var d = b.K
+                  , e = Gf(a).C("fip");
+                e && d && (d.D("fip", e),
+                of(b, "fip", jb(e)));
+                c()
+            }
+        }
+    }, 9);
+    lh("h", function(a) {
+        return {
+            Ga: function(b, c) {
+                var d = b.ii;
+                ah(b) && d && R(a).D("isEU", J(d, "settings.eu"));
+                c()
+            }
+        }
+    }, 3);
+    ii.push(Gq);
+    ki.push($t);
+    ji.push(cu);
+    We({
+        Ii: {
+            fa: "yaDisableGDPR"
+        },
+        Ji: {
+            fa: "yaGDPRLang"
+        }
+    });
+    hh.push(function(a, b) {
+        return {
+            T: E([a, b], Du)
+        }
+    });
+    qe.push("gdpr");
+    qe.push("gdpr_popup");
+    re.push(function(a, b) {
+        var c = Yi(a);
+        c = qu(c);
+        if (nb(sb(pu), c).length)
+            return !0;
+        c = b(a, "gdpr");
+        return M(c, [iu, ku])
+    });
+    hh.push(function(a) {
+        return {
+            T: function(b, c) {
+                var d = b.Na || {}, e;
+                (e = J(a, "document.referrer")) ? (e = qh(a, e).host,
+                e = ee(e),
+                e = Gu + "." + (e || Fu)) : e = Kc;
+                b.Na = P(d, {
+                    qf: [e]
+                });
+                c()
+            }
+        }
+    });
+    ih(Su, 5);
+    lh("1", Su, 6);
+    Mh.c = Ih;
+    Qh.c = Pe;
+    lh("1", Zu, 7);
+    ih(Zu, 7);
+    mi.push(X("hcp", $u));
+    ki.push(X("p.ot", bv));
+    We({
+        Vg: {
+            fa: "disableWebsocket",
+            Ta: kb
+        }
+    });
+    Ch.s = {
+        check: function(a, b) {
+            return !b.Vg && xa("WebSocket", a.WebSocket) ? tv(a) : !1
+        },
+        id: 5
+    };
+    Mh.ws = ["f", "x"];
+    Qh.ws = Pe;
+    ki.push(Yd("cta", wv, !0));
+    lh("n", function(a) {
+        var b = R(a);
+        return {
+            T: function(c, d) {
+                var e = c.O || {}
+                  , f = b.C("cta")
+                  , g = b.C("cta.e");
+                if (f || g) {
+                    e.R || (e.R = {});
+                    e.R.__ym || (e.R.__ym = {});
+                    var h = {};
+                    f ? (f = O(function(k) {
+                        var l = J(k, "topic");
+                        k = J(k, "version");
+                        var m = {};
+                        return m.topic = l,
+                        m.version = k,
+                        m
+                    }, f),
+                    h.ct = f) : g && (h["ct.e"] = g);
+                    P(e.R.__ym, h);
+                    c.O = P(c.O || {}, e)
+                }
+                d()
+            }
+        }
+    }, 7);
+    lh("n", Oi, 8);
+    ji.push(Nv);
+    lh("g", function(a, b) {
+        return {
+            T: function(c, d) {
+                var e = c.J;
+                if (e && e["page-url"]) {
+                    var f = e["page-url"];
+                    Zv(f) || $v(f) ? Wh(b, function(g) {
+                        var h = J(g, "settings.goal_values");
+                        if (h) {
+                            var k = (g = qh(a, f).query) ? Vd(g) : void 0;
+                            if (k) {
+                                g = c.O || {};
+                                g.R || (g.R = {});
+                                g.R.__ym || (g.R.__ym = {});
+                                var l = Zv(f) ? Wv : Xv;
+                                h = bw(h);
+                                h = Yv(a, k, h, l);
+                                0 !== h.length && (k = {},
+                                h = (k.cgd = h[0],
+                                k.cmg = h,
+                                k),
+                                P(g.R.__ym, h),
+                                c.O = P(c.O || {}, g))
+                            }
+                        }
+                        d()
+                    })["catch"](H(ta(d), W(a, "a.g.v"))) : d()
+                } else
+                    d()
+            }
+        }
+    }, -2);
+    mi.push(X("cdl", function(a) {
+        var b = R(a).wa;
+        if (a = J(a, "navigator.cookieDeprecationLabel"))
+            try {
+                a.getValue().then(F("cdl", b), E(["cdl", "e"], b))
+            } catch (c) {
+                b("cdl", "d")
+            }
+        else
+            b("cdl", "na")
+    }));
+    We({
+        Wg: {
+            fa: "disableYtm",
+            Ta: kb
+        }
+    });
+    Mh.ytm = Jh;
+    ji.push(X("p.ytm", function(a, b) {
+        if (!b.Wg) {
+            var c = !1
+              , d = function() {
+                c = !0
+            };
+            ty(a, b).then(function(e) {
+                if (!c && e) {
+                    e = hw(a);
+                    var f = Nh(a, b, "ytm")
+                      , g = {};
+                    return Pe(a, f)({
+                        N: {
+                            ha: ["ytm"],
+                            Xa: !0
+                        },
+                        J: e ? (g.nonce = e,
+                        g) : void 0
+                    }, [Nc.Pa + "//" + Kc + "/ytm-config/" + b.id]).then(L(sy({
+                        Ka: 1
+                    })))
+                }
+            }).then(function(e) {
+                if (!c && Ta(e)) {
+                    dx(a);
+                    var f = ry(a, e.permissions, b.id);
+                    f = ny(a, e, f).dispatchEvent;
+                    f(kw(a, "ytm.init"));
+                    d = tw(a, f, e)
+                }
+            })["catch"](W(a, "ytm.s"));
+            return function() {
+                return d()
+            }
+        }
+    }));
+    li.push(function(a, b) {
+        b.policy = gw(a).Ag
+    });
+    ki.push(uy);
+    Mh.pis = Kh;
+    Qh.pis = Pe;
+    ki.push(X("p.sci", function(a, b) {
+        return Wh(b, function(c) {
+            var d = J(c, "settings.pis");
+            if (d && !Km(c)) {
+                c = R(a);
+                var e = c.C;
+                c = c.D;
+                e = e("pis");
+                if (C(e))
+                    return e = Rh(a, "pis", b),
+                    c("pis", "0"),
+                    e({
+                        N: {
+                            ha: ["pis"]
+                        }
+                    }, [d]).then(E(["pis", "1"], c), ta(E(["pis", "a"], c)))
+            }
+        })["catch"](W(a, "pis"))
+    }));
+    Mh.pic = Jh;
+    Qh.pic = Pe;
+    ki.push(vy);
+    mi.push(wy);
+    xy.init || (xy.init = []);
+    xy.init.push(function(a, b, c) {
+        return !!J(c, "0.ssr")
+    });
+    ji.push(By);
+    ki.push(Jy);
+    ji.push(function(a, b) {
+        var c = yy(a)
+          , d = Q(b)
+          , e = c[d];
+        e || (e = {},
+        c[d] = e);
+        e.Dh = !0;
+        if (c = e.$f)
+            d = Ay(a),
+            O(d, c)
+    });
+    ki.unshift(function(a, b) {
+        Wh(b, function(c) {
+            var d = Ce(a)
+              , e = J(c, "settings.sm")
+              , f = Lk(a);
+            (d || e || f.id) && Lu(a, "tag_debug", b, c)
+        })
+    });
+    function Sy(a, b, c, d) {
+        var e = this;
+        return W(window, "c.i", function() {
+            function f(z) {
+                (z = jk(k, m, "", z)(k, m)) && (A(z.then) ? z.then(g) : g(z));
+                return z
+            }
+            function g(z) {
+                z && (A(z) ? p.push(z) : Ta(z) && O(function(K) {
+                    var aa = r(K);
+                    K = aa.next().value;
+                    aa = aa.next().value;
+                    A(aa) && ("u" === K ? p.push(aa) : h(aa, K))
+                }, bc(z)))
+            }
+            function h(z, K, aa) {
+                e[K] = Ny(k, m, aa || q, K, z)
+            }
+            var k = window;
+            (!k || isNaN(a) && !a) && jf();
+            var l = Pc(a, b, c, d)
+              , m = Qc(l);
+            Ku(m).ai = l;
+            Li(m, m.R || {});
+            var p = []
+              , q = [My, jk, Ly];
+            q.unshift(gi);
+            var t = O(w, ki);
+            l = Q(m);
+            m.id || md(T("Invalid Metrika id: " + m.id, !0));
+            var v = Oy.C("counters", {});
+            if (v[l])
+                return t = {},
+                Zh(k, l, "dc", (t.key = l,
+                t)),
+                v[l];
+            v[l] = e;
+            Oy.D("counters", v);
+            Oy.wa("counter", e);
+            O(function(z) {
+                z(k, m)
+            }, hi);
+            O(f, ii);
+            f(bi);
+            h(Ky(k, m, p), "destruct", [My, Ly]);
+            ai(k, E([k, t, f, 1, "a.i"], pq));
+            O(f, ji);
+            l = {};
+            Ge(k, (l.counterKey = Q(m),
+            l.name = "counter",
+            l.data = Xe(m),
+            l))
+        })()
+    }
+    O(ra(Re)(window), mi);
+    if (window.Ya && Sy) {
+        var Ty = Nc.Ac;
+        window.Ya[Ty] = Sy;
+        ei(window);
+        O(H(bb([window, window.Ya[Ty]]), Re), li)
+    }
+    (function(a) {
+        var b = J(a, "ym");
+        if (b) {
+            var c = J(b, "a");
+            c || (b.a = [],
+            c = b.a);
+            var d = Ay(a);
+            Zi(a, c, function(e) {
+                e.oa.F(d)
+            }, !0)
+        }
+    }
+    )(window);
+}
+).call(this);
